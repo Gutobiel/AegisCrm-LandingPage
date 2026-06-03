@@ -2150,7 +2150,7 @@ footer {
   transform: scale(1.1);
   box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
 }
-.wa-bubble {
+.wa-widget-bubble {
   background: var(--bg-card2);
   border: 1px solid var(--border);
   color: var(--white);
@@ -2166,12 +2166,12 @@ footer {
   pointer-events: none;
   transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.wa-bubble.visible {
+.wa-widget-bubble.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-.wa-bubble::after {
+.wa-widget-bubble::after {
   content: '';
   position: absolute;
   bottom: -6px;
