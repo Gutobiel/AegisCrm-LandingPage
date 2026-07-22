@@ -968,16 +968,16 @@
     if (!chatArea || !statusText) return;
 
     const messages = [
-      { sender: 'vendedor', text: 'Aegis, quanto faturamos em contratos fechados este mês até agora?' },
-      { sender: 'copilot', isTyping: true, status: 'Acessando banco de dados do CRM... 🔍' },
-      { sender: 'copilot', text: 'Este mês o faturamento acumulado é de <strong>R$ 184.500</strong> em contratos fechados! Isso representa um aumento de <strong>14%</strong> em relação ao mesmo período do mês passado. 🚀' },
-      { sender: 'vendedor', text: 'Excelente! E quem é o vendedor líder em vendas no momento?' },
-      { sender: 'copilot', isTyping: true, status: 'Consultando ranking de vendas... 🏆' },
-      { sender: 'copilot', text: 'A líder de vendas deste mês é a <strong>Giovanna</strong> com R$ 74.000 fechados, seguida de perto pelo <strong>Lucas</strong> com R$ 68.000. Deseja que eu envie o relatório completo por PDF?' },
-      { sender: 'vendedor', text: 'Sim, por favor! E me avise se tem algum lead frio precisando de atenção.' },
-      { sender: 'copilot', isTyping: true, status: 'Analisando leads sem interação... 📋' },
-      { sender: 'copilot', text: 'Relatório enviado! Identifiquei <strong>3 leads</strong> parados na etapa de proposta há mais de 48h. Recomendo mandar um follow-up para a <strong>AC Imóveis</strong> (Rafael Torres). Posso redigir um template de mensagem?' },
-      { sender: 'vendedor', text: 'Ótimo, obrigado!' }
+      { sender: 'vendedor', text: 'Aegis, quais leads eu não mexi essa semana?' },
+      { sender: 'copilot', isTyping: true, status: 'Analisando banco de dados do CRM... 🧠' },
+      { sender: 'copilot', text: 'Você tem <strong>3 leads parados há +5 dias</strong>. O lead <strong>TechCorp</strong> está há 8 dias sem contato.<br>💡 <em>Sugestão: Ligar hoje e oferecer 5% de desconto no fechamento.</em>' },
+      { sender: 'vendedor', text: 'Excelente! Cria um orçamento pro cliente TechCorp.' },
+      { sender: 'copilot', isTyping: true, status: 'Gerando orçamento em PDF... 📄' },
+      { sender: 'copilot', text: 'Orçamento <strong>#1042</strong> gerado com sucesso! Ticket estimado: <strong>R$ 12.500,00</strong>. PDF pronto para envio! 🚀' },
+      { sender: 'vendedor', text: 'Qual o principal motivo das nossas perdas este mês?' },
+      { sender: 'copilot', isTyping: true, status: 'Compilando análise inteligente de perdas... 📊' },
+      { sender: 'copilot', text: '🎯 <strong>60% das perdas foram por preço</strong>. Insight da IA: Leads vindos de indicação convertem <strong>3x mais</strong> que tráfego pago!' },
+      { sender: 'vendedor', text: 'Sensacional, obrigado!' }
     ];
 
     let messageIndex = 0;
