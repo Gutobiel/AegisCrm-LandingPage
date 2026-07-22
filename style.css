@@ -320,7 +320,7 @@ header.scrolled {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-content {
@@ -458,6 +458,7 @@ header.scrolled {
   align-items: center;
   perspective: 1200px;
   width: 100%;
+  margin-top: 10px;
 }
 .whatsapp-mockup-wrapper {
   width: 100%;
@@ -2442,4 +2443,197 @@ footer {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* ─── AGENTES VIRTUAIS DE IA ─────────────────── */
+.ai-agents-section {
+  padding: 100px 60px;
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ai-agents-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ai-agents-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 60px auto;
+}
+
+.ai-agents-header h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin: 12px 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.section-subheadline {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.agent-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
+  transition: all 0.35s var(--ease);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(37, 99, 235, 0.15);
+}
+
+.agent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.agent-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agent-icon-box.blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; }
+.agent-icon-box.gold { background: rgba(234, 179, 8, 0.2); color: #facc15; }
+.agent-icon-box.cyan { background: rgba(6, 182, 212, 0.2); color: #22d3ee; }
+.agent-icon-box.purple { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+.agent-icon-box.emerald { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.agent-icon-box.orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; }
+
+.agent-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.agent-tag.sales {
+  color: #3b82f6;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.agent-tag.sac {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.agent-tag.suporte {
+  color: #fb923c;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.agent-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.agent-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.agent-action-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #60a5fa;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.agent-card:hover .agent-action-link {
+  color: #93c5fd;
+}
+
+/* Banner de Fechamento do Agente */
+.agent-banner {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, rgba(15, 23, 42, 0.9) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.agent-banner-content {
+  max-width: 700px;
+}
+
+.agent-banner-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #60a5fa;
+  background: rgba(37, 99, 235, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.agent-banner h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.agent-banner p {
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .ai-agents-section { padding: 60px 24px; }
+  .agent-banner { flex-direction: column; text-align: center; }
+  .agents-grid { grid-template-columns: 1fr; }
 }
