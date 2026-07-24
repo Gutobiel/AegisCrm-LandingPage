@@ -1078,64 +1078,75 @@
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
-     18. GSAP STACKING CARDS
-     Pins the section and animates cards up one by one
+     18. GSAP AGENT CARDS SEQUENCE
+     Pins the section and transitions cards seamlessly one by one
      ═══════════════════════════════════════════════════════════════════════ */
   function initGSAPCards() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      console.error('GSAP or ScrollTrigger not loaded.');
       return;
     }
     gsap.registerPlugin(ScrollTrigger);
 
+    // Skip card pinning sequence on mobile screens
+    if (window.innerWidth <= 768) return;
+
     const section = document.querySelector('.ai-agents-section');
     const cards = gsap.utils.toArray('.agents-grid .agent-card, .agents-grid .agent-banner');
     
-    if (!section || cards.length === 0) {
-      console.error('GSAP Stacking Cards: Missing section or cards.');
-      return;
-    }
+    if (!section || cards.length === 0) return;
 
-    // Remove reveal classes and transitions to prevent conflict with GSAP scrubbing
+    // Reset reveal classes to avoid CSS transform conflicts
     cards.forEach(card => {
       card.classList.remove('reveal', 'active', 'reveal-left', 'reveal-right');
       card.style.transition = 'none';
-      card.style.transform = 'none'; // reset any CSS transforms
+    });
+
+    // Set initial card states: Card 0 active, others waiting below
+    cards.forEach((card, i) => {
+      if (i === 0) {
+        gsap.set(card, { y: 0, opacity: 1, scale: 1, pointerEvents: 'auto' });
+      } else {
+        gsap.set(card, { y: 100, opacity: 0, scale: 0.95, pointerEvents: 'none' });
+      }
     });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top top',
-        end: () => '+=' + (cards.length * window.innerHeight * 0.8),
-        scrub: 1,
+        start: 'top top+=60',
+        end: () => '+=' + (cards.length * 400),
+        scrub: 0.6,
         pin: true,
-        anticipatePin: 1
+        anticipatePin: 1,
+        invalidateOnRefresh: true
       }
     });
 
+    // Transition sequence: Current card moves UP & out (-60px, opacity 0), next card enters (100px -> 0px, opacity 1)
     cards.forEach((card, i) => {
-      if (i > 0) {
-        // Initial state for cards that will slide in
-        gsap.set(card, { 
-          y: window.innerHeight + 100,
-          scale: 0.9,
-          opacity: 0,
-          transformOrigin: 'top center'
-        });
-        
-        // Animate to stacked position
+      if (i < cards.length - 1) {
+        const nextCard = cards[i + 1];
+        const stepLabel = `step-${i}`;
+
         tl.to(card, {
-          y: i * 25, // Staggered top offset
-          scale: 1,
+          y: -60,
+          opacity: 0,
+          scale: 0.95,
+          pointerEvents: 'none',
+          duration: 0.8,
+          ease: 'power1.inOut'
+        }, stepLabel)
+        .to(nextCard, {
+          y: 0,
           opacity: 1,
-          duration: 1,
-          ease: 'power2.out'
-        });
+          scale: 1,
+          pointerEvents: 'auto',
+          duration: 0.8,
+          ease: 'power1.inOut'
+        }, stepLabel);
       }
     });
-    
-    // Recalculate positions after all layout is done
+
     ScrollTrigger.refresh();
   }
 
@@ -1143,3 +1154,4 @@
   window.addEventListener('load', initGSAPCards);
 
 })();
+
