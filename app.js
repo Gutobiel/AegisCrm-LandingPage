@@ -1077,4 +1077,69 @@
     setTimeout(runDialogue, 1000);
   })();
 
+  /* ═══════════════════════════════════════════════════════════════════════
+     18. GSAP STACKING CARDS
+     Pins the section and animates cards up one by one
+     ═══════════════════════════════════════════════════════════════════════ */
+  function initGSAPCards() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      console.error('GSAP or ScrollTrigger not loaded.');
+      return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+
+    const section = document.querySelector('.ai-agents-section');
+    const cards = gsap.utils.toArray('.agents-grid .agent-card, .agents-grid .agent-banner');
+    
+    if (!section || cards.length === 0) {
+      console.error('GSAP Stacking Cards: Missing section or cards.');
+      return;
+    }
+
+    // Remove reveal classes and transitions to prevent conflict with GSAP scrubbing
+    cards.forEach(card => {
+      card.classList.remove('reveal', 'active', 'reveal-left', 'reveal-right');
+      card.style.transition = 'none';
+      card.style.transform = 'none'; // reset any CSS transforms
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => '+=' + (cards.length * window.innerHeight * 0.8),
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
+
+    cards.forEach((card, i) => {
+      if (i > 0) {
+        // Initial state for cards that will slide in
+        gsap.set(card, { 
+          y: window.innerHeight + 100,
+          scale: 0.9,
+          opacity: 0,
+          transformOrigin: 'top center'
+        });
+        
+        // Animate to stacked position
+        tl.to(card, {
+          y: i * 25, // Staggered top offset
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out'
+        });
+      }
+    });
+    
+    // Recalculate positions after all layout is done
+    ScrollTrigger.refresh();
+  }
+
+  // Ensure scripts are loaded and DOM is ready
+  window.addEventListener('load', initGSAPCards);
+
 })();
