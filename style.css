@@ -2767,471 +2767,6 @@ footer {
   z-index: 9998;
 }
 
-/* ─── RESPONSIVE ──────────────────────────────── */
-@media (max-width: 900px) {
-  .hero {
-    padding-top: 120px;
-    padding-bottom: 60px;
-    min-height: auto;
-  }
-
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 48px;
-  }
-
-  .hero-content {
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero h1 {
-    text-align: center;
-  }
-
-  .typewriter-container {
-    justify-content: center;
-  }
-
-  .hero-cta {
-    justify-content: center;
-  }
-
-  .whatsapp-mockup {
-    transform: none !important;
-  }
-
-  header {
-    padding: 18px 24px;
-    top: 36px;
-    /* Adjusted top for FOMO bar */
-  }
-
-  .header-nav {
-    display: none;
-    /* Hide header navigation on mobile */
-  }
-
-  #fomo-bar {
-    padding: 8px 36px;
-    font-size: 11px;
-  }
-
-  .pain,
-  .pipeline-section,
-  .features,
-  .proof,
-  .form-section,
-  .faq,
-  footer,
-  .calculator-section,
-  .comparison,
-  .pricing {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  .pain-grid,
-  .metrics,
-  .kanban,
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .pricing-popular {
-    transform: scale(1);
-    margin: 10px 0;
-  }
-
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .comparison-divider {
-    flex-direction: row;
-    height: auto;
-    width: 100%;
-    margin: 16px 0;
-  }
-
-  .comparison-divider-line {
-    height: 1px;
-    width: 100%;
-    background: var(--border);
-  }
-
-  .calculator {
-    grid-template-columns: 1fr;
-    padding: 24px;
-    gap: 24px;
-  }
-
-  .calc-divider {
-    height: 1px;
-    width: 100%;
-    background: var(--border);
-  }
-
-  .feature-block,
-  .feature-block.reverse {
-    grid-template-columns: 1fr;
-    direction: ltr;
-    gap: 40px;
-  }
-
-  .feature-block.reverse>* {
-    direction: ltr;
-  }
-
-  .feature-visual {
-    height: 280px;
-  }
-
-  .trust-inner {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .trust-inner {
-    margin-bottom: 24px;
-  }
-
-  .testimonial {
-    padding: 32px 24px;
-  }
-
-  .testimonial-metric {
-    margin-bottom: 20px;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-
-  .hero-cta .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .pricing-card {
-    padding: 24px;
-  }
-
-  .pricing-amount {
-    font-size: 40px;
-  }
-}
-
-.dashboard-screenshot {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transform: rotateX(5deg) rotateY(-5deg);
-  transition: transform 0.4s ease;
-}
-
-.dashboard-screenshot:hover {
-  transform: rotateX(0deg) rotateY(0deg) scale(1.02);
-}
-
-.author-avatar-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-/* ─── AGENTES VIRTUAIS DE IA ─────────────────── */
-.ai-agents-section {
-  padding: 100px 60px;
-  position: relative;
-  background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.ai-agents-container {
-  max-width: min(92vw, 1560px);
-  margin: 0 auto;
-}
-
-.ai-agents-header {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 2rem auto;
-}
-
-.ai-agents-header h2 {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1.2;
-  margin: 12px 0 16px 0;
-  letter-spacing: -0.02em;
-}
-
-.section-subheadline {
-  font-size: 17px;
-  color: var(--muted);
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.agents-grid {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 50px auto;
-  perspective: 1000px;
-}
-
-.agent-card {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.2) 0%, transparent 100%), rgba(15, 23, 42, 1);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 30px;
-  backdrop-filter: blur(12px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  will-change: transform;
-}
-
-.agent-card:nth-child(1) {
-  position: relative;
-}
-
-.agent-card:hover {
-  background: rgba(30, 41, 59, 0.7);
-  border-color: rgba(59, 130, 246, 0.4);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(37, 99, 235, 0.15);
-}
-
-.agent-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.agent-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.agent-icon-box.blue {
-  background: rgba(37, 99, 235, 0.2);
-  color: #60a5fa;
-}
-
-.agent-icon-box.gold {
-  background: rgba(234, 179, 8, 0.2);
-  color: #facc15;
-}
-
-.agent-icon-box.cyan {
-  background: rgba(6, 182, 212, 0.2);
-  color: #22d3ee;
-}
-
-.agent-icon-box.purple {
-  background: rgba(168, 85, 247, 0.2);
-  color: #c084fc;
-}
-
-.agent-icon-box.emerald {
-  background: rgba(16, 185, 129, 0.2);
-  color: #34d399;
-}
-
-.agent-icon-box.orange {
-  background: rgba(249, 115, 22, 0.2);
-  color: #fb923c;
-}
-
-.agent-tag {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border-radius: 20px;
-  text-transform: uppercase;
-}
-
-.agent-tag.sales {
-  color: #3b82f6;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.agent-tag.sac {
-  color: #34d399;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.agent-tag.suporte {
-  color: #fb923c;
-  background: rgba(249, 115, 22, 0.15);
-  border: 1px solid rgba(249, 115, 22, 0.3);
-}
-
-.agent-card h3 {
-  font-size: 19px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-
-.agent-card p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.agent-action-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: #60a5fa;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.3s ease;
-}
-
-.agent-card:hover .agent-action-link {
-  color: #93c5fd;
-}
-
-/* Banner de Fechamento do Agente */
-.agent-banner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  will-change: transform;
-  z-index: 10;
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, transparent 100%), rgba(15, 23, 42, 1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 20px;
-  padding: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  flex-wrap: wrap;
-}
-
-.agent-banner-content {
-  max-width: 700px;
-}
-
-.agent-banner-badge {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  color: #60a5fa;
-  background: rgba(37, 99, 235, 0.2);
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
-  letter-spacing: 0.04em;
-}
-
-.agent-banner h3 {
-  font-size: 24px;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-
-.agent-banner p {
-  font-size: 15px;
-  color: #cbd5e1;
-  line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-  .ai-agents-section {
-    padding: 60px 24px;
-  }
-
-  .agent-banner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-
-}
-
-/* ─── ULTRAWIDE & LARGE MONITOR FLUID RESPONSIVENESS ─── */
-@media (min-width: 1600px) {
-
-  .hero-container,
-  .ai-agents-container,
-  .comparison,
-  .calculator-inner,
-  .pipeline-section .section-inner,
-  .features-inner,
-  .proof-inner,
-  .pricing-inner,
-  .trust-inner {
-    max-width: min(94vw, 1720px);
-  }
-
-  header,
-  header.scrolled {
-    padding-left: max(40px, calc((100vw - 1720px) / 2 + 32px));
-    padding-right: max(40px, calc((100vw - 1720px) / 2 + 32px));
-  }
-
-  footer {
-    padding-left: max(40px, calc((100vw - 1720px) / 2 + 32px));
-    padding-right: max(40px, calc((100vw - 1720px) / 2 + 32px));
-  }
-
-
-}
-
 /* ─── BLOB ANIMATION BACKGROUND FOR FORM ─── */
 .form-blobs-bg {
   position: fixed;
@@ -3276,25 +2811,10 @@ footer {
   animation-delay: -10s;
 }
 @keyframes float-blob {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(40px, -60px) scale(1.1);
-  }
-  66% {
-    transform: translate(-30px, 30px) scale(0.9);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@media (max-width: 768px) {
-  .pricing-horizontal {
-    flex-direction: column;
-    text-align: center;
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 /* ─── NEW FOOTER ────────────────────────────────────────────── */
@@ -3401,7 +2921,586 @@ footer {
   padding-left: 24px;
 }
 
+/* ─── RESPONSIVE MEDIA QUERIES ──────────────────────────────── */
+
+/* ═══ TABLET BREAKPOINT (≤ 900px) ═══ */
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    min-height: auto;
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 48px;
+  }
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  .hero h1 {
+    text-align: center;
+  }
+  .typewriter-container {
+    justify-content: center;
+  }
+  .hero-cta {
+    justify-content: center;
+  }
+  .whatsapp-mockup {
+    transform: none !important;
+  }
+
+  header {
+    padding: 18px 24px;
+    top: 0;
+  }
+  .header-nav {
+    display: none;
+  }
+  
+  #fomo-bar {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+  
+  .pain, .pipeline-section, .features, .proof,
+  .form-section, .faq, footer, .calculator-section, .comparison, .pricing { 
+    padding-left: 24px; 
+    padding-right: 24px; 
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .pain-grid, .metrics, .pricing-grid { 
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
+
+  .kanban {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .kanban-col {
+    min-height: 200px;
+  }
+  
+  .pricing-popular {
+    transform: scale(1);
+    margin: 10px 0;
+  }
+  
+  .comparison-bento {
+    grid-template-columns: 1fr;
+  }
+  .comparison-divider {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    margin: 16px 0;
+  }
+  .comparison-divider-line {
+    height: 1px;
+    width: 100%;
+    background: var(--border);
+  }
+  
+  .calculator {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+  .calc-divider {
+    height: 1px;
+    width: 100%;
+    background: var(--border);
+  }
+
+  .feature-block, .feature-block.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 40px;
+  }
+  .feature-block.reverse > * { direction: ltr; }
+  .feature-visual { height: 280px; }
+  
+  .bento-pricing {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pricing-secondary {
+    gap: 20px;
+  }
+  
+  .trust-inner {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .testimonial {
+    padding: 32px 24px;
+  }
+  .testimonial-metric {
+    margin-bottom: 20px;
+  }
+  
+  .bento-pain-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "large"
+      "small1"
+      "small2";
+  }
+  
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 36px 24px; }
+}
+
+/* ═══ MOBILE BREAKPOINT (≤ 768px) ═══ */
 @media (max-width: 768px) {
+  /* ── Header ── */
+  header {
+    padding: 14px 16px;
+    top: 0;
+  }
+  header.scrolled {
+    padding: 12px 16px;
+  }
+  .site-logo-icon {
+    height: 30px;
+  }
+  .logo-brand {
+    font-size: 16px;
+    gap: 6px;
+  }
+  .logo-brand .logo-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  .btn-primary {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+  #header-cta {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+  
+  /* ── Hero ── */
+  .hero {
+    padding: 100px 16px 50px;
+    min-height: auto;
+  }
+  .hero-container {
+    gap: 32px;
+    max-width: 100%;
+  }
+  .hero-badge {
+    font-size: 10px;
+    padding: 6px 12px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 7vw, 40px);
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+  .hero-subheadline {
+    font-size: 14px !important;
+    line-height: 1.6;
+  }
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .hero-cta .btn-lg {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+  
+  /* ── Hero AI Pills ── */
+  .hero-ai-pills {
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .ai-pill {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  .ai-pill-icon {
+    font-size: 12px;
+  }
+  
+  /* ── WhatsApp Mockup ── */
+  .hero-mockup-area {
+    perspective: none;
+    margin-top: 0;
+  }
+  .whatsapp-mockup-wrapper {
+    max-width: 100%;
+  }
+  .whatsapp-mockup {
+    height: 380px;
+    transform: none !important;
+    border-radius: 10px;
+  }
+  .wa-bubble {
+    font-size: 12px;
+    padding: 7px 10px 16px;
+    max-width: 90%;
+  }
+  
+  /* ── AI Agents Section ── */
+  .ai-agents-section {
+    padding: 60px 16px;
+  }
+  .ai-agents-header {
+    margin-bottom: 36px;
+  }
+  .ai-agents-header h2 {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+  .section-subheadline {
+    font-size: 14px;
+  }
+  .agents-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+  .agent-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    padding: 22px;
+  }
+  .agent-card h3 {
+    font-size: 16px;
+  }
+  .agent-card p {
+    font-size: 13px;
+  }
+  .agent-banner {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    padding: 28px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    border-radius: 14px;
+  }
+  .agent-banner h3 {
+    font-size: 20px;
+  }
+  .agent-banner p {
+    font-size: 13px;
+  }
+  .agent-banner .btn-lg {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 14px 24px;
+  }
+  
+  /* ── Comparison Section ── */
+  .comparison {
+    padding: 60px 16px;
+    gap: 32px;
+  }
+  .comparison-header-wrap h2 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+  .comparison-header-wrap p {
+    font-size: 15px;
+  }
+  .comparison-bento {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .comp-card {
+    padding: 28px 22px;
+  }
+  .comp-card li {
+    font-size: 14px;
+  }
+  
+  /* ── Calculator Section ── */
+  .calculator-section {
+    padding: 60px 16px;
+  }
+  .calculator-inner h2 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+  .calc-subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .calculator {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+  .calc-amount {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+  .calc-result-box {
+    padding: 18px;
+  }
+  .calc-cta {
+    font-size: 14px;
+    padding: 14px 20px;
+  }
+  
+  /* ── Pipeline / Kanban Section ── */
+  .pipeline-section {
+    padding: 60px 16px;
+  }
+  .pipeline-header {
+    margin-bottom: 40px;
+  }
+  .pipeline-header h2 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+  .pipeline-header p {
+    font-size: 15px;
+  }
+  .kanban {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .kanban-col {
+    min-height: 180px;
+    padding: 18px;
+  }
+  .lead-card {
+    padding: 12px;
+  }
+  .lead-name {
+    font-size: 13px;
+  }
+  .lead-company {
+    font-size: 11px;
+  }
+  
+  /* ── Features Section ── */
+  .features {
+    padding: 40px 16px 60px;
+  }
+  .features-inner {
+    gap: 60px;
+  }
+  .feature-block, .feature-block.reverse {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    direction: ltr;
+  }
+  .feature-block.reverse > * { direction: ltr; }
+  .feature-visual {
+    height: 240px;
+    border-radius: 14px;
+  }
+  .feature-text h3 {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+  .feature-text p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .feature-detail-item {
+    font-size: 13px;
+  }
+  .dashboard-screenshot {
+    transform: none;
+  }
+  .dashboard-screenshot:hover {
+    transform: scale(1.01);
+  }
+  
+  /* ── Vis Notification (Feature 2) ── */
+  .vis-notification {
+    width: 180px;
+  }
+  .vis-phone {
+    padding: 14px 12px;
+  }
+  .vis-notif-body {
+    font-size: 11px;
+  }
+  
+  /* ── Proof / Social Section ── */
+  .proof {
+    padding: 60px 16px 80px;
+  }
+  .proof h2 {
+    font-size: clamp(22px, 5vw, 32px);
+    margin-bottom: 40px;
+  }
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin-bottom: 40px;
+  }
+  .metric {
+    padding: 28px 20px;
+  }
+  .metric-value {
+    font-size: 40px;
+  }
+  .metric-label {
+    font-size: 13px;
+  }
+  .logo-cloud {
+    padding: 16px 0 40px;
+  }
+  .logo-item {
+    font-size: 14px;
+  }
+  .logo-track {
+    gap: 32px;
+  }
+  
+  /* ── Testimonial Carousel ── */
+  .testimonial-carousel {
+    max-width: 100%;
+  }
+  .testimonial {
+    padding: 24px 18px;
+  }
+  .testimonial-quote {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  .testimonial-author {
+    gap: 12px;
+  }
+  .author-avatar-img {
+    width: 40px;
+    height: 40px;
+  }
+  .author-name {
+    font-size: 13px;
+  }
+  .author-role {
+    font-size: 11px;
+  }
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  /* ── Pricing Section ── */
+  .pricing {
+    padding: 60px 16px;
+  }
+  .pricing h2 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+  .pricing-anchor {
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+  .bento-pricing {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .pricing-card {
+    padding: 28px 22px;
+  }
+  .pricing-popular {
+    transform: none;
+  }
+  .pricing-amount {
+    font-size: 42px;
+  }
+  .pricing-btn {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+  .pricing-secondary {
+    gap: 16px;
+  }
+  .small-card {
+    padding: 24px 20px;
+  }
+  .pricing-note {
+    margin-top: 28px;
+  }
+  
+  /* ── Form Section ── */
+  .form-section {
+    padding: 60px 16px;
+  }
+  .form-inner {
+    max-width: 100%;
+  }
+  .form-inner h2 {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+  .form-inner > p {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .form-group input {
+    padding: 14px 14px;
+    font-size: 14px;
+  }
+  
+  /* ── Trust Badges ── */
+  .trust {
+    padding: 40px 16px;
+  }
+  .trust-inner {
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .trust-item {
+    gap: 10px;
+  }
+  .trust-text strong {
+    font-size: 13px;
+  }
+  .trust-text span {
+    font-size: 11px;
+  }
+  
+  /* ── FAQ ── */
+  .faq {
+    padding: 60px 16px;
+    max-width: 100%;
+  }
+  .faq h2 {
+    font-size: clamp(22px, 5vw, 32px);
+    margin-bottom: 36px;
+  }
+  .faq-q {
+    font-size: 14px;
+    padding: 18px 16px;
+    gap: 12px;
+  }
+  .faq-a {
+    font-size: 13px;
+  }
+  .faq-item.open .faq-a {
+    padding: 0 16px 18px;
+  }
+  
+  /* ── Footer ── */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -3411,4 +3510,181 @@ footer {
     text-align: center;
     gap: 12px;
   }
-}
+  
+  /* ── Video Modal ── */
+  .video-modal-content {
+    width: 95%;
+    padding: 36px 20px;
+    border-radius: 14px;
+  }
+  .video-placeholder h3 {
+    font-size: 20px;
+  }
+  .video-placeholder p {
+    font-size: 13px;
+  }
+  
+  /* ── WhatsApp Widget ── */
+  .wa-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+  .wa-btn {
+    width: 48px;
+    height: 48px;
+  }
+  .wa-widget-bubble {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+  
+  /* ── Scroll Hint ── */
+  .scroll-hint {
+    bottom: 20px;
+    font-size: 10px;
+  }
+  
+  /* ── Kanban Toast ── */
+  .kanban-toast {
+    font-size: 12px;
+    padding: 10px 20px;
+    bottom: 20px;
+  }
+  
+  /* ── General Typography ── */
+  .section-label {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+}
+
+/* ═══ SMALL PHONE BREAKPOINT (≤ 480px) ═══ */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .hero-subheadline {
+    font-size: 13px !important;
+  }
+  .hero-badge {
+    font-size: 9px;
+    padding: 5px 10px;
+  }
+  .hero-ai-pills {
+    gap: 6px;
+  }
+  .ai-pill {
+    font-size: 10px;
+    padding: 4px 8px;
+    gap: 4px;
+  }
+  .whatsapp-mockup {
+    height: 320px;
+  }
+  .wa-header {
+    padding: 8px 12px;
+  }
+  .wa-name {
+    font-size: 12px;
+  }
+  .wa-status {
+    font-size: 9px;
+  }
+  .wa-avatar {
+    width: 30px;
+    height: 30px;
+  }
+  .wa-input-area {
+    padding: 8px 10px;
+  }
+  .wa-input-placeholder {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  .wa-bubble {
+    font-size: 11px;
+    padding: 6px 8px 14px;
+  }
+  .wa-bubble-time {
+    font-size: 8px;
+  }
+  .agent-card {
+    padding: 18px;
+  }
+  .agent-card h3 {
+    font-size: 15px;
+  }
+  .agent-card p {
+    font-size: 12px;
+  }
+  .agent-banner {
+    padding: 22px 16px;
+  }
+  .agent-banner h3 {
+    font-size: 18px;
+  }
+  .comp-card {
+    padding: 22px 16px;
+  }
+  .comp-card li {
+    font-size: 13px;
+    padding-left: 16px;
+  }
+  .metric-value {
+    font-size: 32px;
+  }
+  .metric {
+    padding: 22px 16px;
+  }
+  .pricing-amount {
+    font-size: 36px;
+  }
+  .pricing-card {
+    padding: 22px 18px;
+  }
+  .feature-visual {
+    height: 200px;
+  }
+  .vis-notification {
+    width: 160px;
+    gap: 8px;
+  }
+  .vis-phone {
+    padding: 12px 10px;
+    border-radius: 10px;
+  }
+  .vis-chart {
+    padding: 20px 16px;
+  }
+  .vis-metric {
+    font-size: 28px;
+  }
+  .vis-bars {
+    height: 100px;
+    gap: 6px;
+  }
+}
+
+/* ═══ ULTRAWIDE & LARGE MONITOR FLUID RESPONSIVENESS (≥ 1600px) ═══ */
+@media (min-width: 1600px) {
+  .hero-container,
+  .ai-agents-container,
+  .comparison,
+  .calculator-inner,
+  .pipeline-section .section-inner,
+  .features-inner,
+  .proof-inner,
+  .pricing-inner,
+  .trust-inner,
+  .footer-container {
+    max-width: min(94vw, 1720px);
+  }
+
+  header,
+  header.scrolled {
+    padding-left: max(40px, calc((100vw - 1720px) / 2 + 32px));
+    padding-right: max(40px, calc((100vw - 1720px) / 2 + 32px));
+  }
+}
+
