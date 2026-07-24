@@ -1110,12 +1110,16 @@
       }
     });
 
+    // Ensure section header reveal elements are immediately active
+    const headerElements = section.querySelectorAll('.ai-agents-header .reveal');
+    headerElements.forEach(el => el.classList.add('active'));
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top top+=75',
+        start: 'top 80px',
         end: () => '+=' + (cards.length * 400),
-        scrub: 0.6,
+        scrub: 0.5,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true
