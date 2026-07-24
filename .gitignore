@@ -1,0 +1,32 @@
+# Dependências portáteis locais
+node-portable/
+git-portable/
+
+# Dependências padrão do Node
+node_modules/
+jspm_packages/
+web_modules/
+
+# Builds e saídas
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# Arquivos de ambiente e logs
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
