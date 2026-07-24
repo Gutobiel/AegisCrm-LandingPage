@@ -6,6 +6,9 @@
   <title>Aegis CRM — O CRM que seu vendedor realmente vai usar</title>
   <meta name="description" content="O Aegis CRM organiza o seu funil de ponta a ponta e traz visibilidade total para sua equipe de vendas.">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Aegis CRM — O CRM que seu vendedor realmente vai usar">
   <meta property="og:description" content="Aegis CRM organiza o seu funil de ponta a ponta.">
@@ -41,9 +44,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-light.css">
 </head>
 <body>
+  <div class="form-blobs-bg page-blobs">
+    <div class="form-blob-blue blob-1"></div>
+    <div class="form-blob-blue blob-2"></div>
+    <div class="form-blob-blue blob-3"></div>
+  </div>
 
 <main>
 
@@ -58,8 +66,7 @@
 <!-- ═══ HEADER ═══════════════════════════════════════════════ -->
 <header id="site-header">
   <a href="#" class="logo" aria-label="Aegis CRM">
-    <img src="assets/aegis-logo-icon.png" alt="Aegis CRM" class="site-logo-icon">
-    <span class="logo-brand">AEGIS <span class="logo-badge">CRM</span></span>
+    <img src="assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
   </a>
   <nav class="header-nav" aria-label="Navegação principal">
     <a href="#comparativo" class="nav-link">Como funciona</a>
@@ -72,16 +79,15 @@
 </header>
 
 <!-- ═══ HERO ══════════════════════════════════════════════════ -->
-<!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section class="hero" id="topo">
   <div class="hero-container">
     <div class="hero-content">
-      <div class="hero-badge reveal">✦ O Primeiro CRM com IA Copiloto Nativa de Vendas</div>
+      <div class="hero-badge reveal">✦ O Primeiro com IA Copiloto Nativa de Vendas</div>
       <h1 class="reveal">
         Sua Equipe de Vendas Acompanhada por um Copiloto de IA 24/7.
       </h1>
-      <p class="hero-subheadline reveal">
-        Da análise de leads parados aos relatórios diários automáticos: a IA do Aegis responde perguntas do vendedor, cria orçamentos por chat e indica o caminho direto pro fechamento.
+      <p class="hero-subheadline reveal" style="margin-bottom: 1.5rem;">
+        Da análise de leads parados aos relatórios diários automáticos: a IA da Aegis responde perguntas do vendedor, analisa a conversa do chat e indica o caminho certo pro fechamento.
       </p>
       <div class="hero-cta reveal">
         <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn" id="hero-cta">
@@ -93,7 +99,7 @@
       </div>
 
       <div class="hero-ai-pills reveal">
-        <div class="ai-pill"><span class="ai-pill-icon">💬</span> Copiloto por Chat &amp; Orçamentos</div>
+        <div class="ai-pill"><span class="ai-pill-icon">💬</span> Copiloto por Chat</div>
         <div class="ai-pill"><span class="ai-pill-icon">📊</span> Resumo Diário Automático</div>
         <div class="ai-pill"><span class="ai-pill-icon">💡</span> Sugestão de Próxima Ação</div>
         <div class="ai-pill"><span class="ai-pill-icon">🎯</span> Análise Inteligente de Perdas</div>
@@ -106,7 +112,7 @@
           <div class="wa-header">
             <div class="wa-header-left">
               <div class="wa-avatar">
-                <img src="assets/aegis-logo-icon.png" alt="Aegis CRM" class="wa-avatar-img">
+                <img src="assets/favicon.png" alt="Aegis CRM" class="wa-avatar-img">
               </div>
               <div class="wa-status-info">
                 <span class="wa-name">Aegis (CRM)</span>
@@ -262,20 +268,21 @@
         </p>
         <div class="agent-action-link">Onboarding &amp; Resolução N1 &rarr;</div>
       </div>
-    </div>
 
-    <!-- Banner de Fechamento do Time de Vendas sem Férias -->
-    <div class="agent-banner reveal">
-      <div class="agent-banner-content">
-        <div class="agent-banner-badge">🤖 IA Autônoma sem Interrupções</div>
-        <h3>Gerencie um time de vendas que nunca dorme e não tira férias.</h3>
-        <p>
-          Adicione agentes de IA para cada etapa do seu funil e dê adeus às dores de cabeça com contratações complexas e rotatividade de funcionários.
-        </p>
+      <!-- Banner de Fechamento do Time de Vendas sem Férias -->
+      <div class="agent-banner reveal">
+        <div class="agent-banner-content">
+          <div class="agent-banner-badge">🤖 IA Autônoma sem Interrupções</div>
+          <h3>Gerencie um time de vendas que nunca dorme e não tira férias.</h3>
+          <p>
+            Adicione agentes de IA para cada etapa do seu funil e dê adeus às dores de cabeça com contratações complexas e rotatividade de funcionários.
+          </p>
+        </div>
+        <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn">
+          Comece Agora
+        </a>
       </div>
-      <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn">
-        Ativar Agentes de IA Agora
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -300,7 +307,7 @@
     <div class="comp-card after-card">
       <span class="comp-tag new-way">A dinâmica Aegis</span>
       <ul>
-        <li>O pipeline é atualizado arrastando um card no celular.</li>
+        <li>O pipeline é atualizado conforme a conversa avança.</li>
         <li>O sistema avisa quem precisa de atenção hoje, sem spam.</li>
         <li>A inteligência do negócio fica na empresa, não no caderno de ninguém.</li>
       </ul>
@@ -392,15 +399,16 @@
             <div class="lead-company">Aratech Soluções</div>
             <div class="lead-meta">
               <span class="lead-value">R$ 18.000</span>
-              <span class="lead-tag">Instagram</span>
+              <span class="lead-tag">Whatsapp</span>
             </div>
+            <div class="demo-hand"></div>
           </div>
           <div class="lead-card visible" id="lc-2" draggable="true" data-name="Ana Costa" data-value="8500">
             <div class="lead-name">Ana Costa</div>
             <div class="lead-company">AC Imóveis</div>
             <div class="lead-meta">
               <span class="lead-value">R$ 8.500</span>
-              <span class="lead-tag">Indicação</span>
+              <span class="lead-tag">Linkedin</span>
             </div>
           </div>
           <div class="lead-card visible" id="lc-3" draggable="true" data-name="Rafael Torres" data-value="24000">
@@ -408,7 +416,7 @@
             <div class="lead-company">Torres &amp; Filhos</div>
             <div class="lead-meta">
               <span class="lead-value">R$ 24.000</span>
-              <span class="lead-tag">LinkedIn</span>
+              <span class="lead-tag">Formulário</span>
             </div>
           </div>
           <div class="lead-card visible" id="lc-4" draggable="true" data-name="Mariana Lopes" data-value="12000">
@@ -713,8 +721,8 @@
         <div class="pricing-tier">Crescimento</div>
         <div class="pricing-price">
           <span class="pricing-currency">R$</span>
-          <span class="pricing-amount">197</span>
-          <span class="pricing-period">/mês por usuário</span>
+          <span class="pricing-amount">463</span>
+          <span class="pricing-period">/mês</span>
         </div>
         <p class="pricing-desc">O plano ideal para estruturar a área comercial e escalar com segurança.</p>
         <ul class="pricing-features">
@@ -733,7 +741,7 @@
         <div class="pricing-card small-card">
           <div class="pricing-tier">Essencial</div>
           <div class="pricing-price-small">
-            <span>R$ 97</span> <small>/mês por usuário</small>
+            <span>R$ 297</span> <small>/mês</small>
           </div>
           <p class="pricing-desc">O básico para sair do Excel, limitado a 500 leads ativos.</p>
           <a href="#demonstracao" class="btn btn-outline pricing-btn">Iniciar grátis</a>
@@ -742,21 +750,22 @@
         <div class="pricing-card small-card">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-price-small">
-            <span style="font-size:18px">Sob consulta</span>
+            <span>R$ 896</span> <small>/mês</small>
           </div>
           <p class="pricing-desc">Operações complexas, API própria e SLA garantido.</p>
           <a href="#demonstracao" class="btn btn-outline pricing-btn">Falar com vendas</a>
         </div>
+        </div>
       </div>
     </div>
 
-    <p class="pricing-note reveal">Sem fidelidade. Cancele quando quiser. Todos os planos incluem <strong>14 dias grátis</strong>.</p>
+    <p class="pricing-note reveal" style="text-align: center;">Sem fidelidade. Cancele quando quiser. Todos os planos incluem <strong>7 dias grátis</strong>.</p>
   </div>
 </section>
 
 <!-- ═══ FORMULÁRIO DE CAPTURA ═════════════════════════════════ -->
 <section class="form-section" id="demonstracao">
-  <div class="form-inner">
+  <div class="form-inner" style="position: relative; z-index: 1;">
     <h2 class="reveal">
       Vamos conversar sobre sua operação
     </h2>
@@ -920,9 +929,39 @@
 </main>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
-<footer>
-  <span>© 2026 Aegis CRM. Todos os direitos reservados.</span>
-  <span>Construído para gestores comerciais de verdade.</span>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Aegis CRM" class="footer-logo">
+        <p class="footer-description">O CRM com agentes de IA nativas</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#planos">Preços</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#suporte">Suporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidade.html">Privacidade</a></li>
+          <li><a href="termos.html">Termos de uso</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Aegis CRM. Todos os direitos reservados.</span>
+    </div>
+  </div>
 </footer>
 
 <!-- ═══ VIDEO MODAL ═══════════════════════════════════════════ -->
@@ -961,6 +1000,8 @@
 </div>
 
 <!-- ═══ APP SCRIPTS ═══════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
