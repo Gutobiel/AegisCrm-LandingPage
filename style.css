@@ -821,10 +821,13 @@ header.scrolled .site-logo-icon {
 
   50% {
     transform: rotate(45deg) translate(4px, 4px);
-    opacity: 1
+    opacity: 1;
+  }
+}
+
 /* ─── AGENTES VIRTUAIS DE IA ─────────────────── */
 .ai-agents-section {
-  padding: 100px 40px;
+  padding: 24px 40px 60px 40px;
   position: relative;
   background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
   border-top: 1px solid rgba(255, 255, 255, 0.04);
@@ -842,7 +845,7 @@ header.scrolled .site-logo-icon {
 .ai-agents-header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 24px auto;
 }
 
 .ai-agents-header h2 {

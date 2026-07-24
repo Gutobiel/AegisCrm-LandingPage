@@ -1113,7 +1113,7 @@
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top top+=60',
+        start: 'top top+=75',
         end: () => '+=' + (cards.length * 400),
         scrub: 0.6,
         pin: true,
