@@ -900,10 +900,6 @@ header.scrolled .site-logo-icon {
 .after-card li::before {
   color: var(--blue-light);
 }
-  padding: 6px 12px;
-  border-radius: 99px;
-  letter-spacing: 0.05em;
-}
 
 /* ─── CALCULADORA DE PREJUÍZO ───────────────────── */
 .calculator-section {
@@ -2494,30 +2490,33 @@ footer {
 
 /* ─── AGENTES VIRTUAIS DE IA ─────────────────── */
 .ai-agents-section {
-  padding: 100px 60px;
+  padding: 16px 40px 60px 40px;
   position: relative;
   background: radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 5;
+  overflow: hidden;
 }
 
 .ai-agents-container {
-  max-width: min(92vw, 1560px);
+  max-width: min(92vw, 1200px);
   margin: 0 auto;
+  width: 100%;
 }
 
 .ai-agents-header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 20px auto;
 }
 
 .ai-agents-header h2 {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 800;
   color: var(--white);
   line-height: 1.2;
-  margin: 12px 0 16px 0;
+  margin: 8px 0 12px 0;
   letter-spacing: -0.02em;
 }
 
@@ -2531,37 +2530,25 @@ footer {
 .agents-grid {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto 50px auto;
-  perspective: 1000px;
+  max-width: 780px;
+  height: 280px;
+  margin: 0 auto;
 }
 
 .agent-card {
-  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 30px;
-  backdrop-filter: blur(12px);
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
-  will-change: transform;
-}
-
-.agent-card:nth-child(1) {
-  position: relative;
-}
-
-.agent-card:hover {
-  background: var(--bg-card2);
-  border-color: var(--border-hover);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(37, 99, 235, 0.15);
 }
 
 .agent-card-header {
@@ -2572,76 +2559,69 @@ footer {
 }
 
 .agent-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.agent-icon-box.blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; }
-.agent-icon-box.gold { background: rgba(234, 179, 8, 0.2); color: #facc15; }
-.agent-icon-box.cyan { background: rgba(6, 182, 212, 0.2); color: #22d3ee; }
-.agent-icon-box.purple { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
-.agent-icon-box.emerald { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-.agent-icon-box.orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; }
+.agent-icon-box.blue { background: #dbeafe; color: #1d4ed8; }
+.agent-icon-box.gold { background: #fef3c7; color: #b45309; }
+.agent-icon-box.cyan { background: #ccfbf1; color: #0f766e; }
+.agent-icon-box.purple { background: #e0e7ff; color: #4338ca; }
+.agent-icon-box.emerald { background: #d1fae5; color: #047857; }
+.agent-icon-box.orange { background: #ffedd5; color: #c2410c; }
 
 .agent-tag {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border-radius: 20px;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 99px;
   text-transform: uppercase;
 }
 
-.agent-tag.sales {
-  color: #3b82f6;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
+.agent-tag.sales { color: #1d4ed8; background: #dbeafe; border: 1px solid #93c5fd; }
+.agent-tag.sac { color: #047857; background: #d1fae5; border: 1px solid #6ee7b7; }
+.agent-tag.suporte { color: #c2410c; background: #ffedd5; border: 1px solid #fdba74; }
 
-.agent-tag.sac {
-  color: #34d399;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.agent-tag.suporte {
-  color: #fb923c;
-  background: rgba(249, 115, 22, 0.15);
-  border: 1px solid rgba(249, 115, 22, 0.3);
-}
+.agent-card:nth-child(2) .agent-tag { color: #b45309; background: #fef3c7; border: 1px solid #fcd34d; }
+.agent-card:nth-child(3) .agent-tag { color: #0f766e; background: #ccfbf1; border: 1px solid #5eead4; }
+.agent-card:nth-child(4) .agent-tag { color: #4338ca; background: #e0e7ff; border: 1px solid #a5b4fc; }
 
 .agent-card h3 {
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 700;
-  color: var(--white);
+  color: #0f172a;
   margin-bottom: 12px;
   line-height: 1.3;
 }
 
 .agent-card p {
-  font-size: 14px;
-  color: var(--muted);
+  font-size: 15px;
+  color: #475569;
   line-height: 1.6;
   margin-bottom: 20px;
+  font-weight: 400;
 }
 
 .agent-action-link {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: #60a5fa;
+  color: #2563eb;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
-.agent-card:hover .agent-action-link {
-  color: #93c5fd;
-}
+.agent-card:nth-child(2) .agent-action-link { color: #d97706; }
+.agent-card:nth-child(3) .agent-action-link { color: #0d9488; }
+.agent-card:nth-child(4) .agent-action-link { color: #4f46e5; }
+.agent-card:nth-child(5) .agent-action-link { color: #059669; }
+.agent-card:nth-child(6) .agent-action-link { color: #ea580c; }
 
 /* Banner de Fechamento do Agente */
 .agent-banner {
@@ -2694,8 +2674,32 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .ai-agents-section { padding: 60px 24px; }
-  .agent-banner { flex-direction: column; text-align: center; }
+  .ai-agents-section {
+    padding: 40px 16px;
+  }
+  .agents-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: auto;
+    position: relative;
+  }
+  .agent-card, .agent-banner {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    padding: 22px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
 }
 
 /* ─── ULTRAWIDE & LARGE MONITOR FLUID RESPONSIVENESS ─── */
