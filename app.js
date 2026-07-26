@@ -844,6 +844,43 @@
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
+     16.5. MOBILE HAMBURGER MENU
+     Toggle menu on mobile screens
+     ═══════════════════════════════════════════════════════════════════════ */
+  (function initMobileMenu() {
+    const menuBtn = $('#mobile-menu-btn');
+    const headerNav = $('.header-nav');
+    if (!menuBtn || !headerNav) return;
+
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuBtn.classList.toggle('active');
+      headerNav.classList.toggle('active');
+      const isExpanded = menuBtn.classList.contains('active');
+      menuBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+    });
+
+    // Close menu when clicking a navigation link
+    const navLinks = headerNav.querySelectorAll('.nav-link, .btn');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        headerNav.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!headerNav.contains(e.target) && !menuBtn.contains(e.target) && headerNav.classList.contains('active')) {
+        menuBtn.classList.remove('active');
+        headerNav.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+
+  /* ═══════════════════════════════════════════════════════════════════════
      17. WHATSAPP WIDGET
      Timed reveal with bubble message
      ═══════════════════════════════════════════════════════════════════════ */
