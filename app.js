@@ -235,6 +235,13 @@
     const outLossYear = $('#calc-loss-year');
     const outGain = $('#calc-gain');
     const outBar = $('#calc-bar');
+    const outBarText = $('#calc-bar-text');
+    const ctaBtn = $('#calc-cta-btn');
+
+    let currentLoss = 0;
+    let currentLossYear = 0;
+    let currentGain = 0;
+    let animFrame = null;
 
     function calculate() {
       const leads = parseInt(elLeads.value, 10);
@@ -246,18 +253,57 @@
       if (outConv) outConv.textContent = conv + '%';
       if (outTicket) outTicket.textContent = fmtBRL.format(ticket);
 
-      /* Calculations */
+      /* Calculations: Higher lead volume = manual teams lose more follow-ups, so AI recovery efficiency scales dynamically from 60% up to 85% */
       const leadsEsquecidos = leads * 0.3;
       const conversaoPerdida = leadsEsquecidos * (conv / 100);
-      const prejuizoMensal = conversaoPerdida * ticket;
-      const prejuizoAnual = prejuizoMensal * 12;
-      const recuperacao = prejuizoMensal * 0.65;
+      const targetLoss = Math.round(conversaoPerdida * ticket);
+      const targetLossYear = Math.round(targetLoss * 12);
+      
+      const recoveryRate = Math.min(0.60 + (leads / 1000) * 0.25, 0.85);
+      const targetGain = Math.round(targetLoss * recoveryRate);
+      const recoveryPct = Math.round(recoveryRate * 100);
 
-      /* Update results */
-      if (outLoss) outLoss.textContent = fmtBRL.format(prejuizoMensal);
-      if (outLossYear) outLossYear.textContent = fmtBRL.format(prejuizoAnual);
-      if (outGain) outGain.textContent = fmtBRL.format(recuperacao);
-      if (outBar) outBar.style.width = '65%';
+      if (outBar) outBar.style.width = recoveryPct + '%';
+      if (outBarText) {
+        outBarText.innerHTML = `<strong>${recoveryPct}%</strong> da receita perdida recuperada automaticamente pela IA`;
+      }
+
+      /* Animate Counter from current to target values smoothly */
+      const startLoss = currentLoss;
+      const startLossYear = currentLossYear;
+      const startGain = currentGain;
+
+      const duration = 200; // smooth 200ms ticker duration
+      const startTime = performance.now();
+
+      if (animFrame) cancelAnimationFrame(animFrame);
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        currentLoss = Math.round(startLoss + (targetLoss - startLoss) * ease);
+        currentLossYear = Math.round(startLossYear + (targetLossYear - startLossYear) * ease);
+        currentGain = Math.round(startGain + (targetGain - startGain) * ease);
+
+        if (outLoss) outLoss.textContent = fmtBRL.format(currentLoss);
+        if (outLossYear) outLossYear.textContent = fmtBRL.format(currentLossYear);
+        if (outGain) outGain.textContent = fmtBRL.format(currentGain);
+        if (ctaBtn) {
+          ctaBtn.innerHTML = `👉 Recuperar meus <strong>${fmtBRL.format(currentGain)}</strong>/mês com o Aegis →`;
+        }
+
+        if (progress < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          currentLoss = targetLoss;
+          currentLossYear = targetLossYear;
+          currentGain = targetGain;
+        }
+      }
+
+      animFrame = requestAnimationFrame(step);
     }
 
     [elLeads, elConv, elTicket].forEach((input) => {

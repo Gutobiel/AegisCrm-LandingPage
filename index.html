@@ -368,10 +368,10 @@
           <div class="calc-bar-track">
             <div class="calc-bar-fill" id="calc-bar" style="width:65%"></div>
           </div>
-          <span class="calc-result-sub">Evitando falhas básicas de follow-up</span>
+          <span class="calc-result-sub" id="calc-bar-text"><strong>65%</strong> da receita perdida recuperada automaticamente pela IA</span>
         </div>
-        <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn calc-cta">
-          Veja o sistema operando →
+        <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn calc-cta" id="calc-cta-btn">
+          👉 Recuperar meus <strong>R$ 3.900</strong>/mês com o Aegis →
         </a>
       </div>
     </div>
@@ -724,11 +724,18 @@
     <div class="bento-pricing reveal">
       <!-- Crescimento (Principal) -->
       <div class="pricing-card pricing-popular">
+        <div class="popular-ribbon">🔥 MAIS ESCOLHIDO</div>
         <div class="pricing-tier">Crescimento</div>
         <div class="pricing-price">
-          <span class="pricing-currency">R$</span>
-          <span class="pricing-amount">463</span>
-          <span class="pricing-period">/mês</span>
+          <div class="pricing-anchor-strike">
+            <span class="old-price">R$ 690</span>
+            <span class="discount-badge">-32% OFF</span>
+          </div>
+          <div class="pricing-price-main">
+            <span class="pricing-currency">R$</span>
+            <span class="pricing-amount">463</span>
+            <span class="pricing-period">/mês</span>
+          </div>
         </div>
         <p class="pricing-desc">O plano ideal para estruturar a área comercial e escalar com segurança.</p>
         <ul class="pricing-features">
@@ -747,7 +754,13 @@
         <div class="pricing-card small-card">
           <div class="pricing-tier">Essencial</div>
           <div class="pricing-price-small">
-            <span>R$ 297</span> <small>/mês</small>
+            <div class="pricing-anchor-strike small-strike">
+              <span class="old-price">R$ 490</span>
+              <span class="discount-badge">-39% OFF</span>
+            </div>
+            <div class="pricing-price-main">
+              <span>R$ 297</span> <small>/mês</small>
+            </div>
           </div>
           <p class="pricing-desc">O básico para sair do Excel, limitado a 500 leads ativos.</p>
           <a href="#demonstracao" class="btn btn-outline pricing-btn">Iniciar grátis</a>
@@ -756,11 +769,16 @@
         <div class="pricing-card small-card">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-price-small">
-            <span>R$ 896</span> <small>/mês</small>
+            <div class="pricing-anchor-strike small-strike">
+              <span class="old-price">R$ 1.290</span>
+              <span class="discount-badge">-30% OFF</span>
+            </div>
+            <div class="pricing-price-main">
+              <span>R$ 896</span> <small>/mês</small>
+            </div>
           </div>
           <p class="pricing-desc">Operações complexas, API própria e SLA garantido.</p>
           <a href="#demonstracao" class="btn btn-outline pricing-btn">Falar com vendas</a>
-        </div>
         </div>
       </div>
     </div>
