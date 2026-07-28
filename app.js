@@ -79,15 +79,14 @@
         const rect = btn.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * 0.3;
-        const dy = (e.clientY - cy) * 0.3;
+        const dx = (e.clientX - cx) * 0.35;
+        const dy = (e.clientY - cy) * 0.35;
         btn.style.transform = `translate(${dx}px, ${dy}px)`;
       });
 
       btn.addEventListener('mouseleave', () => {
         btn.style.transition = 'transform 0.35s ease';
         btn.style.transform = 'translate(0, 0)';
-        // Remove inline transition after animation completes
         const cleanup = () => {
           btn.style.transition = '';
           btn.removeEventListener('transitionend', cleanup);
