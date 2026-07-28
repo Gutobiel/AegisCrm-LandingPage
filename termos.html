@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aegis CRM - Termos de Uso</title>
-  <meta name="description" content="Termos de Uso do Aegis CRM.">
+  <title>Aegis CRM - Termos de Uso & Licença SaaS B2B</title>
+  <meta name="description" content="Termos de Uso e Contrato de Licenciamento SaaS B2B do Aegis CRM em conformidade com o Código Civil e Marco Civil da Internet.">
 
-  <!-- Favicon -->
+  <!-- Favicon & Fonts -->
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-light.css?v=20260728_2">
 </head>
 <body>
+  <div id="spotlight" aria-hidden="true"></div>
   <!-- HEADER -->
   <header id="site-header">
     <a href="index.html" class="logo" aria-label="Aegis CRM">
       <img src="assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
-      <span class="logo-brand"></span>
     </a>
     <nav class="header-nav" aria-label="Navegação principal">
-      <a href="index.html" class="nav-link">Voltar para o Início</a>
+      <a href="privacidade.html" class="nav-link">Privacidade &amp; LGPD</a>
+      <a href="index.html" class="btn btn-sm btn-outline">Voltar ao Início</a>
     </nav>
   </header>
 
@@ -29,70 +30,319 @@
     <div class="legal-bg-glow"></div>
     
     <div class="legal-container">
-      <!-- Header Banner -->
+      <!-- HERO -->
       <section class="legal-hero">
-        <span class="legal-badge">Termos e Condições</span>
+        <span class="legal-badge">Contrato Operacional e Licenciamento SaaS B2B</span>
         <h1 class="legal-title">Termos de Uso</h1>
         <div class="legal-meta">
-          <span>Última atualização: Julho de 2026</span>
+          <span>Última atualização: 28 de Julho de 2026</span>
           <span class="meta-divider">•</span>
-          <span>Contrato de Licença e Serviços Aegis CRM</span>
+          <span>Versão 2.0 (CC Art. 421-A &amp; CPC Art. 784, III)</span>
+          <span class="meta-divider">•</span>
+          <span>Jurisdição Brasil</span>
         </div>
       </section>
 
-      <!-- Main Document Card -->
-      <section class="legal-card">
-        <div class="legal-content">
-          <div class="legal-highlight-box">
-            <div class="highlight-icon">⚖️</div>
-            <div class="highlight-text">
-              <strong>Acordo Operacional e Transparência:</strong> Estes termos estabelecem o contrato para utilização das nossas ferramentas de CRM e agentes nativos de Inteligência Artificial. Elaboramos um texto claro, livre de armadilhas legais e focado no crescimento de sua operação.
+      <!-- EXECUTIVE SUMMARY TOP CARDS -->
+      <div class="legal-exec-summary">
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Contrato B2B (CC Art. 421-A)</h4>
+            <p>Destinação estrita como <strong>Insumo Comercial</strong> empresarial, com presunção de paridade e simetria contratual.</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Supervisão Human-in-the-Loop</h4>
+            <p>Obrigação do cliente em manter <strong>revisão humana obrigatória</strong> em ofertas geradas por robôs de IA.</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>SLA 99.5% &amp; Liability Cap 12 Meses</h4>
+            <p>Remédio exclusivo via <em>Service Credits</em> e limitação do teto de indenização às mensalidades dos últimos 12 meses.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <div class="legal-portal-toolbar">
+        <div class="legal-search-box">
+          <input type="text" id="legal-search-input" placeholder="Pesquisar nos termos de uso (ex: SLA, responsabilidade, rescisao, IA, WhatsApp, foro, cancelamento...)" aria-label="Pesquisar cláusula nos termos de uso">
+          <button class="btn-clear-search" id="clear-search-btn" style="display:none;" title="Limpar busca">✕</button>
+        </div>
+        <div class="legal-filter-pills">
+          <button class="filter-pill active" data-filter="all">Todas as Seções (12)</button>
+          <button class="filter-pill" data-filter="contrato">Licença e B2B</button>
+          <button class="filter-pill" data-filter="ia">IA e Automação</button>
+          <button class="filter-pill" data-filter="responsabilidade">SLA e Responsabilidade</button>
+          <button class="filter-pill" data-filter="foro">Foro e Rescisão</button>
+        </div>
+      </div>
+
+      <!-- 2-COLUMN GRID LAYOUT -->
+      <div class="legal-portal-grid">
+        <!-- SIDEBAR TOC -->
+        <aside class="legal-sidebar">
+          <div class="sidebar-sticky-box">
+            <div class="sidebar-header">
+              <span class="sidebar-title">Índice dos Termos</span>
+              <span class="reading-progress-badge" id="reading-progress">0% lido</span>
+            </div>
+            <div class="sidebar-progress-bar">
+              <div class="sidebar-progress-fill" id="progress-fill"></div>
+            </div>
+            <nav class="toc-nav" id="toc-nav">
+              <a href="#sec-1" class="toc-link">1. Definições &amp; Interpretação</a>
+              <a href="#sec-2" class="toc-link">2. Objeto e Licença SaaS</a>
+              <a href="#sec-3" class="toc-link">3. Qualificação B2B (CC Art. 421-A)</a>
+              <a href="#sec-4" class="toc-link">4. Contas, Credenciais &amp; Segurança</a>
+              <a href="#sec-5" class="toc-link">5. SLA (99,5%) &amp; Service Credits</a>
+              <a href="#sec-6" class="toc-link">6. Limitação de Responsabilidade</a>
+              <a href="#sec-7" class="toc-link">7. Uso de IA &amp; Regra Human-in-Loop</a>
+              <a href="#sec-8" class="toc-link">8. Propriedade Intelectual</a>
+              <a href="#sec-9" class="toc-link">9. WhatsApp &amp; Terceiros (MCI Art. 19)</a>
+              <a href="#sec-10" class="toc-link">10. Suspensão &amp; Exportação (30d)</a>
+              <a href="#sec-11" class="toc-link">11. Título Executivo &amp; Foro SP</a>
+              <a href="#sec-12" class="toc-link">12. Disposições Gerais</a>
+            </nav>
+            <div class="sidebar-actions">
+              <button class="btn-sidebar-action" onclick="window.print()">Imprimir Documento</button>
+              <a href="privacidade.html" class="btn-sidebar-action">Ver Privacidade</a>
             </div>
           </div>
+        </aside>
 
-          <p class="lead-text">Ao acessar ou integrar qualquer módulo da plataforma <strong>Aegis CRM</strong>, o usuário expressa ciência e compromisso de conformidade integral com os presentes Termos de Serviço, regulamentações de comércio eletrônico e marcos normativos setoriais aplicáveis.</p>
-          
-          <h2>1. Escopo do Serviço e Licenciamento</h2>
-          <p>O Aegis CRM comercializa suas tecnologias no modelo Software as a Service (SaaS), oferecendo automação inteligente, gestão visual de funis e assistentes cognitivos em tempo real. O provimento da plataforma opera sob concessão de uma licença de uso estritamente temporária, não exclusiva, intransferível e revogável. Sob esta concessão, compromete-se a:</p>
-          <ul>
-            <li><strong>Não descompilar ou emular o sistema:</strong> Fica estritamente vetada a realização de engenharia reversa, extração de pesos cognitivos ou cópia não autorizada de algoritmos proprietários do CRM;</li>
-            <li><strong>Respeito ao direito autoral e marca:</strong> Manter intactas as marcas da Aegis CRM de interfaces integradas, abstenção de revenda white-label desautorizada, sublicenciamento irregular ou espelhamento em clusters externos;</li>
-            <li><strong>Utilização dentro de parâmetros contratados:</strong> A licença está adstrita aos volumes de agentes, gatilhos, e-mails disparados e assentos contratados para sua corporação na assinatura de seu plano de serviço.</li>
-          </ul>
+        <!-- MAIN CONTENT AREA -->
+        <main class="legal-main-content" id="legal-sections-container">
+          <div id="no-results-box" style="display:none;" class="legal-section-card">
+            <h2>Nenhuma seção encontrada</h2>
+            <p>Não encontramos cláusulas correspondentes à sua busca. Tente buscar por termos como "SLA", "IA", "Foro" ou "Rescisão".</p>
+          </div>
 
-          <h2>2. Operação dos Agentes de IA Nativas</h2>
-          <p>O Aegis CRM integra motores poderosos de automação cognitiva que recomendam ações, redigem rascunhos comerciais e estruturam respostas em massa com extrema eficiência:</p>
-          <ul>
-            <li><strong>Supervisão humana recomendada:</strong> Embora nossos modelos sejam exaustivamente lapidados e testados para coibir alucinações cognitivas e imprecisões comerciais, o contratante detém a autoridade reguladora em suas equipes para conferir orientações críticas emitidas antes da aprovação em contas estratégicas;</li>
-            <li><strong>Legitimidade de uso das campanhas:</strong> É rigorosamente probatório abster-se do emprego de agentes automatizados de nossa plataforma para propósitos ilegais, difusão de spam em massa desconforme à lei ou táticas abusivas antiestéticas;</li>
-            <li><strong>Titularidade dos outputs:</strong> Todo insight, relatório ou texto comercial construído pelos agentes de IA dentro do seu funil corporativo constitui propriedade exclusiva do assinante contratante.</li>
-          </ul>
+          <!-- SEC 1 -->
+          <article class="legal-section-card" id="sec-1" data-category="contrato">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 01</span>
+              <span class="section-cat-tag">Conceitos</span>
+            </div>
+            <h2>
+              1. Definições e Regra de Interpretação
+              <a href="#sec-1" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p>Para fins deste Contrato, definem-se: <strong>Plataforma SaaS</strong> (software de gestão comercial e IA disponibilizado via internet); <strong>Agentes de IA</strong> (módulos cognitivos nativos de atendimento e qualificação); <strong>Tenant</strong> (ambiente virtual privado e isolado do Cliente); <strong>Lead Scoring</strong> (algoritmo preditivo de qualificação de oportunidades); <strong>SLA</strong> (acordo de nível de serviço de 99,5%); e <strong>Service Credits</strong> (descontos compensatórios na fatura por descumprimento de SLA).</p>
+              <p>Em conformidade com o Artigo 422 do Código Civil, este contrato empresarial é regido pela boa-fé objetiva e presunção de paridade (Art. 421-A do Código Civil), devendo suas cláusulas ser interpretadas segundo a alocação privada de riscos acordada.</p>
+            </div>
+          </article>
 
-          <h2>3. Isenção de Garantias Implícitas</h2>
-          <p>Os motores, conectores de API e painéis operacionais da Aegis CRM são disponibilizados com metas corporativas de alto desempenho (SLA almejado em 99.9% de disponibilidade):</p>
-          <ul>
-            <li>No entanto, nos termos legais aplicáveis, o sistema é disponibilizado "conforme se encontra" (<em>as is</em> e <em>as available</em>), eximindo garantias absolutas contra intermitências contingenciais imprevistas no ecossistema de internet;</li>
-            <li>O Aegis CRM aplica testes constantes e contingenciamento redundante de banco, não garantindo tacitamente, no entanto, rentabilidade mercantil específica ou fechamento compulsório de negócios decorrente de sugestões algorítmicas ao time de vendas.</li>
-          </ul>
+          <!-- SEC 2 -->
+          <article class="legal-section-card" id="sec-2" data-category="contrato">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 02</span>
+              <span class="section-cat-tag">Licenciamento</span>
+            </div>
+            <h2>
+              2. Objeto e Concessão de Licença SaaS B2B
+              <a href="#sec-2" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p>O objeto deste Contrato é a concessão de licença de uso do software Aegis CRM na modalidade SaaS, em caráter temporário, revogável, não exclusivo, intransferível e sem direito a sublicenciamento, condicionado à adimplência do plano de assinatura contratado. A licença não transfere qualquer direito de propriedade sobre os códigos-fonte, marcas ou algoritmos do Aegis CRM.</p>
+            </div>
+          </article>
 
-          <h2>4. Limitações de Responsabilidade e Rescisão</h2>
-          <p>Trabalhamos incessantemente para sustentar infraestruturas modernas e blindadas contra quedas sistêmicas, porém:</p>
-          <ul>
-            <li>Em nenhuma conjuntura operacional o Aegis CRM ou suas provedoras parceiras poderão ser invocados por danos indiretos, lucros cessantes, paralisações temporárias alheias ao escopo da infraestrutura contida ou inaptidão operacional provada pelo uso descompassado das ferramentas;</li>
-            <li><strong>Cancelamento desburocratizado:</strong> O assinante pode requerer encerramento ou downgrade do plano a qualquer instante pelo seu painel administrativo, mantendo o acesso operante até a expiração final do ciclo financeiro já pago.</li>
-          </ul>
+          <!-- SEC 3 -->
+          <article class="legal-section-card" id="sec-3" data-category="contrato">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 03</span>
+              <span class="section-cat-tag">Enquadramento B2B</span>
+            </div>
+            <h2>
+              3. Qualificação B2B e Declaração de Insumo Comercial (CC Art. 421-A)
+              <a href="#sec-3" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> O sistema é contratado exclusivamente como insumo de produtividade da sua empresa, aplicando-se o Código Civil com presunção de simetria contratual e afastamento do CDC.
+            </div>
+            <div class="section-body">
+              <p>O Cliente declara que é pessoa jurídica constituída com CNPJ ativo e que a contratação da Plataforma destina-se <strong>estritamente como INSUMO DE PRODUÇÃO, FERRAMENTA DE PRODUTIVIDADE E INSTRUMENTO DE INCREMENTO DE SUAS ATIVIDADES EMPRESARIAIS</strong>.</p>
+              <p>Nos termos do <strong>Artigo 421-A do Código Civil</strong> (introduzido pela Lei da Liberdade Econômica - Lei nº 13.874/2019):</p>
+              <ul>
+                <li>Reconhece-se a presunção de paridade e simetria contratual entre os agentes econômicos;</li>
+                <li><strong>Afastamento do CDC:</strong> Afasta-se a incidência do Código de Defesa do Consumidor (Lei nº 8.078/1990), uma vez que o Cliente não é destinatário final fático/econômico, utilizando o sistema em sua atividade lucrativa;</li>
+                <li>A alocação de riscos (limitação de responsabilidade, teto de indenização e créditos de SLA) é plenamente válida e vinculante.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- SEC 4 -->
+          <article class="legal-section-card" id="sec-4" data-category="contrato">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 04</span>
+              <span class="section-cat-tag">Segurança de Acesso</span>
+            </div>
+            <h2>
+              4. Cadastro, Contas, Credenciais e Segurança do Usuário
+              <a href="#sec-4" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p>O Cliente responsabiliza-se pela veracidade dos dados cadastrais fornecidos. As credenciais de acesso são pessoais e intransferíveis, devendo o Cliente manter o sigilo de senhas e ativar a Autenticação Multifator (MFA). Todo ato praticado dentro do tenant por meio de credenciais válidas do Cliente será de sua inteira responsabilidade.</p>
+            </div>
+          </article>
+
+          <!-- SEC 5 -->
+          <article class="legal-section-card" id="sec-5" data-category="responsabilidade">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 05</span>
+              <span class="section-cat-tag">SLA e Uptime</span>
+            </div>
+            <h2>
+              5. Nível de Serviço (SLA 99,5%) e Remédios Exclusivos (Service Credits)
+              <a href="#sec-5" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Compromisso de 99,5% de disponibilidade mensal. Em caso de queda acima do limite, o desconto na fatura subsequente (Service Credits) é o remédio financeiro exclusivo.
+            </div>
+            <div class="section-body">
+              <p>O Aegis CRM compromete-se com a meta de disponibilidade (SLA) de <strong>99,5% (noventa e nove vírgula cinco por cento)</strong> por mês civil, excluídas manutenções programadas (aviso prévio de 24h), emergências de segurança, falhas de internet do Cliente ou indisponibilidades de terceiros (Meta/WhatsApp ou OpenAI).</p>
+              <p><strong>Remédio Exclusivo:</strong> Se o SLA mensal ficar abaixo de 99,5%, o Cliente terá direito a solicitar Créditos de Serviço (<em>Service Credits</em>) com desconto na fatura subsequente (5% para disponibilidade entre 99,0%-99,4%; 15% para 95,0%-98,9%; e 25% para abaixo de 95,0%). A concessão dos Créditos de Serviço constitui a <strong>única e exclusiva compensação financeira</strong> devida por indisponibilidade, afastando ressarcimentos acumulados ou multas (Art. 421-A, I e II do Código Civil).</p>
+            </div>
+          </article>
+
+          <!-- SEC 6 -->
+          <article class="legal-section-card" id="sec-6" data-category="responsabilidade">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 06</span>
+              <span class="section-cat-tag">Limitação Financeira</span>
+            </div>
+            <h2>
+              6. Limitação de Responsabilidade e Teto de Indenização (12 Meses)
+              <a href="#sec-6" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Exclusão de lucros cessantes ou perda de vendas. O teto financeiro total de eventual indenização é limitado ao montante pago nos últimos 12 meses.
+            </div>
+            <div class="section-body">
+              <p><strong>EXCLUSÃO DE LUCROS CESSANTES E DANOS INDIRETO:</strong> EM NENHUMA HIPÓTESE O AEGIS CRM SERÁ RESPONSÁVEL PERANTE O CLIENTE OU TERCEIROS POR PERDA DE LUCROS, LUCROS CESSANTES, PERDA DE VENDAS, PERDA DE OPORTUNIDADES COMERCIAIS, INTERRUPÇÃO DE NEGÓCIOS, DANOS REPUTACIONAIS OU CORRUPÇÃO DE DADOS (ARTS. 402 E 403 DO CÓDIGO CIVIL).</p>
+              <p><strong>TETO FINANCEIRO DE INDENIZAÇÃO (LIABILITY CAP DE 12 MESES):</strong> A RESPONSABILIDADE CIVIL TOTAL ACUMULADA DO AEGIS CRM POR QUAISQUER DANOS OU RECLAMAÇÕES ORIUNDAS DESTE CONTRATO FICARÁ STRICTAMENTE LIMITADA AO MONTANTE TOTAL EFETIVAMENTE PAGO PELO CLIENTE NOS 12 (DOZE) MESES ANTERIORES AO EVENTO CAUSADOR.</p>
+              <p><em>Ressalva: As limitações não se aplicam exclusivamente às hipóteses de comprovado DOLO OU CULPA GRAVE praticados pelo Aegis CRM (Arts. 186 e 187 do Código Civil).</em></p>
+            </div>
+          </article>
+
+          <!-- SEC 7 -->
+          <article class="legal-section-card" id="sec-7" data-category="ia">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 07</span>
+              <span class="section-cat-tag">Governança de IA</span>
+            </div>
+            <h2>
+              7. Uso de Inteligência Artificial e Regra Human-in-the-Loop
+              <a href="#sec-7" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Os modelos de IA operam por probabilidade. É obrigatório manter supervisão humana antes de validar propostas comerciais emitidas por robôs.
+            </div>
+            <div class="section-body">
+              <p>Os modelos de IA operam por inferência probabilística, podendo gerar eventual imprecisão em textos ("alucinações de LLM").</p>
+              <p><strong>Regra Human-in-the-Loop (HITL):</strong> O Cliente obriga-se a manter <strong>SUPERVISÃO E REVISÃO HUMANA COMPULSÓRIA</strong> sobre todas as propostas comerciais, orçamentos ou compromissos gerados pelos Agentes de IA antes da validação final. O Aegis CRM isenta-se de responsabilidade por ofertas desproporcionais ou desacordos emitidos por robôs sem aprovação humana prévia do Cliente.</p>
+            </div>
+          </article>
+
+          <!-- SEC 8 -->
+          <article class="legal-section-card" id="sec-8" data-category="contrato">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 08</span>
+              <span class="section-cat-tag">Propriedade Intelectual</span>
+            </div>
+            <h2>
+              8. Propriedade Intelectual e Restrições de Uso
+              <a href="#sec-8" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p>A Plataforma, seus códigos-fonte, algoritmos de <em>Lead Scoring</em>, interfaces e marcas são de propriedade exclusiva da Licenciante (Leis nº 9.279/1996 e 9.609/1998). É vedado ao Cliente realizar engenharia reversa, descompilação, cópia, sublicenciamento, <em>scraping</em> não autorizado ou desenvolvimento de produtos concorrentes a partir do sistema.</p>
+            </div>
+          </article>
+
+          <!-- SEC 9 -->
+          <article class="legal-section-card" id="sec-9" data-category="responsabilidade">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 09</span>
+              <span class="section-cat-tag">WhatsApp e Terceiros</span>
+            </div>
+            <h2>
+              9. Integrações com WhatsApp e Conteúdo de Terceiros (MCI Art. 19)
+              <a href="#sec-9" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p>O Cliente deve respeitar as políticas do WhatsApp e proibir o envio de SPAM ou mensagens abusivas. Nos termos do <strong>Artigo 19 da Lei nº 12.965/2014 (Marco Civil da Internet)</strong>, o Aegis CRM atua como provedor de aplicação isento de responsabilidade civil pelo conteúdo veiculado pelos Clientes, recusando takedowns extrajudiciais para disputas comerciais privadas sem ordem judicial específica (salvo infrações do Art. 21 do MCI).</p>
+            </div>
+          </article>
+
+          <!-- SEC 10 -->
+          <article class="legal-section-card" id="sec-10" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 10</span>
+              <span class="section-cat-tag">Rescisão e Portabilidade</span>
+            </div>
+            <h2>
+              10. Suspensão, Cancelamento e Janela de Exportação de Dados (30 dias)
+              <a href="#sec-10" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <ul>
+                <li><strong>Suspensão Preventiva:</strong> O Aegis CRM pode suspender a conta por atraso no pagamento superior a 5 (cinco) dias úteis (Art. 476 do Código Civil) ou em emergências de segurança cibernética;</li>
+                <li><strong>Cancelamento:</strong> Pode ser solicitado a qualquer momento pelo painel com 30 dias de antecedência;</li>
+                <li><strong>Janela de Exportação (30 dias):</strong> Encerrado o contrato, o Cliente terá o prazo garantido de <strong>30 (trinta) dias corridos</strong> para realizar o download/exportação integral de seus dados em .CSV ou .JSON. Decorrido o prazo, os dados serão descartados definitivamente e com segurança.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- SEC 11 -->
+          <article class="legal-section-card" id="sec-11" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 11</span>
+              <span class="section-cat-tag">Execução e Foro</span>
+            </div>
+            <h2>
+              11. Título Executivo Extrajudicial (CPC Art. 784) e Eleição de Foro (São Paulo/SP)
+              <a href="#sec-11" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Aceites eletrônicos e faturas constituem título executivo extrajudicial (CPC Art. 784). Foro eleito exclusivo na Comarca de São Paulo/SP.
+            </div>
+            <div class="section-body">
+              <p>As partes reconhecem que este Contrato, os aceites eletrônicos registrados (<em>click-through audit trail</em> sob a Lei nº 14.063/2020) e as faturas inadimplidas constituem <strong>TÍTULO EXECUTIVO EXTRAJUDICIAL</strong> (Artigo 784, inciso III e § 4º do CPC c/c Lei nº 14.620/2023), autorizando execução direta.</p>
+              <p>As partes elegem o <strong>FORO DA COMARCA DA CAPITAL DO ESTADO DE SÃO PAULO/SP</strong> como o único competente para dirimir litígios oriundos deste Contrato (Artigo 63 do CPC e Súmula 335 do STF), com renúncia prévia a qualquer outro e afastamento consciente de cláusulas arbitrais.</p>
+            </div>
+          </article>
+
+          <!-- SEC 12 -->
+          <article class="legal-section-card" id="sec-12" data-category="contrato">
+            <div class="section-card-header">
+              <span class="section-num-badge">Seção 12</span>
+              <span class="section-cat-tag">Disposições Gerais</span>
+            </div>
+            <h2>
+              12. Disposições Gerais, Tolerância e Canais de Contato
+              <a href="#sec-12" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p>O Aegis CRM poderá atualizar estes Termos notificando o Cliente com 15 dias de antecedência pelo painel ou e-mail (<strong>[INSERIR E-MAIL DE SUPORTE]</strong>). A tolerância a descumprimentos não constituirá novação. Se qualquer cláusula for julgada inválida, as demais permanecerão em vigor.</p>
+              <p><strong>Canais Oficiais:</strong> Suporte: <strong>[INSERIR E-MAIL DE SUPORTE]</strong> | DPO: <strong>[INSERIR E-MAIL DO DPO]</strong> | Endereço: <strong>[INSERIR ENDEREÇO SEU]</strong></p>
+            </div>
+          </article>
+        </main>
+      </div>
+
+      <!-- SUPPORT CARD WITH MAGNETIC PULSE BUTTON -->
+      <section class="legal-support-card">
+        <div class="support-info">
+          <h3>Precisa de um contrato personalizado (Enterprise)?</h3>
+          <p>Para grandes corporações e franquias, dispomos de aditivos de nível de serviço com SLAs garantidos, revisão para Compliance e pagamentos faturados.</p>
         </div>
-
-        <!-- Interactive Legal Support Card -->
-        <div class="legal-support-card">
-          <div class="support-info">
-            <h3>Precisa de um contrato personalizado (Enterprise)?</h3>
-            <p>Para grandes corporações e franquias, dispomos de aditivos de nível de serviço com SLAs garantidos, revisão para Compliance e pagamentos faturados.</p>
-          </div>
-          <div class="support-actions">
-            <a href="index.html#contato" class="btn btn-primary">Fale com Vendas</a>
-            <a href="privacidade.html" class="btn btn-outline">Privacidade</a>
-          </div>
+        <div class="support-actions">
+          <a href="mailto:[INSERIR E-MAIL DE SUPORTE]" class="btn btn-primary btn-lg magnetic-btn">Fale com Vendas <span class="btn-arrow">→</span></a>
+          <a href="privacidade.html" class="btn btn-outline btn-lg">Privacidade &amp; LGPD <span class="btn-arrow">→</span></a>
         </div>
       </section>
     </div>
@@ -130,9 +380,12 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Aegis CRM. Todos os direitos reservados.</span>
-        <span></span>
       </div>
     </div>
   </footer>
+
+  <script src="app.js?v=20260728_1"></script>
+  <script src="legal-portal.js"></script>
 </body>
 </html>
+
