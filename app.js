@@ -1236,8 +1236,77 @@
     ScrollTrigger.refresh();
   }
 
+  // ─── CALCULADORA INTERATIVA DE PLANOS & ROI ───
+  function initPricingCalculator() {
+    const sellersRange = document.getElementById('calc-sellers-range');
+    const chatsRange = document.getElementById('calc-chats-range');
+    const sellersVal = document.getElementById('calc-sellers-val');
+    const chatsVal = document.getElementById('calc-chats-val');
+    const planName = document.getElementById('calc-recommended-plan');
+    const hoursSaved = document.getElementById('calc-hours-saved');
+    const recoveredLeads = document.getElementById('calc-recovered-leads');
+    const selectBtn = document.getElementById('calc-select-btn');
+
+    const cardEssencial = document.getElementById('card-essencial');
+    const cardCrescimento = document.getElementById('card-crescimento');
+    const cardEnterprise = document.getElementById('card-enterprise');
+
+    if (!sellersRange || !chatsRange) return;
+
+    function updateCalculations() {
+      const sellers = parseInt(sellersRange.value, 10);
+      const chats = parseInt(chatsRange.value, 10);
+
+      sellersVal.textContent = sellers === 25 ? '25+ vendedores' : `${sellers} ${sellers === 1 ? 'vendedor' : 'vendedores'}`;
+      chatsVal.textContent = chats === 8000 ? '8.000+ conversas' : `${chats.toLocaleString('pt-BR')} conversas`;
+
+      // Estimativa de tempo economizado (~5.5 horas economizadas por vendedor/mês)
+      const hours = Math.round(sellers * 5.5);
+      hoursSaved.textContent = `~${hours}h/mês`;
+
+      // Estimativa sutil de negócios resgatados (4 a 7 conversas resgatadas por mil)
+      const minLeads = Math.max(1, Math.round(chats * 0.004));
+      const maxLeads = Math.round(chats * 0.007);
+      recoveredLeads.textContent = minLeads === maxLeads ? `~${minLeads}` : `~${minLeads} a ${maxLeads}`;
+
+      // Lógica de recomendação de plano
+      let recommended = 'Crescimento';
+      let targetCard = cardCrescimento;
+
+      if (sellers <= 3 && chats <= 600) {
+        recommended = 'Essencial';
+        targetCard = cardEssencial;
+      } else if (sellers > 10 || chats > 3500) {
+        recommended = 'Enterprise';
+        targetCard = cardEnterprise;
+      } else {
+        recommended = 'Crescimento';
+        targetCard = cardCrescimento;
+      }
+
+      planName.textContent = recommended;
+      selectBtn.textContent = `Selecionar Plano ${recommended} →`;
+
+      // Atualizar classes visuais de recomendação nos cards
+      [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
+        if (card) card.classList.remove('plan-recommended');
+      });
+
+      if (targetCard) {
+        targetCard.classList.add('plan-recommended');
+      }
+    }
+
+    sellersRange.addEventListener('input', updateCalculations);
+    chatsRange.addEventListener('input', updateCalculations);
+    updateCalculations();
+  }
+
+  document.addEventListener('DOMContentLoaded', initPricingCalculator);
+
   // Ensure scripts are loaded and DOM is ready
   window.addEventListener('load', initGSAPCards);
 
 })();
+
 

@@ -716,15 +716,74 @@
     <p class="pricing-anchor reveal">
       O custo de <strong>um</strong> negócio perdido no mês paga a assinatura anual do Aegis. Qual o tamanho do seu gargalo hoje?
     </p>
-    <p class="pricing-anchor reveal">
-      Quanto custa perder 1 negócio por mês? <strong>R$ 5.000+</strong><br>
-      Quanto custa o Aegis? A partir de <strong>R$ 97/mês</strong>.
-    </p>
+
+    <!-- CALCULADORA INTERATIVA DE PLANO & ROI -->
+    <div class="pricing-calculator-card reveal" id="pricing-calculator">
+      <div class="calc-header">
+        <h3 class="calc-title">Simulador de Recomendação de Plano</h3>
+        <p class="calc-subtitle">Ajuste o tamanho da sua equipe e volume mensal para descobrir o plano ideal e o impacto estimado na sua operação.</p>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="calc-control-group">
+            <div class="calc-label-row">
+              <label for="calc-sellers-range" class="calc-label">Vendedores na equipe:</label>
+              <span class="calc-value-badge" id="calc-sellers-val">3 vendedores</span>
+            </div>
+            <input type="range" id="calc-sellers-range" min="1" max="25" value="3" step="1" class="calc-slider" aria-label="Quantidade de vendedores na equipe">
+            <div class="calc-range-marks">
+              <span>1</span>
+              <span>10</span>
+              <span>25+</span>
+            </div>
+          </div>
+
+          <div class="calc-control-group">
+            <div class="calc-label-row">
+              <label for="calc-chats-range" class="calc-label">Conversas no WhatsApp/mês:</label>
+              <span class="calc-value-badge" id="calc-chats-val">1.200 conversas</span>
+            </div>
+            <input type="range" id="calc-chats-range" min="200" max="8000" value="1200" step="200" class="calc-slider" aria-label="Volume estimado de conversas por mês">
+            <div class="calc-range-marks">
+              <span>200</span>
+              <span>4.000</span>
+              <span>8.000+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div class="calc-recommendation-tag">Plano Recomendado</div>
+          <div class="calc-plan-name" id="calc-recommended-plan">Crescimento</div>
+          
+          <div class="calc-metrics-row">
+            <div class="calc-metric-item">
+              <div class="calc-metric-number" id="calc-hours-saved">~18h/mês</div>
+              <div class="calc-metric-desc">Tempo economizado em tarefas manuais por vendedor</div>
+            </div>
+            <div class="calc-metric-item">
+              <div class="calc-metric-number" id="calc-recovered-leads">~5 a 9</div>
+              <div class="calc-metric-desc">Vendas potenciais resgatadas via follow-up automático</div>
+            </div>
+          </div>
+
+          <a href="#demonstracao" class="btn btn-primary btn-sm calc-cta-btn magnetic-btn" id="calc-select-btn">
+            Selecionar Plano Crescimento →
+          </a>
+        </div>
+      </div>
+
+      <!-- METODOLOGIA DE TRANSPARÊNCIA -->
+      <div class="calc-methodology-note">
+        <strong>Transparência &amp; Metodologia do Cálculo:</strong> A estimativa de tempo economizado baseia-se em uma média projetada de 12 a 15 minutos economizados diariamente por vendedor ao automatizar registros e follow-ups. O volume de negócios recuperados é uma estimativa estatística sutil de 4% a 7% sobre conversas ativas que costumeiramente seriam esquecidas sem follow-up no WhatsApp. Os resultados reais variam conforme o ticket médio e a disciplina do processo comercial da sua empresa.
+      </div>
+    </div>
 
     <div class="bento-pricing reveal">
       <!-- Crescimento (Principal) -->
-      <div class="pricing-card pricing-popular">
-        <div class="popular-ribbon">🔥 MAIS ESCOLHIDO</div>
+      <div class="pricing-card pricing-popular" id="card-crescimento">
+        <div class="popular-ribbon">MAIS ESCOLHIDO</div>
         <div class="pricing-tier">Crescimento</div>
         <div class="pricing-price">
           <div class="pricing-anchor-strike">
@@ -751,7 +810,7 @@
 
       <!-- Outros Planos (Secundários) -->
       <div class="pricing-secondary">
-        <div class="pricing-card small-card">
+        <div class="pricing-card small-card" id="card-essencial">
           <div class="pricing-tier">Essencial</div>
           <div class="pricing-price-small">
             <div class="pricing-anchor-strike small-strike">
@@ -766,7 +825,7 @@
           <a href="#demonstracao" class="btn btn-outline pricing-btn">Iniciar grátis</a>
         </div>
 
-        <div class="pricing-card small-card">
+        <div class="pricing-card small-card" id="card-enterprise">
           <div class="pricing-tier">Enterprise</div>
           <div class="pricing-price-small">
             <div class="pricing-anchor-strike small-strike">
