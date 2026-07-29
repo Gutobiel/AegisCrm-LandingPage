@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aegis CRM - Central de Suporte & Base de Conhecimento</title>
+  <meta name="description" content="Central de Ajuda, Tutoriais e Suporte Técnico do Aegis CRM. Encontre respostas sobre WhatsApp, IA, planos e automações.">
+
+  <!-- Favicon & Fonts -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-light.css?v=20260728_2">
+</head>
+<body>
+  <div id="spotlight" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="index.html" class="logo" aria-label="Aegis CRM">
+      <img src="assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a href="contato.html" class="nav-link">Fale Conosco</a>
+      <a href="index.html" class="btn btn-sm btn-outline">Voltar ao Início</a>
+    </nav>
+  </header>
+
+  <main class="legal-page-wrapper">
+    <div class="legal-bg-glow"></div>
+    <div class="legal-container">
+      
+      <!-- HERO SECTION COM BUSCA -->
+      <section class="legal-hero">
+        <div class="legal-badge">
+          <span>Central de Ajuda</span>
+        </div>
+        <h1>Como podemos ajudar sua empresa hoje?</h1>
+        <p class="hero-subtitle">
+          Pesquise por palavras-chave ou selecione uma categoria abaixo. As respostas serão filtradas e exibidas na tela instantaneamente.
+        </p>
+
+        <!-- BARRA DE PESQUISA EM TEMPO REAL -->
+        <div class="legal-portal-toolbar" style="max-width: 720px; margin: 30px auto 0;">
+          <div class="legal-search-box" style="width: 100%;">
+            <input type="text" id="support-search-input" placeholder="Pesquisar dúvida (ex: WhatsApp, IA, faturamento, API, funil, cancelamento...)" aria-label="Pesquisar artigo de suporte">
+            <button class="btn-clear-search" id="clear-support-search-btn" style="display:none;" title="Limpar busca">✕</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD DE STATUS DO SISTEMA -->
+      <div style="background:#ffffff; border:1px solid var(--border); border-radius:16px; padding:20px 24px; margin-bottom:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+        <div>
+          <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10b981; margin-right:8px;"></span>
+          <strong style="color:#0f172a; font-size:14px;">Status da Plataforma: Todos os Sistemas Operacionais</strong>
+          <p style="color:#64748b; font-size:13px; margin:4px 0 0 18px;">Uptime garantido de 99.9% nos últimos 30 dias (Servidores, APIs de WhatsApp e Motores de IA).</p>
+        </div>
+        <button id="open-status-modal-btn" class="btn btn-sm btn-outline">Relatório de Status</button>
+      </div>
+
+      <!-- CATEGORIAS DE SUPORTE -->
+      <div class="legal-summary-grid" id="support-categories">
+        <div class="summary-card support-cat-card" data-category="setup">
+          <div class="summary-card-body">
+            <h4>Primeiros Passos &amp; Configuração</h4>
+            <p>Como criar sua conta, cadastrar usuários da equipe e configurar etapas do funil de vendas.</p>
+          </div>
+        </div>
+        <div class="summary-card support-cat-card" data-category="whatsapp">
+          <div class="summary-card-body">
+            <h4>Integração WhatsApp</h4>
+            <p>Conexão por QR Code, disparo automático de mensagens e gestão de conversas em equipe.</p>
+          </div>
+        </div>
+        <div class="summary-card support-cat-card" data-category="ia">
+          <div class="summary-card-body">
+            <h4>Agentes de IA &amp; Automações</h4>
+            <p>Configuração de robôs autônomos para qualificação de leads, agendamentos e atendimento.</p>
+          </div>
+        </div>
+        <div class="summary-card support-cat-card" data-category="financeiro">
+          <div class="summary-card-body">
+            <h4>Planos &amp; Faturamento</h4>
+            <p>Emissão de nota fiscal, alteração de cartão de crédito, upgrades e cancelamentos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÃO PARA EXIBIR TODAS -->
+      <div style="text-align:center; margin: 20px 0 30px;">
+        <button id="show-all-faqs-btn" class="btn btn-sm btn-outline" style="display:none;">Exibir Todas as Categorias</button>
+      </div>
+
+      <!-- BASE DE CONHECIMENTO / FAQ INTERATIVO -->
+      <div id="faq-anchor" class="legal-portal-grid" style="grid-template-columns: 1fr; max-width: 900px; margin: 20px auto 0;">
+        
+        <div id="no-support-results" style="display:none; text-align:center; padding:40px; background:#fff; border:1px solid var(--border); border-radius:16px;">
+          <h3>Nenhum artigo encontrado</h3>
+          <p>Tente buscar por outros termos ou entre em contato direto com nosso time de suporte.</p>
+        </div>
+
+        <!-- 1. PRIMEIROS PASSOS -->
+        <article class="legal-section-card support-faq-item" data-category="setup">
+          <div class="section-card-header">
+            <span class="section-num-badge">Configuração</span>
+            <span class="section-cat-tag">Primeiros Passos</span>
+          </div>
+          <h2>Como importar minha lista de contatos para o Aegis CRM?</h2>
+          <div class="section-body">
+            <p>Você pode importar arquivos em formato CSV ou Excel (.xlsx) diretamente no painel em <strong>Contatos → Importar</strong>. O sistema permite mapear colunas como Nome, WhatsApp, E-mail e campos personalizados pré-existentes.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="setup">
+          <div class="section-card-header">
+            <span class="section-num-badge">Configuração</span>
+            <span class="section-cat-tag">Membros da Equipe</span>
+          </div>
+          <h2>Como cadastrar novos vendedores e gerenciar permissões?</h2>
+          <div class="section-body">
+            <p>Em <strong>Configurações → Usuários &amp; Equipes</strong>, clique em <em>Convidar Usuário</em>. Você pode atribuir funções como <em>Vendedor</em> (visualiza apenas os próprios leads), <em>Gerente</em> (visualiza a equipe) ou <em>Administrador</em> (acesso total).</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="setup">
+          <div class="section-card-header">
+            <span class="section-num-badge">Configuração</span>
+            <span class="section-cat-tag">Funil de Vendas</span>
+          </div>
+          <h2>Como personalizar as etapas do Kanban de vendas?</h2>
+          <div class="section-body">
+            <p>Acesse <strong>Pipeline → Personalizar Colunas</strong>. Você pode adicionar novas etapas, renomear fases (ex: <em>Novo Lead</em>, <em>Contato Realizado</em>, <em>Proposta Enviada</em>, <em>Fechado</em>) e definir automações para cada mudança de coluna.</p>
+          </div>
+        </article>
+
+        <!-- 2. INTEGRACAO WHATSAPP -->
+        <article class="legal-section-card support-faq-item" data-category="whatsapp">
+          <div class="section-card-header">
+            <span class="section-num-badge">WhatsApp</span>
+            <span class="section-cat-tag">Conexão</span>
+          </div>
+          <h2>Como conectar meu número de WhatsApp ao CRM?</h2>
+          <div class="section-body">
+            <p>Acesse <strong>Configurações → Canais → WhatsApp</strong> e clique em <em>Conectar Novo Número</em>. Um QR Code será exibido na tela. Abra o WhatsApp no seu smartphone, vá em <em>Aparelhos Conectados</em> e escaneie o código.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="whatsapp">
+          <div class="section-card-header">
+            <span class="section-num-badge">WhatsApp</span>
+            <span class="section-cat-tag">Múltiplos Atendentes</span>
+          </div>
+          <h2>Quantos atendentes podem usar o mesmo número simultaneamente?</h2>
+          <div class="section-body">
+            <p>Não há limite de atendentes simultâneos por número de WhatsApp. Todos os membros cadastrados na sua equipe podem responder conversas ao mesmo tempo através do painel centralizado do Aegis CRM.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="whatsapp">
+          <div class="section-card-header">
+            <span class="section-num-badge">WhatsApp</span>
+            <span class="section-cat-tag">Estabilidade &amp; Quedas</span>
+          </div>
+          <h2>O que fazer se a conexão do WhatsApp cair ou desconectar?</h2>
+          <div class="section-body">
+            <p>Se o aplicativo do smartphone perder conexão à internet ou expirar a sessão de aparelhos conectados, o painel do Aegis CRM exibirá um alerta. Basta acessar <strong>Configurações → Canais</strong> e reconectar o QR Code em menos de 10 segundos sem perder histórico.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="whatsapp">
+          <div class="section-card-header">
+            <span class="section-num-badge">WhatsApp</span>
+            <span class="section-cat-tag">Disparos &amp; Spam</span>
+          </div>
+          <h2>Existe risco de bloqueio do WhatsApp ao usar automações?</h2>
+          <div class="section-body">
+            <p>O Aegis CRM utiliza algoritmos avançados de simulação de digitação e intervalos dinâmicos antispam. Recomendamos sempre enviar mensagens para contatos que autorizaram a comunicação e evitar disparos em massa não solicitados.</p>
+          </div>
+        </article>
+
+        <!-- 3. AGENTES DE IA -->
+        <article class="legal-section-card support-faq-item" data-category="ia">
+          <div class="section-card-header">
+            <span class="section-num-badge">Agentes de IA</span>
+            <span class="section-cat-tag">Automação</span>
+          </div>
+          <h2>Como ajustar as instruções e tom de voz da IA?</h2>
+          <div class="section-body">
+            <p>Em <strong>Agentes de IA → Personalizar Robô</strong>, você pode definir as diretrizes do seu negócio, horário de atuação automatizada, regras para envio de PIX/links de pagamento e limite de mensagens sem intervenção humana.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="ia">
+          <div class="section-card-header">
+            <span class="section-num-badge">Agentes de IA</span>
+            <span class="section-cat-tag">Transbordo Humano</span>
+          </div>
+          <h2>Como a IA passa a conversa para um atendente humano?</h2>
+          <div class="section-body">
+            <p>Sempre que o cliente solicitar atendimento humano ou quando a IA identificar uma objeção complexa fora do seu treinamento, o sistema atribui a conversa a um vendedor da equipe e envia uma notificação instantânea.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="ia">
+          <div class="section-card-header">
+            <span class="section-num-badge">Agentes de IA</span>
+            <span class="section-cat-tag">Agendamentos</span>
+          </div>
+          <h2>A IA consegue agendar reuniões e enviar links de checkout?</h2>
+          <div class="section-body">
+            <p>Sim. Os agentes virtuais do Aegis CRM integram-se ao seu calendário para agendar reuniões e podem enviar links de pagamento PIX ou cartão de forma 100% autônoma durante a negociação.</p>
+          </div>
+        </article>
+
+        <!-- 4. PLANOS E FINANCEIRO -->
+        <article class="legal-section-card support-faq-item" data-category="financeiro">
+          <div class="section-card-header">
+            <span class="section-num-badge">Financeiro</span>
+            <span class="section-cat-tag">Faturamento</span>
+          </div>
+          <h2>Como alterar a forma de pagamento ou baixar notas fiscais?</h2>
+          <div class="section-body">
+            <p>Todas as notas fiscais e histórico de cobranças ficam disponíveis em <strong>Minha Conta → Faturamento</strong>. As notas fiscais são emitidas automaticamente em até 24h após a confirmação do pagamento.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="financeiro">
+          <div class="section-card-header">
+            <span class="section-num-badge">Financeiro</span>
+            <span class="section-cat-tag">Troca de Plano</span>
+          </div>
+          <h2>Como fazer upgrade ou downgrade do meu plano?</h2>
+          <div class="section-body">
+            <p>Acesse <strong>Minha Conta → Planos</strong> e selecione o novo plano desejado. No upgrade, a diferença de valor é calculada proporcionalmente aos dias restantes do ciclo atual. O novo limite é liberado imediatamente.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="financeiro">
+          <div class="section-card-header">
+            <span class="section-num-badge">Financeiro</span>
+            <span class="section-cat-tag">Cancelamento</span>
+          </div>
+          <h2>Existe fidelidade ou multa para cancelamento?</h2>
+          <div class="section-body">
+            <p>Não há fidelidade nem multa em planos mensais. Você pode cancelar sua assinatura a qualquer momento em <strong>Minha Conta → Cancelar Assinatura</strong>. A conta permanecerá ativa até o final do período mensal já pago.</p>
+          </div>
+        </article>
+
+        <article class="legal-section-card support-faq-item" data-category="financeiro">
+          <div class="section-card-header">
+            <span class="section-num-badge">Financeiro</span>
+            <span class="section-cat-tag">Dados &amp; Expurgo</span>
+          </div>
+          <h2>O que acontece com meus dados após o cancelamento?</h2>
+          <div class="section-body">
+            <p>Conforme nossa Política de Privacidade, seus dados e histórico de leads ficam armazenados com segurança por 30 dias após o encerramento do contrato, permitindo a exportação completa antes do expurgo definitivo.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- CARD DE CHAMADO -->
+      <section class="legal-support-card">
+        <div class="support-info">
+          <h3>Não encontrou a resposta que procurava?</h3>
+          <p>Nosso time de engenharia e suporte técnico está à disposição para resolver dúvidas específicas do seu ambiente.</p>
+        </div>
+        <div class="support-actions">
+          <a href="contato.html" class="btn btn-primary btn-lg magnetic-btn">Abrir Chamado Técnico <span class="btn-arrow">→</span></a>
+          <a href="index.html" class="btn btn-outline btn-lg">Voltar ao Início <span class="btn-arrow">→</span></a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL DE STATUS DO SISTEMA -->
+  <div id="status-modal" style="display:none; position:fixed; inset:0; z-index:10000; background:rgba(15,23,42,0.6); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px;">
+    <div style="background:#ffffff; border-radius:20px; max-width:640px; width:100%; padding:32px; box-shadow:0 20px 50px rgba(0,0,0,0.2); position:relative; max-height:90vh; overflow-y:auto;">
+      <button id="close-status-modal-btn" style="position:absolute; top:20px; right:20px; background:none; border:none; font-size:20px; cursor:pointer; color:#64748b;" title="Fechar">✕</button>
+      
+      <div style="margin-bottom:24px;">
+        <span style="font-size:12px; font-weight:700; color:#0d9488; text-transform:uppercase; letter-spacing:1px;">Telemetria da Operação</span>
+        <h2 style="font-size:22px; color:#0f172a; margin:4px 0 0;">Relatório de Status do Aegis CRM</h2>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
+        <div style="padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="display:block; font-size:14px; color:#0f172a;">Servidores Core &amp; Aplicação Web</strong>
+            <span style="font-size:12px; color:#64748b;">Uptime 99.98% • Latência 28ms</span>
+          </div>
+          <span style="background:#d1fae5; color:#065f46; font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px;">Operacional</span>
+        </div>
+
+        <div style="padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="display:block; font-size:14px; color:#0f172a;">API de Integração WhatsApp</strong>
+            <span style="font-size:12px; color:#64748b;">Disparos e Webhooks de Entrada</span>
+          </div>
+          <span style="background:#d1fae5; color:#065f46; font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px;">Operacional</span>
+        </div>
+
+        <div style="padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="display:block; font-size:14px; color:#0f172a;">Motores de IA &amp; Robôs Autônomos</strong>
+            <span style="font-size:12px; color:#64748b;">Qualificação &amp; Speed to Lead</span>
+          </div>
+          <span style="background:#d1fae5; color:#065f46; font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px;">Operacional</span>
+        </div>
+
+        <div style="padding:14px 18px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="display:block; font-size:14px; color:#0f172a;">Banco de Dados &amp; Criptografia AES-256</strong>
+            <span style="font-size:12px; color:#64748b;">Backups em Tempo Real</span>
+          </div>
+          <span style="background:#d1fae5; color:#065f46; font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px;">Operacional</span>
+        </div>
+      </div>
+
+      <div style="padding:16px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:12px; font-size:13px; color:#1e40af; line-height:1.5;">
+        <strong>Nota de Conexão:</strong> Este painel exibe a telemetria pré-configurada da infraestrutura do Aegis CRM. Quando a aplicação principal do CRM for vinculada à landing page, este painel passará a consumir os dados de saúde dos servidores em tempo real.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Aegis CRM" class="footer-logo">
+          <p class="footer-description">O CRM com agentes de IA nativas</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="index.html#recursos">Recursos</a></li>
+            <li><a href="index.html#planos">Preços</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="suporte.html">Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacidade.html">Privacidade</a></li>
+            <li><a href="termos.html">Termos de uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Aegis CRM. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=20260728_1"></script>
+  <script src="company-portal.js"></script>
+</body>
+</html>
