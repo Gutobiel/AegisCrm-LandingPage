@@ -1253,7 +1253,13 @@
 
     if (!sellersRange || !chatsRange) return;
 
-    function updateCalculations() {
+    let userHasInteracted = false;
+
+    function updateCalculations(userTriggered = false) {
+      if (userTriggered) {
+        userHasInteracted = true;
+      }
+
       const sellers = parseInt(sellersRange.value, 10);
       const chats = parseInt(chatsRange.value, 10);
 
@@ -1269,37 +1275,38 @@
       const maxLeads = Math.round(chats * 0.007);
       recoveredLeads.textContent = minLeads === maxLeads ? `~${minLeads}` : `~${minLeads} a ${maxLeads}`;
 
-      // Lógica de recomendação de plano
+      // Lógica de recomendação de plano (Essencial: R$ 497, Crescimento: R$ 997, Enterprise: R$ 2.997)
       let recommended = 'Crescimento';
       let targetCard = cardCrescimento;
 
       if (sellers <= 3 && chats <= 600) {
-        recommended = 'Essencial';
+        recommended = 'Essencial (R$ 497/mês)';
         targetCard = cardEssencial;
       } else if (sellers > 10 || chats > 3500) {
-        recommended = 'Enterprise';
+        recommended = 'Enterprise (R$ 2.997/mês)';
         targetCard = cardEnterprise;
       } else {
-        recommended = 'Crescimento';
+        recommended = 'Crescimento (R$ 997/mês)';
         targetCard = cardCrescimento;
       }
 
       planName.textContent = recommended;
-      selectBtn.textContent = `Selecionar Plano ${recommended} →`;
+      selectBtn.textContent = `Selecionar ${recommended} →`;
 
-      // Atualizar classes visuais de recomendação nos cards
+      // Remover destaque de todos os cards
       [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
         if (card) card.classList.remove('plan-recommended');
       });
 
-      if (targetCard) {
+      // Destaque APENAS se o usuário tiver interagido com a calculadora
+      if (userHasInteracted && targetCard) {
         targetCard.classList.add('plan-recommended');
       }
     }
 
-    sellersRange.addEventListener('input', updateCalculations);
-    chatsRange.addEventListener('input', updateCalculations);
-    updateCalculations();
+    sellersRange.addEventListener('input', () => updateCalculations(true));
+    chatsRange.addEventListener('input', () => updateCalculations(true));
+    updateCalculations(false);
   }
 
   document.addEventListener('DOMContentLoaded', initPricingCalculator);
