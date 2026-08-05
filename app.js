@@ -1293,16 +1293,58 @@
       planName.textContent = recommended;
       selectBtn.textContent = `Selecionar ${recommended} →`;
 
-      // Remover destaque de todos os cards
+      // Atualizar classes visuais dos cards e dos botões
       [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
-        if (card) card.classList.remove('plan-recommended');
+        if (!card) return;
+        card.classList.remove('plan-recommended');
+        const btn = card.querySelector('.pricing-btn');
+        if (btn) {
+          btn.classList.remove('btn-primary', 'magnetic-btn');
+          btn.classList.add('btn-outline');
+          btn.style.transform = 'translate(0, 0)';
+        }
       });
 
-      // Destaque APENAS se o usuário tiver interagido com a calculadora
+      // Destaque do Card e do Botão APENAS se o usuário tiver interagido com a calculadora
       if (userHasInteracted && targetCard) {
         targetCard.classList.add('plan-recommended');
+        const targetBtn = targetCard.querySelector('.pricing-btn');
+        if (targetBtn) {
+          targetBtn.classList.remove('btn-outline');
+          targetBtn.classList.add('btn-primary', 'magnetic-btn');
+        }
       }
     }
+
+    // Ativar animação magnética em todos os botões de preços
+    const allPricingBtns = [
+      cardEssencial?.querySelector('.pricing-btn'),
+      cardCrescimento?.querySelector('.pricing-btn'),
+      cardEnterprise?.querySelector('.pricing-btn')
+    ].filter(Boolean);
+
+    allPricingBtns.forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        if (!btn.classList.contains('magnetic-btn')) return;
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) * 0.35;
+        const dy = (e.clientY - cy) * 0.35;
+        btn.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        if (!btn.classList.contains('magnetic-btn')) return;
+        btn.style.transition = 'transform 0.35s ease';
+        btn.style.transform = 'translate(0, 0)';
+        const cleanup = () => {
+          btn.style.transition = '';
+          btn.removeEventListener('transitionend', cleanup);
+        };
+        btn.addEventListener('transitionend', cleanup);
+      });
+    });
 
     sellersRange.addEventListener('input', () => updateCalculations(true));
     chatsRange.addEventListener('input', () => updateCalculations(true));
