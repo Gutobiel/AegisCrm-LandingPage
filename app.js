@@ -1162,6 +1162,129 @@
   /* ═══════════════════════════════════════════════════════════════════════
      18. GSAP AGENT CARDS SEQUENCE
      Pins the section and transitions cards seamlessly one by one
+     ═══════════════════════════════════════════════════�
+});
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     11. CALCULADORA INTERATIVA DE PLANOS & ROI
+     ═══════════════════════════════════════════════════════════════════════ */
+  function initPricingCalculator() {
+    const sellersRange = document.getElementById('calc-sellers-range');
+    const chatsRange = document.getElementById('calc-chats-range');
+    const sellersVal = document.getElementById('calc-sellers-val');
+    const chatsVal = document.getElementById('calc-chats-val');
+    const planName = document.getElementById('calc-recommended-plan');
+    const hoursSaved = document.getElementById('calc-hours-saved');
+    const recoveredLeads = document.getElementById('calc-recovered-leads');
+    const selectBtn = document.getElementById('calc-select-btn');
+
+    const cardEssencial = document.getElementById('card-essencial');
+    const cardCrescimento = document.getElementById('card-crescimento');
+    const cardEnterprise = document.getElementById('card-enterprise');
+
+    if (!sellersRange || !chatsRange) return;
+
+    let userHasInteracted = false;
+
+    function updateCalculations(userTriggered = false) {
+      if (userTriggered) {
+        userHasInteracted = true;
+      }
+
+      const sellers = parseInt(sellersRange.value, 10);
+      const chats = parseInt(chatsRange.value, 10);
+
+      sellersVal.textContent = sellers === 25 ? '25+ vendedores' : `${sellers} ${sellers === 1 ? 'vendedor' : 'vendedores'}`;
+      chatsVal.textContent = chats === 8000 ? '8.000+ conversas' : `${chats.toLocaleString('pt-BR')} conversas`;
+
+      const hours = Math.round(sellers * 5.5);
+      hoursSaved.textContent = `~${hours}h/mês`;
+
+      const minLeads = Math.max(1, Math.round(chats * 0.004));
+      const maxLeads = Math.round(chats * 0.007);
+      recoveredLeads.textContent = minLeads === maxLeads ? `~${minLeads}` : `~${minLeads} a ${maxLeads}`;
+
+      let recommended = 'Crescimento (R$ 997/mês)';
+      let targetCard = cardCrescimento;
+
+      if (sellers <= 3 && chats <= 600) {
+        recommended = 'Essencial (R$ 497/mês)';
+        targetCard = cardEssencial;
+      } else if (sellers > 10 || chats > 3500) {
+        recommended = 'Enterprise (R$ 2.997/mês)';
+        targetCard = cardEnterprise;
+      } else {
+        recommended = 'Crescimento (R$ 997/mês)';
+        targetCard = cardCrescimento;
+      }
+
+      planName.textContent = recommended;
+      selectBtn.textContent = `Selecionar ${recommended} →`;
+
+      [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
+        if (!card) return;
+        card.classList.remove('plan-recommended');
+        const btn = card.querySelector('.pricing-btn');
+        if (btn) {
+          btn.classList.remove('btn-primary', 'magnetic-btn');
+          btn.classList.add('btn-outline');
+          btn.style.transform = 'translate(0, 0)';
+        }
+      });
+
+      if (userHasInteracted && targetCard) {
+        targetCard.classList.add('plan-recommended');
+        const targetBtn = targetCard.querySelector('.pricing-btn');
+        if (targetBtn) {
+          targetBtn.classList.remove('btn-outline');
+          targetBtn.classList.add('btn-primary', 'magnetic-btn');
+        }
+      }
+    }
+
+    const allPricingBtns = [
+      cardEssencial?.querySelector('.pricing-btn'),
+      cardCrescimento?.querySelector('.pricing-btn'),
+      cardEnterprise?.querySelector('.pricing-btn')
+    ].filter(Boolean);
+
+    allPricingBtns.forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        if (!btn.classList.contains('magnetic-btn')) return;
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) * 0.35;
+        const dy = (e.clientY - cy) * 0.35;
+        btn.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        if (!btn.classList.contains('magnetic-btn')) return;
+        btn.style.transition = 'transform 0.35s ease';
+        btn.style.transform = 'translate(0, 0)';
+        const cleanup = () => {
+          btn.style.transition = '';
+          btn.removeEventListener('transitionend', cleanup);
+        };
+        btn.addEventListener('transitionend', cleanup);
+      });
+    });
+
+    sellersRange.addEventListener('input', () => updateCalculations(true));
+    chatsRange.addEventListener('input', () => updateCalculations(true));
+    updateCalculations(false);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPricingCalculator);
+  } else {
+    initPricingCalculator();
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     18. GSAP AGENT CARDS SEQUENCE
+     Pins the section and transitions cards seamlessly one by one
      ═══════════════════════════════════════════════════════════════════════ */
   function initGSAPCards() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
@@ -1236,126 +1359,340 @@
     ScrollTrigger.refresh();
   }
 
-  // ─── CALCULADORA INTERATIVA DE PLANOS & ROI ───
-  function initPricingCalculator() {
-    const sellersRange = document.getElementById('calc-sellers-range');
-    const chatsRange = document.getElementById('calc-chats-range');
-    const sellersVal = document.getElementById('calc-sellers-val');
-    const chatsVal = document.getElementById('calc-chats-val');
-    const planName = document.getElementById('calc-recommended-plan');
-    const hoursSaved = document.getElementById('calc-hours-saved');
-    const recoveredLeads = document.getElementById('calc-recovered-leads');
-    const selectBtn = document.getElementById('calc-select-btn');
-
-    const cardEssencial = document.getElementById('card-essencial');
-    const cardCrescimento = document.getElementById('card-crescimento');
-    const cardEnterprise = document.getElementById('card-enterprise');
-
-    if (!sellersRange || !chatsRange) return;
-
-    let userHasInteracted = false;
-
-    function updateCalculations(userTriggered = false) {
-      if (userTriggered) {
-        userHasInteracted = true;
-      }
-
-      const sellers = parseInt(sellersRange.value, 10);
-      const chats = parseInt(chatsRange.value, 10);
-
-      sellersVal.textContent = sellers === 25 ? '25+ vendedores' : `${sellers} ${sellers === 1 ? 'vendedor' : 'vendedores'}`;
-      chatsVal.textContent = chats === 8000 ? '8.000+ conversas' : `${chats.toLocaleString('pt-BR')} conversas`;
-
-      // Estimativa de tempo economizado (~5.5 horas economizadas por vendedor/mês)
-      const hours = Math.round(sellers * 5.5);
-      hoursSaved.textContent = `~${hours}h/mês`;
-
-      // Estimativa sutil de negócios resgatados (4 a 7 conversas resgatadas por mil)
-      const minLeads = Math.max(1, Math.round(chats * 0.004));
-      const maxLeads = Math.round(chats * 0.007);
-      recoveredLeads.textContent = minLeads === maxLeads ? `~${minLeads}` : `~${minLeads} a ${maxLeads}`;
-
-      // Lógica de recomendação de plano (Essencial: R$ 497, Crescimento: R$ 997, Enterprise: R$ 2.997)
-      let recommended = 'Crescimento';
-      let targetCard = cardCrescimento;
-
-      if (sellers <= 3 && chats <= 600) {
-        recommended = 'Essencial (R$ 497/mês)';
-        targetCard = cardEssencial;
-      } else if (sellers > 10 || chats > 3500) {
-        recommended = 'Enterprise (R$ 2.997/mês)';
-        targetCard = cardEnterprise;
-      } else {
-        recommended = 'Crescimento (R$ 997/mês)';
-        targetCard = cardCrescimento;
-      }
-
-      planName.textContent = recommended;
-      selectBtn.textContent = `Selecionar ${recommended} →`;
-
-      // Atualizar classes visuais dos cards e dos botões
-      [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
-        if (!card) return;
-        card.classList.remove('plan-recommended');
-        const btn = card.querySelector('.pricing-btn');
-        if (btn) {
-          btn.classList.remove('btn-primary', 'magnetic-btn');
-          btn.classList.add('btn-outline');
-          btn.style.transform = 'translate(0, 0)';
-        }
-      });
-
-      // Destaque do Card e do Botão APENAS se o usuário tiver interagido com a calculadora
-      if (userHasInteracted && targetCard) {
-        targetCard.classList.add('plan-recommended');
-        const targetBtn = targetCard.querySelector('.pricing-btn');
-        if (targetBtn) {
-          targetBtn.classList.remove('btn-outline');
-          targetBtn.classList.add('btn-primary', 'magnetic-btn');
-        }
-      }
-    }
-
-    // Ativar animação magnética em todos os botões de preços
-    const allPricingBtns = [
-      cardEssencial?.querySelector('.pricing-btn'),
-      cardCrescimento?.querySelector('.pricing-btn'),
-      cardEnterprise?.querySelector('.pricing-btn')
-    ].filter(Boolean);
-
-    allPricingBtns.forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        if (!btn.classList.contains('magnetic-btn')) return;
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * 0.35;
-        const dy = (e.clientY - cy) * 0.35;
-        btn.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        if (!btn.classList.contains('magnetic-btn')) return;
-        btn.style.transition = 'transform 0.35s ease';
-        btn.style.transform = 'translate(0, 0)';
-        const cleanup = () => {
-          btn.style.transition = '';
-          btn.removeEventListener('transitionend', cleanup);
-        };
-        btn.addEventListener('transitionend', cleanup);
-      });
-    });
-
-    sellersRange.addEventListener('input', () => updateCalculations(true));
-    chatsRange.addEventListener('input', () => updateCalculations(true));
-    updateCalculations(false);
+  // Ensure GSAP initializes when window loads or immediately if already loaded
+  if (document.readyState === 'complete') {
+    initGSAPCards();
+  } else {
+    window.addEventListener('load', initGSAPCards);
   }
-
-  document.addEventListener('DOMContentLoaded', initPricingCalculator);
-
-  // Ensure scripts are loaded and DOM is ready
-  window.addEventListener('load', initGSAPCards);
 
 })();
 
 
+/* ─── MODAL: DETALHES COMPLETOS E CUMULATIVOS DOS PLANOS ─── */
+(function initPlanDetailModal() {
+  'use strict';
+
+  const planData = {
+    essencial: {
+      title: 'Plano Essencial — R$ 497/mês',
+      sections: [
+        { heading: 'Equipe e Pipeline', items: [
+          'Até 3 usuários',
+          '2 funis de vendas configuráveis',
+          'Até 8 etapas por funil',
+          'Kanban visual drag-and-drop',
+          'Visualização em tabela de dados',
+          'Campos customizados e tags',
+          'Importação e exportação de dados (CSV)'
+        ]},
+        { heading: 'WhatsApp e Multiatendimento', items: [
+          '2 conexões WhatsApp (Cluster WAHA)',
+          'Multiatendimento incluso (toda a equipe no mesmo número)',
+          'Transcrição automática de áudio por IA (Whisper)',
+          'Envio de imagem, vídeo, documento e áudio',
+          'Chat ao vivo com WebSockets (mensagens em tempo real)'
+        ]},
+        { heading: 'Inteligência Artificial', items: [
+          '1 Agente autônomo de IA',
+          '50.000 tokens de IA/mês',
+          'Copiloto de vendas em tempo real (sugestões inteligentes)',
+          'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
+          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+          'Transbordo inteligente IA → humano (6 camadas de proteção)'
+        ]},
+        { heading: 'Automações e Workflows', items: [
+          '5 workflows ativos',
+          '10 tipos de ações automáticas',
+          'Construtor visual de fluxos em grafo (DAG)'
+        ]},
+        { heading: 'Comercial e Vendas', items: [
+          'Propostas comerciais em PDF (envio direto no WhatsApp)',
+          'Catálogo de produtos e serviços',
+          'Pedidos de venda',
+          'Formulário público de captura de leads',
+          'Widget incorporável para sites'
+        ]},
+        { heading: 'Relatórios e Gestão', items: [
+          'Dashboard com KPIs principais (Receita, Conversão, Ticket Médio)',
+          'Gráficos de vendas e conversão',
+          'Ranking de vendedores',
+          'Atribuição manual e por regra de vendedor'
+        ]},
+        { heading: 'Segurança e Infraestrutura', items: [
+          'Criptografia AES-256-GCM',
+          'Multi-tenancy com RLS PostgreSQL',
+          'Agenda integrada com lembretes'
+        ]},
+        { heading: 'Suporte', items: [
+          'Chat e e-mail (48h úteis)',
+          'Onboarding autoguiado (tutoriais in-app)'
+        ]},
+        { heading: 'Não incluído neste plano', unavailable: true, items: [
+          'Few-Shot Learning (IA aprende com conversas reais)',
+          'Personalização avançada do tom de voz (edição de prompt)',
+          'Contratos e faturas recorrentes',
+          'Ordens de compra e gestão de fornecedores',
+          'Equipes com metas e distribuição Round-Robin',
+          'Exportação de relatórios gerenciais em Excel/PDF',
+          'Captura de leads via Meta Ads e Google Ads',
+          'API REST',
+          'Webhooks de saída',
+          'White-Label e SMTP customizado',
+          'BYOK (Chave de IA própria)'
+        ]}
+      ]
+    },
+    crescimento: {
+      title: 'Plano Crescimento — R$ 997/mês',
+      sections: [
+        { heading: 'Equipe e Pipeline', items: [
+          'Até 10 usuários (3x mais que Essencial)',
+          '10 funis de vendas (5x mais que Essencial)',
+          'Até 15 etapas por funil',
+          'Kanban visual drag-and-drop',
+          'Visualização em tabela de dados',
+          'Campos customizados e tags ilimitados',
+          'Importação e exportação de dados (CSV)',
+          'Filtros avançados de busca e segmentação'
+        ]},
+        { heading: 'WhatsApp e Multiatendimento', items: [
+          '5 conexões WhatsApp',
+          'Multiatendimento incluso (toda a equipe no mesmo número)',
+          'Multiatendimento com filas e roteamento por setor/vendedor',
+          'Transcrição automática de áudio por IA (Whisper)',
+          'Envio de imagem, vídeo, documento e áudio',
+          'Chat ao vivo com WebSockets (mensagens em tempo real)',
+          'Proteção contra banimento (Warmup de chips)',
+          'Debouncing inteligente de 60s para respostas da IA'
+        ]},
+        { heading: 'Inteligência Artificial', items: [
+          '3 Agentes autônomos de IA',
+          '500.000 tokens de IA/mês (10x mais que Essencial)',
+          'Copiloto de vendas em tempo real (sugestões inteligentes)',
+          'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
+          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+          'Transbordo inteligente IA → humano (6 camadas de proteção)',
+          'Personalização total do tom de voz (edição livre do prompt)',
+          'Análise de sentimento das conversas',
+          'Geração automática de orçamento em PDF pela IA',
+          'Envio automático de dados de pagamento PIX pela IA'
+        ]},
+        { heading: 'Automações e Workflows', items: [
+          '30 workflows ativos',
+          '15 tipos de ações automáticas (inclui webhooks de saída)',
+          'Construtor visual de fluxos em grafo (DAG)',
+          'Gatilhos por comportamento do lead',
+          'Transfers inteligentes entre setores e equipes'
+        ]},
+        { heading: 'Comercial e Vendas', items: [
+          'Propostas comerciais em PDF (envio direto no WhatsApp)',
+          'Catálogo de produtos e serviços',
+          'Pedidos de venda',
+          'Formulário público de captura + Widget incorporável',
+          'Contratos e faturas recorrentes (cobrança mensal automática)',
+          'Ordens de compra + Gestão de fornecedores',
+          'Captura automática de leads Meta Ads e Google Ads',
+          'Google Forms webhook automático'
+        ]},
+        { heading: 'Gestão de Equipe', items: [
+          'Atribuição manual e por regra de vendedor',
+          'Equipes de vendas com metas mensais e progresso',
+          'Distribuição Round-Robin automática de leads',
+          'Setores organizacionais (Vendas, Suporte, Financeiro)'
+        ]},
+        { heading: 'Relatórios e BI', items: [
+          'Dashboard completo em tempo real (cache Redis)',
+          'Gráficos de vendas e conversão',
+          'Ranking gamificado de vendedores',
+          'Drill-down analítico em todos os KPIs',
+          'Análise de motivos de perda de negócios',
+          'Exportação de relatórios gerenciais em CSV, Excel e PDF'
+        ]},
+        { heading: 'Integrações e Segurança', items: [
+          '10 webhooks de entrada + webhooks de saída',
+          'API REST (somente leitura)',
+          'Logs de auditoria completos',
+          'Criptografia AES-256-GCM',
+          'Multi-tenancy com RLS PostgreSQL',
+          'Agenda integrada com lembretes'
+        ]},
+        { heading: 'Suporte', items: [
+          'WhatsApp prioritário (12h úteis)',
+          'Onboarding assistido (1 sessão de 1h com especialista)'
+        ]},
+        { heading: 'Não incluído neste plano', unavailable: true, items: [
+          'Few-Shot Learning (IA treina com conversas reais)',
+          'BYOK (Chave de IA própria OpenAI/Gemini/Claude)',
+          'API REST de escrita',
+          'White-Label e SMTP customizado',
+          'Roles e permissões customizados',
+          'SSO (Single Sign-On)'
+        ]}
+      ]
+    },
+    enterprise: {
+      title: 'Plano Enterprise — R$ 2.997/mês',
+      sections: [
+        { heading: 'Equipe e Pipeline', items: [
+          'Usuários ilimitados',
+          'Funis de vendas ilimitados',
+          'Até 25 etapas por funil',
+          'Kanban visual drag-and-drop',
+          'Visualização em tabela de dados',
+          'Campos customizados e tags ilimitados',
+          'Importação e exportação de dados (CSV e JSON)',
+          'Filtros avançados de busca e segmentação',
+          'Roles e permissões customizados (granulares por usuário)',
+          'Perfis de acesso: Admin, Gestor, Financeiro, Funcionário, Vendedor + customizados'
+        ]},
+        { heading: 'WhatsApp e Multiatendimento', items: [
+          '20 conexões WhatsApp simultâneas',
+          'Multiatendimento incluso (toda a equipe no mesmo número)',
+          'Multiatendimento completo com filas e roteamento inteligente por setor/vendedor',
+          'Transcrição automática de áudio por IA (Whisper)',
+          'Envio de imagem, vídeo, documento e áudio',
+          'Chat ao vivo com WebSockets (mensagens em tempo real)',
+          'Proteção contra banimento (Warmup de chips)',
+          'Warmup avançado anti-banimento',
+          'Debouncing inteligente de 60s para respostas da IA',
+          'Cluster WAHA multi-nó com balanceamento de carga'
+        ]},
+        { heading: 'Inteligência Artificial', items: [
+          'Agentes de IA ilimitados',
+          '5.000.000+ tokens de IA/mês',
+          'Copiloto de vendas em tempo real (sugestões inteligentes)',
+          'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
+          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+          'Transbordo inteligente IA → humano (6 camadas de proteção)',
+          'Personalização total do tom de voz (edição livre do prompt)',
+          'Análise de sentimento das conversas',
+          'Geração automática de orçamento em PDF pela IA',
+          'Envio automático de dados de pagamento PIX pela IA',
+          'Few-Shot Learning (IA aprende e treina com suas conversas de sucesso)',
+          'BYOK: Traga sua própria chave (OpenAI, Gemini ou Claude)',
+          'Orquestrador de 6 camadas configurável (limiares, governança)',
+          'Multi-provedor: GPT-4o, Gemini 2.5 Flash, Claude 3.5'
+        ]},
+        { heading: 'Automações e Workflows', items: [
+          'Workflows ilimitados',
+          'Todos os 17 tipos de ações automáticas',
+          'Construtor visual de fluxos em grafo (DAG)',
+          'Gatilhos por comportamento do lead',
+          'Transfers inteligentes entre setores e equipes',
+          'Nós de webhook externo, execução de ferramentas e espera programada'
+        ]},
+        { heading: 'Comercial e Vendas', items: [
+          'Propostas comerciais em PDF (envio direto no WhatsApp)',
+          'Catálogo de produtos e serviços',
+          'Pedidos de venda',
+          'Formulário público de captura + Widget incorporável',
+          'Contratos e faturas recorrentes (cobrança mensal automática)',
+          'Ordens de compra + Gestão de fornecedores',
+          'Captura automática de leads Meta Ads e Google Ads',
+          'Google Forms webhook automático',
+          'Relatório de ROI da IA (leads qualificados/convertidos pela IA)'
+        ]},
+        { heading: 'Gestão de Equipe', items: [
+          'Atribuição manual e por regra de vendedor',
+          'Equipes de vendas com metas mensais e progresso',
+          'Distribuição Round-Robin automática de leads',
+          'Setores organizacionais (Vendas, Suporte, Financeiro)',
+          'Permissões e papéis de acesso granulares por usuário'
+        ]},
+        { heading: 'Relatórios e BI', items: [
+          'Dashboard completo em tempo real (cache Redis)',
+          'Gráficos de vendas e conversão',
+          'Ranking gamificado de vendedores',
+          'Drill-down analítico em todos os KPIs',
+          'Análise de motivos de perda de negócios',
+          'Exportação completa em CSV, Excel, PDF e JSON',
+          'Relatórios customizáveis sob medida'
+        ]},
+        { heading: 'Integrações, White-Label e Segurança', items: [
+          'Webhooks de entrada e saída ilimitados',
+          'API REST completa (leitura + escrita)',
+          'White-Label completo (sua marca, logo, cores, favicon, domínio)',
+          'SMTP customizado (envio de e-mails com seu domínio)',
+          'SSO (Single Sign-On corporativo)',
+          'Logs de auditoria completos',
+          'Criptografia AES-256-GCM',
+          'Multi-tenancy com RLS PostgreSQL',
+          'Agenda integrada com lembretes'
+        ]},
+        { heading: 'Suporte VIP', items: [
+          'Atendimento VIP 24/7 (WhatsApp + Ligação)',
+          'Gestor de conta dedicado',
+          'SLA contratual de resposta (4h úteis)',
+          'Onboarding completo (3 sessões + configuração assistida)'
+        ]}
+      ]
+    }
+  };
+
+  function openModal(planKey) {
+    var overlay = document.getElementById('plan-detail-overlay');
+    var titleEl = document.getElementById('plan-detail-title');
+    var bodyEl = document.getElementById('plan-detail-body');
+    if (!overlay || !titleEl || !bodyEl) return;
+
+    var plan = planData[planKey];
+    if (!plan) return;
+
+    titleEl.textContent = plan.title;
+    var html = '';
+    plan.sections.forEach(function(section) {
+      html += '<div class="plan-detail-section"><h4>' + section.heading + '</h4><ul>';
+      section.items.forEach(function(item) {
+        if (section.unavailable) {
+          html += '<li class="unavailable">' + item + '</li>';
+        } else {
+          html += '<li>' + item + '</li>';
+        }
+      });
+      html += '</ul></div>';
+    });
+    bodyEl.innerHTML = html;
+    bodyEl.scrollTop = 0;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    var overlay = document.getElementById('plan-detail-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Delegacao global de clique na janela: GARANTIDO funcionar sempre
+  window.addEventListener('click', function(e) {
+    var btn = e.target.closest('.pricing-see-more');
+    if (btn) {
+      e.preventDefault();
+      var planKey = btn.getAttribute('data-plan');
+      openModal(planKey);
+      return;
+    }
+
+    var closeBtn = e.target.closest('#plan-detail-close');
+    if (closeBtn) {
+      e.preventDefault();
+      closeModal();
+      return;
+    }
+
+    var overlay = document.getElementById('plan-detail-overlay');
+    if (overlay && e.target === overlay) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+})();

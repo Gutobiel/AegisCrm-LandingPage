@@ -1979,6 +1979,195 @@ header.scrolled .site-logo-icon {
   color: var(--blue-light);
   font-weight: bold;
 }
+.pricing-features li.feature-category {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue-light);
+  padding-left: 0;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  opacity: 0.85;
+}
+.pricing-features li.feature-category:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.pricing-features li.feature-category::before {
+  content: none;
+}
+.pricing-features li.feature-unavailable {
+  color: var(--muted);
+  opacity: 0.45;
+  text-decoration: line-through;
+  font-size: 13px;
+}
+.pricing-features li.feature-unavailable::before {
+  content: '\2013';
+  color: var(--muted);
+  opacity: 0.4;
+}
+.pricing-features li.feature-divider {
+  height: 0;
+  padding: 0;
+  margin: 4px 0;
+  border-top: 1px dashed var(--border);
+}
+.pricing-features li.feature-divider::before {
+  content: none;
+}
+.pricing-see-more {
+  background: none;
+  border: none;
+  color: var(--blue-light);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  text-underline-offset: 3px;
+}
+.pricing-see-more:hover {
+  color: var(--blue);
+  opacity: 0.85;
+}
+
+/* ─── MODAL DE DETALHES DO PLANO ─── */
+/* ─── MODAL DE DETALHES DO PLANO ─── */
+.plan-detail-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background: rgba(8, 12, 24, 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.plan-detail-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+.plan-detail-modal {
+  background: var(--bg-card, #111827);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+  border-radius: 20px;
+  max-width: 660px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transform: translateY(16px);
+  transition: transform 0.25s ease;
+}
+.plan-detail-overlay.active .plan-detail-modal {
+  transform: translateY(0);
+}
+.plan-detail-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: var(--surface, #1e293b);
+  border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+  flex-shrink: 0;
+}
+.plan-detail-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+.plan-detail-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.plan-detail-close:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+.plan-detail-body {
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.plan-detail-section h4 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3d5afe;
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+}
+.plan-detail-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plan-detail-section ul li {
+  font-size: 14px;
+  color: var(--white, #ffffff);
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.4;
+}
+.plan-detail-section ul li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: #3d5afe;
+  font-weight: bold;
+  font-size: 14px;
+}
+.plan-detail-section ul li.unavailable {
+  color: var(--muted, #94a3b8);
+  opacity: 0.5;
+  text-decoration: line-through;
+  font-size: 13px;
+}
+.plan-detail-section ul li.unavailable::before {
+  content: '\2013';
+  color: var(--muted, #94a3b8);
+  opacity: 0.4;
+}
 .pricing-btn {
   width: 100%;
   justify-content: center;
