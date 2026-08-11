@@ -1396,7 +1396,7 @@
         ]},
         { heading: 'Inteligência Artificial', items: [
           '1 Agente autônomo de IA',
-          '50.000 tokens de IA/mês',
+          '1.000.000 de tokens de IA/mês',
           'Copiloto de vendas em tempo real (sugestões inteligentes)',
           'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
           '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
@@ -1470,7 +1470,7 @@
         ]},
         { heading: 'Inteligência Artificial', items: [
           '3 Agentes autônomos de IA',
-          '500.000 tokens de IA/mês (10x mais que Essencial)',
+          '1.000.000 de tokens de IA/mês',
           'Copiloto de vendas em tempo real (sugestões inteligentes)',
           'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
           '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
@@ -1562,7 +1562,7 @@
         ]},
         { heading: 'Inteligência Artificial', items: [
           'Agentes de IA ilimitados',
-          '5.000.000+ tokens de IA/mês',
+          'Uso de API de IA própria (integração via chave de API própria)',
           'Copiloto de vendas em tempo real (sugestões inteligentes)',
           'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
           '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
