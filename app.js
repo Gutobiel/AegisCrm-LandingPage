@@ -1722,6 +1722,7 @@
   const btnAnnual = document.getElementById('btn-annual');
   const segmentedControl = document.querySelector('.pricing-segmented-control');
   const pricingAmounts = document.querySelectorAll('.pricing-amount');
+  const pricingPeriods = document.querySelectorAll('.pricing-period');
   const annualNotes = document.querySelectorAll('.pricing-annual-note');
 
   if (btnMonthly && btnAnnual && segmentedControl) {
@@ -1736,6 +1737,9 @@
         pricingAmounts.forEach(el => {
           if (el.dataset.annual) el.textContent = el.dataset.annual;
         });
+        pricingPeriods.forEach(el => {
+          el.textContent = '/ano';
+        });
         annualNotes.forEach(el => {
           el.style.display = 'block';
         });
@@ -1748,6 +1752,9 @@
 
         pricingAmounts.forEach(el => {
           if (el.dataset.monthly) el.textContent = el.dataset.monthly;
+        });
+        pricingPeriods.forEach(el => {
+          el.textContent = '/mês';
         });
         annualNotes.forEach(el => {
           el.style.display = 'none';
