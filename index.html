@@ -780,6 +780,16 @@
       </div>
     </div>
 
+    <!-- TOGGLE MENSAL / ANUAL -->
+    <div class="pricing-toggle-wrapper reveal">
+      <span class="toggle-label" id="label-monthly">Mensal</span>
+      <label class="pricing-toggle">
+        <input type="checkbox" id="plan-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="label-annual">Anual <span class="discount-badge">2 meses grátis</span></span>
+    </div>
+
     <div class="bento-pricing reveal">
       <!-- 1. Essencial -->
       <div class="pricing-card" id="card-essencial">
@@ -787,9 +797,10 @@
         <div class="pricing-price">
           <div class="pricing-price-main">
             <span class="pricing-currency">R$</span>
-            <span class="pricing-amount">497</span>
-            <span class="pricing-period">/m&#234;s</span>
+            <span class="pricing-amount" data-monthly="497" data-annual="4.970">497</span>
+            <span class="pricing-period">/mês</span>
           </div>
+          <div class="pricing-annual-note" style="display: none;">Equivalente a R$ 414/mês. 16% de desconto.</div>
         </div>
         <p class="pricing-desc">Para equipes iniciais que querem organizar vendas com intelig&#234;ncia artificial desde o dia 1.</p>
         <ul class="pricing-features">
@@ -814,9 +825,10 @@
         <div class="pricing-price">
           <div class="pricing-price-main">
             <span class="pricing-currency">R$</span>
-            <span class="pricing-amount">997</span>
-            <span class="pricing-period">/m&#234;s</span>
+            <span class="pricing-amount" data-monthly="997" data-annual="9.970">997</span>
+            <span class="pricing-period">/mês</span>
           </div>
+          <div class="pricing-annual-note" style="display: none;">Equivalente a R$ 830/mês. 16% de desconto.</div>
         </div>
         <p class="pricing-desc">Para times comerciais estruturados que precisam de escala, IA ativa e visibilidade total.</p>
         <ul class="pricing-features">
@@ -843,9 +855,10 @@
         <div class="pricing-price">
           <div class="pricing-price-main">
             <span class="pricing-currency">R$</span>
-            <span class="pricing-amount">2.997</span>
-            <span class="pricing-period">/m&#234;s</span>
+            <span class="pricing-amount" data-monthly="2.997" data-annual="29.970">2.997</span>
+            <span class="pricing-period">/mês</span>
           </div>
+          <div class="pricing-annual-note" style="display: none;">Equivalente a R$ 2.497/mês. 16% de desconto.</div>
         </div>
         <p class="pricing-desc">Para opera&#231;&#245;es de alto volume com integra&#231;&#227;o profunda, IA ilimitada e suporte VIP dedicado.</p>
         <ul class="pricing-features">

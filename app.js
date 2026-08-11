@@ -1696,3 +1696,36 @@
     }
   });
 })();
+
+// ─── PRICING TOGGLE ───
+const planToggle = document.getElementById('plan-toggle');
+const labelMonthly = document.getElementById('label-monthly');
+const labelAnnual = document.getElementById('label-annual');
+const pricingAmounts = document.querySelectorAll('.pricing-amount');
+const annualNotes = document.querySelectorAll('.pricing-annual-note');
+
+if (planToggle) {
+  planToggle.addEventListener('change', () => {
+    const isAnnual = planToggle.checked;
+    
+    if (isAnnual) {
+      labelAnnual.classList.add('active');
+      labelMonthly.classList.remove('active');
+      pricingAmounts.forEach(el => {
+        el.textContent = el.dataset.annual;
+      });
+      annualNotes.forEach(el => {
+        el.style.display = 'block';
+      });
+    } else {
+      labelMonthly.classList.add('active');
+      labelAnnual.classList.remove('active');
+      pricingAmounts.forEach(el => {
+        el.textContent = el.dataset.monthly;
+      });
+      annualNotes.forEach(el => {
+        el.style.display = 'none';
+      });
+    }
+  });
+}
