@@ -2037,7 +2037,7 @@ header.scrolled .site-logo-icon {
   opacity: 0.85;
 }
 
-/* ─── MODAL DE DETALHES DO PLANO (LIGHT MODE PREMIUM) ─── */
+/* ─── MODAL DE DETALHES DO PLANO (LIGHT MODE ALTA PERFORMANCE) ─── */
 .plan-detail-overlay {
   display: none;
   position: fixed;
@@ -2045,14 +2045,13 @@ header.scrolled .site-logo-icon {
   width: 100vw;
   height: 100vh;
   z-index: 999999;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.75);
   align-items: center;
   justify-content: center;
   padding: 20px;
   opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.2s ease;
+  overscroll-behavior: contain;
 }
 
 .plan-detail-overlay.active {
@@ -2070,14 +2069,16 @@ header.scrolled .site-logo-icon {
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  transform: scale(0.96) translateY(12px);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.97) translateZ(0);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  contain: content;
 }
 
 .plan-detail-overlay.active .plan-detail-modal {
-  transform: scale(1) translateY(0);
+  transform: scale(1) translateZ(0);
 }
 
 .plan-detail-header-bar {
@@ -2126,6 +2127,8 @@ header.scrolled .site-logo-icon {
 .plan-detail-body {
   padding: 28px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   gap: 24px;
