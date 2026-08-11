@@ -780,14 +780,21 @@
       </div>
     </div>
 
-    <!-- TOGGLE MENSAL / ANUAL -->
-    <div class="pricing-toggle-wrapper reveal">
-      <span class="toggle-label" id="label-monthly">Mensal</span>
-      <label class="pricing-toggle">
-        <input type="checkbox" id="plan-toggle">
-        <span class="toggle-slider"></span>
-      </label>
-      <span class="toggle-label" id="label-annual">Anual <span class="discount-badge">2 meses grátis</span></span>
+    <!-- TOGGLE MENSAL / ANUAL (SEGMENTED CONTROL PREMIUM) -->
+    <div class="pricing-toggle-container reveal">
+      <div class="pricing-segmented-control" role="tablist" aria-label="Frequência de Cobrança">
+        <button type="button" class="segmented-btn active" id="btn-monthly" role="tab" aria-selected="true">
+          Cobrança Mensal
+        </button>
+        <button type="button" class="segmented-btn" id="btn-annual" role="tab" aria-selected="false">
+          Cobrança Anual
+          <span class="segmented-badge">🔥 2 meses grátis</span>
+        </button>
+        <div class="segmented-indicator"></div>
+      </div>
+      <p class="pricing-toggle-subtitle">
+        <span class="discount-highlight">✨ Economize até 16% no pagamento anual</span>
+      </p>
     </div>
 
     <div class="bento-pricing reveal">

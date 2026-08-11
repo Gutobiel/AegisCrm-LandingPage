@@ -1697,35 +1697,46 @@
   });
 })();
 
-// ─── PRICING TOGGLE ───
-const planToggle = document.getElementById('plan-toggle');
-const labelMonthly = document.getElementById('label-monthly');
-const labelAnnual = document.getElementById('label-annual');
-const pricingAmounts = document.querySelectorAll('.pricing-amount');
-const annualNotes = document.querySelectorAll('.pricing-annual-note');
+// ─── SEGMENTED PRICING TOGGLE ───
+(function() {
+  const btnMonthly = document.getElementById('btn-monthly');
+  const btnAnnual = document.getElementById('btn-annual');
+  const segmentedControl = document.querySelector('.pricing-segmented-control');
+  const pricingAmounts = document.querySelectorAll('.pricing-amount');
+  const annualNotes = document.querySelectorAll('.pricing-annual-note');
 
-if (planToggle) {
-  planToggle.addEventListener('change', () => {
-    const isAnnual = planToggle.checked;
-    
-    if (isAnnual) {
-      labelAnnual.classList.add('active');
-      labelMonthly.classList.remove('active');
-      pricingAmounts.forEach(el => {
-        el.textContent = el.dataset.annual;
-      });
-      annualNotes.forEach(el => {
-        el.style.display = 'block';
-      });
-    } else {
-      labelMonthly.classList.add('active');
-      labelAnnual.classList.remove('active');
-      pricingAmounts.forEach(el => {
-        el.textContent = el.dataset.monthly;
-      });
-      annualNotes.forEach(el => {
-        el.style.display = 'none';
-      });
+  if (btnMonthly && btnAnnual && segmentedControl) {
+    function setBilling(mode) {
+      if (mode === 'annual') {
+        btnAnnual.classList.add('active');
+        btnAnnual.setAttribute('aria-selected', 'true');
+        btnMonthly.classList.remove('active');
+        btnMonthly.setAttribute('aria-selected', 'false');
+        segmentedControl.classList.add('is-annual');
+
+        pricingAmounts.forEach(el => {
+          if (el.dataset.annual) el.textContent = el.dataset.annual;
+        });
+        annualNotes.forEach(el => {
+          el.style.display = 'block';
+        });
+      } else {
+        btnMonthly.classList.add('active');
+        btnMonthly.setAttribute('aria-selected', 'true');
+        btnAnnual.classList.remove('active');
+        btnAnnual.setAttribute('aria-selected', 'false');
+        segmentedControl.classList.remove('is-annual');
+
+        pricingAmounts.forEach(el => {
+          if (el.dataset.monthly) el.textContent = el.dataset.monthly;
+        });
+        annualNotes.forEach(el => {
+          el.style.display = 'none';
+        });
+      }
     }
-  });
-}
+
+    btnMonthly.addEventListener('click', () => setBilling('monthly'));
+    btnAnnual.addEventListener('click', () => setBilling('annual'));
+  }
+})();
