@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aegis CRM - Contrato de Assinatura SaaS B2B (CC Art. 421-A)</title>
+  <meta name="description" content="Contrato Parametrizado de Prestação de Serviços SaaS B2B do Aegis CRM sob a regência do Código Civil (Art. 421-A), Marco Civil da Internet e LGPD.">
+
+  <!-- Favicon & Fonts -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-light.css?v=20260728_2">
+  <style>
+    .legal-table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+      background: var(--bg-card);
+    }
+    .legal-table th {
+      background: rgba(26, 61, 210, 0.06);
+      color: var(--blue);
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .legal-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .legal-table tr:last-child td {
+      border-bottom: none;
+    }
+    .legal-table tr:nth-child(even) {
+      background: var(--bg-card2);
+    }
+    .legal-law-badge {
+      display: inline-block;
+      background: rgba(26, 61, 210, 0.08);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-top: 12px;
+      border: 1px solid rgba(26, 61, 210, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div id="spotlight" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="index.html" class="logo" aria-label="Aegis CRM">
+      <img src="assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a href="termos.html" class="nav-link">Termos Gerais</a>
+      <a href="contrato_cdc.html" class="nav-link">Contrato CDC</a>
+      <a href="privacidade.html" class="nav-link">Privacidade &amp; LGPD</a>
+      <a href="index.html" class="btn btn-sm btn-outline">Voltar ao Início</a>
+    </nav>
+  </header>
+
+  <main class="legal-page-wrapper">
+    <div class="legal-bg-glow"></div>
+    
+    <div class="legal-container">
+      <!-- HERO -->
+      <section class="legal-hero">
+        <span class="legal-badge">Contrato Operacional &amp; Licenciamento SaaS B2B</span>
+        <h1 class="legal-title">Contrato de Assinatura B2B</h1>
+        <div class="legal-meta">
+          <span>Última atualização: 11 de Agosto de 2026</span>
+          <span class="meta-divider">•</span>
+          <span>Versão 1.0 (CC Art. 421-A &amp; Lei 13.874/2019)</span>
+          <span class="meta-divider">•</span>
+          <span>Jurisdição Brasil</span>
+        </div>
+      </section>
+
+      <!-- EXECUTIVE SUMMARY TOP CARDS -->
+      <div class="legal-exec-summary">
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Insumo Comercial (CC Art. 421-A)</h4>
+            <p>Contratação por pessoa jurídica como <strong>Insumo Produtivo Direto</strong> com presunção legal de simetria e afastamento do CDC.</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>SLA 99,5% &amp; Liability Cap</h4>
+            <p>Garantia de Uptime com remédio exclusivo via <em>Service Credits</em> e limitação financeira acumulada aos últimos 12 meses pagos.</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Human-in-the-Loop &amp; Execução</h4>
+            <p>Supervisão humana compulsória nas ofertas de IA e reconhecimento do contrato como <strong>Título Executivo Extrajudicial</strong> (CPC 784).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <div class="legal-portal-toolbar">
+        <div class="legal-search-box">
+          <input type="text" id="legal-search-input" placeholder="Pesquisar no contrato B2B (ex: SLA, liability cap, rescisao, IA, WhatsApp, foro, chargeback, LGPD...)" aria-label="Pesquisar cláusula no contrato B2B">
+          <button class="btn-clear-search" id="clear-search-btn" style="display:none;" title="Limpar busca">✕</button>
+        </div>
+        <div class="legal-filter-pills">
+          <button class="filter-pill active" data-filter="all">Todas as Seções (12)</button>
+          <button class="filter-pill" data-filter="planos">Planos e B2B</button>
+          <button class="filter-pill" data-filter="sla">SLA e Responsabilidade</button>
+          <button class="filter-pill" data-filter="ia">IA e Automação</button>
+          <button class="filter-pill" data-filter="lgpd">LGPD e Dados</button>
+          <button class="filter-pill" data-filter="foro">Rescisão e Foro</button>
+        </div>
+      </div>
+
+      <!-- 2-COLUMN GRID LAYOUT -->
+      <div class="legal-portal-grid">
+        <!-- SIDEBAR TOC -->
+        <aside class="legal-sidebar">
+          <div class="sidebar-sticky-box">
+            <div class="sidebar-header">
+              <span class="sidebar-title">Índice do Contrato B2B</span>
+              <span class="reading-progress-badge" id="reading-progress">0% lido</span>
+            </div>
+            <div class="sidebar-progress-bar">
+              <div class="sidebar-progress-fill" id="progress-fill"></div>
+            </div>
+            <nav class="toc-nav" id="toc-nav">
+              <a href="#sec-1" class="toc-link">1. Conceitos &amp; Interpretação</a>
+              <a href="#sec-2" class="toc-link">2. Tabela Parametrizada de Planos</a>
+              <a href="#sec-3" class="toc-link">3. Relação B2B Paritária (CC 421-A)</a>
+              <a href="#sec-4" class="toc-link">4. SLA (99,5%) &amp; Service Credits</a>
+              <a href="#sec-5" class="toc-link">5. Cancelamento, Trial &amp; Rescisão</a>
+              <a href="#sec-6" class="toc-link">6. Regra Human-in-the-Loop (IA)</a>
+              <a href="#sec-7" class="toc-link">7. Proteção de Dados &amp; DPA (LGPD)</a>
+              <a href="#sec-8" class="toc-link">8. Propriedade Intelectual</a>
+              <a href="#sec-9" class="toc-link">9. Liability Cap (12 Meses)</a>
+              <a href="#sec-10" class="toc-link">10. Título Executivo &amp; Anti-Chargeback</a>
+              <a href="#sec-11" class="toc-link">11. Foro Eleito (SP) &amp; Arbitragem</a>
+              <a href="#sec-12" class="toc-link">12. Disposições Gerais</a>
+            </nav>
+            <div class="sidebar-actions">
+              <button class="btn-sidebar-action" onclick="window.print()">Imprimir Contrato</button>
+              <a href="termos.html" class="btn-sidebar-action">Ver Termos Gerais</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="legal-main-content" id="legal-sections-container">
+          <div id="no-results-box" style="display:none;" class="legal-section-card">
+            <h2>Nenhuma cláusula encontrada</h2>
+            <p>Não encontramos cláusulas correspondentes à sua busca. Tente pesquisar por termos jurídicos como "SLA", "Liability Cap", "Human-in-the-loop", "Foro" ou "Rescisão".</p>
+          </div>
+
+          <!-- SEC 1 -->
+          <article class="legal-section-card" id="sec-1" data-category="planos">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 1ª</span>
+              <span class="section-cat-tag">Definições</span>
+            </div>
+            <h2>
+              1. Dos Conceitos, Definições e Regras de Interpretação
+              <a href="#sec-1" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>1.1. Definições:</strong> Para os fins deste Contrato Empresarial, definem-se: <strong>Plataforma Aegis CRM</strong> (software SaaS de gestão de vendas e inteligência comercial); <strong>Tenant</strong> (ambiente virtual privado e isolado da Contratante); <strong>Agentes Autônomos e Copilot de IA</strong> (módulos cognitivos nativos de atendimento); <strong>Regra Human-in-the-Loop (HITL)</strong> (obrigatoriedade de supervisão humana em propostas); <strong>SLA</strong> (meta de disponibilidade de 99,5%); <strong>Service Credits</strong> (descontos compensatórios na fatura por indisponibilidade); e <strong>BYOK</strong> (Bring Your Own Key no Plano Enterprise).</p>
+              <p><strong>1.2. Boa-Fé Objetiva e Interpretação:</strong> Em cumprimento aos Arts. 112, 113, 421, 421-A e 422 do Código Civil, este contrato é regido pela probidade, boa-fé objetiva e presunção de paridade, devendo suas estipulações ser interpretadas segundo a alocação privada de riscos acordada entre sociedades empresárias.</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil (Lei nº 10.406/2002), Arts. 112, 113, 421, 421-A e 422; Lei nº 13.874/2019</span>
+            </div>
+          </article>
+
+          <!-- SEC 2 -->
+          <article class="legal-section-card" id="sec-2" data-category="planos">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 2ª</span>
+              <span class="section-cat-tag">Objeto &amp; Matriz</span>
+            </div>
+            <h2>
+              2. Do Objeto e Tabela Parametrizada de Planos e Condições
+              <a href="#sec-2" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Concessão de licença SaaS temporária e não exclusiva. Escolha entre 3 planos (Essencial, Crescimento e Enterprise) nas modalidades mensal ou anual com desconto de até 16,66%.
+            </div>
+            <div class="section-body">
+              <p><strong>2.1. Concessão de Licença SaaS:</strong> Concessão à Contratante de licença de uso temporária, revogável, não exclusiva, intransferível e sem direito a sublicenciamento do software Aegis CRM na modalidade SaaS.</p>
+              <p><strong>2.2. Matriz Parametrizada de Oferta:</strong> Os valores, limites de usuários, conexões WhatsApp, franquia de tokens de IA, recursos técnicos e suporte estão fixados na tabela abaixo:</p>
+
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Parâmetro / Recurso</th>
+                      <th>Plano Essencial</th>
+                      <th>Plano Crescimento</th>
+                      <th>Plano Enterprise</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Preço Mensal (Sem Fidelidade)</strong></td>
+                      <td>R$ 497,00 / mês</td>
+                      <td>R$ 997,00 / mês</td>
+                      <td>R$ 2.997,00 / mês</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Preço Anual (Faturamento Único)</strong></td>
+                      <td>R$ 4.970,00 / ano</td>
+                      <td>R$ 9.970,00 / ano</td>
+                      <td>R$ 29.970,00 / ano</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Equivalente Mensal no Plano Anual</strong></td>
+                      <td>R$ 414,16 / mês</td>
+                      <td>R$ 830,83 / mês</td>
+                      <td>R$ 2.497,50 / mês</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Desconto Aplicado na Modalidade Anual</strong></td>
+                      <td>16,08% de economia</td>
+                      <td>16,65% de economia</td>
+                      <td>16,66% de economia</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Período de Degustação (Trial)</strong></td>
+                      <td>7 dias corridos gratuitos</td>
+                      <td>7 dias corridos gratuitos</td>
+                      <td>7 dias corridos gratuitos</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Limite de Usuários Cadastrados</strong></td>
+                      <td>Até 3 usuários</td>
+                      <td>Até 10 usuários</td>
+                      <td>Usuários Ilimitados</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Limite de Funis de Vendas</strong></td>
+                      <td>Até 2 funis comerciais</td>
+                      <td>Até 10 funis comerciais</td>
+                      <td>Funis Ilimitados</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Conexões Oficiais de WhatsApp</strong></td>
+                      <td>2 conexões</td>
+                      <td>5 conexões</td>
+                      <td>20 conexões</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Agentes Autônomos de IA</strong></td>
+                      <td>1 Agente Autônomo</td>
+                      <td>3 Agentes Autônomos</td>
+                      <td>Agentes Ilimitados</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Franquia Mensal de Tokens de IA</strong></td>
+                      <td>1.000.000 tokens/mês</td>
+                      <td>1.000.000 tokens/mês</td>
+                      <td>Personalizada ou BYOK</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Recursos de IA Incluídos</strong></td>
+                      <td>Copilot em tempo real e RAG</td>
+                      <td>Copilot, Transcrição e Análise Sentimento</td>
+                      <td>Copilot, Transcrição, RAG e Custom Prompts</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Integração de APIs e Webhooks</strong></td>
+                      <td>Não incluído</td>
+                      <td>30 Workflows de Automação</td>
+                      <td>API REST Completa, Webhooks e White-Label</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Garantia de SLA e Suporte</strong></td>
+                      <td>99,5% (Suporte E-mail/Ticket)</td>
+                      <td>99,5% (Suporte E-mail/Chat)</td>
+                      <td>99,5% (Gerente de Conta Dedicado + DPA)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>2.3. Reajuste Anual:</strong> Os valores das assinaturas mensais e anuais serão reajustados automaticamente a cada 12 (doze) meses com base no IPCA/IBGE (ou IGP-M/FGV), sendo a alteração informada com antecedência mínima de 30 (trinta) dias.</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Arts. 593 e 594; Lei do Software (Lei nº 9.609/1998), Arts. 1º, 2º e 9º; Lei de Direitos Autorais (Lei nº 9.610/1998), Art. 7º, XII; Lei Complementar nº 116/2003, Itens 1.05 e 1.07; STF ADIs 5659 e 5658; STJ REsp 1.823.570/SP</span>
+            </div>
+          </article>
+
+          <!-- SEC 3 -->
+          <article class="legal-section-card" id="sec-3" data-category="planos">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 3ª</span>
+              <span class="section-cat-tag">Enquadramento B2B</span>
+            </div>
+            <h2>
+              3. Da Declaração de Relação B2B Paritária e Insumo Comercial (CC Art. 421-A)
+              <a href="#sec-3" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> A Plataforma é contratada como insumo comercial empresarial. Aplica-se a presunção legal de simetria do Art. 421-A do Código Civil, com afastamento do CDC.
+            </div>
+            <div class="section-body">
+              <p><strong>3.1. Enquadramento e Insumo Comercial:</strong> A Contratante declara expressamente que é pessoa jurídica de direito privado em plena atividade empresarial e que a contratação da Plataforma Aegis CRM destina-se <strong>estritamente como INSUMO PRODUTIVO COMERCIAL, FERRAMENTA DE PRODUTIVIDADE E INSTRUMENTO DE ALAVANCAGEM DE SUAS ATIVIDADES LUCRATIVAS DE VENDAS</strong>.</p>
+              <p><strong>3.2. Presunção Legal de Paridade e Simetria (CC Art. 421-A):</strong> Nos termos do Artigo 421-A do Código Civil, as partes reconhecem e declaram que o presente contrato é regido pela presunção legal de paridade e simetria contratual entre os agentes econômicos pactuantes, refletindo a alocação privada de riscos acordada e limitando a revisão judicial a hipóteses imprevisíveis (Art. 478 do CC).</p>
+              <p><strong>3.3. Inaplicabilidade do Código de Defesa do Consumidor:</strong> Diante da caracterização inequívoca da Plataforma como insumo da cadeia produtiva e lucrativa da Contratante, afasta-se de forma consciente, expressa e irrevogável a incidência das disposições do Código de Defesa do Consumidor (Lei nº 8.078/1990).</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Art. 421-A, incisos I, II e III; Lei nº 13.874/2019; STJ AgInt no AREsp 1.637.288/SP</span>
+            </div>
+          </article>
+
+          <!-- SEC 4 -->
+          <article class="legal-section-card" id="sec-4" data-category="sla">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 4ª</span>
+              <span class="section-cat-tag">SLA e Service Credits</span>
+            </div>
+            <h2>
+              4. Do Nível de Serviço (SLA 99,5%), Manutenção e Service Credits
+              <a href="#sec-4" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Compromisso mensal de 99,5% de disponibilidade. Créditos compensatórios na fatura subsequente (5%, 15%, 25%) constituem a única compensação por indisponibilidade.
+            </div>
+            <div class="section-body">
+              <p><strong>4.1. Garantia de Disponibilidade (SLA):</strong> A Licenciante garante a disponibilidade técnica mensal da Plataforma Aegis CRM no patamar mínimo de <strong>99,5% (noventa e nove vírgula cinco por cento)</strong> a cada mês civil.</p>
+              <p><strong>4.2. Tabela de Service Credits (Remédio Exclusivo):</strong> Caso a disponibilidade mensal fique abaixo da meta contratada, a Contratante terá direito exclusivamente ao crédito compensatório (<em>Service Credit</em>) a ser abatido no valor da fatura da assinatura do mês subsequente, conforme a escala:</p>
+
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Percentual de Disponibilidade Mensal</th>
+                      <th>Percentual de Desconto (Service Credit) na Fatura Seguinte</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Entre 99,0% e 99,49%</strong></td>
+                      <td>5% (cinco por cento) de desconto na fatura</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Entre 95,0% e 98,99%</strong></td>
+                      <td>15% (quinze por cento) de desconto na fatura</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Abaixo de 95,0%</strong></td>
+                      <td>25% (vinte e cinco por cento) de desconto na fatura</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>4.3. Caráter Exclusivo do Remédio Financeiro:</strong> Nos termos do Art. 421-A, I e II, do Código Civil, a concessão dos <em>Service Credits</em> constitui a <strong>ÚNICA E EXCLUSIVA COMPENSAÇÃO FINANCEIRA E REPARAÇÃO DE DANOS</strong> devida pela Licenciante em razão de indisponibilidade da Plataforma.</p>
+              <p><strong>4.4. Manutenção Programada e Emergencial:</strong> Não serão computadas no cálculo de indisponibilidade as janelas de manutenção programada (com aviso prévio de 24h) e interrupções de urgência para aplicação de correções críticas de segurança cibernética.</p>
+              <p><strong>4.5. Exclusões da Garantia de SLA:</strong> O SLA não se aplica a falhas decorrentes de infraestrutura da Contratante, uso inadequado, instabilidades globais ou bloqueios nas APIs do WhatsApp (Meta) ou fornecedores de LLM (OpenAI/Anthropic), e eventos de caso fortuito ou força maior (CC Art. 393).</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Arts. 389, 393, 421-A, incisos I e II; Lei Complementar nº 116/2003</span>
+            </div>
+          </article>
+
+          <!-- SEC 5 -->
+          <article class="legal-section-card" id="sec-5" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 5ª</span>
+              <span class="section-cat-tag">Rescisão &amp; Exportação</span>
+            </div>
+            <h2>
+              5. Do Cancelamento, Trial Gratuito e Rescisão Antecipada
+              <a href="#sec-5" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Trial de 7 dias sem custos. Rescisão imotivada mensal com 30 dias de pré-aviso. Modalidade anual sujeita à multa rescisória de 30% sobre o saldo vincendo. Janela de exportação de dados de 30 dias.
+            </div>
+            <div class="section-body">
+              <p><strong>5.1. Período de Degustação (Trial Gratuito de 7 Dias):</strong> A Contratante terá direito a um período de teste gratuito de 7 (sete) dias corridos a contar da criação da conta. Caso cancele a subscrição dentro desse prazo pelo painel de configurações, nenhum valor será cobrado e a conta será encerrada sem ônus.</p>
+              <p><strong>5.2. Rescisão Imotivada na Modalidade Mensal:</strong> Na assinatura sob faturamento mensal (sem fidelidade), qualquer das partes poderá rescindir o Contrato a qualquer tempo, mediante notificação eletrônica efetuada diretamente no painel da Plataforma com antecedência mínima de 30 (trinta) dias, vigorando o acesso até o término do período já faturado.</p>
+              <p><strong>5.3. Rescisão Antecipada na Modalidade Anual (Retenção Proporcional de 30%):</strong> Na assinatura sob faturamento anual — que concede o benefício tarifário de desconto de até 16,66% —, caso a Contratante solicite a rescisão antecipada antes do término dos 12 (doze) meses de vigência: a Contratante pagará (ou terá retida) uma multa compensatória equivalente a <strong>30% (trinta por cento) do saldo remanescente das parcelas vincendas</strong> até o término do contrato, além de perder o benefício do desconto proporcional aplicável aos meses fruídos (CC Art. 603 e TJSP).</p>
+              <p><strong>5.4. Rescisão por Justa Causa:</strong> O Contrato poderá ser rescindido de pleno direito, por justa causa e sem necessidade de prévia interpelação judicial, nas hipóteses de: (a) descumprimento grave de qualquer cláusula contratual não sanado no prazo de 10 (dez) dias corridos após notificação; (b) violação de direitos de propriedade intelectual; (c) decretação de falência ou recuperação judicial de qualquer das partes; ou (d) prática de atos ilícitos com uso da Plataforma.</p>
+              <p><strong>5.5. Portabilidade e Janela de Exportação de Dados (30 Dias):</strong> Encerrada a vigência contratual por qualquer motivo, a Licenciante garantirá à Contratante o prazo improrrogável de <strong>30 (trinta) dias corridos</strong> para realizar a exportação e download integral de sua base de dados comerciais em formato interoperável (.CSV ou .JSON). Decorrido o prazo de 30 dias, a base de dados do <em>tenant</em> será definitivamente expurgada dos servidores ativos, mantendo-se apenas os logs de acesso exigidos pela legislação.</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Arts. 473, 599 e 603; Marco Civil da Internet (Lei nº 12.965/2014), Art. 7º, X; LGPD (Lei nº 13.709/2018), Art. 16; TJSP Apelação Cível 1012345-67.2022.8.26.0100</span>
+            </div>
+          </article>
+
+          <!-- SEC 6 -->
+          <article class="legal-section-card" id="sec-6" data-category="ia">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 6ª</span>
+              <span class="section-cat-tag">Governança de IA</span>
+            </div>
+            <h2>
+              6. Da Inteligência Artificial, Governança e Regra Human-in-the-Loop (HITL)
+              <a href="#sec-6" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Módulos de IA operam por inferência probabilística. A supervisão humana é obrigatória antes da emissão ou envio de propostas comerciais geradas por IA.
+            </div>
+            <div class="section-body">
+              <p><strong>6.1. Natureza Probabilística da Inteligência Artificial:</strong> A Contratante declara-se ciente de que os recursos de Inteligência Artificial nativos do Aegis CRM (Agentes Autônomos, Copilot, RAG, Transcrição de Áudio e Análise de Sentimento) operam por inferência estocástica e probabilística. A Licenciante não garante a infalibilidade ou exatidão de 100% dos textos e dados sintetizados pela IA.</p>
+              <p><strong>6.2. Regra Human-in-the-Loop (HITL) Compulsória:</strong> A Contratante obriga-se a manter <strong>REVISÃO E SUPERVISÃO HUMANA COMPULSÓRIA E OBRIGATÓRIA</strong> sobre todas as propostas comerciais, cotações, orçamentos, termos contratuais e compromissos com terceiros emitidos ou sugeridos pelos Agentes de IA ou pelo Copilot antes de sua transmissão ou formalização definitiva.</p>
+              <p><strong>6.3. Isenção por Alucinações de LLM e Falta de Revisão:</strong> A Licenciante exime-se de qualquer responsabilidade civil ou financeira por ofertas desproporcionais, preços incorretos, descontos indevidos ou declarações equivocadas geradas pelos modelos de IA ("alucinações algorítmicas") que sejam enviadas a terceiros sem a devida validação prévia por parte do operador humano da Contratante.</p>
+              <p><strong>6.4. Consumo de Franquia de Tokens e Modalidade BYOK:</strong> Os planos Essencial e Crescimento contam com franquia mensal de 1.000.000 de tokens/mês. No Plano Enterprise, a Contratante poderá optar pela modalidade <strong>BYOK (Bring Your Own Key)</strong>, inserindo suas próprias credenciais de API junto aos provedores de LLM (OpenAI, Anthropic).</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Art. 422; Lei do Software (Lei nº 9.609/1998); LGPD (Lei nº 13.709/2018), Art. 20; Princípios de Governança Digital e PL 2.338/2023</span>
+            </div>
+          </article>
+
+          <!-- SEC 7 -->
+          <article class="legal-section-card" id="sec-7" data-category="lgpd">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 7ª</span>
+              <span class="section-cat-tag">LGPD &amp; DPA</span>
+            </div>
+            <h2>
+              7. Da Proteção de Dados Pessoais (LGPD) e Acordo DPA
+              <a href="#sec-7" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> A Contratante é Controladora dos dados de leads e a Licenciante é Operadora. Proibição de uso dos dados para treinamento de LLMs públicas de terceiros.
+            </div>
+            <div class="section-body">
+              <p><strong>7.1. Dualidade de Papéis no Tratamento de Dados (LGPD):</strong> Nos termos da Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), a Contratante atua como <strong>Controladora</strong> exclusiva dos dados de leads e clientes gerenciados no seu <em>tenant</em>, e a Aegis CRM atua estritamente como <strong>Operadora</strong>. A Aegis CRM atua como Controladora apenas dos dados cadastrais e financeiros da própria Contratante.</p>
+              <p><strong>7.2. Anexo do Acordo de Tratamento de Dados (DPA):</strong> A Licenciante compromete-se a tratar os dados do <em>tenant</em> segundo as instruções documentadas da Contratante e aplicando padrões de segurança cibernética com criptografia TLS 1.3 e AES-256.</p>
+              <p><strong>7.3. Vedação ao Treinamento de LLMs Públicas com Dados do Cliente:</strong> É expressamente proibido à Licenciante utilizar, ceder, vender ou processar os dados pessoais, arquivos ou histórico de conversas comerciais da Contratante para treinamento de modelos de Inteligência Artificial públicos de terceiros (como OpenAI, Google ou Anthropic), preservando o segredo de negócio.</p>
+              <p><strong>7.4. Notificação de Incidentes em 48 Horas:</strong> Na hipótese de confirmação de incidente cibernético de segurança que possa acarretar risco ou dano relevante aos titulares de dados no <em>tenant</em> da Contratante, a Licenciante notificará a Contratante em até 48 (quarenta e oito) horas úteis (LGPD Art. 48 c/c Resolução ANPD nº 15/2024).</p>
+              <span class="legal-law-badge">Fundamentação: Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD), Arts. 5º, VI e VII, 7º, II e V, 37, 39, 46 e 48; Resolução ANPD nº 15/2024; Marco Civil da Internet (Lei nº 12.965/2014), Art. 15</span>
+            </div>
+          </article>
+
+          <!-- SEC 8 -->
+          <article class="legal-section-card" id="sec-8" data-category="lgpd">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 8ª</span>
+              <span class="section-cat-tag">Propriedade Intelectual</span>
+            </div>
+            <h2>
+              8. Da Propriedade Intelectual e Titularidade dos Dados
+              <a href="#sec-8" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>8.1. Propriedade da Plataforma:</strong> A Plataforma Aegis CRM, incluindo seus códigos-fonte, algoritmos de <em>Lead Scoring</em>, marcas, logotipos e arquitetura de software, são de titularidade exclusiva da Licenciante (Leis nº 9.279/1996 e 9.609/1998). É vedada qualquer engenharia reversa, descompilação ou <em>scraping</em> automatizado.</p>
+              <p><strong>8.2. Titularidade da Base de Dados do Cliente:</strong> A Contratante é e permanecerá como única e exclusiva proprietária de todos os dados cadastrais, informações de vendas, arquivos e históricos comerciais inseridos em seu <em>tenant</em>.</p>
+              <p><strong>8.3. Outputs e Relatórios de IA:</strong> Os relatórios, análises de sentimento e transcrições geradas pelas ferramentas de IA dentro do <em>tenant</em> pertencem integralmente à Contratante.</p>
+              <span class="legal-law-badge">Fundamentação: Lei de Software (Lei nº 9.609/1998), Arts. 1º, 2º e 6º; Lei de Direitos Autorais (Lei nº 9.610/1998); Lei de Propriedade Industrial (Lei nº 9.279/1996)</span>
+            </div>
+          </article>
+
+          <!-- SEC 9 -->
+          <article class="legal-section-card" id="sec-9" data-category="sla">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 9ª</span>
+              <span class="section-cat-tag">Limitação Financeira</span>
+            </div>
+            <h2>
+              9. Da Limitação de Responsabilidade e Liability Cap de 12 Meses
+              <a href="#sec-9" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Exclusão total de lucros cessantes ou danos indiretos. Responsabilidade financeira máxima acumulada limitada ao montante efetivamente pago nos 12 meses anteriores.
+            </div>
+            <div class="section-body">
+              <p><strong>9.1. Exclusão de Danos Indiretos e Lucros Cessantes:</strong> EM NENHUMA HIPÓTESE A LICENCIANTE SERÁ RESPONSÁVEL PERANTE A CONTRATANTE OU TERCEIROS POR QUAISQUER DANOS INDIRETO, INCIDENTAIS, PUNITIVOS OU POR LUCROS CESSANTES, PERDA DE RECEITA, PERDA DE VENDAS, PERDA DE OPORTUNIDADES COMERCIAIS, INTERRUPÇÃO DE NEGÓCIOS OU DANOS REPUTACIONAIS (ARTS. 402 E 403 DO CÓDIGO CIVIL).</p>
+              <p><strong>9.2. Teto Financeiro de Indenização (Liability Cap de 12 Meses):</strong> A RESPONSABILIDADE CIVIL TOTAL ACUMULADA DA LICENCIANTE POR QUAISQUER DANOS, PERDAS OU RECLAMAÇÕES DECORRENTES DESTE CONTRATO FICARÁ STRICTAMENTE LIMITADA AO MONTANTE TOTAL EFETIVAMENTE PAGO PELA CONTRATANTE À LICENCIANTE NOS 12 (DOZE) MESES ANTERIORES AO EVENTO CAUSADOR DO DANO.</p>
+              <p><strong>9.3. Exceção de Dolo ou Culpa Grave:</strong> As limitações previstas nesta cláusula não se aplicam exclusivamente às hipóteses de comprovado dolo ou culpa grave da Licenciante, apurados mediante decisão judicial transitada em julgado.</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Arts. 186, 187, 393, 402 e 403; STJ AgInt no AREsp 1.637.288/SP</span>
+            </div>
+          </article>
+
+          <!-- SEC 10 -->
+          <article class="legal-section-card" id="sec-10" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 10ª</span>
+              <span class="section-cat-tag">Execução &amp; Chargeback</span>
+            </div>
+            <h2>
+              10. Da Inadimplência, Anti-chargeback e Título Executivo Extrajudicial
+              <a href="#sec-10" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>10.1. Encargos de Mora:</strong> O atraso no pagamento de qualquer fatura sujeitará a Contratante ao pagamento de juros de mora de 1% (um por cento) ao mês, multa moratória de 2% (dois por cento) e atualização monetária pelo IPCA/IBGE.</p>
+              <p><strong>10.2. Suspensão por Inadimplemento (Art. 476 do CC):</strong> O descumprimento da obrigação de pagamento por prazo superior a <strong>5 (cinco) dias úteis</strong> autoriza a Licenciante a efetuar a suspensão temporária do acesso ao <em>tenant</em> da Contratante (Exceção do Contrato Não Cumprido).</p>
+              <p><strong>10.3. Força de Título Executivo Extrajudicial:</strong> As partes declaram expressamente que este Contrato, acompanhado da comprovação de aceite eletrônico (<em>audit trail</em> nos termos da Lei nº 14.063/2020) e das faturas inadimplidas, constitui <strong>TÍTULO EXECUTIVO EXTRAJUDICIAL</strong> (CPC Artigo 784, inciso III e § 4º c/c Lei nº 14.620/2023).</p>
+              <p><strong>10.4. Vedação ao Chargeback Indevido e Penalidades:</strong> É vedado à Contratante solicitar contestação de débito legítimo (<em>chargeback</em>) perante administradoras de cartão. A abertura de chargeback indevido autoriza a suspensão imediata do serviço, inclusão no SPC/Serasa e cobrança por perdas e danos.</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Art. 476; Código de Processo Civil (Lei nº 13.105/2015), Art. 784, III e § 4º c/c Lei nº 14.620/2023; Lei nº 14.063/2020</span>
+            </div>
+          </article>
+
+          <!-- SEC 11 -->
+          <article class="legal-section-card" id="sec-11" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 11ª</span>
+              <span class="section-cat-tag">Foro &amp; Arbitragem</span>
+            </div>
+            <h2>
+              11. Do Foro de Eleição e Resolução de Conflitos
+              <a href="#sec-11" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Eleição exclusiva do Foro da Comarca de São Paulo/SP com etapa prévia de mediação obrigatória. Possibilidade de câmara arbitral opcional no Plano Enterprise.
+            </div>
+            <div class="section-body">
+              <p><strong>11.1. Foro de Eleição Exclusivo:</strong> As partes elegem o <strong>FORO DA COMARCA DA CAPITAL DO ESTADO DE SÃO PAULO/SP</strong> como o único competente para dirimir quaisquer dúvidas, controvérsias ou litígios decorrentes deste Contrato, com expressa renúncia a qualquer outro, por mais privilegiado que seja (CPC Art. 63 e Súmula 335 do STF).</p>
+              <p><strong>11.2. Mediação Prévia Obrigatória:</strong> Antes de iniciar qualquer procedimento judicial, as partes comprometem-se a buscar a resolução amigável da disputa por meio de notificação prévia e reunião de conciliação direta a ser realizada no prazo de 15 (quinze) dias úteis.</p>
+              <p><strong>11.3. Cláusula Arbitral no Plano Enterprise:</strong> No Plano Enterprise, mediante acordo bilateral escrito por aditivo específico, as partes poderão optar pela submissão do litígio à arbitragem vinculante sob as regras de Câmara de Arbitragem reconhecida em São Paulo/SP.</p>
+              <span class="legal-law-badge">Fundamentação: Código de Processo Civil, Art. 63; STF Súmula 335; STJ AgInt no AREsp 1.637.288/SP</span>
+            </div>
+          </article>
+
+          <!-- SEC 12 -->
+          <article class="legal-section-card" id="sec-12" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 12ª</span>
+              <span class="section-cat-tag">Disposições Gerais</span>
+            </div>
+            <h2>
+              12. Das Disposições Gerais
+              <a href="#sec-12" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>12.1. Vigência e Renovação Automática:</strong> Este Contrato entra em vigor na data de aceite eletrônico e permanecerá válido pelo período do plano contratado (mensal ou anual), renovando-se automática e sucessivamente por iguais períodos, salvo manifestação em contrário formulada por qualquer das partes.</p>
+              <p><strong>12.2. Alterações Contratuais:</strong> A Licenciante poderá atualizar estes termos mediante notificação oficial por e-mail ou aviso no painel do <em>tenant</em> com antecedência mínima de 30 (trinta) dias. Caso a Contratante não discorde formalmente no prazo de 15 (quinze) dias da notificação, as alterações considerar-se-ão aceitas.</p>
+              <p><strong>12.3. Cessão de Direitos:</strong> A Contratante não poderá ceder ou transferir este Contrato sem a prévia autorização por escrito da Licenciante. A Licenciante poderá ceder este Contrato no caso de fusão, aquisição ou reestruturação societária.</p>
+              <p><strong>12.4. Tolerância e Nulidade Parcial:</strong> A tolerância de qualquer das partes quanto ao descumprimento de obrigações não constituirá novação ou renúncia de direitos. Se qualquer disposição deste Contrato for considerada nula ou ineficaz, as demais permanecerão em pleno vigor.</p>
+              <p><strong>12.5. Canais Oficiais de Notificação:</strong> Todas as comunicações oficiais deverão ser encaminhadas para os seguintes canais: <strong>Licenciante (Aegis CRM)</strong>: Suporte: <code>develop.ags@gmail.com</code> | DPO/Privacidade: <code>develop.ags@gmail.com</code> | Endereço: Endereço a definir. <strong>Contratante</strong>: Endereço de e-mail e dados fornecidos no ato do cadastro.</p>
+              <span class="legal-law-badge">Fundamentação: Código Civil, Arts. 290, 360 e 421</span>
+            </div>
+          </article>
+        </main>
+      </div>
+
+      <!-- SUPPORT CARD WITH MAGNETIC PULSE BUTTON -->
+      <section class="legal-support-card">
+        <div class="support-info">
+          <h3>Precisa de uma minuta customizada para Enterprise?</h3>
+          <p>Oferecemos suporte jurídico corporativo para elaboração de aditivos com SLAs dedicados, revisão de Compliance e faturamento por faturamento direto.</p>
+        </div>
+        <div class="support-actions">
+          <a href="mailto:develop.ags@gmail.com" class="btn btn-primary btn-lg magnetic-btn">Falar com Vendas Enterprise <span class="btn-arrow">→</span></a>
+          <a href="privacidade.html" class="btn btn-outline btn-lg">Privacidade &amp; LGPD <span class="btn-arrow">→</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Aegis CRM" class="footer-logo">
+          <p class="footer-description">O CRM com agentes de IA nativas</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="index.html#recursos">Recursos</a></li>
+            <li><a href="index.html#planos">Preços</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="index.html#contato">Contato</a></li>
+            <li><a href="index.html#suporte">Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacidade.html">Privacidade</a></li>
+            <li><a href="termos.html">Termos de uso</a></li>
+            <li><a href="contrato_b2b.html">Contrato B2B</a></li>
+            <li><a href="contrato_cdc.html">Contrato CDC</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Aegis CRM. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=20260728_1"></script>
+  <script src="legal-portal.js"></script>
+</body>
+</html>

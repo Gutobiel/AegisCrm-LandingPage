@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aegis CRM - Contrato de Assinatura SaaS CDC (Lei 8.078/90 & Dec 7.962/13)</title>
+  <meta name="description" content="Contrato Parametrizado de Prestação de Serviços SaaS CDC do Aegis CRM sob a regência do Código de Defesa do Consumidor (Lei 8.078/1990), Decreto 7.962/2013, Marco Civil e LGPD.">
+
+  <!-- Favicon & Fonts -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-light.css?v=20260728_2">
+  <style>
+    .legal-table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+      background: var(--bg-card);
+    }
+    .legal-table th {
+      background: rgba(26, 61, 210, 0.06);
+      color: var(--blue);
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .legal-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .legal-table tr:last-child td {
+      border-bottom: none;
+    }
+    .legal-table tr:nth-child(even) {
+      background: var(--bg-card2);
+    }
+    .legal-law-badge {
+      display: inline-block;
+      background: rgba(26, 61, 210, 0.08);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-top: 12px;
+      border: 1px solid rgba(26, 61, 210, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div id="spotlight" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="index.html" class="logo" aria-label="Aegis CRM">
+      <img src="assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+      <a href="termos.html" class="nav-link">Termos Gerais</a>
+      <a href="contrato_b2b.html" class="nav-link">Contrato B2B</a>
+      <a href="privacidade.html" class="nav-link">Privacidade &amp; LGPD</a>
+      <a href="index.html" class="btn btn-sm btn-outline">Voltar ao Início</a>
+    </nav>
+  </header>
+
+  <main class="legal-page-wrapper">
+    <div class="legal-bg-glow"></div>
+    
+    <div class="legal-container">
+      <!-- HERO -->
+      <section class="legal-hero">
+        <span class="legal-badge">Contrato Operacional &amp; Licenciamento SaaS (Regime Consumerista - CDC)</span>
+        <h1 class="legal-title">Contrato de Assinatura CDC</h1>
+        <div class="legal-meta">
+          <span>Última atualização: 11 de Agosto de 2026</span>
+          <span class="meta-divider">•</span>
+          <span>Versão 1.0 (Lei 8.078/1990 &amp; Decreto 7.962/2013)</span>
+          <span class="meta-divider">•</span>
+          <span>Jurisdição Brasil</span>
+        </div>
+      </section>
+
+      <!-- EXECUTIVE SUMMARY TOP CARDS -->
+      <div class="legal-exec-summary">
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Direito de Arrependimento &amp; 1-Click Cancel</h4>
+            <p>Prazo legal de <strong>7 dias para cancelamento com reembolso 100%</strong> (Art. 49 CDC) e botão automatizado em 1 clique (Dec. 7.962/13).</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Multa Calibrada (Máx 10%) &amp; Sem Abusividade</h4>
+            <p>Retenção máxima de <strong>10% no saldo vincendo</strong> nos planos anuais (STJ REsp 1.358.557) e garantia de reparação integral (Art. 14 &amp; 51 CDC).</p>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-body">
+            <h4>Garantia de Adequação &amp; Foro do Consumidor</h4>
+            <p>Garantia de qualidade (Arts. 18-20 CDC) e competência inegociável do <strong>Foro do Domicílio do Consumidor</strong> (Art. 101, I CDC).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <div class="legal-portal-toolbar">
+        <div class="legal-search-box">
+          <input type="text" id="legal-search-input" placeholder="Pesquisar no contrato CDC (ex: arrependimento, cancelamento, multa, SLA, foro, LGPD, IA, reembolso...)" aria-label="Pesquisar cláusula no contrato CDC">
+          <button class="btn-clear-search" id="clear-search-btn" style="display:none;" title="Limpar busca">✕</button>
+        </div>
+        <div class="legal-filter-pills">
+          <button class="filter-pill active" data-filter="all">Todas as Seções (12)</button>
+          <button class="filter-pill" data-filter="cdc">Proteções CDC</button>
+          <button class="filter-pill" data-filter="planos">Planos e Preços</button>
+          <button class="filter-pill" data-filter="sla">SLA e Garantias</button>
+          <button class="filter-pill" data-filter="ia">IA e Automação</button>
+          <button class="filter-pill" data-filter="lgpd">LGPD e Dados</button>
+          <button class="filter-pill" data-filter="foro">Rescisão e Foro</button>
+        </div>
+      </div>
+
+      <!-- 2-COLUMN GRID LAYOUT -->
+      <div class="legal-portal-grid">
+        <!-- SIDEBAR TOC -->
+        <aside class="legal-sidebar">
+          <div class="sidebar-sticky-box">
+            <div class="sidebar-header">
+              <span class="sidebar-title">Índice do Contrato CDC</span>
+              <span class="reading-progress-badge" id="reading-progress">0% lido</span>
+            </div>
+            <div class="sidebar-progress-bar">
+              <div class="sidebar-progress-fill" id="progress-fill"></div>
+            </div>
+            <nav class="toc-nav" id="toc-nav">
+              <a href="#sec-1" class="toc-link">1. Conceitos &amp; Transparência</a>
+              <a href="#sec-2" class="toc-link">2. Tabela Parametrizada de Planos</a>
+              <a href="#sec-3" class="toc-link">3. Regime CDC &amp; Proteções</a>
+              <a href="#sec-4" class="toc-link">4. SLA (99,5%) &amp; Garantias Legais</a>
+              <a href="#sec-5" class="toc-link">5. Arrependimento &amp; 1-Click Cancel</a>
+              <a href="#sec-6" class="toc-link">6. Transparência de IA (HITL)</a>
+              <a href="#sec-7" class="toc-link">7. Proteção de Dados &amp; DPA</a>
+              <a href="#sec-8" class="toc-link">8. Propriedade Intelectual</a>
+              <a href="#sec-9" class="toc-link">9. Responsabilidade &amp; Nulidade</a>
+              <a href="#sec-10" class="toc-link">10. Inadimplência &amp; Logs MCI</a>
+              <a href="#sec-11" class="toc-link">11. Foro do Domicílio do Consumidor</a>
+              <a href="#sec-12" class="toc-link">12. Disposições Gerais</a>
+            </nav>
+            <div class="sidebar-actions">
+              <button class="btn-sidebar-action" onclick="window.print()">Imprimir Contrato</button>
+              <a href="contrato_b2b.html" class="btn-sidebar-action">Ver Contrato B2B</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="legal-main-content" id="legal-sections-container">
+          <div id="no-results-box" style="display:none;" class="legal-section-card">
+            <h2>Nenhuma cláusula encontrada</h2>
+            <p>Não encontramos cláusulas correspondentes à sua busca. Tente pesquisar por termos jurídicos como "Arrependimento", "SLA", "1-Click Cancel", "Foro", "LGPD" ou "Rescisão".</p>
+          </div>
+
+          <!-- SEC 1 -->
+          <article class="legal-section-card" id="sec-1" data-category="cdc">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 1ª</span>
+              <span class="section-cat-tag">Transparência</span>
+            </div>
+            <h2>
+              1. Dos Conceitos, Definições e da Transparência Pré-Contratual
+              <a href="#sec-1" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Transparência total pré-contratual. Garantia de recebimento do Sumário Informativo contendo preços, trial de 7 dias, limites operacionais e canais de suporte antes de qualquer pagamento.
+            </div>
+            <div class="section-body">
+              <p><strong>1.1. Definições:</strong> Para fins deste Contrato Consumerista, definem-se: <strong>Plataforma Aegis CRM</strong> (software SaaS de gestão comercial e inteligência); <strong>Tenant</strong> (ambiente virtual privado e isolado do Consumidor); <strong>Agentes Autônomos e Copilot de IA</strong> (módulos cognitivos nativos de atendimento); <strong>Regra Human-in-the-Loop (HITL)</strong> (supervisão humana compulsória de propostas de IA); <strong>SLA</strong> (meta de disponibilidade de 99,5%); <strong>Service Credits</strong> (descontos compensatórios em fatura); e <strong>Botão 1-Click Cancel</strong> (mecanismo automatizado de cancelamento imediato sem burocracia).</p>
+              <p><strong>1.2. Transparência Pré-Contratual e Sumário Informativo:</strong> Em cumprimento aos Arts. 6º, III, 30 e 31 do CDC e Art. 4º, I, do Decreto nº 7.962/2013, o Consumidor confirma o recebimento do Sumário Pré-Contratual com informações claras, legíveis e ostensivas sobre os preços, modalidades de pagamento, limites do plano, direitos de arrependimento e suporte técnico.</p>
+              <span class="legal-law-badge">Fundamentação: Lei nº 8.078/1990 (CDC), Arts. 6º, III, 30 e 31; Decreto nº 7.962/2013, Arts. 2º e 4º, I</span>
+            </div>
+          </article>
+
+          <!-- SEC 2 -->
+          <article class="legal-section-card" id="sec-2" data-category="planos">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 2ª</span>
+              <span class="section-cat-tag">Objeto &amp; Matriz</span>
+            </div>
+            <h2>
+              2. Do Objeto e Tabela Parametrizada de Planos e Condições
+              <a href="#sec-2" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Concessão de licença SaaS temporária. Escolha entre 3 planos (Essencial, Crescimento e Enterprise) nas modalidades mensal ou anual com desconto de 16%, trial gratuito de 7 dias e direito de arrependimento integral.
+            </div>
+            <div class="section-body">
+              <p><strong>2.1. Concessão de Licença SaaS:</strong> Concessão ao Consumidor de licença de uso temporária, revogável, não exclusiva, intransferível e sem direito a sublicenciamento do software Aegis CRM na modalidade SaaS.</p>
+              <p><strong>2.2. Matriz Parametrizada de Oferta:</strong> Os valores, limites de usuários, conexões WhatsApp, franquia de tokens de IA, recursos técnicos e garantias de suporte estão discriminados na tabela a seguir:</p>
+
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Parâmetro / Recurso</th>
+                      <th>Plano Essencial</th>
+                      <th>Plano Crescimento</th>
+                      <th>Plano Enterprise</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Preço Mensal (Sem Fidelidade)</strong></td>
+                      <td>R$ 497,00 / mês</td>
+                      <td>R$ 997,00 / mês</td>
+                      <td>R$ 2.997,00 / mês</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Preço Anual (Faturamento Único)</strong></td>
+                      <td>R$ 4.970,00 / ano</td>
+                      <td>R$ 9.970,00 / ano</td>
+                      <td>R$ 29.970,00 / ano</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Equivalente Mensal no Plano Anual</strong></td>
+                      <td>R$ 414,16 / mês</td>
+                      <td>R$ 830,83 / mês</td>
+                      <td>R$ 2.497,50 / mês</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Desconto Aplicado na Modalidade Anual</strong></td>
+                      <td>16,08% de economia</td>
+                      <td>16,65% de economia</td>
+                      <td>16,66% de economia</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Período de Degustação (Trial)</strong></td>
+                      <td>7 dias corridos gratuitos</td>
+                      <td>7 dias corridos gratuitos</td>
+                      <td>7 dias corridos gratuitos</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Direito de Arrependimento Legal (Art. 49 CDC)</strong></td>
+                      <td>7 dias (reembolso 100%)</td>
+                      <td>7 dias (reembolso 100%)</td>
+                      <td>7 dias (reembolso 100%)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Limite de Usuários Cadastrados</strong></td>
+                      <td>Até 3 usuários</td>
+                      <td>Até 10 usuários</td>
+                      <td>Usuários Ilimitados</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Limite de Funis de Vendas</strong></td>
+                      <td>Até 2 funis comerciais</td>
+                      <td>Até 10 funis comerciais</td>
+                      <td>Funis Ilimitados</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Conexões Oficiais de WhatsApp</strong></td>
+                      <td>2 conexões</td>
+                      <td>5 conexões</td>
+                      <td>20 conexões</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Agentes Autônomos de IA</strong></td>
+                      <td>1 Agente Autônomo</td>
+                      <td>3 Agentes Autônomos</td>
+                      <td>Agentes Ilimitados</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Franquia Mensal de Tokens de IA</strong></td>
+                      <td>1.000.000 tokens/mês</td>
+                      <td>1.000.000 tokens/mês</td>
+                      <td>Personalizada ou BYOK</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Recursos de IA Incluídos</strong></td>
+                      <td>Copilot em tempo real e RAG</td>
+                      <td>Copilot, Transcrição e Análise Sentimento</td>
+                      <td>Copilot, Transcrição, RAG e Custom Prompts</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Integração de APIs e Webhooks</strong></td>
+                      <td>Não incluído</td>
+                      <td>30 Workflows de Automação</td>
+                      <td>API REST Completa, Webhooks e White-Label</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Garantia de SLA e Suporte</strong></td>
+                      <td>99,5% (Suporte E-mail/Ticket)</td>
+                      <td>99,5% (Suporte E-mail/Chat)</td>
+                      <td>99,5% (Gerente de Conta Dedicado + DPA)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>2.3. Reajuste Anual Transparente:</strong> Os valores poderão ser reajustados a cada 12 meses pelo IPCA/IBGE (ou IGP-M/FGV), mediante comunicação por e-mail com antecedência mínima de 30 (trinta) dias, vedadas alterações unilaterais surpresa no ciclo vigente (CDC Art. 51, X).</p>
+              <span class="legal-law-badge">Fundamentação: CDC, Art. 6º, III e Art. 51, X; Decreto nº 7.962/2013, Art. 2º; Lei do Software (Lei nº 9.609/1998); STF ADIs 5659 e 5658</span>
+            </div>
+          </article>
+
+          <!-- SEC 3 -->
+          <article class="legal-section-card" id="sec-3" data-category="cdc">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 3ª</span>
+              <span class="section-cat-tag">Proteções CDC</span>
+            </div>
+            <h2>
+              3. Do Enquadramento Jurídico Consumerista e Proteções do CDC
+              <a href="#sec-3" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Submissão integral ao Código de Defesa do Consumidor (Lei 8.078/90) e Teoria Finalista Mitigada do STJ. Nulidade absoluta de qualquer cláusula abusiva ou desvantagem exagerada.
+            </div>
+            <div class="section-body">
+              <p><strong>3.1. Qualificação Jurídica da Relação:</strong> Este contrato é governado pelas normas de ordem pública do Código de Defesa do Consumidor (Lei nº 8.078/1990) e Decreto nº 7.962/2013. O Consumidor enquadra-se como tal seja por destinação final fática/econômica ou pela incidência da <strong>Teoria Finalista Mitigada</strong> consagrada pelo Superior Tribunal de Justiça (STJ REsp 1.195.642/RJ e REsp 1.742.329/RJ), em virtude de sua vulnerabilidade técnica, econômica ou informacional.</p>
+              <p><strong>3.2. Ordem Pública e Interpretação Favorável:</strong> As cláusulas deste Contrato são interpretadas de maneira mais favorável ao Consumidor (CDC Art. 47). Cláusulas incompatíveis com a equidade ou boa-fé são nulas de pleno direito (CDC Art. 51).</p>
+              <p><strong>3.3. Ausência Absoluta de Cláusulas Abusivas:</strong> Nula qualquer estipulação que atenue a responsabilidade por vícios, subtraia opções de reembolso, inverta o ônus da prova contra o vulnerável, estabeleça arbitragem compulsória ou foro distante (CDC Art. 51, I, IV, VI, VII e XVI).</p>
+              <span class="legal-law-badge">Fundamentação: Lei nº 8.078/1990 (CDC), Arts. 1º, 2º, 3º, 6º, 47 e 51; STJ REsp 1.195.642/RJ, REsp 1.742.329/RJ e AgInt no AREsp 1.637.288/SP</span>
+            </div>
+          </article>
+
+          <!-- SEC 4 -->
+          <article class="legal-section-card" id="sec-4" data-category="sla">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 4ª</span>
+              <span class="section-cat-tag">SLA e Garantias Legais</span>
+            </div>
+            <h2>
+              4. Do Nível de Serviço (SLA 99,5%) e Garantias Legais de Adequação (CDC Arts. 18-20)
+              <a href="#sec-4" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Garantia mensal de 99,5% de Uptime. Créditos em fatura funcionam como opção facilitada, sem prejuízo do direito legal de restituição de valores ou abatimento do preço (Art. 20 CDC).
+            </div>
+            <div class="section-body">
+              <p><strong>4.1. Compromisso de Disponibilidade (SLA 99,5%):</strong> A Fornecedora garante a disponibilidade mensal técnica da Plataforma no patamar mínimo de <strong>99,5% (noventa e nove vírgula cinco por cento)</strong>.</p>
+              <p><strong>4.2. Tabela de Service Credits (Compensação Facilitada):</strong> Em caso de descumprimento pontual da meta de SLA, o Consumidor receberá desconto compensatório na fatura seguinte:</p>
+
+              <div class="legal-table-responsive">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Percentual de Disponibilidade Mensal</th>
+                      <th>Desconto Compensatório (Service Credit) na Fatura Seguinte</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Entre 99,0% e 99,49%</strong></td>
+                      <td>5% (cinco por cento) de desconto na fatura</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Entre 95,0% e 98,99%</strong></td>
+                      <td>15% (quinze por cento) de desconto na fatura</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Abaixo de 95,0%</strong></td>
+                      <td>25% (vinte e cinco por cento) de desconto na fatura</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>4.3. Preservação das Garantias Legais de Adequação (CDC Arts. 18 a 20):</strong> A conceder <em>Service Credits</em> não retira nem limita as opções legais do Consumidor (CDC Art. 20). Havendo vício persistente no serviço, o Consumidor pode exigir livremente: (I) reexecução dos serviços sem custo; (II) restituição imediata da quantia paga, atualizada; ou (III) abatimento proporcional do preço.</p>
+              <p><strong>4.4. Correção de Vícios e Bugs Sem Custos:</strong> Correção compulsória e gratuita de quaisquer bugs ou erros funcionais pela Fornecedora.</p>
+              <span class="legal-law-badge">Fundamentação: CDC, Arts. 18, 19 e 20; Decreto nº 7.962/2013</span>
+            </div>
+          </article>
+
+          <!-- SEC 5 -->
+          <article class="legal-section-card" id="sec-5" data-category="cdc">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 5ª</span>
+              <span class="section-cat-tag">Arrependimento &amp; Cancelamento</span>
+            </div>
+            <h2>
+              5. Do Direito de Arrependimento (Art. 49 CDC), Cancelamento em 1 Clique e Multa Rescisória
+              <a href="#sec-5" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Trial de 7 dias grátis + Direito legal de Arrependimento de 7 dias pós-cobrança com estorno de 100%. Botão "1-Click Cancel" no painel. Multa por rescisão antecipada no plano anual estritamente limitada a 10% sobre o saldo vincendo (STJ).
+            </div>
+            <div class="section-body">
+              <p><strong>5.1. Período de Degustação Gratuita (Trial de 7 Dias):</strong> Degustação gratuita incondicional por 7 (sete) dias corridos a contar da criação da conta, sem qualquer débito.</p>
+              <p><strong>5.2. Direito de Arrependimento Legal (CDC Art. 49 &amp; Dec. 7.962/13):</strong> O Consumidor detém o prazo legal incondicionado de <strong>7 (sete) dias corridos</strong> a partir da primeira cobrança ou assinatura remota para arrepender-se. Solicitado o arrependimento, <strong>100% DOS VALORES PAGOS SERÃO REEMBOLSADOS IMEDIATAMENTE</strong> via cartão ou PIX, sem taxas ou multas.</p>
+              <p><strong>5.3. Botão de Cancelamento Automático em 1 Clique ("1-Click Cancel"):</strong> No menu do usuário, disponibiliza-se funcionalidade automatizada para cancelamento imediato em 1 clique ("1-Click Cancel"), sem retenção por telefone ou atendentes (Dec. 7.962/13, Art. 5º).</p>
+              <p><strong>5.4. Rescisão no Plano Mensal:</strong> Cancelamento voluntário a qualquer tempo no painel sem fidelidade, mantendo-se o acesso até o fim do mês já faturado.</p>
+              <p><strong>5.5. Multa Rescisória Calibrada no Plano Anual (Máximo de 10%):</strong> Em caso de rescisão antecipada de plano anual após o prazo de arrependimento, a multa compensatória é <strong>ESTRITAMENTE LIMITADA AO MÁXIMO DE 10% (DEZ POR CENTO) SOBRE O SALDO DAS PARCELAS VINCENDAS</strong>, em cumprimento à jurisprudência do STJ (REsp 1.358.557/SP) e Art. 51, V, do CDC, garantindo a devolução do saldo restante.</p>
+              <p><strong>5.6. Portabilidade e Exportação de Dados (30 Dias):</strong> Janela garantida de <strong>30 (trinta) dias corridos</strong> pós-rescisão para download da base de dados em formato .CSV ou .JSON.</p>
+              <span class="legal-law-badge">Fundamentação: CDC, Arts. 49 e 51, IV e V; Decreto nº 7.962/2013, Art. 5º; STJ REsp 1.358.557/SP; Marco Civil da Internet, Art. 7º, X</span>
+            </div>
+          </article>
+
+          <!-- SEC 6 -->
+          <article class="legal-section-card" id="sec-6" data-category="ia">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 6ª</span>
+              <span class="section-cat-tag">Governança de IA</span>
+            </div>
+            <h2>
+              6. Da Inteligência Artificial, Transparência Algorítmica e Regra Human-in-the-Loop
+              <a href="#sec-6" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Informações claras sobre o funcionamento probabilístico da IA (CDC Art. 6º, III). Obrigação de supervisão humana (HITL) sobre propostas comerciais antes do envio final.
+            </div>
+            <div class="section-body">
+              <p><strong>6.1. Transparência Algorítmica (CDC Art. 6º, III):</strong> Esclarecimento adequado de que a IA opera por inferências estocásticas e probabilísticas, podendo eventualmente gerar pequenas inconsistências ("alucinações de LLM").</p>
+              <p><strong>6.2. Regra Human-in-the-Loop (HITL) Compulsória:</strong> O Consumidor obriga-se a manter <strong>SUPERVISÃO HUMANA COMPULSÓRIA</strong> sobre orçamentos, propostas e negociações sugeridas pelos Agentes de IA antes do envio final a terceiros, garantindo a higidez dos compromissos.</p>
+              <p><strong>6.3. Dever Colaborativo de Mitigação:</strong> A revisão prévia pelo operador humano do Consumidor afasta prejuízos decorrentes de ofertas desproporcionais geradas pelos algoritmos, garantindo a governança de IA nos termos do Marco Legal de IA (PL 2.338/2023) e da LGPD (Art. 20).</p>
+              <p><strong>6.4. Franquia Transparente de Tokens:</strong> Franquia mensal de 1.000.000 tokens nos planos Essencial e Crescimento, e opção BYOK no Plano Enterprise.</p>
+              <span class="legal-law-badge">Fundamentação: CDC, Art. 6º, III; LGPD, Art. 20; Princípios de Governança Digital e PL 2.338/2023</span>
+            </div>
+          </article>
+
+          <!-- SEC 7 -->
+          <article class="legal-section-card" id="sec-7" data-category="lgpd">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 7ª</span>
+              <span class="section-cat-tag">LGPD &amp; DPA</span>
+            </div>
+            <h2>
+              7. Da Proteção de Dados Pessoais (LGPD) e DPA do Consumidor
+              <a href="#sec-7" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> O Consumidor é Controlador da sua base de leads e a Aegis CRM é Operadora. Proibição absoluta de utilizar dados para treinar modelos de IA públicos de terceiros.
+            </div>
+            <div class="section-body">
+              <p><strong>7.1. Papéis sob a LGPD:</strong> O Consumidor é <strong>Controlador</strong> dos dados de seus leads no <em>tenant</em> e a Fornecedora é <strong>Operadora</strong>. A Fornecedora é Controladora dos dados de cadastro e faturamento do Consumidor (LGPD Art. 7º, II e V).</p>
+              <p><strong>7.2. Vedação ao Treinamento de IA Pública:</strong> É <strong>EXPRESSAMENTE VEDADO À FORNECEDORA UTILIZAR OS DADOS DO CONSUMIDOR PARA TREINAR MODELOS PÚBLICOS DE IA DE TERCEIROS</strong> (OpenAI, Anthropic, Google).</p>
+              <p><strong>7.3. Notificação de Incidentes em 48 Horas:</strong> Notificação obrigatória em até 48 (quarenta e oito) horas úteis em caso de qualquer incidente de segurança relevante (LGPD Art. 48 c/c Resolução ANPD nº 15/2024).</p>
+              <span class="legal-law-badge">Fundamentação: LGPD (Lei nº 13.709/2018), Arts. 5º, VI/VII, 7º, II/V, 39, 46 e 48; Resolução ANPD nº 15/2024</span>
+            </div>
+          </article>
+
+          <!-- SEC 8 -->
+          <article class="legal-section-card" id="sec-8" data-category="lgpd">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 8ª</span>
+              <span class="section-cat-tag">Propriedade Intelectual</span>
+            </div>
+            <h2>
+              8. Da Propriedade Intelectual e Titularidade dos Dados do Consumidor
+              <a href="#sec-8" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>8.1. Propriedade do Software:</strong> Os códigos-fonte, marcas e algoritmos da Plataforma são de titularidade exclusiva da Fornecedora (Leis nº 9.279/1996 e 9.609/1998).</p>
+              <p><strong>8.2. Titularidade da Base de Dados do Consumidor:</strong> O Consumidor é o único proprietário de todos os dados comerciais, históricos, cadastros e relatórios gerados pela Plataforma e ferramentas de IA no seu <em>tenant</em>.</p>
+              <span class="legal-law-badge">Fundamentação: Lei do Software (Lei nº 9.609/1998); Lei de Propriedade Industrial (Lei nº 9.279/1996); CDC Art. 6º, III</span>
+            </div>
+          </article>
+
+          <!-- SEC 9 -->
+          <article class="legal-section-card" id="sec-9" data-category="sla">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 9ª</span>
+              <span class="section-cat-tag">Responsabilidade Civil</span>
+            </div>
+            <h2>
+              9. Da Responsabilidade Civil, Reparação Integral e Ausência de Cláusulas Abusivas
+              <a href="#sec-9" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Responsabilidade objetiva da fornecedora (CDC Art. 14). Nulidade absoluta de cláusulas de isenção de responsabilidade ou tetos indenizatórios abusivos (Art. 51, I CDC).
+            </div>
+            <div class="section-body">
+              <p><strong>9.1. Responsabilidade Objetiva (CDC Art. 14):</strong> A Fornecedora responde objetivamente pelos danos causados ao Consumidor por vícios ou defeitos na prestação do serviço.</p>
+              <p><strong>9.2. Garantia de Reparação Integral (CDC Art. 51, I):</strong> SÃO NULAS DE PLENO DIREITO CLÁUSULAS QUE IMPOSSIBILITEM, EXONEREM OU ATENUEM A RESPONSABILIDADE DA FORNECEDORA POR VÍCIOS DOS SERVIÇOS OU DANOS EFETIVAMENTE COMPROVADOS, garantindo a reparação integral dos prejuízos.</p>
+              <p><strong>9.3. Exclusão de Culpa:</strong> Exoneração apenas mediante prova de inexistência de defeito ou culpa exclusiva do consumidor/terceiro (CDC Art. 14, § 3º).</p>
+              <span class="legal-law-badge">Fundamentação: CDC, Arts. 6º, VI, 14 e 51, I</span>
+            </div>
+          </article>
+
+          <!-- SEC 10 -->
+          <article class="legal-section-card" id="sec-10" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 10ª</span>
+              <span class="section-cat-tag">Inadimplência &amp; MCI</span>
+            </div>
+            <h2>
+              10. Da Inadimplência, Regularização e Guarda de Logs (Marco Civil da Internet)
+              <a href="#sec-10" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>10.1. Notificação Prévia (5 Dias Úteis):</strong> Concessão de prazo de 5 (cinco) dias úteis após notificação por e-mail para regularização de faturas em atraso antes de qualquer suspensão de acesso.</p>
+              <p><strong>10.2. Encargos Moratórios Limitados:</strong> Multa moratória estritamente limitada ao teto de **2% (dois por cento)** conforme o Art. 52, § 1º, do CDC, e juros de 1% ao mês.</p>
+              <p><strong>10.3. Guarda de Logs por 6 Meses (MCI):</strong> Armazenamento compulsório dos registros de acesso sob sigilo pelo prazo legal de 6 (seis) meses (Marco Civil da Internet, Art. 15).</p>
+              <span class="legal-law-badge">Fundamentação: CDC Art. 52, § 1º; Marco Civil da Internet (Lei nº 12.965/2014), Art. 15</span>
+            </div>
+          </article>
+
+          <!-- SEC 11 -->
+          <article class="legal-section-card" id="sec-11" data-category="foro">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 11ª</span>
+              <span class="section-cat-tag">Foro do Consumidor</span>
+            </div>
+            <h2>
+              11. Do Foro do Domicílio do Consumidor e Solução de Litígios
+              <a href="#sec-11" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-quick-callout">
+              <strong>Resumo Executivo:</strong> Competência inegociável do Foro do Domicílio do Consumidor (Art. 101, I CDC). Nulidade de eleição de foro distante ou arbitragem compulsória.
+            </div>
+            <div class="section-body">
+              <p><strong>11.1. Competência Absoluta do Foro do Domicílio do Consumidor:</strong> É garantido ao Consumidor o direito inalienável de ajuizar demandas judiciais no <strong>FORO DA COMARCA DE SEU PRÓPRIO DOMICÍLIO</strong> (CDC Art. 101, I).</p>
+              <p><strong>11.2. Nulidade de Foro Distante e Arbitragem Compulsória:</strong> Declara-se a nulidade de qualquer foro fixado coercitivamente em benefício do fornecedor ou de cláusula compromissória arbitral compulsória (CDC Art. 51, VII e XV).</p>
+              <p><strong>11.3. Conciliação Facilitada:</strong> Canal permanente e direto de conciliação pelo e-mail <code>develop.ags@gmail.com</code>.</p>
+              <span class="legal-law-badge">Fundamentação: CDC, Arts. 51, VII/XV, e Art. 101, I; Decreto nº 7.962/2013, Art. 4º, V</span>
+            </div>
+          </article>
+
+          <!-- SEC 12 -->
+          <article class="legal-section-card" id="sec-12" data-category="planos">
+            <div class="section-card-header">
+              <span class="section-num-badge">Cláusula 12ª</span>
+              <span class="section-cat-tag">Disposições Gerais</span>
+            </div>
+            <h2>
+              12. Das Disposições Gerais e Transparência Continuada
+              <a href="#sec-12" class="anchor-link" title="Link direto para esta seção">#</a>
+            </h2>
+            <div class="section-body">
+              <p><strong>12.1. Vigência e Renovação Transparente:</strong> Vigência durante o plano contratado, com lembrete e notificação prévia de renovação.</p>
+              <p><strong>12.2. Modificações Contratuais:</strong> Quaisquer alterações dos termos serão notificadas com 30 dias de antecedência. Em caso de alterações desfavoráveis, o Consumidor poderá rescindir a contratação sem qualquer ônus.</p>
+              <p><strong>12.3. Canais Oficiais:</strong> Suporte ao Consumidor: <code>develop.ags@gmail.com</code> | Encarregado LGPD / DPO: <code>develop.ags@gmail.com</code> | Endereço: Endereço a definir.</p>
+              <span class="legal-law-badge">Fundamentação: CDC Art. 6º, III e Art. 51; Decreto nº 7.962/2013</span>
+            </div>
+          </article>
+        </main>
+      </div>
+
+      <!-- SUPPORT CARD WITH MAGNETIC PULSE BUTTON -->
+      <section class="legal-support-card">
+        <div class="support-info">
+          <h3>Dúvidas sobre os seus Direitos de Consumidor ou Planos?</h3>
+          <p>Nosso suporte jurídico e de atendimento ao consumidor está disponível para prestar esclarecimentos sobre contratação, estornos, portabilidade de dados e LGPD.</p>
+        </div>
+        <div class="support-actions">
+          <a href="mailto:develop.ags@gmail.com" class="btn btn-primary btn-lg magnetic-btn">Falar com Suporte CDC <span class="btn-arrow">→</span></a>
+          <a href="contrato_b2b.html" class="btn btn-outline btn-lg">Ver Contrato B2B <span class="btn-arrow">→</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Aegis CRM" class="footer-logo">
+          <p class="footer-description">O CRM com agentes de IA nativas</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="index.html#recursos">Recursos</a></li>
+            <li><a href="index.html#planos">Preços</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="index.html#contato">Contato</a></li>
+            <li><a href="index.html#suporte">Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacidade.html">Privacidade</a></li>
+            <li><a href="termos.html">Termos de uso</a></li>
+            <li><a href="contrato_b2b.html">Contrato B2B</a></li>
+            <li><a href="contrato_cdc.html">Contrato CDC</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Aegis CRM. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=20260728_1"></script>
+  <script src="legal-portal.js"></script>
+</body>
+</html>
