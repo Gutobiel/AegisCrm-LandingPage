@@ -929,32 +929,622 @@
      17. WHATSAPP WIDGET
      Timed reveal with bubble message
      ═══════════════════════════════════════════════════════════════════════ */
-  (function initWAWidget() {
-    const widget = $('#wa-widget');
-    const bubble = $('#wa-bubble');
-    const btn = $('#wa-btn');
-    if (!widget) return;
+  /* ═══════════════════════════════════════════════════════════════════════
+     17. AEGIS AI FLOATING WIDGET & VOICE ASSISTANT MODAL
+     ═══════════════════════════════════════════════════════════════════════ */
+  (function initAegisAIWidget() {
+    const fabBtn = $('#aegis-fab-btn');
+    const modal = $('#aegis-modal-window');
+    const closeBtn = $('#aegis-close-btn');
+    const backBtn = $('#aegis-back-btn');
 
-    /* Show widget after 8s */
-    setTimeout(() => widget.classList.add('visible'), 8000);
+    /* Views */
+    const viewForm = $('#aegis-view-form');
+    const viewOptions = $('#aegis-view-options');
+    const viewChat = $('#aegis-view-chat');
+    const viewVoice = $('#aegis-view-voice');
 
-    /* Show bubble after 12s */
-    if (bubble) {
-      setTimeout(() => bubble.classList.add('visible'), 12000);
+    /* Form Elements */
+    const leadForm = $('#aegis-lead-form');
+    const inputName = $('#aegis-input-name');
+    const inputEmail = $('#aegis-input-email');
+    const inputPhone = $('#aegis-input-phone');
+    const userDisplayName = $('#aegis-user-display-name');
+    const directWaLink = $('#aegis-btn-direct-wa');
 
-      /* Hide bubble after 20s */
-      setTimeout(() => bubble.classList.remove('visible'), 20000);
+    /* Action Buttons */
+    const btnTextChat = $('#aegis-btn-text-chat');
+    const btnVoiceCall = $('#aegis-btn-voice-call');
+
+    /* Chat Elements */
+    const chatStream = $('#aegis-chat-stream');
+    const chatForm = $('#aegis-chat-input-form');
+    const chatInput = $('#aegis-chat-input');
+
+    /* Voice Elements */
+    const voiceWaves = $('#aegis-voice-waves');
+    const voiceStatusText = $('#aegis-voice-status-text');
+    const voiceDot = $('#aegis-voice-dot');
+    const voiceTranscript = $('#aegis-voice-transcript');
+    const btnMute = $('#aegis-btn-mute');
+    const btnHangup = $('#aegis-btn-hangup');
+    const muteLabel = $('#aegis-mute-label');
+
+    /* Tabs */
+    const tabHome = $('#aegis-tab-home');
+    const tabChat = $('#aegis-tab-chat');
+
+    if (!fabBtn || !modal) return;
+
+    /* Widget State */
+    let currentView = 'form';
+    let leadData = null;
+    let isCallActive = false;
+    let isMuted = false;
+    let recognition = null;
+    let synth = window.speechSynthesis || null;
+
+    /* Load Lead Data from Session Storage */
+    try {
+      const saved = sessionStorage.getItem('aegis_lead');
+      if (saved) {
+        leadData = JSON.parse(saved);
+        if (leadData && leadData.name) {
+          updateUserLeadUI(leadData);
+        }
+      }
+    } catch (e) {
+      console.warn('Storage read error:', e);
     }
 
-    /* Re-show bubble on hover */
-    if (btn && bubble) {
-      btn.addEventListener('mouseenter', () => {
-        bubble.classList.add('visible');
+    /* Phone Mask */
+    if (inputPhone) {
+      inputPhone.addEventListener('input', () => {
+        let v = inputPhone.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.substring(0, 11);
+        if (v.length > 7) {
+          v = `(${v.substring(0, 2)}) ${v.substring(2, 7)}-${v.substring(7)}`;
+        } else if (v.length > 2) {
+          v = `(${v.substring(0, 2)}) ${v.substring(2)}`;
+        } else if (v.length > 0) {
+          v = `(${v}`;
+        }
+        inputPhone.value = v;
       });
-      btn.addEventListener('mouseleave', () => {
-        // Optional: hide after short delay on leave
-        // Keeping it visible until user interaction
+    }
+
+    /* View Switcher */
+    function switchView(targetView) {
+      currentView = targetView;
+      const views = [viewForm, viewOptions, viewChat, viewVoice];
+      views.forEach(v => v && v.classList.remove('active'));
+
+      if (targetView === 'form' && viewForm) viewForm.classList.add('active');
+      if (targetView === 'options' && viewOptions) viewOptions.classList.add('active');
+      if (targetView === 'chat' && viewChat) viewChat.classList.add('active');
+      if (targetView === 'voice' && viewVoice) viewVoice.classList.add('active');
+
+      /* Back button visibility */
+      if (backBtn) {
+        if (targetView === 'options' || (targetView === 'form' && !leadData)) {
+          backBtn.classList.remove('visible');
+        } else {
+          backBtn.classList.add('visible');
+        }
+      }
+
+      /* Tabs active state */
+      if (tabHome && tabChat) {
+        tabHome.classList.remove('active');
+        tabChat.classList.remove('active');
+        if (targetView === 'options' || targetView === 'form') tabHome.classList.add('active');
+        if (targetView === 'chat' || targetView === 'voice') tabChat.classList.add('active');
+      }
+
+      /* View-specific initialization */
+      if (targetView === 'chat' && chatStream && chatStream.children.length === 0) {
+        initChatStream();
+      }
+
+      if (targetView !== 'voice' && isCallActive) {
+        endVoiceCall();
+      }
+    }
+
+    function updateUserLeadUI(data) {
+      const firstName = data.name.trim().split(' ')[0];
+      if (userDisplayName) userDisplayName.textContent = firstName;
+
+      if (directWaLink) {
+        const msg = encodeURIComponent(`Olá! Meu nome é ${data.name} (${data.email}) e gostaria de saber mais sobre o Aegis CRM.`);
+        directWaLink.href = `https://wa.me/5561931991656?text=${msg}`;
+      }
+    }
+
+    /* Lead Form Submit */
+    if (leadForm) {
+      leadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameVal = inputName.value.trim();
+        const emailVal = inputEmail.value.trim();
+        const phoneVal = inputPhone.value.trim();
+
+        if (nameVal.length < 2 || !emailVal.includes('@') || phoneVal.length < 10) {
+          alert('Por favor, preencha todos os campos corretamente para iniciar o atendimento.');
+          return;
+        }
+
+        leadData = { name: nameVal, email: emailVal, phone: phoneVal };
+        try {
+          sessionStorage.setItem('aegis_lead', JSON.stringify(leadData));
+        } catch (e) {}
+
+        updateUserLeadUI(leadData);
+        switchView('options');
       });
+    }
+
+    /* FAB Toggle Modal */
+    fabBtn.addEventListener('click', () => {
+      const isOpening = !modal.classList.contains('active');
+      if (isOpening) {
+        modal.classList.add('active');
+        fabBtn.classList.add('open');
+
+        if (leadData && leadData.name) {
+          switchView('options');
+        } else {
+          switchView('form');
+        }
+      } else {
+        closeModalWindow();
+      }
+    });
+
+    function closeModalWindow() {
+      modal.classList.remove('active');
+      fabBtn.classList.remove('open');
+      if (isCallActive) endVoiceCall();
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModalWindow);
+
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        if (currentView === 'chat' || currentView === 'voice') {
+          switchView('options');
+        } else if (currentView === 'options' && leadData) {
+          switchView('options');
+        } else {
+          switchView('form');
+        }
+      });
+    }
+
+    /* Tabs click */
+    if (tabHome) {
+      tabHome.addEventListener('click', () => {
+        if (leadData) switchView('options');
+        else switchView('form');
+      });
+    }
+
+    if (tabChat) {
+      tabChat.addEventListener('click', () => {
+        if (!leadData) {
+          switchView('form');
+        } else {
+          switchView('chat');
+        }
+      });
+    }
+
+    if (btnTextChat) {
+      btnTextChat.addEventListener('click', () => switchView('chat'));
+    }
+
+    if (btnVoiceCall) {
+      btnVoiceCall.addEventListener('click', async () => {
+        /* Request microphone permission before entering voice view */
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          /* Permission granted — stop the test stream immediately */
+          stream.getTracks().forEach(t => t.stop());
+          switchView('voice');
+          startVoiceCall();
+        } catch (err) {
+          alert('Precisamos de acesso ao seu microfone para a chamada de voz. Por favor, habilite a permissão e tente novamente.');
+          console.warn('Mic permission denied:', err);
+        }
+      });
+    }
+
+    /* ─── TEXT CHAT ENGINE ─────────────────────────────────────────────── */
+    function initChatStream() {
+      const userName = leadData ? leadData.name.split(' ')[0] : 'Visitante';
+      appendMessage('bot', `Olá, <strong>${userName}</strong>! Sou a IA de Atendimento do Aegis CRM.<br>Como posso impulsionar seu processo comercial hoje?`);
+    }
+
+    function appendMessage(sender, text) {
+      if (!chatStream) return;
+      const bubble = document.createElement('div');
+      bubble.className = `aegis-msg-bubble ${sender}`;
+
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+      bubble.innerHTML = `${text}<span class="aegis-msg-time">${timeStr}</span>`;
+      chatStream.appendChild(bubble);
+      chatStream.scrollTop = chatStream.scrollHeight;
+    }
+
+    function getBotResponse(userMsg) {
+      const msg = userMsg.toLowerCase();
+      if (msg.includes('plano') || msg.includes('preço') || msg.includes('quanto custa') || msg.includes('valor')) {
+        return 'O Aegis possui 3 planos principais:<br>&bull; <strong>Essencial</strong>: R$ 497/mês (3 usuários, 2 WhatsApp, 1 IA)<br>&bull; <strong>Crescimento</strong>: R$ 997/mês (10 usuários, 5 WhatsApp, 3 IAs)<br>&bull; <strong>Enterprise</strong>: R$ 2.997/mês (Usuários ilimitados e BYOK)<br><br>Todos incluem 7 dias grátis sem compromisso!';
+      }
+      if (msg.includes('whatsapp') || msg.includes('integração') || msg.includes('áudio')) {
+        return 'O Aegis tem <strong>integração nativa com WhatsApp</strong>! Nossas agentes de IA leem mensagens, escutam e transcrevem áudios, respondem dúvidas e movem os leads no funil automaticamente.';
+      }
+      if (msg.includes('demo') || msg.includes('demonstração') || msg.includes('teste') || msg.includes('agendar')) {
+        return 'Excelente! Registramos seu interesse. Um de nossos especialistas entrará em contato via WhatsApp em até 2 horas úteis para uma demonstração personalizada ao vivo!';
+      }
+      if (msg.includes('voz') || msg.includes('ligação') || msg.includes('chamada')) {
+        return 'Você pode testar nossa <strong>Atendente de IA por VOZ</strong> em tempo real clicando no botão "Iniciar chamada de voz" na tela inicial deste assistente!';
+      }
+      return `Entendi perfeitamente sua dúvida sobre "${userMsg}". O Aegis CRM automatiza todo o acompanhamento comercial com IA. Gostaria de agendar uma demonstração ou saber mais sobre os planos?`;
+    }
+
+    function handleUserSend(text) {
+      const query = text.trim();
+      if (!query) return;
+
+      appendMessage('user', query);
+      if (chatInput) chatInput.value = '';
+
+      /* Typing delay simulation */
+      setTimeout(() => {
+        const reply = getBotResponse(query);
+        appendMessage('bot', reply);
+      }, 700);
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (chatInput) handleUserSend(chatInput.value);
+      });
+    }
+
+    /* ─── VOICE CALL ENGINE (OpenAI Realtime WebRTC + Fallback & Interruption) ────── */
+    let peerConnection = null;
+    let dataChannel = null;
+    let localAudioStream = null;
+    let remoteAudioElement = null;
+    let silenceTimer = null;
+    let currentVoiceSpeech = '';
+
+    async function startVoiceCall() {
+      isCallActive = true;
+      isMuted = false;
+
+      if (voiceWaves) voiceWaves.classList.add('active');
+      if (voiceDot) voiceDot.className = 'live-dot green';
+      if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
+      if (voiceTranscript) voiceTranscript.textContent = '';
+
+      if (btnMute) {
+        btnMute.classList.remove('muted');
+        if (muteLabel) muteLabel.textContent = 'Silenciar';
+      }
+
+      /* Try OpenAI Realtime WebRTC Connection */
+      try {
+        const sessionRes = await fetch('/api/realtime-session', { method: 'POST' });
+        const sessionData = await sessionRes.json();
+
+        if (sessionData && sessionData.client_secret && sessionData.client_secret.value) {
+          const ephemeralToken = sessionData.client_secret.value;
+          await connectOpenAIRealtimeWebRTC(ephemeralToken);
+          return;
+        }
+      } catch (err) {
+        console.warn('OpenAI Realtime WebRTC unavailable, falling back to Web Speech API:', err);
+      }
+
+      /* Fallback: Browser Web Speech API & Simulation */
+      startWebSpeechFallback();
+    }
+
+    async function connectOpenAIRealtimeWebRTC(ephemeralToken) {
+      try {
+        peerConnection = new RTCPeerConnection();
+
+        /* Audio Element for AI Voice Playback */
+        remoteAudioElement = document.createElement('audio');
+        remoteAudioElement.autoplay = true;
+        peerConnection.ontrack = (e) => {
+          remoteAudioElement.srcObject = e.streams[0];
+        };
+
+        /* Add Microphone Track */
+        localAudioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        localAudioStream.getTracks().forEach(track => peerConnection.addTrack(track, localAudioStream));
+
+        /* Create DataChannel for Transcripts and Events */
+        dataChannel = peerConnection.createDataChannel('oai-events');
+        dataChannel.onmessage = (e) => {
+          try {
+            const event = JSON.parse(e.data);
+
+            if (event.type === 'input_audio_buffer.speech_started') {
+              /* Interrupt AI audio if playing when user starts speaking */
+              if (remoteAudioElement) {
+                remoteAudioElement.pause();
+                remoteAudioElement.currentTime = 0;
+              }
+              if (voiceStatusText && isCallActive) voiceStatusText.textContent = 'Ouvindo...';
+              if (voiceDot) voiceDot.className = 'live-dot green';
+              if (voiceTranscript) voiceTranscript.textContent = '';
+            }
+
+            if (event.type === 'response.audio_transcript.delta' && event.delta) {
+              if (voiceStatusText && isCallActive) voiceStatusText.textContent = 'Falando...';
+              if (voiceDot) voiceDot.className = 'live-dot red';
+              if (voiceTranscript) voiceTranscript.textContent += event.delta;
+            }
+
+            if (event.type === 'response.audio_transcript.done') {
+              if (voiceStatusText && isCallActive) voiceStatusText.textContent = 'Ouvindo...';
+              if (voiceDot) voiceDot.className = 'live-dot green';
+            }
+          } catch (err) {}
+        };
+
+        /* Create SDP Offer */
+        const offer = await peerConnection.createOffer();
+        await peerConnection.setLocalDescription(offer);
+
+        /* Send Offer to OpenAI Realtime Endpoint */
+        const baseUrl = 'https://api.openai.com/v1/realtime';
+        const model = 'gpt-realtime-1.5';
+        const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
+          method: 'POST',
+          body: offer.sdp,
+          headers: {
+            Authorization: `Bearer ${ephemeralToken}`,
+            'Content-Type': 'application/sdp'
+          }
+        });
+
+        if (!sdpResponse.ok) {
+          throw new Error(`SDP Exchange Error: ${sdpResponse.status}`);
+        }
+
+        const answerSdp = await sdpResponse.text();
+        await peerConnection.setRemoteDescription({ type: 'answer', sdp: answerSdp });
+
+        if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
+        if (voiceDot) voiceDot.className = 'live-dot green';
+        if (voiceTranscript) voiceTranscript.textContent = '';
+      } catch (err) {
+        console.warn('Realtime WebRTC connection error, starting fallback:', err);
+        startWebSpeechFallback();
+      }
+    }
+
+    function startWebSpeechFallback() {
+      if (!isCallActive) return;
+
+      const greetingText = 'Oiiie, como posso te ajudar hoje?';
+      if (voiceTranscript) voiceTranscript.textContent = greetingText;
+
+      speakAI(greetingText, () => {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition && !isMuted && isCallActive) {
+          initSpeechRecognition(SpeechRecognition);
+        }
+      });
+    }
+
+    function initSpeechRecognition(SpeechRecognition) {
+      if (recognition) {
+        try { recognition.stop(); } catch (e) {}
+      }
+
+      recognition = new SpeechRecognition();
+      recognition.lang = 'pt-BR';
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      recognition.onstart = () => {
+        if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
+        if (voiceDot) voiceDot.className = 'live-dot green';
+      };
+
+      recognition.onresult = (event) => {
+        /* BARGE-IN: Interrupt AI if user starts speaking while AI speaks */
+        if (synth && synth.speaking) {
+          synth.cancel();
+          if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
+          if (voiceDot) voiceDot.className = 'live-dot green';
+        }
+
+        let transcriptStr = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcriptStr += event.results[i][0].transcript;
+        }
+
+        const cleanTxt = transcriptStr.trim();
+        if (cleanTxt) {
+          if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
+          if (voiceDot) voiceDot.className = 'live-dot green';
+          if (voiceTranscript) voiceTranscript.textContent = `"${cleanTxt}"`;
+          currentVoiceSpeech = cleanTxt;
+
+          /* Reset silence timer after user stops talking */
+          if (silenceTimer) clearTimeout(silenceTimer);
+          silenceTimer = setTimeout(() => {
+            if (isCallActive && currentVoiceSpeech) {
+              const textToProcess = currentVoiceSpeech;
+              currentVoiceSpeech = '';
+              processVoiceQuery(textToProcess);
+            }
+          }, 2500);
+        }
+      };
+
+      recognition.onerror = (e) => {
+        console.warn('Speech Rec Error:', e.error);
+        if (isCallActive && !isMuted) {
+          setTimeout(() => {
+            try { recognition.start(); } catch (err) {}
+          }, 1500);
+        }
+      };
+
+      recognition.onend = () => {
+        if (isCallActive && !isMuted) {
+          try { recognition.start(); } catch (e) {}
+        }
+      };
+
+      try {
+        recognition.start();
+      } catch (e) {
+        console.warn('Could not start recognition:', e);
+      }
+    }
+
+    function processVoiceQuery(spokenText) {
+      if (!isCallActive || !spokenText) return;
+
+      if (voiceStatusText) voiceStatusText.textContent = 'Pensando...';
+      if (voiceDot) voiceDot.className = 'live-dot red';
+
+      const responseText = getVoiceBotResponse(spokenText);
+
+      setTimeout(() => {
+        if (!isCallActive) return;
+        if (voiceTranscript) voiceTranscript.textContent = responseText;
+        speakAI(responseText, () => {
+          if (voiceStatusText && isCallActive) {
+            voiceStatusText.textContent = 'Ouvindo...';
+            if (voiceDot) voiceDot.className = 'live-dot green';
+          }
+        });
+      }, 700);
+    }
+
+    function getVoiceBotResponse(spokenText) {
+      const txt = spokenText.toLowerCase();
+      if (txt.includes('plano') || txt.includes('preço') || txt.includes('quanto') || txt.includes('valor')) {
+        return 'O Aegis possui três planos: Essencial a 497 reais, Crescimento a 997 reais e Enterprise. Todos incluem sete dias grátis!';
+      }
+      if (txt.includes('whatsapp') || txt.includes('mensagem') || txt.includes('automação')) {
+        return 'Nossa IA se conecta diretamente ao seu WhatsApp, atendendo clientes 24 horas por dia e atualizando o funil de vendas!';
+      }
+      if (txt.includes('demonstração') || txt.includes('teste') || txt.includes('falar')) {
+        return 'Perfeito! Já guardei seus dados de contato e um consultor da Aegis vai te ligar em breve.';
+      }
+      return `Entendi o seu ponto sobre ${spokenText}. O Aegis CRM otimiza suas vendas com IA em tempo real. Quer agendar uma demonstração?`;
+    }
+
+    function speakAI(text, onComplete) {
+      if (voiceStatusText) voiceStatusText.textContent = 'Falando...';
+      if (voiceDot) voiceDot.className = 'live-dot red';
+
+      if (synth && 'speechSynthesis' in window) {
+        synth.cancel();
+        const cleanText = text.replace(/<[^>]*>?/gm, '');
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+
+        const voices = synth.getVoices();
+        const naturalPtVoice = voices.find(v => (v.lang === 'pt-BR' || v.lang.startsWith('pt')) && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Neural') || v.name.includes('Luciana') || v.name.includes('Francisca'))) || voices.find(v => v.lang === 'pt-BR' || v.lang.startsWith('pt'));
+        if (naturalPtVoice) {
+          utterance.voice = naturalPtVoice;
+        }
+
+        utterance.onend = () => {
+          if (voiceStatusText && isCallActive) {
+            voiceStatusText.textContent = 'Ouvindo...';
+            if (voiceDot) voiceDot.className = 'live-dot green';
+          }
+          if (onComplete) onComplete();
+        };
+
+        utterance.onerror = () => {
+          if (voiceStatusText && isCallActive) {
+            voiceStatusText.textContent = 'Ouvindo...';
+            if (voiceDot) voiceDot.className = 'live-dot green';
+          }
+          if (onComplete) onComplete();
+        };
+
+        synth.speak(utterance);
+      } else {
+        /* Fallback if TTS not supported */
+        setTimeout(() => {
+          if (voiceStatusText && isCallActive) {
+            voiceStatusText.textContent = 'Ouvindo...';
+            if (voiceDot) voiceDot.className = 'live-dot green';
+          }
+          if (onComplete) onComplete();
+        }, 1500);
+      }
+    }
+
+    /* Mute / Hangup */
+    if (btnMute) {
+      btnMute.addEventListener('click', () => {
+        isMuted = !isMuted;
+        if (isMuted) {
+          btnMute.classList.add('muted');
+          if (muteLabel) muteLabel.textContent = 'Desmutar';
+          if (recognition) try { recognition.stop(); } catch (e) {}
+          if (voiceStatusText) voiceStatusText.textContent = 'Mutado';
+        } else {
+          btnMute.classList.remove('muted');
+          if (muteLabel) muteLabel.textContent = 'Silenciar';
+          if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
+          const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+          if (SpeechRecognition && isCallActive) initSpeechRecognition(SpeechRecognition);
+        }
+      });
+    }
+
+    if (btnHangup) {
+      btnHangup.addEventListener('click', () => {
+        endVoiceCall();
+        switchView('options');
+      });
+    }
+
+    function endVoiceCall() {
+      isCallActive = false;
+
+      if (peerConnection) {
+        try { peerConnection.close(); } catch (e) {}
+        peerConnection = null;
+      }
+
+      if (localAudioStream) {
+        try { localAudioStream.getTracks().forEach(t => t.stop()); } catch (e) {}
+        localAudioStream = null;
+      }
+
+      if (recognition) {
+        try { recognition.stop(); } catch (e) {}
+      }
+
+      if (synth) {
+        try { synth.cancel(); } catch (e) {}
+      }
+
+      if (voiceWaves) voiceWaves.classList.remove('active');
     }
   })();
 
