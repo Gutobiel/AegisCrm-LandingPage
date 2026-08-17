@@ -6,6 +6,12 @@
 - Single-page: index.html (~945 lines), style.css (~51KB), app.js (~42KB)
 - All copy in Brazilian Portuguese
 
+## Domain Architecture (VPS Deployment)
+- `aegiscrm.com.br` → Landing page / Apresentação do produto.
+- `app.aegiscrm.com.br` → Aplicação principal (login e acesso exclusivo do Superadmin).
+- `[cliente].aegiscrm.com.br` → Tenant dos clientes (login e acesso das empresas e seus respectivos usuários).
+- `crm.[cliente].com.br` → Domínio personalizado (White Label) para os clientes.
+
 ## Design Rules (.cursorrules)
 1. NO GENERIC SYMMETRY — use intentional asymmetry, bento grids
 2. NO DEFAULT STYLES — refined tailored palettes, no Tailwind defaults
