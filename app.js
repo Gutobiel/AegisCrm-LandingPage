@@ -1667,16 +1667,62 @@
     document.body.style.overflow = '';
   }
 
+  /* ─── MODAL DE CONTRATOS ─── */
+  const contractData = {
+    essencial: {
+      title: 'Contrato — Plano Essencial',
+      mensalPdf: 'assets/contratos/contrato-essencial-mensal.pdf',
+      anualPdf: 'assets/contratos/contrato-essencial-anual.pdf'
+    },
+    crescimento: {
+      title: 'Contrato — Plano Crescimento',
+      mensalPdf: 'assets/contratos/contrato-crescimento-mensal.pdf',
+      anualPdf: 'assets/contratos/contrato-crescimento-anual.pdf'
+    },
+    enterprise: {
+      title: 'Contrato — Plano Enterprise',
+      mensalPdf: 'assets/contratos/contrato-enterprise-mensal.pdf',
+      anualPdf: 'assets/contratos/contrato-enterprise-anual.pdf'
+    }
+  };
+
+  function openContractModal(planKey) {
+    var overlay = document.getElementById('contract-modal-overlay');
+    var titleEl = document.getElementById('contract-modal-title');
+    var mensalLink = document.getElementById('contract-pdf-mensal-link');
+    var anualLink = document.getElementById('contract-pdf-anual-link');
+    if (!overlay || !titleEl || !mensalLink || !anualLink) return;
+
+    var contract = contractData[planKey] || contractData.essencial;
+    titleEl.textContent = contract.title;
+    mensalLink.setAttribute('href', contract.mensalPdf);
+    anualLink.setAttribute('href', contract.anualPdf);
+
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContractModal() {
+    var overlay = document.getElementById('contract-modal-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
   // Delegacao global de clique na janela: GARANTIDO funcionar sempre
   window.addEventListener('click', function(e) {
-    var btn = e.target.closest('.pricing-see-more');
-    if (btn) {
+    // 1. Abrir Modal de Detalhes dos Planos
+    var seeMoreBtn = e.target.closest('.pricing-see-more');
+    if (seeMoreBtn) {
       e.preventDefault();
-      var planKey = btn.getAttribute('data-plan');
+      var planKey = seeMoreBtn.getAttribute('data-plan');
       openModal(planKey);
       return;
     }
 
+    // 2. Fechar Modal de Detalhes
     var closeBtn = e.target.closest('#plan-detail-close');
     if (closeBtn) {
       e.preventDefault();
@@ -1684,15 +1730,40 @@
       return;
     }
 
-    var overlay = document.getElementById('plan-detail-overlay');
-    if (overlay && e.target === overlay) {
+    var detailOverlay = document.getElementById('plan-detail-overlay');
+    if (detailOverlay && e.target === detailOverlay) {
       closeModal();
+      return;
+    }
+
+    // 3. Abrir Modal de Contratos em PDF
+    var termsBtn = e.target.closest('.pricing-terms-btn');
+    if (termsBtn) {
+      e.preventDefault();
+      var contractPlanKey = termsBtn.getAttribute('data-contract-plan');
+      openContractModal(contractPlanKey);
+      return;
+    }
+
+    // 4. Fechar Modal de Contratos
+    var contractCloseBtn = e.target.closest('#contract-modal-close');
+    if (contractCloseBtn) {
+      e.preventDefault();
+      closeContractModal();
+      return;
+    }
+
+    var contractOverlay = document.getElementById('contract-modal-overlay');
+    if (contractOverlay && e.target === contractOverlay) {
+      closeContractModal();
     }
   });
 
   window.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       closeModal();
+      closeContractModal();
     }
   });
 })();
+

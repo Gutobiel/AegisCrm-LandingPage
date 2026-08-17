@@ -806,6 +806,7 @@
         </ul>
         <button type="button" class="pricing-see-more" data-plan="essencial">e muito mais</button>
         <a href="#demonstracao" class="btn btn-outline pricing-btn">Iniciar com Essencial</a>
+        <button type="button" class="pricing-terms-btn" data-contract-plan="essencial">Ler Contrato (PDF)</button>
       </div>
 
       <!-- 2. Crescimento -->
@@ -835,6 +836,7 @@
         </ul>
         <button type="button" class="pricing-see-more" data-plan="crescimento">e muito mais</button>
         <a href="#demonstracao" class="btn btn-outline pricing-btn">Come&#231;ar com Crescimento</a>
+        <button type="button" class="pricing-terms-btn" data-contract-plan="crescimento">Ler Contrato (PDF)</button>
       </div>
 
       <!-- 3. Enterprise -->
@@ -864,10 +866,13 @@
         </ul>
         <button type="button" class="pricing-see-more" data-plan="enterprise">e muito mais</button>
         <a href="#demonstracao" class="btn btn-outline pricing-btn">Falar com Vendas</a>
+        <button type="button" class="pricing-terms-btn" data-contract-plan="enterprise">Ler Contrato (PDF)</button>
       </div>
     </div>
 
-    <p class="pricing-note reveal" style="text-align: center;">Sem fidelidade. Cancele quando quiser. Todos os planos incluem <strong>7 dias grátis</strong>.</p>
+    <p class="pricing-legal-note reveal">Ao contratar, voc&#234; concorda com os <a href="termos.html">Termos de Servi&#231;o</a> e a <a href="privacidade.html">Pol&#237;tica de Privacidade</a>.</p>
+
+    <p class="pricing-note reveal" style="text-align: center;">Sem fidelidade na op&#231;&#227;o mensal. Cancele quando quiser. Todos os planos incluem <strong>7 dias gr&#225;tis</strong>.</p>
   </div>
 </section>
 
@@ -1101,6 +1106,27 @@
       <button type="button" class="plan-detail-close" id="plan-detail-close" aria-label="Fechar modal">&times;</button>
     </div>
     <div class="plan-detail-body" id="plan-detail-body"></div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: CONTRATOS EM PDF ═════════════════════════════════ -->
+<div class="contract-overlay" id="contract-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="contract-box">
+    <div class="contract-top">
+      <h3 class="contract-title" id="contract-modal-title">Contrato — Plano Essencial</h3>
+      <button type="button" class="contract-close" id="contract-modal-close" aria-label="Fechar">&times;</button>
+    </div>
+    <p class="contract-subtitle">Selecione a vig&#234;ncia do contrato:</p>
+    <div class="contract-links">
+      <a href="assets/contratos/contrato-essencial-mensal.pdf" target="_blank" class="contract-link" id="contract-pdf-mensal-link">
+        <span class="contract-link-label">Mensal</span>
+        <span class="contract-link-detail">Sem fidelidade</span>
+      </a>
+      <a href="assets/contratos/contrato-essencial-anual.pdf" target="_blank" class="contract-link" id="contract-pdf-anual-link">
+        <span class="contract-link-label">Anual</span>
+        <span class="contract-link-detail">20% de desconto</span>
+      </a>
+    </div>
   </div>
 </div>
 

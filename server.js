@@ -3,9 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 const MIME = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'application/javascript',
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.pdf': 'application/pdf',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
@@ -25,7 +26,7 @@ const server = http.createServer((req, res) => {
 
   const filePath = path.join(__dirname, urlPath);
   const ext = path.extname(filePath);
-  const contentType = (MIME[ext] || 'text/plain') + '; charset=utf-8';
+  const contentType = MIME[ext] || 'text/plain; charset=utf-8';
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
