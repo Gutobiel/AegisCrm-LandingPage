@@ -1376,6 +1376,7 @@
   const planData = {
     essencial: {
       title: 'Plano Essencial — R$ 497/mês',
+      annualTitle: 'Plano Essencial — R$ 4.970/ano (16% desc.)',
       sections: [
         { heading: 'Equipe e Pipeline', items: [
           'Até 3 usuários',
@@ -1395,7 +1396,7 @@
         ]},
         { heading: 'Inteligência Artificial', items: [
           '1 Agente autônomo de IA',
-          '50.000 tokens de IA/mês',
+          '1.000.000 de tokens de IA/mês',
           'Copiloto de vendas em tempo real (sugestões inteligentes)',
           'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
           '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
@@ -1445,6 +1446,7 @@
     },
     crescimento: {
       title: 'Plano Crescimento — R$ 997/mês',
+      annualTitle: 'Plano Crescimento — R$ 9.970/ano (16% desc.)',
       sections: [
         { heading: 'Equipe e Pipeline', items: [
           'Até 10 usuários (3x mais que Essencial)',
@@ -1468,7 +1470,7 @@
         ]},
         { heading: 'Inteligência Artificial', items: [
           '3 Agentes autônomos de IA',
-          '500.000 tokens de IA/mês (10x mais que Essencial)',
+          '1.000.000 de tokens de IA/mês',
           'Copiloto de vendas em tempo real (sugestões inteligentes)',
           'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
           '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
@@ -1560,7 +1562,7 @@
         ]},
         { heading: 'Inteligência Artificial', items: [
           'Agentes de IA ilimitados',
-          '5.000.000+ tokens de IA/mês',
+          'Uso de API de IA própria (integração via chave de API própria)',
           'Copiloto de vendas em tempo real (sugestões inteligentes)',
           'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
           '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
@@ -1639,19 +1641,36 @@
     var plan = planData[planKey];
     if (!plan) return;
 
-    titleEl.textContent = plan.title;
+    var isAnnual = document.querySelector('.pricing-segmented-control')?.classList.contains('is-annual') || false;
+    var titleText = (isAnnual && plan.annualTitle) ? plan.annualTitle : plan.title;
+
+    titleEl.textContent = titleText;
     var html = '';
+    
     plan.sections.forEach(function(section) {
-      html += '<div class="plan-detail-section"><h4>' + section.heading + '</h4><ul>';
+      var isUnavailable = section.unavailable || false;
+      var sectionClass = isUnavailable ? 'plan-detail-section unavailable-section' : 'plan-detail-section';
+      var iconSvg = isUnavailable 
+        ? '<svg class="item-icon-unavail" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="even-odd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="even-odd"/></svg>'
+        : '<svg class="item-icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="even-odd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="even-odd"/></svg>';
+
+      html += '<div class="' + sectionClass + '">';
+      html += '<div class="section-badge-header"><span>' + section.heading + '</span></div>';
+      html += '<ul class="modal-feature-list">';
       section.items.forEach(function(item) {
-        if (section.unavailable) {
-          html += '<li class="unavailable">' + item + '</li>';
+        if (isUnavailable) {
+          html += '<li class="unavailable">' + iconSvg + '<span>' + item + '</span></li>';
         } else {
-          html += '<li>' + item + '</li>';
+          html += '<li>' + iconSvg + '<span>' + item + '</span></li>';
         }
       });
       html += '</ul></div>';
     });
+
+    html += '<div class="modal-cta-footer">';
+    html += '<a href="#demonstracao" class="btn btn-primary modal-cta-btn" onclick="document.getElementById(\'plan-detail-overlay\').classList.remove(\'active\');document.body.style.overflow=\'\';">Quero iniciar com este plano →</a>';
+    html += '</div>';
+
     bodyEl.innerHTML = html;
     bodyEl.scrollTop = 0;
     overlay.classList.add('active');

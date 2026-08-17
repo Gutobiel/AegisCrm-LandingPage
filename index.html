@@ -780,6 +780,23 @@
       </div>
     </div>
 
+    <!-- TOGGLE MENSAL / ANUAL (SEGMENTED CONTROL PILL) -->
+    <div class="pricing-toggle-container reveal">
+      <div class="pricing-segmented-control" role="tablist" aria-label="Frequência de Cobrança">
+        <button type="button" class="segmented-btn active" id="btn-monthly" role="tab" aria-selected="true">
+          Cobrança Mensal
+        </button>
+        <button type="button" class="segmented-btn" id="btn-annual" role="tab" aria-selected="false">
+          Cobrança Anual
+          <span class="segmented-badge-floating">🔥 2 meses grátis</span>
+        </button>
+        <div class="segmented-indicator"></div>
+      </div>
+      <p class="pricing-toggle-subtitle">
+        <span class="discount-highlight">Economize até 16% no pagamento anual</span>
+      </p>
+    </div>
+
     <div class="bento-pricing reveal">
       <!-- 1. Essencial -->
       <div class="pricing-card" id="card-essencial">
@@ -787,9 +804,10 @@
         <div class="pricing-price">
           <div class="pricing-price-main">
             <span class="pricing-currency">R$</span>
-            <span class="pricing-amount">497</span>
-            <span class="pricing-period">/m&#234;s</span>
+            <span class="pricing-amount" data-monthly="497" data-annual="4.970">497</span>
+            <span class="pricing-period">/mês</span>
           </div>
+          <div class="pricing-annual-note" style="display: none;">Equivalente a R$ 414/mês. 16% de desconto.</div>
         </div>
         <p class="pricing-desc">Para equipes iniciais que querem organizar vendas com intelig&#234;ncia artificial desde o dia 1.</p>
         <ul class="pricing-features">
@@ -797,7 +815,7 @@
           <li>2 funis de vendas configur&#225;veis</li>
           <li>2 conex&#245;es WhatsApp</li>
           <li>1 Agente aut&#244;nomo de IA</li>
-          <li>50.000 tokens de IA/m&#234;s</li>
+          <li>1.000.000 de tokens de IA/m&#234;s</li>
           <li>Copiloto de vendas em tempo real</li>
           <li>Base de conhecimento RAG</li>
           <li>Transcri&#231;&#227;o autom&#225;tica de &#225;udio</li>
@@ -815,9 +833,10 @@
         <div class="pricing-price">
           <div class="pricing-price-main">
             <span class="pricing-currency">R$</span>
-            <span class="pricing-amount">997</span>
-            <span class="pricing-period">/m&#234;s</span>
+            <span class="pricing-amount" data-monthly="997" data-annual="9.970">997</span>
+            <span class="pricing-period">/mês</span>
           </div>
+          <div class="pricing-annual-note" style="display: none;">Equivalente a R$ 830/mês. 16% de desconto.</div>
         </div>
         <p class="pricing-desc">Para times comerciais estruturados que precisam de escala, IA ativa e visibilidade total.</p>
         <ul class="pricing-features">
@@ -825,7 +844,7 @@
           <li>10 funis de vendas</li>
           <li>5 conex&#245;es WhatsApp</li>
           <li>3 Agentes aut&#244;nomos de IA</li>
-          <li>500.000 tokens de IA/m&#234;s</li>
+          <li>1.000.000 de tokens de IA/m&#234;s</li>
           <li>Base de conhecimento RAG</li>
           <li>Personaliza&#231;&#227;o total do tom de voz</li>
           <li>An&#225;lise de sentimento das conversas</li>
@@ -845,9 +864,10 @@
         <div class="pricing-price">
           <div class="pricing-price-main">
             <span class="pricing-currency">R$</span>
-            <span class="pricing-amount">2.997</span>
-            <span class="pricing-period">/m&#234;s</span>
+            <span class="pricing-amount" data-monthly="2.997" data-annual="29.970">2.997</span>
+            <span class="pricing-period">/mês</span>
           </div>
+          <div class="pricing-annual-note" style="display: none;">Equivalente a R$ 2.497/mês. 16% de desconto.</div>
         </div>
         <p class="pricing-desc">Para opera&#231;&#245;es de alto volume com integra&#231;&#227;o profunda, IA ilimitada e suporte VIP dedicado.</p>
         <ul class="pricing-features">
@@ -855,7 +875,7 @@
           <li>Funis de vendas ilimitados</li>
           <li>20 conex&#245;es WhatsApp</li>
           <li>Agentes de IA ilimitados</li>
-          <li>5.000.000+ tokens de IA/m&#234;s</li>
+          <li>Uso de API de IA pr&#243;pria (BYOK / Chave Pr&#243;pria)</li>
           <li>BYOK: Chave pr&#243;pria OpenAI/Gemini/Claude</li>
           <li>Few-Shot Learning (IA treina com conversas)</li>
           <li>API REST completa + Webhooks ilimitados</li>
@@ -1068,6 +1088,8 @@
         <ul>
           <li><a href="privacidade.html">Privacidade</a></li>
           <li><a href="termos.html">Termos de uso</a></li>
+          <li><a href="contrato_b2b.html">Contrato B2B</a></li>
+          <li><a href="contrato_cdc.html">Contrato CDC</a></li>
         </ul>
       </div>
     </div>
