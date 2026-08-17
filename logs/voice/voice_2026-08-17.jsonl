@@ -940,3 +940,5 @@
 {"timestamp":"2026-08-17T21:19:34.042Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"4a51dc6a-077e-439e-b1e6-0980a8c22a7e","latencyMs":18442,"label":"time_to_first_audio"}
 {"timestamp":"2026-08-17T21:19:37.178Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":3121,"textLength":21,"audioBytes":62000}
 {"timestamp":"2026-08-17T21:19:37.182Z","event":"VOICE_TTS_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"4a51dc6a-077e-439e-b1e6-0980a8c22a7e","totalLatencyMs":21585,"responseLength":130}
+{"timestamp":"2026-08-17T21:21:41.575Z","event":"VOICE_ERROR","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T21:21:41.578Z","event":"VOICE_SESSION_ENDED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","reason":"inactivity_timeout","durationMs":246245,"turnCount":3}

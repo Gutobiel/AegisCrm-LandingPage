@@ -15,6 +15,7 @@
     GREETING: 'GREETING',
     LISTENING: 'LISTENING',
     PROCESSING: 'PROCESSING',
+    SYNTHESIZING: 'SYNTHESIZING',
     SPEAKING: 'SPEAKING',
     INTERRUPTED: 'INTERRUPTED',
     ENDING: 'ENDING',
@@ -498,7 +499,9 @@
 
     _setupPlayerHandlers() {
       this.player.onPlaybackStart = () => {
-        // Nothing here anymore, state is managed internally by AudioStreamPlayer
+        if (this.state === STATES.SYNTHESIZING || this.state === STATES.PROCESSING) {
+          this._setState(STATES.SPEAKING);
+        }
       };
 
       this.player.onPlaybackEnd = () => {
@@ -624,7 +627,7 @@
             this.player.setGenerationId(msg.generationId);
           }
           if (this.state === STATES.PROCESSING || this.state === STATES.LISTENING) {
-            this._setState(STATES.SPEAKING);
+            this._setState(STATES.SYNTHESIZING);
           }
           if (this.onAssistantText) {
             this.onAssistantText(msg.text);
@@ -637,7 +640,9 @@
             this.currentGenerationId = msg.generationId;
             this.player.setGenerationId(msg.generationId);
           }
-          this._setState(STATES.SPEAKING);
+          if (this.state !== STATES.SPEAKING) {
+            this._setState(STATES.SYNTHESIZING);
+          }
           break;
 
         case 'audio_chunk':

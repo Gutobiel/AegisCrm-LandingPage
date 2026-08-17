@@ -46,6 +46,7 @@
       [STATES.GREETING]: 'AEGIS está falando...',
       [STATES.LISTENING]: 'Ouvindo...',
       [STATES.PROCESSING]: 'Pensando...',
+      [STATES.SYNTHESIZING]: 'Gerando resposta...',
       [STATES.SPEAKING]: 'Falando...',
       [STATES.INTERRUPTED]: 'Ouvindo...',
       [STATES.ENDING]: 'Encerrando...',
@@ -62,12 +63,14 @@
 
       // Update badge CSS modifier
       if (badge) {
-        badge.className = 'aegis-voice-live-badge ' + state.toLowerCase();
+        const badgeState = state === STATES.SYNTHESIZING ? STATES.PROCESSING.toLowerCase() : state.toLowerCase();
+        badge.className = 'aegis-voice-live-badge ' + badgeState;
       }
 
       // Update visualizer state
       if (waves) {
-        waves.className = 'aegis-voice-waves ' + state.toLowerCase();
+        const waveState = state === STATES.SYNTHESIZING ? STATES.PROCESSING.toLowerCase() : state.toLowerCase();
+        waves.className = 'aegis-voice-waves ' + waveState;
       }
 
       // Reset assistant response buffer when listening
@@ -79,6 +82,18 @@
       if (state === STATES.PROCESSING) {
         if (transcript) {
           transcript.innerHTML = '<span class="transcript-thinking">Pensando na resposta...</span>';
+        }
+      }
+
+      if (state === STATES.SYNTHESIZING) {
+        if (transcript) {
+          transcript.innerHTML = '<span class="transcript-thinking">Gerando resposta...</span>';
+        }
+      }
+
+      if (state === STATES.SPEAKING) {
+        if (transcript && currentAssistantText) {
+          transcript.innerHTML = `<span class="assistant-text">${currentAssistantText}</span>`;
         }
       }
 
@@ -102,7 +117,7 @@
     manager.onAssistantText = (delta) => {
       console.log(`[UI] onAssistantText delta received: "${delta}"`);
       currentAssistantText += delta;
-      if (transcript) {
+      if (transcript && manager.state === STATES.SPEAKING) {
         transcript.innerHTML = `<span class="assistant-text">${currentAssistantText}</span>`;
       }
     };
