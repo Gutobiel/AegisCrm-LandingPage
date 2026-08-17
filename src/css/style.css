@@ -1632,27 +1632,27 @@ letter-spacing: 0.05em;
 
     0%,
     15% {
-      -webkit-mask-image: url('assets/hand-fill-svgrepo-com.svg');
-      mask-image: url('assets/hand-fill-svgrepo-com.svg');
+      -webkit-mask-image: url('../assets/hand-fill-svgrepo-com.svg');
+      mask-image: url('../assets/hand-fill-svgrepo-com.svg');
       transform: translate(0, 0) scale(1);
     }
 
     20% {
-      -webkit-mask-image: url('assets/hand-grabbing-fill-svgrepo-com.svg');
-      mask-image: url('assets/hand-grabbing-fill-svgrepo-com.svg');
+      -webkit-mask-image: url('../assets/hand-grabbing-fill-svgrepo-com.svg');
+      mask-image: url('../assets/hand-grabbing-fill-svgrepo-com.svg');
       transform: translate(0, 4px) scale(0.9);
     }
 
     80% {
-      -webkit-mask-image: url('assets/hand-grabbing-fill-svgrepo-com.svg');
-      mask-image: url('assets/hand-grabbing-fill-svgrepo-com.svg');
+      -webkit-mask-image: url('../assets/hand-grabbing-fill-svgrepo-com.svg');
+      mask-image: url('../assets/hand-grabbing-fill-svgrepo-com.svg');
       transform: translate(40px, 4px) scale(0.9);
     }
 
     85%,
     100% {
-      -webkit-mask-image: url('assets/hand-fill-svgrepo-com.svg');
-      mask-image: url('assets/hand-fill-svgrepo-com.svg');
+      -webkit-mask-image: url('../assets/hand-fill-svgrepo-com.svg');
+      mask-image: url('../assets/hand-fill-svgrepo-com.svg');
       transform: translate(0, 0) scale(1);
     }
   }

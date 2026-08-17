@@ -1,0 +1,82 @@
+{
+  "company": {
+    "name": "AEGIS Tecnologia",
+    "product": "Aegis CRM",
+    "description": "CRM com agentes de IA nativos para gestão de vendas, atendimento e automação no WhatsApp.",
+    "website": "aegiscrm.com.br",
+    "whatsapp": "+55 61 93199-1656"
+  },
+  "plans": [
+    {
+      "name": "Essencial",
+      "price": "quatrocentos e noventa e sete reais por mês",
+      "priceAnnual": "quatro mil novecentos e setenta reais por ano, equivalente a quatrocentos e catorze reais por mês",
+      "users": "até 3 usuários",
+      "funnels": "2 funis de vendas",
+      "whatsappConnections": "2 conexões WhatsApp",
+      "aiAgents": "1 agente autônomo de IA",
+      "highlights": [
+        "Copiloto de vendas em tempo real",
+        "Base de conhecimento RAG",
+        "Transcrição automática de áudio",
+        "5 workflows de automação",
+        "Propostas comerciais em PDF"
+      ]
+    },
+    {
+      "name": "Crescimento",
+      "price": "novecentos e noventa e sete reais por mês",
+      "priceAnnual": "nove mil novecentos e setenta reais por ano, equivalente a oitocentos e trinta reais por mês",
+      "users": "até 10 usuários",
+      "funnels": "10 funis de vendas",
+      "whatsappConnections": "5 conexões WhatsApp",
+      "aiAgents": "3 agentes autônomos de IA",
+      "highlights": [
+        "Personalização total do tom de voz",
+        "Análise de sentimento das conversas",
+        "30 workflows com gatilhos avançados",
+        "Contratos e faturas recorrentes",
+        "Equipes com metas e Round-Robin",
+        "Relatórios completos com exportação"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "price": "dois mil novecentos e noventa e sete reais por mês",
+      "priceAnnual": "vinte e nove mil novecentos e setenta reais por ano, equivalente a dois mil quatrocentos e noventa e sete reais por mês",
+      "users": "usuários ilimitados",
+      "funnels": "funis ilimitados",
+      "whatsappConnections": "20 conexões WhatsApp",
+      "aiAgents": "agentes de IA ilimitados",
+      "highlights": [
+        "BYOK: chave própria OpenAI, Gemini ou Claude",
+        "Few-Shot Learning com conversas reais",
+        "API REST completa com Webhooks ilimitados",
+        "White-Label completo",
+        "Gestor de conta dedicado",
+        "SLA contratual de resposta em 4 horas úteis",
+        "Suporte VIP 24/7"
+      ]
+    }
+  ],
+  "features": [
+    "Automação do funil de vendas no WhatsApp",
+    "Agentes de IA autônomos para prospecção, qualificação e fechamento",
+    "Copiloto de vendas que sugere ações em tempo real",
+    "Pipeline visual em kanban com drag and drop",
+    "Follow-up automático inteligente para leads parados",
+    "Transcrição automática de áudios do WhatsApp",
+    "Relatórios e dashboards em tempo real",
+    "Base de conhecimento RAG para treinar a IA",
+    "Envio automático de chave PIX e link de checkout pela IA",
+    "Integração nativa com WhatsApp Business"
+  ],
+  "trial": "todos os planos incluem 7 dias grátis, sem compromisso",
+  "cancellation": "sem fidelidade, pode cancelar quando quiser",
+  "security": [
+    "Criptografia AES-256",
+    "Servidores no Brasil",
+    "LGPD Compliant",
+    "Backup diário automático"
+  ]
+}

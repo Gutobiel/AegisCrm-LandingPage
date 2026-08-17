@@ -9,7 +9,7 @@
     content="O Aegis CRM organiza o seu funil de ponta a ponta e traz visibilidade total para sua equipe de vendas.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="src/assets/favicon.png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Aegis CRM — O CRM que seu vendedor realmente vai usar">
@@ -48,7 +48,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style-light.css?v=20260724_3">
+  <link rel="stylesheet" href="src/css/style-light.css?v=20260724_3">
 </head>
 
 <body>
@@ -71,7 +71,7 @@
     <!-- ═══ HEADER ═══════════════════════════════════════════════ -->
     <header id="site-header">
       <a href="#" class="logo" aria-label="Aegis CRM">
-        <img src="assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
+        <img src="src/assets/logo.png" alt="Aegis CRM" class="site-logo-icon">
       </a>
       <nav class="header-nav" aria-label="Navegação principal">
         <a href="#comparativo" class="nav-link">Como funciona</a>
@@ -124,7 +124,7 @@
               <div class="wa-header">
                 <div class="wa-header-left">
                   <div class="wa-avatar">
-                    <img src="assets/favicon.png" alt="Aegis CRM" class="wa-avatar-img">
+                    <img src="src/assets/favicon.png" alt="Aegis CRM" class="wa-avatar-img">
                   </div>
                   <div class="wa-status-info">
                     <span class="wa-name">Aegis (CRM)</span>
@@ -494,7 +494,7 @@
         <!-- Feature 1: Pipeline automático -->
         <div class="feature-block">
           <div class="feature-visual reveal-left" id="vis-1">
-            <img src="assets/dashboard_ui.png" alt="Aegis CRM Pipeline Visual" class="dashboard-screenshot">
+            <img src="src/assets/dashboard_ui.png" alt="Aegis CRM Pipeline Visual" class="dashboard-screenshot">
           </div>
 
           <div class="feature-text reveal-right">
@@ -674,7 +674,7 @@
                   comunicação."
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/rodrigo.png" class="author-avatar-img" alt="Rodrigo Dantas">
+                  <img src="src/assets/rodrigo.png" class="author-avatar-img" alt="Rodrigo Dantas">
                   <div>
                     <div class="author-name">Rodrigo Dantas</div>
                     <div class="author-role">Gestor de Vendas — Veloce</div>
@@ -690,7 +690,7 @@
                   falar."
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/camila.png" class="author-avatar-img" alt="Camila Ferreira">
+                  <img src="src/assets/camila.png" class="author-avatar-img" alt="Camila Ferreira">
                   <div>
                     <div class="author-name">Camila Ferreira</div>
                     <div class="author-role">Sócia-diretora — CF Advocacia</div>
@@ -705,7 +705,7 @@
                   o pessoal abraçou, porque é só arrastar os cards no celular enquanto estão na rua visitando obra."
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/marcos.png" class="author-avatar-img" alt="Marcos Oliveira">
+                  <img src="src/assets/marcos.png" class="author-avatar-img" alt="Marcos Oliveira">
                   <div>
                     <div class="author-name">Marcos Oliveira</div>
                     <div class="author-role">Diretor Comercial — Solar Tech</div>
@@ -721,7 +721,7 @@
                   'talento natural' diminuiu."
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/juliana.png" class="author-avatar-img" alt="Juliana Mendes">
+                  <img src="src/assets/juliana.png" class="author-avatar-img" alt="Juliana Mendes">
                   <div>
                     <div class="author-name">Juliana Mendes</div>
                     <div class="author-role">Head de Operações — JM Corp</div>
@@ -1112,7 +1112,7 @@
     <div class="footer-container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/logo.png" alt="Aegis CRM" class="footer-logo">
+          <img src="src/assets/logo.png" alt="Aegis CRM" class="footer-logo">
           <p class="footer-description">O CRM com agentes de IA nativas</p>
         </div>
         <div class="footer-col">
@@ -1125,15 +1125,15 @@
         <div class="footer-col">
           <h4>Empresa</h4>
           <ul>
-            <li><a href="contato.html">Contato</a></li>
-            <li><a href="suporte.html">Suporte</a></li>
+            <li><a href="src/pages/contato.html">Contato</a></li>
+            <li><a href="src/pages/suporte.html">Suporte</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
           <ul>
-            <li><a href="privacidade.html">Privacidade</a></li>
-            <li><a href="termos.html">Termos de uso</a></li>
+            <li><a href="src/pages/privacidade.html">Privacidade</a></li>
+            <li><a href="src/pages/termos.html">Termos de uso</a></li>
           </ul>
         </div>
       </div>
@@ -1201,7 +1201,7 @@
       <!-- Modal Header -->
       <div class="aegis-modal-header">
         <div class="aegis-header-brand">
-          <img src="assets/aegis-logo-icon.png" alt="Aegis CRM" class="aegis-header-logo-img">
+          <img src="src/assets/aegis-logo-icon.png" alt="Aegis CRM" class="aegis-header-logo-img">
         </div>
         <button class="aegis-close-btn" id="aegis-close-btn" aria-label="Fechar Modal">&times;</button>
       </div>
@@ -1301,7 +1301,24 @@
               </svg>
             </button>
 
-            <!-- Direct WhatsApp Link -->
+            <!--              Option 3: Testar Voz (FASE 0) 
+            <button type="button" class="aegis-option-card" id="aegis-btn-test-voice">
+              <div class="aegis-option-left">
+                <div class="aegis-option-icon voice-icon" style="background: rgba(255, 100, 100, 0.2); color: #ff4444;">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path
+                      d="M12 3v9.28a4.39 4.39 0 0 0-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z" />
+                  </svg>
+                </div>
+                <div class="aegis-option-text">
+                  <span class="aegis-option-title">Testar voz (Debug)</span>
+                  <span class="aegis-option-desc">Testar TTS Kokoro isolado</span>
+                </div>
+              </div>
+              <svg class="aegis-option-arrow" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+              </svg>
+            </button> -->
             <a href="https://wa.me/5561931991656?text=Oi%2C%20vim%20do%20site%20do%20Aegis!" id="aegis-btn-direct-wa"
               target="_blank" rel="noopener noreferrer" class="aegis-option-card wa-direct-link">
               <div class="aegis-option-left">
@@ -1396,10 +1413,12 @@
     </div>
   </div>
 
-  <!-- ═══ APP SCRIPTS ═══════════════════════════════════════════════ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="app.js?v=20260724_3"></script>
+  <script src="src/js/voice-engine.js?v=20260817_1"></script>
+  <script src="src/js/voice-ui.js?v=20260817_1"></script>
+  <script src="src/js/tts-test.js?v=20260817_1"></script>
+  <script src="src/js/app.js?v=20260724_3"></script>
 </body>
 
 </html>

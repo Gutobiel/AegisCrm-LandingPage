@@ -257,7 +257,7 @@
       const conversaoPerdida = leadsEsquecidos * (conv / 100);
       const targetLoss = Math.round(conversaoPerdida * ticket);
       const targetLossYear = Math.round(targetLoss * 12);
-      
+
       const recoveryRate = Math.min(0.60 + (leads / 1000) * 0.25, 0.85);
       const targetGain = Math.round(targetLoss * recoveryRate);
       const recoveryPct = Math.round(recoveryRate * 100);
@@ -1077,7 +1077,7 @@
         leadData = { name: nameVal, email: emailVal, phone: phoneVal };
         try {
           sessionStorage.setItem('aegis_lead', JSON.stringify(leadData));
-        } catch (e) {}
+        } catch (e) { }
 
         updateUserLeadUI(leadData);
         switchView('options');
@@ -1151,7 +1151,7 @@
           /* Permission granted — stop the test stream immediately */
           stream.getTracks().forEach(t => t.stop());
           switchView('voice');
-          startVoiceCall();
+          // Note: manager.startCall() is handled by voice-ui.js
         } catch (err) {
           alert('Precisamos de acesso ao seu microfone para a chamada de voz. Por favor, habilite a permissão e tente novamente.');
           console.warn('Mic permission denied:', err);
@@ -1159,14 +1159,16 @@
       });
     }
 
-    /* ─── TEXT CHAT ENGINE ─────────────────────────────────────────────── */
+    /* ─── TEXT CHAT ENGINE (OpenAI LLM Consultative Sales) ─────────────── */
+    let textChatHistory = [];
+
     function initChatStream() {
       const userName = leadData ? leadData.name.split(' ')[0] : 'Visitante';
       appendMessage('bot', `Olá, <strong>${userName}</strong>! Sou a IA de Atendimento do Aegis CRM.<br>Como posso impulsionar seu processo comercial hoje?`);
     }
 
     function appendMessage(sender, text) {
-      if (!chatStream) return;
+      if (!chatStream) return null;
       const bubble = document.createElement('div');
       bubble.className = `aegis-msg-bubble ${sender}`;
 
@@ -1176,37 +1178,50 @@
       bubble.innerHTML = `${text}<span class="aegis-msg-time">${timeStr}</span>`;
       chatStream.appendChild(bubble);
       chatStream.scrollTop = chatStream.scrollHeight;
+      return bubble;
     }
 
-    function getBotResponse(userMsg) {
-      const msg = userMsg.toLowerCase();
-      if (msg.includes('plano') || msg.includes('preço') || msg.includes('quanto custa') || msg.includes('valor')) {
-        return 'O Aegis possui 3 planos principais:<br>&bull; <strong>Essencial</strong>: R$ 497/mês (3 usuários, 2 WhatsApp, 1 IA)<br>&bull; <strong>Crescimento</strong>: R$ 997/mês (10 usuários, 5 WhatsApp, 3 IAs)<br>&bull; <strong>Enterprise</strong>: R$ 2.997/mês (Usuários ilimitados e BYOK)<br><br>Todos incluem 7 dias grátis sem compromisso!';
-      }
-      if (msg.includes('whatsapp') || msg.includes('integração') || msg.includes('áudio')) {
-        return 'O Aegis tem <strong>integração nativa com WhatsApp</strong>! Nossas agentes de IA leem mensagens, escutam e transcrevem áudios, respondem dúvidas e movem os leads no funil automaticamente.';
-      }
-      if (msg.includes('demo') || msg.includes('demonstração') || msg.includes('teste') || msg.includes('agendar')) {
-        return 'Excelente! Registramos seu interesse. Um de nossos especialistas entrará em contato via WhatsApp em até 2 horas úteis para uma demonstração personalizada ao vivo!';
-      }
-      if (msg.includes('voz') || msg.includes('ligação') || msg.includes('chamada')) {
-        return 'Você pode testar nossa <strong>Atendente de IA por VOZ</strong> em tempo real clicando no botão "Iniciar chamada de voz" na tela inicial deste assistente!';
-      }
-      return `Entendi perfeitamente sua dúvida sobre "${userMsg}". O Aegis CRM automatiza todo o acompanhamento comercial com IA. Gostaria de agendar uma demonstração ou saber mais sobre os planos?`;
-    }
-
-    function handleUserSend(text) {
+    async function handleUserSend(text) {
       const query = text.trim();
       if (!query) return;
 
       appendMessage('user', query);
+      textChatHistory.push({ role: 'user', content: query });
       if (chatInput) chatInput.value = '';
 
-      /* Typing delay simulation */
-      setTimeout(() => {
-        const reply = getBotResponse(query);
-        appendMessage('bot', reply);
-      }, 700);
+      // Show typing indicator
+      const typingBubble = appendMessage('bot', '<span style="font-style:italic; opacity:0.7;">IA digitando...</span>');
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: query,
+            history: textChatHistory
+          })
+        });
+
+        if (typingBubble && typingBubble.parentNode) {
+          typingBubble.parentNode.removeChild(typingBubble);
+        }
+
+        if (!res.ok) {
+          throw new Error(`Status ${res.status}`);
+        }
+
+        const data = await res.json();
+        const replyText = data.reply || 'Tive um problema ao processar. Pode tentar novamente?';
+
+        appendMessage('bot', replyText);
+        textChatHistory.push({ role: 'assistant', content: replyText });
+      } catch (err) {
+        if (typingBubble && typingBubble.parentNode) {
+          typingBubble.parentNode.removeChild(typingBubble);
+        }
+        console.error('Erro no chat de texto:', err);
+        appendMessage('bot', 'Desculpe, ocorreu uma oscilação na conexão com a IA. Por favor, tente enviar novamente!');
+      }
     }
 
     if (chatForm) {
@@ -1216,336 +1231,18 @@
       });
     }
 
-    /* ─── VOICE CALL ENGINE (OpenAI Realtime WebRTC + Fallback & Interruption) ────── */
-    let peerConnection = null;
-    let dataChannel = null;
-    let localAudioStream = null;
-    let remoteAudioElement = null;
-    let silenceTimer = null;
-    let currentVoiceSpeech = '';
-
-    async function startVoiceCall() {
-      isCallActive = true;
-      isMuted = false;
-
-      if (voiceWaves) voiceWaves.classList.add('active');
-      if (voiceDot) voiceDot.className = 'live-dot green';
-      if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
-      if (voiceTranscript) voiceTranscript.textContent = '';
-
-      if (btnMute) {
-        btnMute.classList.remove('muted');
-        if (muteLabel) muteLabel.textContent = 'Silenciar';
+    /* Quick Chips Click Handler */
+    document.addEventListener('click', (e) => {
+      const chip = e.target.closest('.aegis-chip');
+      if (chip) {
+        const text = chip.textContent.trim();
+        if (text) handleUserSend(text);
       }
+    });
 
-      /* Try OpenAI Realtime WebRTC Connection */
-      try {
-        const sessionRes = await fetch('/api/realtime-session', { method: 'POST' });
-        const sessionData = await sessionRes.json();
-
-        if (sessionData && sessionData.client_secret && sessionData.client_secret.value) {
-          const ephemeralToken = sessionData.client_secret.value;
-          await connectOpenAIRealtimeWebRTC(ephemeralToken);
-          return;
-        }
-      } catch (err) {
-        console.warn('OpenAI Realtime WebRTC unavailable, falling back to Web Speech API:', err);
-      }
-
-      /* Fallback: Browser Web Speech API & Simulation */
-      startWebSpeechFallback();
-    }
-
-    async function connectOpenAIRealtimeWebRTC(ephemeralToken) {
-      try {
-        peerConnection = new RTCPeerConnection();
-
-        /* Audio Element for AI Voice Playback */
-        remoteAudioElement = document.createElement('audio');
-        remoteAudioElement.autoplay = true;
-        peerConnection.ontrack = (e) => {
-          remoteAudioElement.srcObject = e.streams[0];
-        };
-
-        /* Add Microphone Track */
-        localAudioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        localAudioStream.getTracks().forEach(track => peerConnection.addTrack(track, localAudioStream));
-
-        /* Create DataChannel for Transcripts and Events */
-        dataChannel = peerConnection.createDataChannel('oai-events');
-        dataChannel.onmessage = (e) => {
-          try {
-            const event = JSON.parse(e.data);
-
-            if (event.type === 'input_audio_buffer.speech_started') {
-              /* Interrupt AI audio if playing when user starts speaking */
-              if (remoteAudioElement) {
-                remoteAudioElement.pause();
-                remoteAudioElement.currentTime = 0;
-              }
-              if (voiceStatusText && isCallActive) voiceStatusText.textContent = 'Ouvindo...';
-              if (voiceDot) voiceDot.className = 'live-dot green';
-              if (voiceTranscript) voiceTranscript.textContent = '';
-            }
-
-            if (event.type === 'response.audio_transcript.delta' && event.delta) {
-              if (voiceStatusText && isCallActive) voiceStatusText.textContent = 'Falando...';
-              if (voiceDot) voiceDot.className = 'live-dot red';
-              if (voiceTranscript) voiceTranscript.textContent += event.delta;
-            }
-
-            if (event.type === 'response.audio_transcript.done') {
-              if (voiceStatusText && isCallActive) voiceStatusText.textContent = 'Ouvindo...';
-              if (voiceDot) voiceDot.className = 'live-dot green';
-            }
-          } catch (err) {}
-        };
-
-        /* Create SDP Offer */
-        const offer = await peerConnection.createOffer();
-        await peerConnection.setLocalDescription(offer);
-
-        /* Send Offer to OpenAI Realtime Endpoint */
-        const baseUrl = 'https://api.openai.com/v1/realtime';
-        const model = 'gpt-realtime-1.5';
-        const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
-          method: 'POST',
-          body: offer.sdp,
-          headers: {
-            Authorization: `Bearer ${ephemeralToken}`,
-            'Content-Type': 'application/sdp'
-          }
-        });
-
-        if (!sdpResponse.ok) {
-          throw new Error(`SDP Exchange Error: ${sdpResponse.status}`);
-        }
-
-        const answerSdp = await sdpResponse.text();
-        await peerConnection.setRemoteDescription({ type: 'answer', sdp: answerSdp });
-
-        if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
-        if (voiceDot) voiceDot.className = 'live-dot green';
-        if (voiceTranscript) voiceTranscript.textContent = '';
-      } catch (err) {
-        console.warn('Realtime WebRTC connection error, starting fallback:', err);
-        startWebSpeechFallback();
-      }
-    }
-
-    function startWebSpeechFallback() {
-      if (!isCallActive) return;
-
-      const greetingText = 'Oiiie, como posso te ajudar hoje?';
-      if (voiceTranscript) voiceTranscript.textContent = greetingText;
-
-      speakAI(greetingText, () => {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRecognition && !isMuted && isCallActive) {
-          initSpeechRecognition(SpeechRecognition);
-        }
-      });
-    }
-
-    function initSpeechRecognition(SpeechRecognition) {
-      if (recognition) {
-        try { recognition.stop(); } catch (e) {}
-      }
-
-      recognition = new SpeechRecognition();
-      recognition.lang = 'pt-BR';
-      recognition.continuous = true;
-      recognition.interimResults = true;
-
-      recognition.onstart = () => {
-        if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
-        if (voiceDot) voiceDot.className = 'live-dot green';
-      };
-
-      recognition.onresult = (event) => {
-        /* BARGE-IN: Interrupt AI if user starts speaking while AI speaks */
-        if (synth && synth.speaking) {
-          synth.cancel();
-          if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
-          if (voiceDot) voiceDot.className = 'live-dot green';
-        }
-
-        let transcriptStr = '';
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          transcriptStr += event.results[i][0].transcript;
-        }
-
-        const cleanTxt = transcriptStr.trim();
-        if (cleanTxt) {
-          if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
-          if (voiceDot) voiceDot.className = 'live-dot green';
-          if (voiceTranscript) voiceTranscript.textContent = `"${cleanTxt}"`;
-          currentVoiceSpeech = cleanTxt;
-
-          /* Reset silence timer after user stops talking */
-          if (silenceTimer) clearTimeout(silenceTimer);
-          silenceTimer = setTimeout(() => {
-            if (isCallActive && currentVoiceSpeech) {
-              const textToProcess = currentVoiceSpeech;
-              currentVoiceSpeech = '';
-              processVoiceQuery(textToProcess);
-            }
-          }, 2500);
-        }
-      };
-
-      recognition.onerror = (e) => {
-        console.warn('Speech Rec Error:', e.error);
-        if (isCallActive && !isMuted) {
-          setTimeout(() => {
-            try { recognition.start(); } catch (err) {}
-          }, 1500);
-        }
-      };
-
-      recognition.onend = () => {
-        if (isCallActive && !isMuted) {
-          try { recognition.start(); } catch (e) {}
-        }
-      };
-
-      try {
-        recognition.start();
-      } catch (e) {
-        console.warn('Could not start recognition:', e);
-      }
-    }
-
-    function processVoiceQuery(spokenText) {
-      if (!isCallActive || !spokenText) return;
-
-      if (voiceStatusText) voiceStatusText.textContent = 'Pensando...';
-      if (voiceDot) voiceDot.className = 'live-dot red';
-
-      const responseText = getVoiceBotResponse(spokenText);
-
-      setTimeout(() => {
-        if (!isCallActive) return;
-        if (voiceTranscript) voiceTranscript.textContent = responseText;
-        speakAI(responseText, () => {
-          if (voiceStatusText && isCallActive) {
-            voiceStatusText.textContent = 'Ouvindo...';
-            if (voiceDot) voiceDot.className = 'live-dot green';
-          }
-        });
-      }, 700);
-    }
-
-    function getVoiceBotResponse(spokenText) {
-      const txt = spokenText.toLowerCase();
-      if (txt.includes('plano') || txt.includes('preço') || txt.includes('quanto') || txt.includes('valor')) {
-        return 'O Aegis possui três planos: Essencial a 497 reais, Crescimento a 997 reais e Enterprise. Todos incluem sete dias grátis!';
-      }
-      if (txt.includes('whatsapp') || txt.includes('mensagem') || txt.includes('automação')) {
-        return 'Nossa IA se conecta diretamente ao seu WhatsApp, atendendo clientes 24 horas por dia e atualizando o funil de vendas!';
-      }
-      if (txt.includes('demonstração') || txt.includes('teste') || txt.includes('falar')) {
-        return 'Perfeito! Já guardei seus dados de contato e um consultor da Aegis vai te ligar em breve.';
-      }
-      return `Entendi o seu ponto sobre ${spokenText}. O Aegis CRM otimiza suas vendas com IA em tempo real. Quer agendar uma demonstração?`;
-    }
-
-    function speakAI(text, onComplete) {
-      if (voiceStatusText) voiceStatusText.textContent = 'Falando...';
-      if (voiceDot) voiceDot.className = 'live-dot red';
-
-      if (synth && 'speechSynthesis' in window) {
-        synth.cancel();
-        const cleanText = text.replace(/<[^>]*>?/gm, '');
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        utterance.lang = 'pt-BR';
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-
-        const voices = synth.getVoices();
-        const naturalPtVoice = voices.find(v => (v.lang === 'pt-BR' || v.lang.startsWith('pt')) && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Neural') || v.name.includes('Luciana') || v.name.includes('Francisca'))) || voices.find(v => v.lang === 'pt-BR' || v.lang.startsWith('pt'));
-        if (naturalPtVoice) {
-          utterance.voice = naturalPtVoice;
-        }
-
-        utterance.onend = () => {
-          if (voiceStatusText && isCallActive) {
-            voiceStatusText.textContent = 'Ouvindo...';
-            if (voiceDot) voiceDot.className = 'live-dot green';
-          }
-          if (onComplete) onComplete();
-        };
-
-        utterance.onerror = () => {
-          if (voiceStatusText && isCallActive) {
-            voiceStatusText.textContent = 'Ouvindo...';
-            if (voiceDot) voiceDot.className = 'live-dot green';
-          }
-          if (onComplete) onComplete();
-        };
-
-        synth.speak(utterance);
-      } else {
-        /* Fallback if TTS not supported */
-        setTimeout(() => {
-          if (voiceStatusText && isCallActive) {
-            voiceStatusText.textContent = 'Ouvindo...';
-            if (voiceDot) voiceDot.className = 'live-dot green';
-          }
-          if (onComplete) onComplete();
-        }, 1500);
-      }
-    }
-
-    /* Mute / Hangup */
-    if (btnMute) {
-      btnMute.addEventListener('click', () => {
-        isMuted = !isMuted;
-        if (isMuted) {
-          btnMute.classList.add('muted');
-          if (muteLabel) muteLabel.textContent = 'Desmutar';
-          if (recognition) try { recognition.stop(); } catch (e) {}
-          if (voiceStatusText) voiceStatusText.textContent = 'Mutado';
-        } else {
-          btnMute.classList.remove('muted');
-          if (muteLabel) muteLabel.textContent = 'Silenciar';
-          if (voiceStatusText) voiceStatusText.textContent = 'Ouvindo...';
-          const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-          if (SpeechRecognition && isCallActive) initSpeechRecognition(SpeechRecognition);
-        }
-      });
-    }
-
-    if (btnHangup) {
-      btnHangup.addEventListener('click', () => {
-        endVoiceCall();
-        switchView('options');
-      });
-    }
-
-    function endVoiceCall() {
-      isCallActive = false;
-
-      if (peerConnection) {
-        try { peerConnection.close(); } catch (e) {}
-        peerConnection = null;
-      }
-
-      if (localAudioStream) {
-        try { localAudioStream.getTracks().forEach(t => t.stop()); } catch (e) {}
-        localAudioStream = null;
-      }
-
-      if (recognition) {
-        try { recognition.stop(); } catch (e) {}
-      }
-
-      if (synth) {
-        try { synth.cancel(); } catch (e) {}
-      }
-
-      if (voiceWaves) voiceWaves.classList.remove('active');
-    }
+    /* ─── VOICE CALL ENGINE ───
+       Handled exclusively by src/js/voice-engine.js and src/js/voice-ui.js
+    */
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
@@ -1664,7 +1361,7 @@
     function createBubble(msg) {
       const bubble = document.createElement('div');
       bubble.className = `wa-bubble ${msg.sender}`;
-      
+
       const textSpan = document.createElement('span');
       textSpan.innerHTML = msg.text;
       bubble.appendChild(textSpan);
@@ -1672,14 +1369,14 @@
       const timeSpan = document.createElement('span');
       timeSpan.className = 'wa-bubble-time';
       timeSpan.textContent = formatTime();
-      
+
       if (msg.sender === 'vendedor') {
         const check = document.createElement('span');
         check.className = 'wa-double-check';
         check.innerHTML = ' &#10004;&#10004;';
         timeSpan.appendChild(check);
       }
-      
+
       bubble.appendChild(timeSpan);
       return bubble;
     }
@@ -1688,7 +1385,7 @@
       const indicator = document.createElement('div');
       indicator.className = 'wa-typing';
       indicator.id = 'wa-typing-indicator';
-      
+
       for (let i = 0; i < 3; i++) {
         const dot = document.createElement('div');
         dot.className = 'wa-dot';
@@ -1721,9 +1418,9 @@
         setTimeout(() => {
           const indicator = document.getElementById('wa-typing-indicator');
           if (indicator) indicator.remove();
-          
+
           statusText.textContent = 'IA Ativa · Online';
-          
+
           messageIndex++; // move to actual message
           const textMsg = messages[messageIndex];
           const bubble = createBubble(textMsg);
@@ -1887,7 +1584,7 @@
 
     const section = document.querySelector('.ai-agents-section');
     const cards = gsap.utils.toArray('.agents-grid .agent-card, .agents-grid .agent-banner');
-    
+
     if (!section || cards.length === 0) return;
 
     // Reset reveal classes to avoid CSS transform conflicts
@@ -1935,14 +1632,14 @@
           duration: 0.8,
           ease: 'power1.inOut'
         }, stepLabel)
-        .to(nextCard, {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          pointerEvents: 'auto',
-          duration: 0.8,
-          ease: 'power1.inOut'
-        }, stepLabel);
+          .to(nextCard, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            pointerEvents: 'auto',
+            duration: 0.8,
+            ease: 'power1.inOut'
+          }, stepLabel);
       }
     });
 
@@ -1968,256 +1665,312 @@
       title: 'Plano Essencial — R$ 497/mês',
       annualTitle: 'Plano Essencial — R$ 4.970/ano (16% desc.)',
       sections: [
-        { heading: 'Equipe e Pipeline', items: [
-          'Até 3 usuários',
-          '2 funis de vendas configuráveis',
-          'Até 8 etapas por funil',
-          'Kanban visual drag-and-drop',
-          'Visualização em tabela de dados',
-          'Campos customizados e tags',
-          'Importação e exportação de dados (CSV)'
-        ]},
-        { heading: 'WhatsApp e Multiatendimento', items: [
-          '2 conexões WhatsApp (Cluster WAHA)',
-          'Multiatendimento incluso (toda a equipe no mesmo número)',
-          'Transcrição automática de áudio por IA (Whisper)',
-          'Envio de imagem, vídeo, documento e áudio',
-          'Chat ao vivo com WebSockets (mensagens em tempo real)'
-        ]},
-        { heading: 'Inteligência Artificial', items: [
-          '1 Agente autônomo de IA',
-          '1.000.000 de tokens de IA/mês',
-          'Copiloto de vendas em tempo real (sugestões inteligentes)',
-          'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
-          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
-          'Transbordo inteligente IA → humano (6 camadas de proteção)'
-        ]},
-        { heading: 'Automações e Workflows', items: [
-          '5 workflows ativos',
-          '10 tipos de ações automáticas',
-          'Construtor visual de fluxos em grafo (DAG)'
-        ]},
-        { heading: 'Comercial e Vendas', items: [
-          'Propostas comerciais em PDF (envio direto no WhatsApp)',
-          'Catálogo de produtos e serviços',
-          'Pedidos de venda',
-          'Formulário público de captura de leads',
-          'Widget incorporável para sites'
-        ]},
-        { heading: 'Relatórios e Gestão', items: [
-          'Dashboard com KPIs principais (Receita, Conversão, Ticket Médio)',
-          'Gráficos de vendas e conversão',
-          'Ranking de vendedores',
-          'Atribuição manual e por regra de vendedor'
-        ]},
-        { heading: 'Segurança e Infraestrutura', items: [
-          'Criptografia AES-256-GCM',
-          'Multi-tenancy com RLS PostgreSQL',
-          'Agenda integrada com lembretes'
-        ]},
-        { heading: 'Suporte', items: [
-          'Chat e e-mail (48h úteis)',
-          'Onboarding autoguiado (tutoriais in-app)'
-        ]},
-        { heading: 'Não incluído neste plano', unavailable: true, items: [
-          'Few-Shot Learning (IA aprende com conversas reais)',
-          'Personalização avançada do tom de voz (edição de prompt)',
-          'Contratos e faturas recorrentes',
-          'Ordens de compra e gestão de fornecedores',
-          'Equipes com metas e distribuição Round-Robin',
-          'Exportação de relatórios gerenciais em Excel/PDF',
-          'Captura de leads via Meta Ads e Google Ads',
-          'API REST',
-          'Webhooks de saída',
-          'White-Label e SMTP customizado',
-          'BYOK (Chave de IA própria)'
-        ]}
+        {
+          heading: 'Equipe e Pipeline', items: [
+            'Até 3 usuários',
+            '2 funis de vendas configuráveis',
+            'Até 8 etapas por funil',
+            'Kanban visual drag-and-drop',
+            'Visualização em tabela de dados',
+            'Campos customizados e tags',
+            'Importação e exportação de dados (CSV)'
+          ]
+        },
+        {
+          heading: 'WhatsApp e Multiatendimento', items: [
+            '2 conexões WhatsApp (Cluster WAHA)',
+            'Multiatendimento incluso (toda a equipe no mesmo número)',
+            'Transcrição automática de áudio por IA (Whisper)',
+            'Envio de imagem, vídeo, documento e áudio',
+            'Chat ao vivo com WebSockets (mensagens em tempo real)'
+          ]
+        },
+        {
+          heading: 'Inteligência Artificial', items: [
+            '1 Agente autônomo de IA',
+            '1.000.000 de tokens de IA/mês',
+            'Copiloto de vendas em tempo real (sugestões inteligentes)',
+            'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
+            '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+            'Transbordo inteligente IA → humano (6 camadas de proteção)'
+          ]
+        },
+        {
+          heading: 'Automações e Workflows', items: [
+            '5 workflows ativos',
+            '10 tipos de ações automáticas',
+            'Construtor visual de fluxos em grafo (DAG)'
+          ]
+        },
+        {
+          heading: 'Comercial e Vendas', items: [
+            'Propostas comerciais em PDF (envio direto no WhatsApp)',
+            'Catálogo de produtos e serviços',
+            'Pedidos de venda',
+            'Formulário público de captura de leads',
+            'Widget incorporável para sites'
+          ]
+        },
+        {
+          heading: 'Relatórios e Gestão', items: [
+            'Dashboard com KPIs principais (Receita, Conversão, Ticket Médio)',
+            'Gráficos de vendas e conversão',
+            'Ranking de vendedores',
+            'Atribuição manual e por regra de vendedor'
+          ]
+        },
+        {
+          heading: 'Segurança e Infraestrutura', items: [
+            'Criptografia AES-256-GCM',
+            'Multi-tenancy com RLS PostgreSQL',
+            'Agenda integrada com lembretes'
+          ]
+        },
+        {
+          heading: 'Suporte', items: [
+            'Chat e e-mail (48h úteis)',
+            'Onboarding autoguiado (tutoriais in-app)'
+          ]
+        },
+        {
+          heading: 'Não incluído neste plano', unavailable: true, items: [
+            'Few-Shot Learning (IA aprende com conversas reais)',
+            'Personalização avançada do tom de voz (edição de prompt)',
+            'Contratos e faturas recorrentes',
+            'Ordens de compra e gestão de fornecedores',
+            'Equipes com metas e distribuição Round-Robin',
+            'Exportação de relatórios gerenciais em Excel/PDF',
+            'Captura de leads via Meta Ads e Google Ads',
+            'API REST',
+            'Webhooks de saída',
+            'White-Label e SMTP customizado',
+            'BYOK (Chave de IA própria)'
+          ]
+        }
       ]
     },
     crescimento: {
       title: 'Plano Crescimento — R$ 997/mês',
       annualTitle: 'Plano Crescimento — R$ 9.970/ano (16% desc.)',
       sections: [
-        { heading: 'Equipe e Pipeline', items: [
-          'Até 10 usuários (3x mais que Essencial)',
-          '10 funis de vendas (5x mais que Essencial)',
-          'Até 15 etapas por funil',
-          'Kanban visual drag-and-drop',
-          'Visualização em tabela de dados',
-          'Campos customizados e tags ilimitados',
-          'Importação e exportação de dados (CSV)',
-          'Filtros avançados de busca e segmentação'
-        ]},
-        { heading: 'WhatsApp e Multiatendimento', items: [
-          '5 conexões WhatsApp',
-          'Multiatendimento incluso (toda a equipe no mesmo número)',
-          'Multiatendimento com filas e roteamento por setor/vendedor',
-          'Transcrição automática de áudio por IA (Whisper)',
-          'Envio de imagem, vídeo, documento e áudio',
-          'Chat ao vivo com WebSockets (mensagens em tempo real)',
-          'Proteção contra banimento (Warmup de chips)',
-          'Debouncing inteligente de 60s para respostas da IA'
-        ]},
-        { heading: 'Inteligência Artificial', items: [
-          '3 Agentes autônomos de IA',
-          '1.000.000 de tokens de IA/mês',
-          'Copiloto de vendas em tempo real (sugestões inteligentes)',
-          'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
-          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
-          'Transbordo inteligente IA → humano (6 camadas de proteção)',
-          'Personalização total do tom de voz (edição livre do prompt)',
-          'Análise de sentimento das conversas',
-          'Geração automática de orçamento em PDF pela IA',
-          'Envio automático de dados de pagamento PIX pela IA'
-        ]},
-        { heading: 'Automações e Workflows', items: [
-          '30 workflows ativos',
-          '15 tipos de ações automáticas (inclui webhooks de saída)',
-          'Construtor visual de fluxos em grafo (DAG)',
-          'Gatilhos por comportamento do lead',
-          'Transfers inteligentes entre setores e equipes'
-        ]},
-        { heading: 'Comercial e Vendas', items: [
-          'Propostas comerciais em PDF (envio direto no WhatsApp)',
-          'Catálogo de produtos e serviços',
-          'Pedidos de venda',
-          'Formulário público de captura + Widget incorporável',
-          'Contratos e faturas recorrentes (cobrança mensal automática)',
-          'Ordens de compra + Gestão de fornecedores',
-          'Captura automática de leads Meta Ads e Google Ads',
-          'Google Forms webhook automático'
-        ]},
-        { heading: 'Gestão de Equipe', items: [
-          'Atribuição manual e por regra de vendedor',
-          'Equipes de vendas com metas mensais e progresso',
-          'Distribuição Round-Robin automática de leads',
-          'Setores organizacionais (Vendas, Suporte, Financeiro)'
-        ]},
-        { heading: 'Relatórios e BI', items: [
-          'Dashboard completo em tempo real (cache Redis)',
-          'Gráficos de vendas e conversão',
-          'Ranking gamificado de vendedores',
-          'Drill-down analítico em todos os KPIs',
-          'Análise de motivos de perda de negócios',
-          'Exportação de relatórios gerenciais em CSV, Excel e PDF'
-        ]},
-        { heading: 'Integrações e Segurança', items: [
-          '10 webhooks de entrada + webhooks de saída',
-          'API REST (somente leitura)',
-          'Logs de auditoria completos',
-          'Criptografia AES-256-GCM',
-          'Multi-tenancy com RLS PostgreSQL',
-          'Agenda integrada com lembretes'
-        ]},
-        { heading: 'Suporte', items: [
-          'WhatsApp prioritário (12h úteis)',
-          'Onboarding assistido (1 sessão de 1h com especialista)'
-        ]},
-        { heading: 'Não incluído neste plano', unavailable: true, items: [
-          'Few-Shot Learning (IA treina com conversas reais)',
-          'BYOK (Chave de IA própria OpenAI/Gemini/Claude)',
-          'API REST de escrita',
-          'White-Label e SMTP customizado',
-          'Roles e permissões customizados',
-          'SSO (Single Sign-On)'
-        ]}
+        {
+          heading: 'Equipe e Pipeline', items: [
+            'Até 10 usuários (3x mais que Essencial)',
+            '10 funis de vendas (5x mais que Essencial)',
+            'Até 15 etapas por funil',
+            'Kanban visual drag-and-drop',
+            'Visualização em tabela de dados',
+            'Campos customizados e tags ilimitados',
+            'Importação e exportação de dados (CSV)',
+            'Filtros avançados de busca e segmentação'
+          ]
+        },
+        {
+          heading: 'WhatsApp e Multiatendimento', items: [
+            '5 conexões WhatsApp',
+            'Multiatendimento incluso (toda a equipe no mesmo número)',
+            'Multiatendimento com filas e roteamento por setor/vendedor',
+            'Transcrição automática de áudio por IA (Whisper)',
+            'Envio de imagem, vídeo, documento e áudio',
+            'Chat ao vivo com WebSockets (mensagens em tempo real)',
+            'Proteção contra banimento (Warmup de chips)',
+            'Debouncing inteligente de 60s para respostas da IA'
+          ]
+        },
+        {
+          heading: 'Inteligência Artificial', items: [
+            '3 Agentes autônomos de IA',
+            '1.000.000 de tokens de IA/mês',
+            'Copiloto de vendas em tempo real (sugestões inteligentes)',
+            'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
+            '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+            'Transbordo inteligente IA → humano (6 camadas de proteção)',
+            'Personalização total do tom de voz (edição livre do prompt)',
+            'Análise de sentimento das conversas',
+            'Geração automática de orçamento em PDF pela IA',
+            'Envio automático de dados de pagamento PIX pela IA'
+          ]
+        },
+        {
+          heading: 'Automações e Workflows', items: [
+            '30 workflows ativos',
+            '15 tipos de ações automáticas (inclui webhooks de saída)',
+            'Construtor visual de fluxos em grafo (DAG)',
+            'Gatilhos por comportamento do lead',
+            'Transfers inteligentes entre setores e equipes'
+          ]
+        },
+        {
+          heading: 'Comercial e Vendas', items: [
+            'Propostas comerciais em PDF (envio direto no WhatsApp)',
+            'Catálogo de produtos e serviços',
+            'Pedidos de venda',
+            'Formulário público de captura + Widget incorporável',
+            'Contratos e faturas recorrentes (cobrança mensal automática)',
+            'Ordens de compra + Gestão de fornecedores',
+            'Captura automática de leads Meta Ads e Google Ads',
+            'Google Forms webhook automático'
+          ]
+        },
+        {
+          heading: 'Gestão de Equipe', items: [
+            'Atribuição manual e por regra de vendedor',
+            'Equipes de vendas com metas mensais e progresso',
+            'Distribuição Round-Robin automática de leads',
+            'Setores organizacionais (Vendas, Suporte, Financeiro)'
+          ]
+        },
+        {
+          heading: 'Relatórios e BI', items: [
+            'Dashboard completo em tempo real (cache Redis)',
+            'Gráficos de vendas e conversão',
+            'Ranking gamificado de vendedores',
+            'Drill-down analítico em todos os KPIs',
+            'Análise de motivos de perda de negócios',
+            'Exportação de relatórios gerenciais em CSV, Excel e PDF'
+          ]
+        },
+        {
+          heading: 'Integrações e Segurança', items: [
+            '10 webhooks de entrada + webhooks de saída',
+            'API REST (somente leitura)',
+            'Logs de auditoria completos',
+            'Criptografia AES-256-GCM',
+            'Multi-tenancy com RLS PostgreSQL',
+            'Agenda integrada com lembretes'
+          ]
+        },
+        {
+          heading: 'Suporte', items: [
+            'WhatsApp prioritário (12h úteis)',
+            'Onboarding assistido (1 sessão de 1h com especialista)'
+          ]
+        },
+        {
+          heading: 'Não incluído neste plano', unavailable: true, items: [
+            'Few-Shot Learning (IA treina com conversas reais)',
+            'BYOK (Chave de IA própria OpenAI/Gemini/Claude)',
+            'API REST de escrita',
+            'White-Label e SMTP customizado',
+            'Roles e permissões customizados',
+            'SSO (Single Sign-On)'
+          ]
+        }
       ]
     },
     enterprise: {
       title: 'Plano Enterprise — R$ 2.997/mês',
       sections: [
-        { heading: 'Equipe e Pipeline', items: [
-          'Usuários ilimitados',
-          'Funis de vendas ilimitados',
-          'Até 25 etapas por funil',
-          'Kanban visual drag-and-drop',
-          'Visualização em tabela de dados',
-          'Campos customizados e tags ilimitados',
-          'Importação e exportação de dados (CSV e JSON)',
-          'Filtros avançados de busca e segmentação',
-          'Roles e permissões customizados (granulares por usuário)',
-          'Perfis de acesso: Admin, Gestor, Financeiro, Funcionário, Vendedor + customizados'
-        ]},
-        { heading: 'WhatsApp e Multiatendimento', items: [
-          '20 conexões WhatsApp simultâneas',
-          'Multiatendimento incluso (toda a equipe no mesmo número)',
-          'Multiatendimento completo com filas e roteamento inteligente por setor/vendedor',
-          'Transcrição automática de áudio por IA (Whisper)',
-          'Envio de imagem, vídeo, documento e áudio',
-          'Chat ao vivo com WebSockets (mensagens em tempo real)',
-          'Proteção contra banimento (Warmup de chips)',
-          'Warmup avançado anti-banimento',
-          'Debouncing inteligente de 60s para respostas da IA',
-          'Cluster WAHA multi-nó com balanceamento de carga'
-        ]},
-        { heading: 'Inteligência Artificial', items: [
-          'Agentes de IA ilimitados',
-          'Uso de API de IA própria (integração via chave de API própria)',
-          'Copiloto de vendas em tempo real (sugestões inteligentes)',
-          'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
-          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
-          'Transbordo inteligente IA → humano (6 camadas de proteção)',
-          'Personalização total do tom de voz (edição livre do prompt)',
-          'Análise de sentimento das conversas',
-          'Geração automática de orçamento em PDF pela IA',
-          'Envio automático de dados de pagamento PIX pela IA',
-          'Few-Shot Learning (IA aprende e treina com suas conversas de sucesso)',
-          'BYOK: Traga sua própria chave (OpenAI, Gemini ou Claude)',
-          'Orquestrador de 6 camadas configurável (limiares, governança)',
-          'Multi-provedor: GPT-4o, Gemini 2.5 Flash, Claude 3.5'
-        ]},
-        { heading: 'Automações e Workflows', items: [
-          'Workflows ilimitados',
-          'Todos os 17 tipos de ações automáticas',
-          'Construtor visual de fluxos em grafo (DAG)',
-          'Gatilhos por comportamento do lead',
-          'Transfers inteligentes entre setores e equipes',
-          'Nós de webhook externo, execução de ferramentas e espera programada'
-        ]},
-        { heading: 'Comercial e Vendas', items: [
-          'Propostas comerciais em PDF (envio direto no WhatsApp)',
-          'Catálogo de produtos e serviços',
-          'Pedidos de venda',
-          'Formulário público de captura + Widget incorporável',
-          'Contratos e faturas recorrentes (cobrança mensal automática)',
-          'Ordens de compra + Gestão de fornecedores',
-          'Captura automática de leads Meta Ads e Google Ads',
-          'Google Forms webhook automático',
-          'Relatório de ROI da IA (leads qualificados/convertidos pela IA)'
-        ]},
-        { heading: 'Gestão de Equipe', items: [
-          'Atribuição manual e por regra de vendedor',
-          'Equipes de vendas com metas mensais e progresso',
-          'Distribuição Round-Robin automática de leads',
-          'Setores organizacionais (Vendas, Suporte, Financeiro)',
-          'Permissões e papéis de acesso granulares por usuário'
-        ]},
-        { heading: 'Relatórios e BI', items: [
-          'Dashboard completo em tempo real (cache Redis)',
-          'Gráficos de vendas e conversão',
-          'Ranking gamificado de vendedores',
-          'Drill-down analítico em todos os KPIs',
-          'Análise de motivos de perda de negócios',
-          'Exportação completa em CSV, Excel, PDF e JSON',
-          'Relatórios customizáveis sob medida'
-        ]},
-        { heading: 'Integrações, White-Label e Segurança', items: [
-          'Webhooks de entrada e saída ilimitados',
-          'API REST completa (leitura + escrita)',
-          'White-Label completo (sua marca, logo, cores, favicon, domínio)',
-          'SMTP customizado (envio de e-mails com seu domínio)',
-          'SSO (Single Sign-On corporativo)',
-          'Logs de auditoria completos',
-          'Criptografia AES-256-GCM',
-          'Multi-tenancy com RLS PostgreSQL',
-          'Agenda integrada com lembretes'
-        ]},
-        { heading: 'Suporte VIP', items: [
-          'Atendimento VIP 24/7 (WhatsApp + Ligação)',
-          'Gestor de conta dedicado',
-          'SLA contratual de resposta (4h úteis)',
-          'Onboarding completo (3 sessões + configuração assistida)'
-        ]}
+        {
+          heading: 'Equipe e Pipeline', items: [
+            'Usuários ilimitados',
+            'Funis de vendas ilimitados',
+            'Até 25 etapas por funil',
+            'Kanban visual drag-and-drop',
+            'Visualização em tabela de dados',
+            'Campos customizados e tags ilimitados',
+            'Importação e exportação de dados (CSV e JSON)',
+            'Filtros avançados de busca e segmentação',
+            'Roles e permissões customizados (granulares por usuário)',
+            'Perfis de acesso: Admin, Gestor, Financeiro, Funcionário, Vendedor + customizados'
+          ]
+        },
+        {
+          heading: 'WhatsApp e Multiatendimento', items: [
+            '20 conexões WhatsApp simultâneas',
+            'Multiatendimento incluso (toda a equipe no mesmo número)',
+            'Multiatendimento completo com filas e roteamento inteligente por setor/vendedor',
+            'Transcrição automática de áudio por IA (Whisper)',
+            'Envio de imagem, vídeo, documento e áudio',
+            'Chat ao vivo com WebSockets (mensagens em tempo real)',
+            'Proteção contra banimento (Warmup de chips)',
+            'Warmup avançado anti-banimento',
+            'Debouncing inteligente de 60s para respostas da IA',
+            'Cluster WAHA multi-nó com balanceamento de carga'
+          ]
+        },
+        {
+          heading: 'Inteligência Artificial', items: [
+            'Agentes de IA ilimitados',
+            'Uso de API de IA própria (integração via chave de API própria)',
+            'Copiloto de vendas em tempo real (sugestões inteligentes)',
+            'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
+            '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+            'Transbordo inteligente IA → humano (6 camadas de proteção)',
+            'Personalização total do tom de voz (edição livre do prompt)',
+            'Análise de sentimento das conversas',
+            'Geração automática de orçamento em PDF pela IA',
+            'Envio automático de dados de pagamento PIX pela IA',
+            'Few-Shot Learning (IA aprende e treina com suas conversas de sucesso)',
+            'BYOK: Traga sua própria chave (OpenAI, Gemini ou Claude)',
+            'Orquestrador de 6 camadas configurável (limiares, governança)',
+            'Multi-provedor: GPT-4o, Gemini 2.5 Flash, Claude 3.5'
+          ]
+        },
+        {
+          heading: 'Automações e Workflows', items: [
+            'Workflows ilimitados',
+            'Todos os 17 tipos de ações automáticas',
+            'Construtor visual de fluxos em grafo (DAG)',
+            'Gatilhos por comportamento do lead',
+            'Transfers inteligentes entre setores e equipes',
+            'Nós de webhook externo, execução de ferramentas e espera programada'
+          ]
+        },
+        {
+          heading: 'Comercial e Vendas', items: [
+            'Propostas comerciais em PDF (envio direto no WhatsApp)',
+            'Catálogo de produtos e serviços',
+            'Pedidos de venda',
+            'Formulário público de captura + Widget incorporável',
+            'Contratos e faturas recorrentes (cobrança mensal automática)',
+            'Ordens de compra + Gestão de fornecedores',
+            'Captura automática de leads Meta Ads e Google Ads',
+            'Google Forms webhook automático',
+            'Relatório de ROI da IA (leads qualificados/convertidos pela IA)'
+          ]
+        },
+        {
+          heading: 'Gestão de Equipe', items: [
+            'Atribuição manual e por regra de vendedor',
+            'Equipes de vendas com metas mensais e progresso',
+            'Distribuição Round-Robin automática de leads',
+            'Setores organizacionais (Vendas, Suporte, Financeiro)',
+            'Permissões e papéis de acesso granulares por usuário'
+          ]
+        },
+        {
+          heading: 'Relatórios e BI', items: [
+            'Dashboard completo em tempo real (cache Redis)',
+            'Gráficos de vendas e conversão',
+            'Ranking gamificado de vendedores',
+            'Drill-down analítico em todos os KPIs',
+            'Análise de motivos de perda de negócios',
+            'Exportação completa em CSV, Excel, PDF e JSON',
+            'Relatórios customizáveis sob medida'
+          ]
+        },
+        {
+          heading: 'Integrações, White-Label e Segurança', items: [
+            'Webhooks de entrada e saída ilimitados',
+            'API REST completa (leitura + escrita)',
+            'White-Label completo (sua marca, logo, cores, favicon, domínio)',
+            'SMTP customizado (envio de e-mails com seu domínio)',
+            'SSO (Single Sign-On corporativo)',
+            'Logs de auditoria completos',
+            'Criptografia AES-256-GCM',
+            'Multi-tenancy com RLS PostgreSQL',
+            'Agenda integrada com lembretes'
+          ]
+        },
+        {
+          heading: 'Suporte VIP', items: [
+            'Atendimento VIP 24/7 (WhatsApp + Ligação)',
+            'Gestor de conta dedicado',
+            'SLA contratual de resposta (4h úteis)',
+            'Onboarding completo (3 sessões + configuração assistida)'
+          ]
+        }
       ]
     }
   };
@@ -2236,18 +1989,18 @@
 
     titleEl.textContent = titleText;
     var html = '';
-    
-    plan.sections.forEach(function(section) {
+
+    plan.sections.forEach(function (section) {
       var isUnavailable = section.unavailable || false;
       var sectionClass = isUnavailable ? 'plan-detail-section unavailable-section' : 'plan-detail-section';
-      var iconSvg = isUnavailable 
+      var iconSvg = isUnavailable
         ? '<svg class="item-icon-unavail" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="even-odd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="even-odd"/></svg>'
         : '<svg class="item-icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="even-odd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="even-odd"/></svg>';
 
       html += '<div class="' + sectionClass + '">';
       html += '<div class="section-badge-header"><span>' + section.heading + '</span></div>';
       html += '<ul class="modal-feature-list">';
-      section.items.forEach(function(item) {
+      section.items.forEach(function (item) {
         if (isUnavailable) {
           html += '<li class="unavailable">' + iconSvg + '<span>' + item + '</span></li>';
         } else {
@@ -2277,7 +2030,7 @@
   }
 
   // Delegacao global de clique na janela: GARANTIDO funcionar sempre
-  window.addEventListener('click', function(e) {
+  window.addEventListener('click', function (e) {
     var btn = e.target.closest('.pricing-see-more');
     if (btn) {
       e.preventDefault();
@@ -2299,7 +2052,7 @@
     }
   });
 
-  window.addEventListener('keydown', function(e) {
+  window.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeModal();
     }
@@ -2307,7 +2060,7 @@
 })();
 
 // ─── SEGMENTED PRICING TOGGLE ───
-(function() {
+(function () {
   const btnMonthly = document.getElementById('btn-monthly');
   const btnAnnual = document.getElementById('btn-annual');
   const segmentedControl = document.querySelector('.pricing-segmented-control');

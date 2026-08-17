@@ -32,12 +32,13 @@
 - Image filenames defined in HTML (e.g., screenshot-pipeline.png, avatar-*.jpg, og-image.png)
 
 ## Code Layout
-- `/index.html` — Main page structure and content
-- `/style.css` — All styles (dark mode, animations, responsive)
-- `/app.js` — Interactions (kanban, calculator, carousel, scroll effects)
-- `/server.js` — Static file server (DO NOT MODIFY)
+- `/index.html` — Main page structure and content (only HTML in root)
+- `/src/assets/` — Images, logos, icons, SVGs
+- `/src/css/` — Stylesheets (`style.css`, `style-light.css`)
+- `/src/js/` — JavaScript scripts (`app.js`, `company-portal.js`, `legal-portal.js`)
+- `/src/pages/` — Secondary HTML pages (`contato.html`, `privacidade.html`, `suporte.html`, `termos.html`)
+- `/server/server.js` — Static file server & API endpoints
 - `/.cursorrules` — Design rules (READ ONLY)
-- `/brainstorm.md` — Brainstorm document (M1 output)
 
 ## Acceptance Criteria
 ### R1 Brainstorm

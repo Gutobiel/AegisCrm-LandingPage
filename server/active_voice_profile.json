@@ -1,0 +1,14 @@
+{
+  "name": "Voz Dora Atendimento",
+  "mode": "single",
+  "voice": "pf_dora",
+  "voice_blend": {
+    "pm_alex": 0.0,
+    "pf_dora": 1.0,
+    "pm_santa": 0.0
+  },
+  "speed": 1.0,
+  "pitch": 1.0,
+  "response_format": "wav",
+  "trim": true
+}

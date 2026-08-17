@@ -1,0 +1,942 @@
+{"timestamp":"2026-08-17T16:12:36.552Z","event":"VOICE_SESSION_CREATED","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:12:36.630Z","event":"VOICE_SESSION_STARTED","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318"}
+{"timestamp":"2026-08-17T16:12:44.182Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","latencyMs":7550,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T16:12:54.674Z","event":"VOICE_ERROR","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","error":"OPENAI_API_KEY not configured for STT"}
+{"timestamp":"2026-08-17T16:13:03.747Z","event":"VOICE_ERROR","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","error":"OPENAI_API_KEY not configured for STT"}
+{"timestamp":"2026-08-17T16:13:07.340Z","event":"VOICE_ERROR","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","error":"OPENAI_API_KEY not configured for STT"}
+{"timestamp":"2026-08-17T16:13:17.827Z","event":"VOICE_ERROR","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","error":"OPENAI_API_KEY not configured for STT"}
+{"timestamp":"2026-08-17T16:13:21.797Z","event":"VOICE_ERROR","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","error":"OPENAI_API_KEY not configured for STT"}
+{"timestamp":"2026-08-17T16:15:09.827Z","event":"VOICE_ERROR","sessionId":"069aaff5-e259-418f-b5d8-d418c460a318","error":"OPENAI_API_KEY not configured for STT"}
+{"timestamp":"2026-08-17T16:15:38.447Z","event":"VOICE_SESSION_CREATED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:15:38.496Z","event":"VOICE_SESSION_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:15:38.508Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T16:15:48.845Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:15:49.389Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:15:49.392Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:16:04.205Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:16:04.842Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:16:04.844Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:16:58.354Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:16:58.810Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:16:58.811Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:00.145Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:00.442Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:00.444Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:01.685Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:01.913Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:01.915Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:03.345Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:03.616Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:03.618Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:06.036Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:06.233Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:06.235Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:22.546Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:23.073Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:23.075Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:25.365Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:25.601Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:25.603Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:26.896Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:27.271Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:27.273Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:34.326Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:34.906Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:34.908Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:43.406Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:43.859Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:43.861Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:47.245Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:47.547Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:47.549Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:54.925Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:55.328Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:55.330Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:58.645Z","event":"VOICE_STT_STARTED","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5"}
+{"timestamp":"2026-08-17T16:17:59.111Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"STT_ERROR","message":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:17:59.112Z","event":"VOICE_ERROR","sessionId":"9d6a7fdd-ec5f-4328-b0f0-c574b6c8fac5","error":"Whisper API error 401: {\n  \"error\": {\n    \"message\": \"Incorrect API key provided: sk-proj-*************************************************************F8q4. You can find your API key at https://platform.openai.com/account/api-keys.\",\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_api_key\",\n    \"param\": null\n  },\n  \"status\": 401\n}"}
+{"timestamp":"2026-08-17T16:18:11.473Z","event":"VOICE_SESSION_CREATED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:18:11.525Z","event":"VOICE_SESSION_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:18:11.538Z","event":"VOICE_ERROR","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T16:18:45.958Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:18:49.106Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":3148,"textLength":9}
+{"timestamp":"2026-08-17T16:18:49.108Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Um beijo."}
+{"timestamp":"2026-08-17T16:18:49.109Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:18:49.111Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:18:49.535Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"04e6ed2c-286c-493d-b9d5-52e296807549","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:18:56.197Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:00.971Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":4774,"textLength":0}
+{"timestamp":"2026-08-17T16:19:06.175Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:06.803Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":628,"textLength":9}
+{"timestamp":"2026-08-17T16:19:06.804Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Obrigado."}
+{"timestamp":"2026-08-17T16:19:06.805Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:06.806Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:07.792Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":986}
+{"timestamp":"2026-08-17T16:19:08.094Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"f2abf35f-7ae5-4a52-9363-d5fd5bb1234e","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:19:08.097Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1291}
+{"timestamp":"2026-08-17T16:19:10.275Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:12.153Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1878,"textLength":6}
+{"timestamp":"2026-08-17T16:19:12.154Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Tchau!"}
+{"timestamp":"2026-08-17T16:19:12.155Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:12.155Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:13.195Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1040}
+{"timestamp":"2026-08-17T16:19:13.933Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":734,"textLength":6,"audioBytes":23480}
+{"timestamp":"2026-08-17T16:19:13.934Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"1c0d9739-12fd-46c1-8609-c7b352a9b9a9","latencyMs":3659,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:19:13.985Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"1c0d9739-12fd-46c1-8609-c7b352a9b9a9","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:19:13.988Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1833}
+{"timestamp":"2026-08-17T16:19:15.398Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:17.292Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1894,"textLength":9}
+{"timestamp":"2026-08-17T16:19:17.294Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Obrigado."}
+{"timestamp":"2026-08-17T16:19:17.296Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:17.297Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:18.239Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":942}
+{"timestamp":"2026-08-17T16:19:19.093Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":847,"textLength":8,"audioBytes":32848}
+{"timestamp":"2026-08-17T16:19:19.095Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"37b2d4ce-0e27-4fd9-8a93-b1da9f10fe3e","latencyMs":3696,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:19:20.540Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1443,"textLength":36,"audioBytes":97650}
+{"timestamp":"2026-08-17T16:19:20.542Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":3245}
+{"timestamp":"2026-08-17T16:19:20.543Z","event":"VOICE_TTS_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"37b2d4ce-0e27-4fd9-8a93-b1da9f10fe3e","totalLatencyMs":5145,"responseLength":45}
+{"timestamp":"2026-08-17T16:19:29.217Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:30.375Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1158,"textLength":45}
+{"timestamp":"2026-08-17T16:19:30.377Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Qual que é o plano mais barato de vocês hoje?"}
+{"timestamp":"2026-08-17T16:19:30.380Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:30.381Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:30.989Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":608}
+{"timestamp":"2026-08-17T16:19:34.596Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"0bc90624-e6d6-4bf1-9cc7-43b8c42e5d22","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:19:34.604Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":4223}
+{"timestamp":"2026-08-17T16:19:36.136Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:38.079Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1943,"textLength":6}
+{"timestamp":"2026-08-17T16:19:38.081Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Tchau."}
+{"timestamp":"2026-08-17T16:19:38.083Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:38.084Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:38.668Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":584}
+{"timestamp":"2026-08-17T16:19:43.178Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":4261,"textLength":95,"audioBytes":252780}
+{"timestamp":"2026-08-17T16:19:43.182Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"180abe68-029a-4182-b0e8-4505e9753a9e","latencyMs":7045,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:19:46.437Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":3247,"textLength":44,"audioBytes":127068}
+{"timestamp":"2026-08-17T16:19:46.439Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":8355}
+{"timestamp":"2026-08-17T16:19:46.441Z","event":"VOICE_TTS_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"180abe68-029a-4182-b0e8-4505e9753a9e","totalLatencyMs":10305,"responseLength":140}
+{"timestamp":"2026-08-17T16:19:55.715Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:19:57.817Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":2102,"textLength":0}
+{"timestamp":"2026-08-17T16:19:59.935Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:01.485Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1550,"textLength":6}
+{"timestamp":"2026-08-17T16:20:01.486Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Tchau."}
+{"timestamp":"2026-08-17T16:20:01.487Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:01.487Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:02.405Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":918}
+{"timestamp":"2026-08-17T16:20:03.131Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":714,"textLength":9,"audioBytes":36128}
+{"timestamp":"2026-08-17T16:20:03.133Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"17089111-408a-4a39-b769-479e6e5e16e2","latencyMs":3197,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:20:04.205Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1070,"textLength":25,"audioBytes":72496}
+{"timestamp":"2026-08-17T16:20:04.206Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":2719}
+{"timestamp":"2026-08-17T16:20:04.208Z","event":"VOICE_TTS_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"17089111-408a-4a39-b769-479e6e5e16e2","totalLatencyMs":4272,"responseLength":35}
+{"timestamp":"2026-08-17T16:20:04.415Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:06.118Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1703,"textLength":34}
+{"timestamp":"2026-08-17T16:20:06.119Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Legendas pela comunidade Amara.org"}
+{"timestamp":"2026-08-17T16:20:06.119Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:06.120Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:07.143Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1023}
+{"timestamp":"2026-08-17T16:20:07.365Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"9069a4c8-443f-4922-82c0-f1e1df7a6ccf","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:20:07.371Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1251}
+{"timestamp":"2026-08-17T16:20:08.775Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:09.498Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":723,"textLength":25}
+{"timestamp":"2026-08-17T16:20:09.500Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Muito obrigada. Obrigada."}
+{"timestamp":"2026-08-17T16:20:09.501Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:09.502Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:10.086Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":584}
+{"timestamp":"2026-08-17T16:20:10.965Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":877,"textLength":8,"audioBytes":32866}
+{"timestamp":"2026-08-17T16:20:10.966Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"af30fac9-2931-4976-81c7-ecc5377f7f7a","latencyMs":2191,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:20:11.075Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"af30fac9-2931-4976-81c7-ecc5377f7f7a","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:20:11.080Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1578}
+{"timestamp":"2026-08-17T16:20:12.355Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:14.183Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1828,"textLength":15}
+{"timestamp":"2026-08-17T16:20:14.184Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Muito obrigado."}
+{"timestamp":"2026-08-17T16:20:14.185Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:14.186Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:14.696Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":510}
+{"timestamp":"2026-08-17T16:20:15.776Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1052,"textLength":8,"audioBytes":31860}
+{"timestamp":"2026-08-17T16:20:15.777Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"aa3a46ae-3db8-473a-83ba-c5909c962d94","latencyMs":3422,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:20:17.700Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1920,"textLength":23,"audioBytes":65968}
+{"timestamp":"2026-08-17T16:20:17.707Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":3521}
+{"timestamp":"2026-08-17T16:20:17.709Z","event":"VOICE_TTS_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"aa3a46ae-3db8-473a-83ba-c5909c962d94","totalLatencyMs":5354,"responseLength":32}
+{"timestamp":"2026-08-17T16:20:25.286Z","event":"VOICE_STT_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:27.184Z","event":"VOICE_STT_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1898,"textLength":9}
+{"timestamp":"2026-08-17T16:20:27.186Z","event":"VOICE_SPEECH_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","text":"Obrigado."}
+{"timestamp":"2026-08-17T16:20:27.187Z","event":"VOICE_TTS_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:27.188Z","event":"VOICE_LLM_STARTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051"}
+{"timestamp":"2026-08-17T16:20:27.723Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":535}
+{"timestamp":"2026-08-17T16:20:29.127Z","event":"VOICE_INTERRUPTED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","generationId":"fe38fde7-1534-436d-8168-688ea841fd36","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:20:29.132Z","event":"VOICE_LLM_COMPLETED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","latencyMs":1944}
+{"timestamp":"2026-08-17T16:20:29.599Z","event":"VOICE_SESSION_ENDED","sessionId":"17d837ab-1815-4c78-8ef9-53abd2615051","reason":"user_hangup","durationMs":138126,"turnCount":11}
+{"timestamp":"2026-08-17T16:21:04.474Z","event":"VOICE_SESSION_CREATED","sessionId":"f1a92867-957b-41e3-a46c-1869f9c51a4e","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:21:04.511Z","event":"VOICE_SESSION_STARTED","sessionId":"f1a92867-957b-41e3-a46c-1869f9c51a4e"}
+{"timestamp":"2026-08-17T16:21:08.491Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"f1a92867-957b-41e3-a46c-1869f9c51a4e","latencyMs":3978,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T16:21:14.563Z","event":"VOICE_SESSION_ENDED","sessionId":"f1a92867-957b-41e3-a46c-1869f9c51a4e","reason":"user_hangup","durationMs":10087,"turnCount":0}
+{"timestamp":"2026-08-17T16:21:15.655Z","event":"VOICE_SESSION_CREATED","sessionId":"fc73e7d4-1d41-4aea-ac70-69c2b217d435","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:21:15.741Z","event":"VOICE_SESSION_STARTED","sessionId":"fc73e7d4-1d41-4aea-ac70-69c2b217d435"}
+{"timestamp":"2026-08-17T16:21:19.427Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"fc73e7d4-1d41-4aea-ac70-69c2b217d435","latencyMs":3684,"textLength":30,"audioBytes":90550}
+{"timestamp":"2026-08-17T16:21:30.548Z","event":"VOICE_SESSION_ENDED","sessionId":"fc73e7d4-1d41-4aea-ac70-69c2b217d435","reason":"user_hangup","durationMs":14893,"turnCount":0}
+{"timestamp":"2026-08-17T16:21:33.039Z","event":"VOICE_SESSION_CREATED","sessionId":"8a3e3486-838a-436a-8ff4-7a712c48d4ab","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:21:33.120Z","event":"VOICE_SESSION_STARTED","sessionId":"8a3e3486-838a-436a-8ff4-7a712c48d4ab"}
+{"timestamp":"2026-08-17T16:21:37.392Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"8a3e3486-838a-436a-8ff4-7a712c48d4ab","latencyMs":4270,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T16:21:39.892Z","event":"VOICE_SESSION_ENDED","sessionId":"8a3e3486-838a-436a-8ff4-7a712c48d4ab","reason":"user_hangup","durationMs":6852,"turnCount":0}
+{"timestamp":"2026-08-17T16:22:10.302Z","event":"VOICE_SESSION_CREATED","sessionId":"ce815a78-5e7e-40a3-b629-99484a5ec04b","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:22:10.319Z","event":"VOICE_SESSION_STARTED","sessionId":"ce815a78-5e7e-40a3-b629-99484a5ec04b"}
+{"timestamp":"2026-08-17T16:22:14.568Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ce815a78-5e7e-40a3-b629-99484a5ec04b","latencyMs":4247,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T16:22:19.323Z","event":"VOICE_SESSION_ENDED","sessionId":"ce815a78-5e7e-40a3-b629-99484a5ec04b","reason":"user_hangup","durationMs":9020,"turnCount":0}
+{"timestamp":"2026-08-17T16:56:54.475Z","event":"VOICE_SESSION_CREATED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T16:56:54.531Z","event":"VOICE_SESSION_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:03.653Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":9116,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T16:57:04.005Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:06.226Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2221,"textLength":9}
+{"timestamp":"2026-08-17T16:57:06.230Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Obrigado."}
+{"timestamp":"2026-08-17T16:57:06.233Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:06.235Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:07.337Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":1102}
+{"timestamp":"2026-08-17T16:57:08.350Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"606688e8-6210-40d2-9f2a-454d72c47f0e","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:57:08.374Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2139}
+{"timestamp":"2026-08-17T16:57:11.683Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:14.113Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2430,"textLength":33}
+{"timestamp":"2026-08-17T16:57:14.117Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Um beijo e um abraço, amiguinhos!"}
+{"timestamp":"2026-08-17T16:57:14.121Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:14.124Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:14.918Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":794}
+{"timestamp":"2026-08-17T16:57:17.819Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"782de573-a0ec-4caf-a4ac-83d9b9cc43c7","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:57:17.838Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":3714}
+{"timestamp":"2026-08-17T16:57:19.491Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:23.755Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":4264,"textLength":0}
+{"timestamp":"2026-08-17T16:57:27.817Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:28.857Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":1040,"textLength":51}
+{"timestamp":"2026-08-17T16:57:28.860Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Querendo saber qual é o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T16:57:28.862Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:28.866Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:29.525Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":659}
+{"timestamp":"2026-08-17T16:57:44.398Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":14493,"textLength":105,"audioBytes":279184}
+{"timestamp":"2026-08-17T16:57:44.402Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"357dd1e2-ce54-4824-b341-f2faaf4876e5","latencyMs":16584,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:57:53.150Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"357dd1e2-ce54-4824-b341-f2faaf4876e5","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:57:53.177Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":24311}
+{"timestamp":"2026-08-17T16:57:54.432Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:58.245Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":3813,"textLength":0}
+{"timestamp":"2026-08-17T16:57:58.402Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:59.063Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":661,"textLength":34}
+{"timestamp":"2026-08-17T16:57:59.076Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Legendas pela comunidade Amara.org"}
+{"timestamp":"2026-08-17T16:57:59.095Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:59.109Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:57:59.778Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":669}
+{"timestamp":"2026-08-17T16:58:10.939Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"87d36bfe-6d68-4782-a77e-b4210839a618","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:58:10.945Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":11836}
+{"timestamp":"2026-08-17T16:58:19.902Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:22.411Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2509,"textLength":105}
+{"timestamp":"2026-08-17T16:58:22.415Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"E é isso, a gente vai para o que? A gente vai para o que? A gente vai para o que? A gente vai para o"}
+{"timestamp":"2026-08-17T16:58:22.419Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:22.421Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:23.152Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":731}
+{"timestamp":"2026-08-17T16:58:24.509Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"d45d9fb5-2d74-4c88-a490-3e76af8274ea","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:58:24.514Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2093}
+{"timestamp":"2026-08-17T16:58:26.691Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:28.352Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":1661,"textLength":0}
+{"timestamp":"2026-08-17T16:58:31.682Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:33.776Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2094,"textLength":22}
+{"timestamp":"2026-08-17T16:58:33.780Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Um beijão e um abraço."}
+{"timestamp":"2026-08-17T16:58:33.788Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:33.795Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:34.361Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":566}
+{"timestamp":"2026-08-17T16:58:35.131Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"2bf8a0cc-34e2-481d-b3a0-c4fb4393d5f7","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:58:35.158Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":1363}
+{"timestamp":"2026-08-17T16:58:37.820Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:40.534Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2714,"textLength":19}
+{"timestamp":"2026-08-17T16:58:40.543Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Obrigada. Obrigada."}
+{"timestamp":"2026-08-17T16:58:40.560Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:40.562Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:41.301Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":739}
+{"timestamp":"2026-08-17T16:58:42.170Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"48c917d5-318e-4880-b2db-5c75e0f22671","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:58:42.196Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":1634}
+{"timestamp":"2026-08-17T16:58:45.504Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:48.020Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2515,"textLength":40}
+{"timestamp":"2026-08-17T16:58:48.028Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Então, até lá, um beijo e até a próxima."}
+{"timestamp":"2026-08-17T16:58:48.037Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:48.041Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:48.574Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"f0b8eec5-3423-44bb-94e0-d92a12261bd8","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:58:51.652Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:53.816Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2164,"textLength":19}
+{"timestamp":"2026-08-17T16:58:53.822Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Obrigado. Obrigado."}
+{"timestamp":"2026-08-17T16:58:53.829Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:53.836Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:58:54.464Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":628}
+{"timestamp":"2026-08-17T16:59:01.369Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"9e833d91-f695-4fe6-879e-9d38310e68bc","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:59:01.376Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":7540}
+{"timestamp":"2026-08-17T16:59:02.651Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:03.575Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":924,"textLength":9}
+{"timestamp":"2026-08-17T16:59:03.585Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Obrigada."}
+{"timestamp":"2026-08-17T16:59:03.596Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:03.606Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:04.271Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":665}
+{"timestamp":"2026-08-17T16:59:07.520Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"d5bbb23d-3885-494b-9a9b-66044264e13f","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:59:07.610Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":4004}
+{"timestamp":"2026-08-17T16:59:17.503Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:19.673Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2170,"textLength":132}
+{"timestamp":"2026-08-17T16:59:19.676Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"Enquanto eu falo, você fica pensando aí, escrevendo várias coisas na tela e mais não fala de verdade"}
+{"timestamp":"2026-08-17T16:59:19.679Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:19.682Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:20.265Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":583}
+{"timestamp":"2026-08-17T16:59:23.104Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2835,"textLength":3,"audioBytes":20182}
+{"timestamp":"2026-08-17T16:59:23.108Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"08324458-28b4-4148-939a-4ce2faaee6b4","latencyMs":5605,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T16:59:29.673Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":6540,"textLength":48,"audioBytes":127296}
+{"timestamp":"2026-08-17T16:59:31.200Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"08324458-28b4-4148-939a-4ce2faaee6b4","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:59:31.206Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":11524}
+{"timestamp":"2026-08-17T16:59:32.613Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:34.686Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2073,"textLength":14}
+{"timestamp":"2026-08-17T16:59:34.693Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"E aí E aí E aí"}
+{"timestamp":"2026-08-17T16:59:34.698Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:34.701Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:35.316Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":615}
+{"timestamp":"2026-08-17T16:59:37.470Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"3a7c3d37-679e-486f-98c3-aac477c715c9","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:59:37.485Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2784}
+{"timestamp":"2026-08-17T16:59:40.161Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:42.701Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2540,"textLength":8}
+{"timestamp":"2026-08-17T16:59:42.718Z","event":"VOICE_SPEECH_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","text":"em 2019."}
+{"timestamp":"2026-08-17T16:59:42.741Z","event":"VOICE_TTS_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:42.750Z","event":"VOICE_LLM_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:43.408Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":658}
+{"timestamp":"2026-08-17T16:59:44.379Z","event":"VOICE_INTERRUPTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","generationId":"ff127a4f-a59d-4494-85ca-ffff28904002","interruptedState":"SPEAKING"}
+{"timestamp":"2026-08-17T16:59:44.389Z","event":"VOICE_LLM_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":1639}
+{"timestamp":"2026-08-17T16:59:47.975Z","event":"VOICE_STT_STARTED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a"}
+{"timestamp":"2026-08-17T16:59:48.203Z","event":"VOICE_SESSION_ENDED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","reason":"user_hangup","durationMs":173715,"turnCount":13}
+{"timestamp":"2026-08-17T16:59:50.177Z","event":"VOICE_STT_COMPLETED","sessionId":"d0be2f69-4848-4a7b-81ed-61f90b814e5a","latencyMs":2202,"textLength":31}
+{"timestamp":"2026-08-17T17:26:54.776Z","event":"VOICE_SESSION_CREATED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T17:26:54.822Z","event":"VOICE_SESSION_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:27:01.446Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":6619,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T17:27:16.200Z","event":"VOICE_STT_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:27:18.732Z","event":"VOICE_STT_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":2532,"textLength":112}
+{"timestamp":"2026-08-17T17:27:18.736Z","event":"VOICE_SPEECH_ENDED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","text":"Oi, eu tô querendo saber qual é o plano que eu posso assinar pro meu serviço aqui, que eu tenho três"}
+{"timestamp":"2026-08-17T17:27:18.744Z","event":"VOICE_TTS_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:27:18.751Z","event":"VOICE_LLM_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:27:20.343Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":1592}
+{"timestamp":"2026-08-17T17:27:21.327Z","event":"VOICE_LLM_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":2576}
+{"timestamp":"2026-08-17T17:27:23.405Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":3056,"textLength":4,"audioBytes":23346}
+{"timestamp":"2026-08-17T17:27:23.409Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","generationId":"68989163-bb45-4fb0-a65f-b4284319e79a","latencyMs":7210,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:27:28.061Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":4647,"textLength":21,"audioBytes":63116}
+{"timestamp":"2026-08-17T17:27:34.016Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":5951,"textLength":38,"audioBytes":100334}
+{"timestamp":"2026-08-17T17:27:40.916Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":6895,"textLength":54,"audioBytes":150010}
+{"timestamp":"2026-08-17T17:27:47.710Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":6781,"textLength":36,"audioBytes":105502}
+{"timestamp":"2026-08-17T17:27:55.335Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":7463,"textLength":21,"audioBytes":58714}
+{"timestamp":"2026-08-17T17:28:03.319Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":7976,"textLength":53,"audioBytes":140838}
+{"timestamp":"2026-08-17T17:28:09.115Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":5787,"textLength":42,"audioBytes":118236}
+{"timestamp":"2026-08-17T17:28:14.713Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":5583,"textLength":37,"audioBytes":100768}
+{"timestamp":"2026-08-17T17:28:14.757Z","event":"VOICE_TTS_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","generationId":"68989163-bb45-4fb0-a65f-b4284319e79a","totalLatencyMs":58559,"responseLength":314}
+{"timestamp":"2026-08-17T17:28:19.635Z","event":"VOICE_STT_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:28:22.216Z","event":"VOICE_STT_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":2581,"textLength":0}
+{"timestamp":"2026-08-17T17:28:31.676Z","event":"VOICE_STT_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:28:32.894Z","event":"VOICE_STT_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":1218,"textLength":9}
+{"timestamp":"2026-08-17T17:28:32.911Z","event":"VOICE_SPEECH_ENDED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","text":"pra você."}
+{"timestamp":"2026-08-17T17:28:32.915Z","event":"VOICE_TTS_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:28:32.923Z","event":"VOICE_LLM_STARTED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e"}
+{"timestamp":"2026-08-17T17:28:33.791Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":868}
+{"timestamp":"2026-08-17T17:28:34.129Z","event":"VOICE_LLM_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":1206}
+{"timestamp":"2026-08-17T17:28:37.004Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":3177,"textLength":8,"audioBytes":38688}
+{"timestamp":"2026-08-17T17:28:37.009Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","generationId":"1285af2d-0b5f-462a-a428-23264581277b","latencyMs":5332,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:28:42.888Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":5856,"textLength":26,"audioBytes":77168}
+{"timestamp":"2026-08-17T17:28:51.387Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","latencyMs":8494,"textLength":64,"audioBytes":160812}
+{"timestamp":"2026-08-17T17:28:51.426Z","event":"VOICE_TTS_COMPLETED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","generationId":"1285af2d-0b5f-462a-a428-23264581277b","totalLatencyMs":19750,"responseLength":100}
+{"timestamp":"2026-08-17T17:30:31.685Z","event":"VOICE_ERROR","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T17:30:31.695Z","event":"VOICE_SESSION_ENDED","sessionId":"ccb1614d-4af8-43e7-90cc-01410919513e","reason":"inactivity_timeout","durationMs":216918,"turnCount":2}
+{"timestamp":"2026-08-17T17:40:03.073Z","event":"VOICE_SESSION_CREATED","sessionId":"e861df93-ecb3-4681-b311-6fc82099ea93","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T17:40:03.127Z","event":"VOICE_SESSION_STARTED","sessionId":"e861df93-ecb3-4681-b311-6fc82099ea93"}
+{"timestamp":"2026-08-17T17:40:12.786Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"e861df93-ecb3-4681-b311-6fc82099ea93","latencyMs":9656,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T17:40:58.790Z","event":"VOICE_SESSION_ENDED","sessionId":"e861df93-ecb3-4681-b311-6fc82099ea93","reason":"ws_closed","durationMs":55717,"turnCount":0}
+{"timestamp":"2026-08-17T17:41:02.906Z","event":"VOICE_SESSION_CREATED","sessionId":"6b9ad4b0-8482-4252-a267-a2ca9dca0bd2","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T17:41:02.956Z","event":"VOICE_SESSION_STARTED","sessionId":"6b9ad4b0-8482-4252-a267-a2ca9dca0bd2"}
+{"timestamp":"2026-08-17T17:41:06.816Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"6b9ad4b0-8482-4252-a267-a2ca9dca0bd2","latencyMs":3858,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T17:43:11.026Z","event":"VOICE_ERROR","sessionId":"6b9ad4b0-8482-4252-a267-a2ca9dca0bd2","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T17:43:11.028Z","event":"VOICE_SESSION_ENDED","sessionId":"6b9ad4b0-8482-4252-a267-a2ca9dca0bd2","reason":"inactivity_timeout","durationMs":128122,"turnCount":0}
+{"timestamp":"2026-08-17T17:43:59.159Z","event":"VOICE_SESSION_CREATED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T17:43:59.251Z","event":"VOICE_SESSION_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:44:01.698Z","event":"VOICE_ERROR","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T17:44:10.219Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:44:12.729Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2510,"textLength":45}
+{"timestamp":"2026-08-17T17:44:12.733Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Qual que é o plano mais barato de vocês hoje?"}
+{"timestamp":"2026-08-17T17:44:12.737Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:44:12.743Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:44:13.617Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":874}
+{"timestamp":"2026-08-17T17:44:14.028Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1285}
+{"timestamp":"2026-08-17T17:44:16.460Z","event":"VOICE_ERROR","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T17:44:16.463Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"93f33596-c6bb-4c2c-b4ef-446789de78cf","totalLatencyMs":6245,"responseLength":151}
+{"timestamp":"2026-08-17T17:45:23.177Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:45:25.035Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1858,"textLength":15}
+{"timestamp":"2026-08-17T17:45:25.036Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Muito obrigada."}
+{"timestamp":"2026-08-17T17:45:25.037Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:45:25.038Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:45:27.284Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2246}
+{"timestamp":"2026-08-17T17:45:27.348Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2310}
+{"timestamp":"2026-08-17T17:45:36.681Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":9331,"textLength":67,"audioBytes":184120}
+{"timestamp":"2026-08-17T17:45:36.683Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"e3ac7f68-774d-4c34-940d-961cd2e1bc9e","latencyMs":13506,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:45:36.692Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"e3ac7f68-774d-4c34-940d-961cd2e1bc9e","totalLatencyMs":13515,"responseLength":67}
+{"timestamp":"2026-08-17T17:46:25.646Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:28.073Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2427,"textLength":84}
+{"timestamp":"2026-08-17T17:46:28.075Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"O que é isso, Neto? Não, tá. Neto, fechou lá. Tu não precisa deixar a porta fechada."}
+{"timestamp":"2026-08-17T17:46:28.076Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:28.078Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:28.868Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":790}
+{"timestamp":"2026-08-17T17:46:29.145Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1067}
+{"timestamp":"2026-08-17T17:46:38.351Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":9205,"textLength":111,"audioBytes":311316}
+{"timestamp":"2026-08-17T17:46:38.354Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"37df34a7-adca-472d-b399-05d716c46f96","latencyMs":12707,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:46:38.374Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"37df34a7-adca-472d-b399-05d716c46f96","totalLatencyMs":12728,"responseLength":111}
+{"timestamp":"2026-08-17T17:46:42.027Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:44.242Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2215,"textLength":28}
+{"timestamp":"2026-08-17T17:46:44.242Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Manu, mais algum momentinho."}
+{"timestamp":"2026-08-17T17:46:44.243Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:44.244Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:44.804Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":560}
+{"timestamp":"2026-08-17T17:46:45.061Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":817}
+{"timestamp":"2026-08-17T17:46:51.784Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":6722,"textLength":97,"audioBytes":261060}
+{"timestamp":"2026-08-17T17:46:51.787Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"ee140c1b-7bbd-4c7b-8016-b64c73f50dd4","latencyMs":9759,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:46:51.794Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"ee140c1b-7bbd-4c7b-8016-b64c73f50dd4","totalLatencyMs":9767,"responseLength":97}
+{"timestamp":"2026-08-17T17:46:53.937Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:46:55.973Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2036,"textLength":0}
+{"timestamp":"2026-08-17T17:47:05.066Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:47:07.590Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2524,"textLength":0}
+{"timestamp":"2026-08-17T17:47:41.547Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:47:44.208Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2661,"textLength":13}
+{"timestamp":"2026-08-17T17:47:44.209Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Valeu. Tchau."}
+{"timestamp":"2026-08-17T17:47:44.210Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:47:44.211Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:47:44.979Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":768}
+{"timestamp":"2026-08-17T17:47:45.097Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":886}
+{"timestamp":"2026-08-17T17:47:47.401Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2303,"textLength":42,"audioBytes":111750}
+{"timestamp":"2026-08-17T17:47:47.403Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"3ec7ab50-a79b-4018-8368-0bf5b19302f1","latencyMs":5855,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:47:47.409Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"3ec7ab50-a79b-4018-8368-0bf5b19302f1","totalLatencyMs":5862,"responseLength":42}
+{"timestamp":"2026-08-17T17:48:05.866Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:48:07.269Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1403,"textLength":14}
+{"timestamp":"2026-08-17T17:48:07.270Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Até a próxima."}
+{"timestamp":"2026-08-17T17:48:07.271Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:48:07.272Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:48:08.604Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1332}
+{"timestamp":"2026-08-17T17:48:08.698Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1426}
+{"timestamp":"2026-08-17T17:48:10.333Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1634,"textLength":33,"audioBytes":98130}
+{"timestamp":"2026-08-17T17:48:10.334Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"e9b5e4da-b1b7-4c5d-baaf-88d9a28a055b","latencyMs":4468,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:48:10.338Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"e9b5e4da-b1b7-4c5d-baaf-88d9a28a055b","totalLatencyMs":4472,"responseLength":33}
+{"timestamp":"2026-08-17T17:48:53.616Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:48:54.547Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":931,"textLength":20}
+{"timestamp":"2026-08-17T17:48:54.548Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Bom, muito obrigado."}
+{"timestamp":"2026-08-17T17:48:54.549Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:48:54.550Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:48:55.374Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":824}
+{"timestamp":"2026-08-17T17:48:55.497Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":947}
+{"timestamp":"2026-08-17T17:48:59.577Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":4079,"textLength":52,"audioBytes":137632}
+{"timestamp":"2026-08-17T17:48:59.579Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"41d33f76-1531-4983-b33b-bdc05a32e304","latencyMs":5963,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:48:59.584Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"41d33f76-1531-4983-b33b-bdc05a32e304","totalLatencyMs":5968,"responseLength":52}
+{"timestamp":"2026-08-17T17:49:19.086Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:49:20.456Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1370,"textLength":9}
+{"timestamp":"2026-08-17T17:49:20.457Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Obrigado."}
+{"timestamp":"2026-08-17T17:49:20.458Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:49:20.459Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:49:21.326Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":867}
+{"timestamp":"2026-08-17T17:49:21.433Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":974}
+{"timestamp":"2026-08-17T17:49:23.570Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2136,"textLength":29,"audioBytes":87134}
+{"timestamp":"2026-08-17T17:49:23.574Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"2b3b0b39-319f-4d97-9f86-b155c9ceca0f","latencyMs":4487,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:49:23.579Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"2b3b0b39-319f-4d97-9f86-b155c9ceca0f","totalLatencyMs":4493,"responseLength":29}
+{"timestamp":"2026-08-17T17:50:58.026Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:50:59.736Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1710,"textLength":9}
+{"timestamp":"2026-08-17T17:50:59.738Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Obrigado."}
+{"timestamp":"2026-08-17T17:50:59.739Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:50:59.740Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:51:00.485Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":745}
+{"timestamp":"2026-08-17T17:51:00.612Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":872}
+{"timestamp":"2026-08-17T17:51:05.495Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":4882,"textLength":42,"audioBytes":116146}
+{"timestamp":"2026-08-17T17:51:06.298Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"bbc3cca5-a18d-476f-b387-9a7be7ad3536","latencyMs":8271,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:51:06.310Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"bbc3cca5-a18d-476f-b387-9a7be7ad3536","totalLatencyMs":8284,"responseLength":42}
+{"timestamp":"2026-08-17T17:51:14.287Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:51:14.931Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":644,"textLength":9}
+{"timestamp":"2026-08-17T17:51:14.932Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Obrigado."}
+{"timestamp":"2026-08-17T17:51:14.933Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:51:14.935Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:51:15.478Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":543}
+{"timestamp":"2026-08-17T17:51:15.599Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":664}
+{"timestamp":"2026-08-17T17:51:19.212Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":3612,"textLength":32,"audioBytes":82884}
+{"timestamp":"2026-08-17T17:51:19.214Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"36217eb0-0a6f-4423-8e50-447466833639","latencyMs":4926,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:51:19.220Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"36217eb0-0a6f-4423-8e50-447466833639","totalLatencyMs":4933,"responseLength":32}
+{"timestamp":"2026-08-17T17:52:03.568Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:05.366Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1798,"textLength":17}
+{"timestamp":"2026-08-17T17:52:05.367Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Te amo, meu Deus."}
+{"timestamp":"2026-08-17T17:52:05.369Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:05.371Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:06.083Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":712}
+{"timestamp":"2026-08-17T17:52:06.396Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1025}
+{"timestamp":"2026-08-17T17:52:15.474Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":9077,"textLength":88,"audioBytes":242932}
+{"timestamp":"2026-08-17T17:52:15.476Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"d4bdb2cd-f457-4581-99da-bf48ba3cf849","latencyMs":11909,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:52:15.482Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"d4bdb2cd-f457-4581-99da-bf48ba3cf849","totalLatencyMs":11915,"responseLength":88}
+{"timestamp":"2026-08-17T17:52:22.638Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:24.155Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1517,"textLength":6}
+{"timestamp":"2026-08-17T17:52:24.157Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau!"}
+{"timestamp":"2026-08-17T17:52:24.159Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:24.160Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:24.755Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":595}
+{"timestamp":"2026-08-17T17:52:24.872Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":712}
+{"timestamp":"2026-08-17T17:52:27.382Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2508,"textLength":25,"audioBytes":73646}
+{"timestamp":"2026-08-17T17:52:27.385Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"5d136a49-1c4e-4424-bd8e-062f37b05dbb","latencyMs":4747,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:52:27.390Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"5d136a49-1c4e-4424-bd8e-062f37b05dbb","totalLatencyMs":4752,"responseLength":25}
+{"timestamp":"2026-08-17T17:52:50.926Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:51.931Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1005,"textLength":6}
+{"timestamp":"2026-08-17T17:52:51.932Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau."}
+{"timestamp":"2026-08-17T17:52:51.932Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:51.934Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:52:52.779Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":845}
+{"timestamp":"2026-08-17T17:52:53.492Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1558}
+{"timestamp":"2026-08-17T17:52:55.781Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2288,"textLength":16,"audioBytes":50792}
+{"timestamp":"2026-08-17T17:52:55.784Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"6dc5fa5e-0010-4008-9e17-391e16b96f44","latencyMs":4857,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:52:55.789Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"6dc5fa5e-0010-4008-9e17-391e16b96f44","totalLatencyMs":4863,"responseLength":16}
+{"timestamp":"2026-08-17T17:54:01.966Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:54:03.598Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1632,"textLength":21}
+{"timestamp":"2026-08-17T17:54:03.600Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Um beijo e um abraço."}
+{"timestamp":"2026-08-17T17:54:03.601Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:54:03.602Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:54:04.514Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":912}
+{"timestamp":"2026-08-17T17:54:04.616Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1014}
+{"timestamp":"2026-08-17T17:54:06.997Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2380,"textLength":42,"audioBytes":107706}
+{"timestamp":"2026-08-17T17:54:07.000Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"37c2ba2a-6041-43a1-819a-17e421725c6e","latencyMs":5034,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:54:07.007Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"37c2ba2a-6041-43a1-819a-17e421725c6e","totalLatencyMs":5042,"responseLength":42}
+{"timestamp":"2026-08-17T17:55:11.085Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:12.367Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1282,"textLength":6}
+{"timestamp":"2026-08-17T17:55:12.368Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau."}
+{"timestamp":"2026-08-17T17:55:12.369Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:12.370Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:13.375Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1005}
+{"timestamp":"2026-08-17T17:55:13.438Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1068}
+{"timestamp":"2026-08-17T17:55:14.816Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1377,"textLength":21,"audioBytes":60832}
+{"timestamp":"2026-08-17T17:55:14.818Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"e72650de-0754-4e7d-8c01-b7389dbfc4df","latencyMs":3732,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:55:14.823Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"e72650de-0754-4e7d-8c01-b7389dbfc4df","totalLatencyMs":3738,"responseLength":21}
+{"timestamp":"2026-08-17T17:55:39.495Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:41.303Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1808,"textLength":6}
+{"timestamp":"2026-08-17T17:55:41.304Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau!"}
+{"timestamp":"2026-08-17T17:55:41.305Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:41.305Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:41.868Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":563}
+{"timestamp":"2026-08-17T17:55:41.932Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":627}
+{"timestamp":"2026-08-17T17:55:43.278Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1346,"textLength":16,"audioBytes":51424}
+{"timestamp":"2026-08-17T17:55:43.280Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"065ab409-c3e7-488b-9d2e-d29acdecbe62","latencyMs":3785,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:55:43.283Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"065ab409-c3e7-488b-9d2e-d29acdecbe62","totalLatencyMs":3788,"responseLength":16}
+{"timestamp":"2026-08-17T17:55:46.026Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:48.383Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2357,"textLength":13}
+{"timestamp":"2026-08-17T17:55:48.384Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau, tchau."}
+{"timestamp":"2026-08-17T17:55:48.385Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:48.386Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:55:50.375Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1989}
+{"timestamp":"2026-08-17T17:55:50.712Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2326}
+{"timestamp":"2026-08-17T17:55:54.394Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":3681,"textLength":58,"audioBytes":135626}
+{"timestamp":"2026-08-17T17:55:54.396Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"19c22cb2-c746-4647-bd2a-335e2e8d1502","latencyMs":8370,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:55:54.400Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"19c22cb2-c746-4647-bd2a-335e2e8d1502","totalLatencyMs":8374,"responseLength":58}
+{"timestamp":"2026-08-17T17:56:35.567Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:37.113Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1546,"textLength":6}
+{"timestamp":"2026-08-17T17:56:37.115Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau!"}
+{"timestamp":"2026-08-17T17:56:37.116Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:37.117Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:38.029Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":912}
+{"timestamp":"2026-08-17T17:56:38.209Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1092}
+{"timestamp":"2026-08-17T17:56:40.839Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2628,"textLength":30,"audioBytes":76606}
+{"timestamp":"2026-08-17T17:56:40.841Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"9bbbc88b-9b3d-41e6-8e1e-ba2c16030c1f","latencyMs":5273,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:56:40.845Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"9bbbc88b-9b3d-41e6-8e1e-ba2c16030c1f","totalLatencyMs":5278,"responseLength":30}
+{"timestamp":"2026-08-17T17:56:43.757Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:45.694Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1937,"textLength":13}
+{"timestamp":"2026-08-17T17:56:45.695Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau, tchau."}
+{"timestamp":"2026-08-17T17:56:45.696Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:45.697Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:46.291Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":594}
+{"timestamp":"2026-08-17T17:56:46.416Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":719}
+{"timestamp":"2026-08-17T17:56:47.760Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1343,"textLength":23,"audioBytes":63648}
+{"timestamp":"2026-08-17T17:56:47.762Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"db68f50d-dc65-427d-a682-4aa58bcdf188","latencyMs":4005,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:56:47.766Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"db68f50d-dc65-427d-a682-4aa58bcdf188","totalLatencyMs":4009,"responseLength":23}
+{"timestamp":"2026-08-17T17:56:56.046Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:57.586Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1540,"textLength":6}
+{"timestamp":"2026-08-17T17:56:57.586Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau."}
+{"timestamp":"2026-08-17T17:56:57.587Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:57.588Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:56:58.811Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1223}
+{"timestamp":"2026-08-17T17:56:58.908Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1320}
+{"timestamp":"2026-08-17T17:57:00.537Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1628,"textLength":21,"audioBytes":61664}
+{"timestamp":"2026-08-17T17:57:00.539Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"39ffaf35-d7a7-4f9c-b36f-5de6be94ac11","latencyMs":4493,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:57:00.543Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"39ffaf35-d7a7-4f9c-b36f-5de6be94ac11","totalLatencyMs":4497,"responseLength":21}
+{"timestamp":"2026-08-17T17:57:10.376Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:57:11.865Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1489,"textLength":6}
+{"timestamp":"2026-08-17T17:57:11.866Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau."}
+{"timestamp":"2026-08-17T17:57:11.867Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:57:11.868Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:57:12.433Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":565}
+{"timestamp":"2026-08-17T17:57:12.515Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":647}
+{"timestamp":"2026-08-17T17:57:14.709Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2193,"textLength":30,"audioBytes":76608}
+{"timestamp":"2026-08-17T17:57:14.711Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"c58115bb-60b7-4646-9d66-febf1b8b94d2","latencyMs":4334,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:57:14.716Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"c58115bb-60b7-4646-9d66-febf1b8b94d2","totalLatencyMs":4340,"responseLength":30}
+{"timestamp":"2026-08-17T17:58:01.326Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:03.346Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":2020,"textLength":6}
+{"timestamp":"2026-08-17T17:58:03.347Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau."}
+{"timestamp":"2026-08-17T17:58:03.347Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:03.349Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:04.343Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":994}
+{"timestamp":"2026-08-17T17:58:04.473Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1124}
+{"timestamp":"2026-08-17T17:58:05.715Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1242,"textLength":16,"audioBytes":51424}
+{"timestamp":"2026-08-17T17:58:05.718Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"879a8924-19eb-4204-9e92-72ef87ab4ab1","latencyMs":4392,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:58:05.723Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"879a8924-19eb-4204-9e92-72ef87ab4ab1","totalLatencyMs":4397,"responseLength":16}
+{"timestamp":"2026-08-17T17:58:41.776Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:42.332Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":556,"textLength":6}
+{"timestamp":"2026-08-17T17:58:42.333Z","event":"VOICE_SPEECH_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","text":"Tchau!"}
+{"timestamp":"2026-08-17T17:58:42.335Z","event":"VOICE_TTS_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:42.336Z","event":"VOICE_LLM_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:42.881Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":545}
+{"timestamp":"2026-08-17T17:58:42.986Z","event":"VOICE_LLM_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":650}
+{"timestamp":"2026-08-17T17:58:44.942Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1955,"textLength":26,"audioBytes":73636}
+{"timestamp":"2026-08-17T17:58:44.944Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"40743c4b-5406-4fd3-bcae-0d51a9f03a6a","latencyMs":3167,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T17:58:44.949Z","event":"VOICE_TTS_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","generationId":"40743c4b-5406-4fd3-bcae-0d51a9f03a6a","totalLatencyMs":3173,"responseLength":26}
+{"timestamp":"2026-08-17T17:58:58.416Z","event":"VOICE_STT_STARTED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf"}
+{"timestamp":"2026-08-17T17:58:59.279Z","event":"VOICE_SESSION_ENDED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","reason":"max_duration","durationMs":900120,"turnCount":23}
+{"timestamp":"2026-08-17T17:58:59.914Z","event":"VOICE_STT_COMPLETED","sessionId":"984a9d33-b888-4c2b-bf50-29ee13c5e3bf","latencyMs":1498,"textLength":6}
+{"timestamp":"2026-08-17T18:02:58.369Z","event":"VOICE_SESSION_CREATED","sessionId":"c551b498-f9ce-45e1-b2a8-b3dbdc194727","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T18:02:58.402Z","event":"VOICE_SESSION_STARTED","sessionId":"c551b498-f9ce-45e1-b2a8-b3dbdc194727"}
+{"timestamp":"2026-08-17T18:03:04.090Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"c551b498-f9ce-45e1-b2a8-b3dbdc194727","latencyMs":5684,"textLength":30,"audioBytes":90548}
+{"timestamp":"2026-08-17T18:04:44.850Z","event":"VOICE_SESSION_ENDED","sessionId":"c551b498-f9ce-45e1-b2a8-b3dbdc194727","reason":"ws_closed","durationMs":106481,"turnCount":0}
+{"timestamp":"2026-08-17T18:05:43.115Z","event":"VOICE_SESSION_CREATED","sessionId":"64ba6004-941e-4b28-9693-bf87928c2ec9","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T18:05:43.220Z","event":"VOICE_SESSION_STARTED","sessionId":"64ba6004-941e-4b28-9693-bf87928c2ec9"}
+{"timestamp":"2026-08-17T18:05:59.175Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"64ba6004-941e-4b28-9693-bf87928c2ec9","latencyMs":15947,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T18:08:02.903Z","event":"VOICE_ERROR","sessionId":"64ba6004-941e-4b28-9693-bf87928c2ec9","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T18:08:02.906Z","event":"VOICE_SESSION_ENDED","sessionId":"64ba6004-941e-4b28-9693-bf87928c2ec9","reason":"inactivity_timeout","durationMs":139790,"turnCount":0}
+{"timestamp":"2026-08-17T18:49:32.100Z","event":"VOICE_SESSION_CREATED","sessionId":"bdbee116-f419-4349-9b7f-fe8a8be81ae2","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T18:49:32.213Z","event":"VOICE_SESSION_STARTED","sessionId":"bdbee116-f419-4349-9b7f-fe8a8be81ae2"}
+{"timestamp":"2026-08-17T18:49:49.481Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"bdbee116-f419-4349-9b7f-fe8a8be81ae2","latencyMs":17263,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T18:51:12.565Z","event":"VOICE_SESSION_CREATED","sessionId":"9e89ba50-fa45-444a-900b-d347a1662d0c","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T18:51:12.604Z","event":"VOICE_SESSION_STARTED","sessionId":"9e89ba50-fa45-444a-900b-d347a1662d0c"}
+{"timestamp":"2026-08-17T18:51:24.844Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"9e89ba50-fa45-444a-900b-d347a1662d0c","latencyMs":12237,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T18:53:29.740Z","event":"VOICE_ERROR","sessionId":"9e89ba50-fa45-444a-900b-d347a1662d0c","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T18:53:29.744Z","event":"VOICE_SESSION_ENDED","sessionId":"9e89ba50-fa45-444a-900b-d347a1662d0c","reason":"inactivity_timeout","durationMs":137177,"turnCount":0}
+{"timestamp":"2026-08-17T18:53:49.937Z","event":"VOICE_SESSION_CREATED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T18:53:49.990Z","event":"VOICE_SESSION_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:53:53.288Z","event":"VOICE_ERROR","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T18:54:00.245Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:54:02.456Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2211,"textLength":90}
+{"timestamp":"2026-08-17T18:54:02.460Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Vai que tu não precisa de homem, né? Vai então! Qual que é o plano mais barato atualmente?"}
+{"timestamp":"2026-08-17T18:54:02.463Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:54:02.474Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:54:04.596Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2122}
+{"timestamp":"2026-08-17T18:54:04.927Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2453}
+{"timestamp":"2026-08-17T18:54:08.179Z","event":"VOICE_ERROR","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T18:55:06.666Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:55:08.458Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1792,"textLength":42}
+{"timestamp":"2026-08-17T18:55:08.462Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Qual que é o plano mais barato atualmente?"}
+{"timestamp":"2026-08-17T18:55:08.464Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:55:08.467Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:55:09.682Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1215}
+{"timestamp":"2026-08-17T18:55:10.019Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1552}
+{"timestamp":"2026-08-17T18:55:26.365Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":16344,"textLength":165,"audioBytes":442214}
+{"timestamp":"2026-08-17T18:55:26.369Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"ff949cca-95f2-4495-ba88-37d3649e740b","latencyMs":19702,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:55:26.380Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"ff949cca-95f2-4495-ba88-37d3649e740b","totalLatencyMs":19714,"responseLength":165}
+{"timestamp":"2026-08-17T18:56:04.789Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:07.253Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2464,"textLength":0}
+{"timestamp":"2026-08-17T18:56:12.844Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:15.227Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2383,"textLength":0}
+{"timestamp":"2026-08-17T18:56:21.674Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:23.403Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1729,"textLength":6}
+{"timestamp":"2026-08-17T18:56:23.405Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Tchau."}
+{"timestamp":"2026-08-17T18:56:23.407Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:23.408Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:24.245Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":837}
+{"timestamp":"2026-08-17T18:56:24.369Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":961}
+{"timestamp":"2026-08-17T18:56:29.711Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":5341,"textLength":42,"audioBytes":116698}
+{"timestamp":"2026-08-17T18:56:29.714Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"9049afa4-b4d1-4bd1-8ecb-85de1b52eba7","latencyMs":8039,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:56:29.722Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"9049afa4-b4d1-4bd1-8ecb-85de1b52eba7","totalLatencyMs":8048,"responseLength":42}
+{"timestamp":"2026-08-17T18:56:37.934Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:40.232Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2298,"textLength":112}
+{"timestamp":"2026-08-17T18:56:40.234Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Caraca, mas não. Ficou bom, mas... Não, mas meio que tipo assim... Onde ele corta? O que ele faz? O "}
+{"timestamp":"2026-08-17T18:56:40.237Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:40.238Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:56:40.760Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":522}
+{"timestamp":"2026-08-17T18:56:41.097Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":859}
+{"timestamp":"2026-08-17T18:56:56.240Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":15141,"textLength":141,"audioBytes":392902}
+{"timestamp":"2026-08-17T18:56:56.243Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"7db7e65f-e686-43c3-8474-6e76b24d12f0","latencyMs":18308,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:56:56.253Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"7db7e65f-e686-43c3-8474-6e76b24d12f0","totalLatencyMs":18319,"responseLength":141}
+{"timestamp":"2026-08-17T18:57:07.114Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:57:09.268Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2154,"textLength":129}
+{"timestamp":"2026-08-17T18:57:09.270Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"muito desproporcional? É que... Não! Não, porque eu acho que eu sou desproporcional. Assim? Tipo, mu"}
+{"timestamp":"2026-08-17T18:57:09.272Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:57:09.273Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:57:10.076Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":803}
+{"timestamp":"2026-08-17T18:57:10.362Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1089}
+{"timestamp":"2026-08-17T18:57:23.360Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":12996,"textLength":136,"audioBytes":386716}
+{"timestamp":"2026-08-17T18:57:23.365Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"c1d5f213-6b1a-4e28-90c6-04df10fc2d3e","latencyMs":16248,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:57:23.374Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"c1d5f213-6b1a-4e28-90c6-04df10fc2d3e","totalLatencyMs":16260,"responseLength":136}
+{"timestamp":"2026-08-17T18:57:26.445Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:57:28.057Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1612,"textLength":22}
+{"timestamp":"2026-08-17T18:57:28.058Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"O serviço a gente liga"}
+{"timestamp":"2026-08-17T18:57:28.060Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:57:28.061Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:57:29.110Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1049}
+{"timestamp":"2026-08-17T18:57:29.405Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1344}
+{"timestamp":"2026-08-17T18:57:43.922Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":14516,"textLength":145,"audioBytes":374334}
+{"timestamp":"2026-08-17T18:57:43.925Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"04f5b821-b296-47b1-86c0-b0f7fbb5fbfe","latencyMs":17479,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:57:43.941Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"04f5b821-b296-47b1-86c0-b0f7fbb5fbfe","totalLatencyMs":17496,"responseLength":145}
+{"timestamp":"2026-08-17T18:58:21.484Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:58:25.953Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":4469,"textLength":642}
+{"timestamp":"2026-08-17T18:58:25.954Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"E aí a gente cortou, e aí a gente esquentou de novo, e aí fica aquela crostazinha que a gente ama, n"}
+{"timestamp":"2026-08-17T18:58:25.955Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:58:25.956Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:58:26.498Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":542}
+{"timestamp":"2026-08-17T18:58:26.796Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":840}
+{"timestamp":"2026-08-17T18:58:37.574Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":10777,"textLength":163,"audioBytes":478272}
+{"timestamp":"2026-08-17T18:58:37.577Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"ae4ddc21-cdd6-4415-bb79-41e251746b32","latencyMs":16092,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:58:37.586Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"ae4ddc21-cdd6-4415-bb79-41e251746b32","totalLatencyMs":16102,"responseLength":163}
+{"timestamp":"2026-08-17T18:58:49.514Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:58:53.791Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":4277,"textLength":104}
+{"timestamp":"2026-08-17T18:58:53.792Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"vai dar um custo de R$ 2,00. Mesmo produto de 5 cores no foco. Nos últimos 30 dias, mais de 600 pedi"}
+{"timestamp":"2026-08-17T18:58:53.793Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:58:53.794Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:58:54.336Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":542}
+{"timestamp":"2026-08-17T18:58:54.724Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":930}
+{"timestamp":"2026-08-17T18:59:03.694Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":8969,"textLength":131,"audioBytes":375460}
+{"timestamp":"2026-08-17T18:59:03.700Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"34677e4e-0e86-4429-a1b1-3128bb15fdae","latencyMs":14185,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:59:03.707Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"34677e4e-0e86-4429-a1b1-3128bb15fdae","totalLatencyMs":14193,"responseLength":131}
+{"timestamp":"2026-08-17T18:59:21.385Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:24.006Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2621,"textLength":228}
+{"timestamp":"2026-08-17T18:59:24.008Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"unidades. Então, pra fazer os 600 pedidos, demorou 300 horas. Isso dá 12 dias e meio usando uma máqu"}
+{"timestamp":"2026-08-17T18:59:24.008Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:24.009Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:24.749Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":740}
+{"timestamp":"2026-08-17T18:59:25.029Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1020}
+{"timestamp":"2026-08-17T18:59:33.952Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":8922,"textLength":131,"audioBytes":354998}
+{"timestamp":"2026-08-17T18:59:33.968Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"237303fc-3a1c-454a-854d-e0a2c85d5f4c","latencyMs":12584,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:59:33.988Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"237303fc-3a1c-454a-854d-e0a2c85d5f4c","totalLatencyMs":12604,"responseLength":131}
+{"timestamp":"2026-08-17T18:59:36.104Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:37.547Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1443,"textLength":19}
+{"timestamp":"2026-08-17T18:59:37.548Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Obrigado. Obrigado."}
+{"timestamp":"2026-08-17T18:59:37.549Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:37.550Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:38.218Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":668}
+{"timestamp":"2026-08-17T18:59:38.579Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1029}
+{"timestamp":"2026-08-17T18:59:43.354Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":4774,"textLength":66,"audioBytes":170364}
+{"timestamp":"2026-08-17T18:59:43.356Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"d018da67-4ac7-4c36-9c9f-c5c4b09cd9d6","latencyMs":7252,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T18:59:43.362Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"d018da67-4ac7-4c36-9c9f-c5c4b09cd9d6","totalLatencyMs":7258,"responseLength":66}
+{"timestamp":"2026-08-17T18:59:50.703Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:52.420Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1717,"textLength":81}
+{"timestamp":"2026-08-17T18:59:52.421Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Tá aqui no Swap.com, ok? Tá ali, entrega. Vai para a entrega. Tá trabalhando, tá."}
+{"timestamp":"2026-08-17T18:59:52.422Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:52.423Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T18:59:52.946Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":523}
+{"timestamp":"2026-08-17T18:59:53.500Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1077}
+{"timestamp":"2026-08-17T19:00:03.038Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":9537,"textLength":132,"audioBytes":373886}
+{"timestamp":"2026-08-17T19:00:03.040Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"8a2787fe-87ef-4044-862f-7ed3081f093c","latencyMs":12337,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T19:00:03.049Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"8a2787fe-87ef-4044-862f-7ed3081f093c","totalLatencyMs":12346,"responseLength":132}
+{"timestamp":"2026-08-17T19:00:07.592Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:09.089Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1497,"textLength":23}
+{"timestamp":"2026-08-17T19:00:09.090Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Eu também faço. Tá bom."}
+{"timestamp":"2026-08-17T19:00:09.091Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:09.092Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:09.683Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":591}
+{"timestamp":"2026-08-17T19:00:09.901Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":809}
+{"timestamp":"2026-08-17T19:00:16.684Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":6782,"textLength":94,"audioBytes":269360}
+{"timestamp":"2026-08-17T19:00:16.686Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"29d6d644-8496-4961-b851-d748b404e2aa","latencyMs":9094,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T19:00:16.692Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"29d6d644-8496-4961-b851-d748b404e2aa","totalLatencyMs":9100,"responseLength":94}
+{"timestamp":"2026-08-17T19:00:21.163Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:22.296Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1133,"textLength":65}
+{"timestamp":"2026-08-17T19:00:22.297Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Aí, nesse dia, depois que você arrumou ela, ficou tudo prontinho."}
+{"timestamp":"2026-08-17T19:00:22.298Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:22.299Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:22.894Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":595}
+{"timestamp":"2026-08-17T19:00:23.346Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1047}
+{"timestamp":"2026-08-17T19:00:32.967Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":9620,"textLength":118,"audioBytes":334796}
+{"timestamp":"2026-08-17T19:00:32.969Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"78e72b61-b315-4a1f-afce-3e9a27f6d070","latencyMs":11806,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T19:00:32.976Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"78e72b61-b315-4a1f-afce-3e9a27f6d070","totalLatencyMs":11813,"responseLength":118}
+{"timestamp":"2026-08-17T19:00:37.164Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:37.837Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":673,"textLength":26}
+{"timestamp":"2026-08-17T19:00:37.838Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Acaba que é também a NIPA."}
+{"timestamp":"2026-08-17T19:00:37.839Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:37.840Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:38.392Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":552}
+{"timestamp":"2026-08-17T19:00:38.804Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":964}
+{"timestamp":"2026-08-17T19:00:48.714Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":9910,"textLength":132,"audioBytes":372700}
+{"timestamp":"2026-08-17T19:00:48.716Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"358cc6ee-8e07-4ead-a249-8a644e617a09","latencyMs":11552,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T19:00:48.724Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"358cc6ee-8e07-4ead-a249-8a644e617a09","totalLatencyMs":11560,"responseLength":132}
+{"timestamp":"2026-08-17T19:00:54.183Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:55.958Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1775,"textLength":61}
+{"timestamp":"2026-08-17T19:00:55.960Z","event":"VOICE_SPEECH_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","text":"Ai, ai, ai. O salário já tá aqui, ó. Eu vou te contar depois."}
+{"timestamp":"2026-08-17T19:00:55.962Z","event":"VOICE_TTS_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:55.963Z","event":"VOICE_LLM_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:00:56.592Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":629}
+{"timestamp":"2026-08-17T19:00:57.406Z","event":"VOICE_LLM_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":1443}
+{"timestamp":"2026-08-17T19:01:09.696Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":12289,"textLength":131,"audioBytes":370134}
+{"timestamp":"2026-08-17T19:01:09.699Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"f90bdd69-b1a2-4fe3-8d2b-11c05042945c","latencyMs":15516,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T19:01:09.709Z","event":"VOICE_TTS_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","generationId":"f90bdd69-b1a2-4fe3-8d2b-11c05042945c","totalLatencyMs":15526,"responseLength":131}
+{"timestamp":"2026-08-17T19:01:13.388Z","event":"VOICE_STT_STARTED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192"}
+{"timestamp":"2026-08-17T19:01:16.008Z","event":"VOICE_SESSION_ENDED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","reason":"ws_closed","durationMs":446070,"turnCount":15}
+{"timestamp":"2026-08-17T19:01:16.199Z","event":"VOICE_STT_COMPLETED","sessionId":"a6d36899-8ad5-4f11-95a9-2b168f6a7192","latencyMs":2811,"textLength":0}
+{"timestamp":"2026-08-17T19:01:23.004Z","event":"VOICE_SESSION_CREATED","sessionId":"45460fed-a0b0-439d-ab0c-d7ede92661b6","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T19:01:23.101Z","event":"VOICE_SESSION_STARTED","sessionId":"45460fed-a0b0-439d-ab0c-d7ede92661b6"}
+{"timestamp":"2026-08-17T19:01:28.171Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"45460fed-a0b0-439d-ab0c-d7ede92661b6","latencyMs":5068,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T19:01:54.201Z","event":"VOICE_SESSION_ENDED","sessionId":"45460fed-a0b0-439d-ab0c-d7ede92661b6","reason":"ws_closed","durationMs":31197,"turnCount":0}
+{"timestamp":"2026-08-17T19:09:36.873Z","event":"VOICE_SESSION_CREATED","sessionId":"d684d43d-e0d9-413c-931d-d7a6cbaa8b0a","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T19:09:36.909Z","event":"VOICE_SESSION_STARTED","sessionId":"d684d43d-e0d9-413c-931d-d7a6cbaa8b0a"}
+{"timestamp":"2026-08-17T19:09:39.393Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d684d43d-e0d9-413c-931d-d7a6cbaa8b0a","latencyMs":2479,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T19:11:43.420Z","event":"VOICE_ERROR","sessionId":"d684d43d-e0d9-413c-931d-d7a6cbaa8b0a","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T19:11:43.422Z","event":"VOICE_SESSION_ENDED","sessionId":"d684d43d-e0d9-413c-931d-d7a6cbaa8b0a","reason":"inactivity_timeout","durationMs":126549,"turnCount":0}
+{"timestamp":"2026-08-17T19:31:27.377Z","event":"VOICE_SESSION_CREATED","sessionId":"d104dd13-69ee-4cf2-aa3e-c296f682955e","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T19:31:27.417Z","event":"VOICE_SESSION_STARTED","sessionId":"d104dd13-69ee-4cf2-aa3e-c296f682955e"}
+{"timestamp":"2026-08-17T19:31:32.298Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d104dd13-69ee-4cf2-aa3e-c296f682955e","latencyMs":4878,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T19:31:52.420Z","event":"VOICE_SESSION_ENDED","sessionId":"d104dd13-69ee-4cf2-aa3e-c296f682955e","reason":"user_hangup","durationMs":25040,"turnCount":0}
+{"timestamp":"2026-08-17T19:47:38.671Z","event":"VOICE_SESSION_CREATED","sessionId":"bc755c95-52b7-489f-bfd7-7b1c795a0baa","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T19:47:38.852Z","event":"VOICE_SESSION_STARTED","sessionId":"bc755c95-52b7-489f-bfd7-7b1c795a0baa"}
+{"timestamp":"2026-08-17T19:47:46.714Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"bc755c95-52b7-489f-bfd7-7b1c795a0baa","latencyMs":7857,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T19:49:17.543Z","event":"VOICE_SESSION_ENDED","sessionId":"bc755c95-52b7-489f-bfd7-7b1c795a0baa","reason":"user_hangup","durationMs":98870,"turnCount":0}
+{"timestamp":"2026-08-17T19:49:20.194Z","event":"VOICE_SESSION_CREATED","sessionId":"8d0728cc-3449-4784-a178-593038a5b59f","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T19:49:20.313Z","event":"VOICE_SESSION_STARTED","sessionId":"8d0728cc-3449-4784-a178-593038a5b59f"}
+{"timestamp":"2026-08-17T19:49:25.421Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"8d0728cc-3449-4784-a178-593038a5b59f","latencyMs":5105,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T19:51:25.442Z","event":"VOICE_ERROR","sessionId":"8d0728cc-3449-4784-a178-593038a5b59f","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T19:51:25.444Z","event":"VOICE_SESSION_ENDED","sessionId":"8d0728cc-3449-4784-a178-593038a5b59f","reason":"inactivity_timeout","durationMs":125249,"turnCount":0}
+{"timestamp":"2026-08-17T19:56:12.022Z","event":"VOICE_SESSION_CREATED","sessionId":"3fd5849f-73d2-41ea-82df-e3c7992c8f27","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T19:56:12.119Z","event":"VOICE_SESSION_STARTED","sessionId":"3fd5849f-73d2-41ea-82df-e3c7992c8f27"}
+{"timestamp":"2026-08-17T19:56:18.501Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"3fd5849f-73d2-41ea-82df-e3c7992c8f27","latencyMs":6376,"textLength":30,"audioBytes":90548}
+{"timestamp":"2026-08-17T20:00:03.216Z","event":"VOICE_ERROR","sessionId":"3fd5849f-73d2-41ea-82df-e3c7992c8f27","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T20:00:03.220Z","event":"VOICE_SESSION_ENDED","sessionId":"3fd5849f-73d2-41ea-82df-e3c7992c8f27","reason":"inactivity_timeout","durationMs":231196,"turnCount":0}
+{"timestamp":"2026-08-17T20:16:26.916Z","event":"VOICE_SESSION_CREATED","sessionId":"239effff-e53b-4a94-810a-cfa10551822b","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:16:27.001Z","event":"VOICE_SESSION_STARTED","sessionId":"239effff-e53b-4a94-810a-cfa10551822b"}
+{"timestamp":"2026-08-17T20:16:33.186Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"239effff-e53b-4a94-810a-cfa10551822b","latencyMs":6181,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T20:23:50.452Z","event":"VOICE_SESSION_CREATED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:23:50.510Z","event":"VOICE_SESSION_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:23:56.372Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":5857,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T20:24:03.212Z","event":"VOICE_STT_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:24:04.834Z","event":"VOICE_STT_COMPLETED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":1622,"textLength":36}
+{"timestamp":"2026-08-17T20:24:04.838Z","event":"VOICE_SPEECH_ENDED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","text":"Qual é o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T20:24:04.841Z","event":"VOICE_TTS_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:24:04.845Z","event":"VOICE_LLM_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:24:07.177Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":2332}
+{"timestamp":"2026-08-17T20:24:07.383Z","event":"VOICE_LLM_COMPLETED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":2538}
+{"timestamp":"2026-08-17T20:24:20.387Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":13092,"textLength":122,"audioBytes":331070}
+{"timestamp":"2026-08-17T20:24:20.390Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","generationId":"178f790b-c099-4a06-a2ac-d5e53de5fad1","latencyMs":17179,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T20:24:25.960Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":5563,"textLength":42,"audioBytes":112004}
+{"timestamp":"2026-08-17T20:24:25.986Z","event":"VOICE_TTS_COMPLETED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","generationId":"178f790b-c099-4a06-a2ac-d5e53de5fad1","totalLatencyMs":22775,"responseLength":165}
+{"timestamp":"2026-08-17T20:24:34.186Z","event":"VOICE_STT_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:24:36.101Z","event":"VOICE_STT_COMPLETED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":1915,"textLength":27}
+{"timestamp":"2026-08-17T20:24:36.104Z","event":"VOICE_SPEECH_ENDED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","text":"Eu tenho quatro vendedores."}
+{"timestamp":"2026-08-17T20:24:36.106Z","event":"VOICE_TTS_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:24:36.109Z","event":"VOICE_LLM_STARTED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f"}
+{"timestamp":"2026-08-17T20:24:38.111Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":2002}
+{"timestamp":"2026-08-17T20:24:38.866Z","event":"VOICE_LLM_COMPLETED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":2757}
+{"timestamp":"2026-08-17T20:24:54.367Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":15737,"textLength":133,"audioBytes":360528}
+{"timestamp":"2026-08-17T20:24:54.371Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","generationId":"77630e8a-f313-4aea-ab9a-8d88db8876b6","latencyMs":20184,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T20:25:01.263Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","latencyMs":6885,"textLength":65,"audioBytes":161302}
+{"timestamp":"2026-08-17T20:25:01.269Z","event":"VOICE_TTS_COMPLETED","sessionId":"356140eb-e02c-4c96-b988-9e2551fb468f","generationId":"77630e8a-f313-4aea-ab9a-8d88db8876b6","totalLatencyMs":27083,"responseLength":199}
+{"timestamp":"2026-08-17T20:30:27.780Z","event":"VOICE_SESSION_CREATED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:30:27.879Z","event":"VOICE_SESSION_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:30:31.207Z","event":"VOICE_ERROR","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T20:30:32.489Z","event":"VOICE_STT_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:30:34.906Z","event":"VOICE_STT_COMPLETED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":2417,"textLength":5}
+{"timestamp":"2026-08-17T20:30:34.908Z","event":"VOICE_SPEECH_ENDED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","text":"Isso."}
+{"timestamp":"2026-08-17T20:30:34.914Z","event":"VOICE_TTS_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:30:34.918Z","event":"VOICE_LLM_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:30:36.056Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":1138}
+{"timestamp":"2026-08-17T20:30:36.285Z","event":"VOICE_LLM_COMPLETED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":1367}
+{"timestamp":"2026-08-17T20:30:39.342Z","event":"VOICE_ERROR","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T20:30:42.591Z","event":"VOICE_ERROR","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","error":"TTS_ERROR","message":"fetch failed"}
+{"timestamp":"2026-08-17T20:30:42.595Z","event":"VOICE_TTS_COMPLETED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","generationId":"17f8eaee-7baa-4aa0-af84-3238fa2636df","totalLatencyMs":10106,"responseLength":67}
+{"timestamp":"2026-08-17T20:31:05.637Z","event":"VOICE_STT_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:31:06.895Z","event":"VOICE_STT_COMPLETED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":1258,"textLength":34}
+{"timestamp":"2026-08-17T20:31:06.898Z","event":"VOICE_SPEECH_ENDED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","text":"Qual o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T20:31:06.901Z","event":"VOICE_TTS_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:31:06.903Z","event":"VOICE_LLM_STARTED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78"}
+{"timestamp":"2026-08-17T20:31:07.636Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":733}
+{"timestamp":"2026-08-17T20:31:08.077Z","event":"VOICE_LLM_COMPLETED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":1174}
+{"timestamp":"2026-08-17T20:31:24.569Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":16623,"textLength":150,"audioBytes":407748}
+{"timestamp":"2026-08-17T20:31:24.572Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","generationId":"f9c2382e-0b4e-4d8e-9f9b-cf297c580a20","latencyMs":18934,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T20:31:31.248Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","latencyMs":6664,"textLength":50,"audioBytes":128756}
+{"timestamp":"2026-08-17T20:31:31.253Z","event":"VOICE_TTS_COMPLETED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","generationId":"f9c2382e-0b4e-4d8e-9f9b-cf297c580a20","totalLatencyMs":25616,"responseLength":201}
+{"timestamp":"2026-08-17T20:32:55.337Z","event":"VOICE_SESSION_ENDED","sessionId":"c0f5b802-eae2-4cd5-b3e6-8994cd546d78","reason":"user_hangup","durationMs":147557,"turnCount":2}
+{"timestamp":"2026-08-17T20:39:20.299Z","event":"VOICE_SESSION_CREATED","sessionId":"61c4ce6b-7f92-4aff-97fa-27b8d2c23e32","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:39:20.348Z","event":"VOICE_SESSION_STARTED","sessionId":"61c4ce6b-7f92-4aff-97fa-27b8d2c23e32"}
+{"timestamp":"2026-08-17T20:39:25.266Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"61c4ce6b-7f92-4aff-97fa-27b8d2c23e32","latencyMs":4913,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T20:42:49.451Z","event":"VOICE_SESSION_CREATED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:42:49.527Z","event":"VOICE_SESSION_STARTED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40"}
+{"timestamp":"2026-08-17T20:42:54.529Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","latencyMs":4997,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T20:42:58.620Z","event":"VOICE_STT_STARTED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40"}
+{"timestamp":"2026-08-17T20:42:59.424Z","event":"VOICE_STT_COMPLETED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","latencyMs":804,"textLength":15}
+{"timestamp":"2026-08-17T20:42:59.428Z","event":"VOICE_SPEECH_ENDED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","text":"Muito obrigado."}
+{"timestamp":"2026-08-17T20:42:59.440Z","event":"VOICE_TTS_STARTED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40"}
+{"timestamp":"2026-08-17T20:42:59.444Z","event":"VOICE_LLM_STARTED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40"}
+{"timestamp":"2026-08-17T20:43:00.961Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","latencyMs":1517}
+{"timestamp":"2026-08-17T20:43:01.067Z","event":"VOICE_LLM_COMPLETED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","latencyMs":1623}
+{"timestamp":"2026-08-17T20:43:04.472Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","latencyMs":3484,"textLength":8,"audioBytes":32886}
+{"timestamp":"2026-08-17T20:43:04.477Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","generationId":"b96d0c70-13d1-484f-b5e4-6f67818746e8","latencyMs":5855,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T20:43:11.255Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","latencyMs":6763,"textLength":28,"audioBytes":85872}
+{"timestamp":"2026-08-17T20:43:11.277Z","event":"VOICE_TTS_COMPLETED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","generationId":"b96d0c70-13d1-484f-b5e4-6f67818746e8","totalLatencyMs":12658,"responseLength":37}
+{"timestamp":"2026-08-17T20:43:24.645Z","event":"VOICE_SESSION_ENDED","sessionId":"d249e7e5-091a-4f36-b8f9-6108ef743e40","reason":"user_hangup","durationMs":35194,"turnCount":1}
+{"timestamp":"2026-08-17T20:43:28.452Z","event":"VOICE_SESSION_CREATED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:43:28.510Z","event":"VOICE_SESSION_STARTED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d"}
+{"timestamp":"2026-08-17T20:43:34.158Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","latencyMs":5644,"textLength":30,"audioBytes":90550}
+{"timestamp":"2026-08-17T20:43:40.942Z","event":"VOICE_STT_STARTED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d"}
+{"timestamp":"2026-08-17T20:43:43.321Z","event":"VOICE_STT_COMPLETED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","latencyMs":2379,"textLength":40}
+{"timestamp":"2026-08-17T20:43:43.323Z","event":"VOICE_SPEECH_ENDED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","text":"Qual que é o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T20:43:43.326Z","event":"VOICE_TTS_STARTED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d"}
+{"timestamp":"2026-08-17T20:43:43.330Z","event":"VOICE_LLM_STARTED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d"}
+{"timestamp":"2026-08-17T20:43:44.142Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","latencyMs":811}
+{"timestamp":"2026-08-17T20:43:45.093Z","event":"VOICE_LLM_COMPLETED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","latencyMs":1763}
+{"timestamp":"2026-08-17T20:43:58.569Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","latencyMs":13789,"textLength":95,"audioBytes":252780}
+{"timestamp":"2026-08-17T20:43:58.576Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","generationId":"7be02833-2c59-4b28-8901-4f9edcb44a72","latencyMs":17632,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T20:44:05.284Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","latencyMs":6694,"textLength":53,"audioBytes":140208}
+{"timestamp":"2026-08-17T20:44:05.293Z","event":"VOICE_TTS_COMPLETED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","generationId":"7be02833-2c59-4b28-8901-4f9edcb44a72","totalLatencyMs":24352,"responseLength":149}
+{"timestamp":"2026-08-17T20:46:39.501Z","event":"VOICE_SESSION_ENDED","sessionId":"0b439ed3-11b0-44b0-9f5b-a2d76930d60d","reason":"user_hangup","durationMs":191048,"turnCount":1}
+{"timestamp":"2026-08-17T20:52:13.092Z","event":"VOICE_SESSION_CREATED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T20:52:13.121Z","event":"VOICE_SESSION_STARTED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff"}
+{"timestamp":"2026-08-17T20:52:18.415Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","latencyMs":5292,"textLength":30,"audioBytes":90526}
+{"timestamp":"2026-08-17T20:52:25.685Z","event":"VOICE_STT_STARTED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff"}
+{"timestamp":"2026-08-17T20:52:27.497Z","event":"VOICE_STT_COMPLETED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","latencyMs":1812,"textLength":40}
+{"timestamp":"2026-08-17T20:52:27.500Z","event":"VOICE_SPEECH_ENDED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","text":"Qual que é o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T20:52:27.502Z","event":"VOICE_TTS_STARTED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff"}
+{"timestamp":"2026-08-17T20:52:27.504Z","event":"VOICE_LLM_STARTED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff"}
+{"timestamp":"2026-08-17T20:52:28.707Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","latencyMs":1204}
+{"timestamp":"2026-08-17T20:52:29.161Z","event":"VOICE_LLM_COMPLETED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","latencyMs":1658}
+{"timestamp":"2026-08-17T20:52:40.295Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","latencyMs":11215,"textLength":122,"audioBytes":331070}
+{"timestamp":"2026-08-17T20:52:40.306Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","generationId":"82863a09-5732-4621-b001-0355838f31e3","latencyMs":14613,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T20:52:47.693Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","latencyMs":7372,"textLength":56,"audioBytes":150258}
+{"timestamp":"2026-08-17T20:52:47.709Z","event":"VOICE_TTS_COMPLETED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","generationId":"82863a09-5732-4621-b001-0355838f31e3","totalLatencyMs":22024,"responseLength":179}
+{"timestamp":"2026-08-17T20:54:25.684Z","event":"VOICE_ERROR","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","error":"INACTIVITY_TIMEOUT"}
+{"timestamp":"2026-08-17T20:54:25.688Z","event":"VOICE_SESSION_ENDED","sessionId":"6d695c7c-cff9-4b30-9981-72c9f34169ff","reason":"inactivity_timeout","durationMs":132595,"turnCount":1}
+{"timestamp":"2026-08-17T21:14:13.027Z","event":"VOICE_SESSION_CREATED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T21:14:13.097Z","event":"VOICE_SESSION_STARTED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e"}
+{"timestamp":"2026-08-17T21:14:19.265Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","latencyMs":6164,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T21:14:26.103Z","event":"VOICE_STT_STARTED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e"}
+{"timestamp":"2026-08-17T21:14:27.832Z","event":"VOICE_STT_COMPLETED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","latencyMs":1729,"textLength":36}
+{"timestamp":"2026-08-17T21:14:27.835Z","event":"VOICE_SPEECH_ENDED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","text":"Qual é o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T21:14:27.838Z","event":"VOICE_TTS_STARTED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e"}
+{"timestamp":"2026-08-17T21:14:27.845Z","event":"VOICE_LLM_STARTED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e"}
+{"timestamp":"2026-08-17T21:14:29.727Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","latencyMs":1882}
+{"timestamp":"2026-08-17T21:14:30.192Z","event":"VOICE_LLM_COMPLETED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","latencyMs":2347}
+{"timestamp":"2026-08-17T21:14:43.146Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","latencyMs":13137,"textLength":122,"audioBytes":331106}
+{"timestamp":"2026-08-17T21:14:43.151Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","generationId":"cdea958e-17d9-4ecc-85d9-ead0e5ee615c","latencyMs":17047,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T21:14:50.580Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","latencyMs":7411,"textLength":56,"audioBytes":147912}
+{"timestamp":"2026-08-17T21:14:50.616Z","event":"VOICE_TTS_COMPLETED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","generationId":"cdea958e-17d9-4ecc-85d9-ead0e5ee615c","totalLatencyMs":24514,"responseLength":179}
+{"timestamp":"2026-08-17T21:17:12.773Z","event":"VOICE_SESSION_ENDED","sessionId":"47ffdc64-1090-4aad-bf3d-55f4ea4f2a6e","reason":"ws_closed","durationMs":179749,"turnCount":1}
+{"timestamp":"2026-08-17T21:17:35.332Z","event":"VOICE_SESSION_CREATED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","ip":"127.0.0.…"}
+{"timestamp":"2026-08-17T21:17:35.362Z","event":"VOICE_SESSION_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:17:40.267Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":4903,"textLength":30,"audioBytes":90546}
+{"timestamp":"2026-08-17T21:17:47.147Z","event":"VOICE_STT_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:17:48.221Z","event":"VOICE_STT_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":1073,"textLength":40}
+{"timestamp":"2026-08-17T21:17:48.223Z","event":"VOICE_SPEECH_ENDED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","text":"Qual que é o plano mais barato de vocês?"}
+{"timestamp":"2026-08-17T21:17:48.225Z","event":"VOICE_TTS_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:17:48.227Z","event":"VOICE_LLM_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:17:49.278Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":1051}
+{"timestamp":"2026-08-17T21:17:49.713Z","event":"VOICE_LLM_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":1486}
+{"timestamp":"2026-08-17T21:18:02.745Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":13073,"textLength":122,"audioBytes":331106}
+{"timestamp":"2026-08-17T21:18:02.748Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"c918d90e-15df-495f-bf22-9bb7066b3055","latencyMs":15601,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T21:18:08.632Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":5868,"textLength":32,"audioBytes":92186}
+{"timestamp":"2026-08-17T21:18:08.643Z","event":"VOICE_TTS_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"c918d90e-15df-495f-bf22-9bb7066b3055","totalLatencyMs":21497,"responseLength":155}
+{"timestamp":"2026-08-17T21:18:25.298Z","event":"VOICE_STT_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:18:26.277Z","event":"VOICE_STT_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":979,"textLength":75}
+{"timestamp":"2026-08-17T21:18:26.279Z","event":"VOICE_SPEECH_ENDED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","text":"Eu tenho uma equipe de quatro vendedores e eu, né? Cinco pessoas na equipe."}
+{"timestamp":"2026-08-17T21:18:26.282Z","event":"VOICE_TTS_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:18:26.284Z","event":"VOICE_LLM_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:18:26.831Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":547}
+{"timestamp":"2026-08-17T21:18:27.398Z","event":"VOICE_LLM_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":1114}
+{"timestamp":"2026-08-17T21:18:41.658Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":14363,"textLength":139,"audioBytes":364168}
+{"timestamp":"2026-08-17T21:18:41.667Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"f926f192-51ae-4a34-9c9e-711b1a2948f1","latencyMs":16365,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T21:18:48.671Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":6987,"textLength":37,"audioBytes":112490}
+{"timestamp":"2026-08-17T21:18:48.680Z","event":"VOICE_TTS_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"f926f192-51ae-4a34-9c9e-711b1a2948f1","totalLatencyMs":23383,"responseLength":177}
+{"timestamp":"2026-08-17T21:19:15.597Z","event":"VOICE_STT_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:19:16.904Z","event":"VOICE_STT_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":1307,"textLength":113}
+{"timestamp":"2026-08-17T21:19:16.907Z","event":"VOICE_SPEECH_ENDED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","text":"Atenderia sim, mas eu acho que poderia ser um pouquinho mais barato, não? Você não tem um desconto a"}
+{"timestamp":"2026-08-17T21:19:16.910Z","event":"VOICE_TTS_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:19:16.911Z","event":"VOICE_LLM_STARTED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272"}
+{"timestamp":"2026-08-17T21:19:19.122Z","event":"VOICE_LLM_FIRST_TOKEN","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":2211}
+{"timestamp":"2026-08-17T21:19:19.768Z","event":"VOICE_LLM_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":2857}
+{"timestamp":"2026-08-17T21:19:34.037Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":14393,"textLength":108,"audioBytes":291906}
+{"timestamp":"2026-08-17T21:19:34.042Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"4a51dc6a-077e-439e-b1e6-0980a8c22a7e","latencyMs":18442,"label":"time_to_first_audio"}
+{"timestamp":"2026-08-17T21:19:37.178Z","event":"VOICE_TTS_FIRST_AUDIO","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","latencyMs":3121,"textLength":21,"audioBytes":62000}
+{"timestamp":"2026-08-17T21:19:37.182Z","event":"VOICE_TTS_COMPLETED","sessionId":"713fbe45-e55a-459e-8b68-d910d7fdf272","generationId":"4a51dc6a-077e-439e-b1e6-0980a8c22a7e","totalLatencyMs":21585,"responseLength":130}
