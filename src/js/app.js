@@ -257,7 +257,7 @@
       const conversaoPerdida = leadsEsquecidos * (conv / 100);
       const targetLoss = Math.round(conversaoPerdida * ticket);
       const targetLossYear = Math.round(targetLoss * 12);
-      
+
       const recoveryRate = Math.min(0.60 + (leads / 1000) * 0.25, 0.85);
       const targetGain = Math.round(targetLoss * recoveryRate);
       const recoveryPct = Math.round(recoveryRate * 100);
@@ -929,33 +929,320 @@
      17. WHATSAPP WIDGET
      Timed reveal with bubble message
      ═══════════════════════════════════════════════════════════════════════ */
-  (function initWAWidget() {
-    const widget = $('#wa-widget');
-    const bubble = $('#wa-bubble');
-    const btn = $('#wa-btn');
-    if (!widget) return;
+  /* ═══════════════════════════════════════════════════════════════════════
+     17. AEGIS AI FLOATING WIDGET & VOICE ASSISTANT MODAL
+     ═══════════════════════════════════════════════════════════════════════ */
+  (function initAegisAIWidget() {
+    const fabBtn = $('#aegis-fab-btn');
+    const modal = $('#aegis-modal-window');
+    const closeBtn = $('#aegis-close-btn');
+    const backBtn = $('#aegis-back-btn');
 
-    /* Show widget after 8s */
-    setTimeout(() => widget.classList.add('visible'), 8000);
+    /* Views */
+    const viewForm = $('#aegis-view-form');
+    const viewOptions = $('#aegis-view-options');
+    const viewChat = $('#aegis-view-chat');
+    const viewVoice = $('#aegis-view-voice');
 
-    /* Show bubble after 12s */
-    if (bubble) {
-      setTimeout(() => bubble.classList.add('visible'), 12000);
+    /* Form Elements */
+    const leadForm = $('#aegis-lead-form');
+    const inputName = $('#aegis-input-name');
+    const inputEmail = $('#aegis-input-email');
+    const inputPhone = $('#aegis-input-phone');
+    const userDisplayName = $('#aegis-user-display-name');
+    const directWaLink = $('#aegis-btn-direct-wa');
 
-      /* Hide bubble after 20s */
-      setTimeout(() => bubble.classList.remove('visible'), 20000);
+    /* Action Buttons */
+    const btnTextChat = $('#aegis-btn-text-chat');
+    const btnVoiceCall = $('#aegis-btn-voice-call');
+
+    /* Chat Elements */
+    const chatStream = $('#aegis-chat-stream');
+    const chatForm = $('#aegis-chat-input-form');
+    const chatInput = $('#aegis-chat-input');
+
+    /* Voice Elements */
+    const voiceWaves = $('#aegis-voice-waves');
+    const voiceStatusText = $('#aegis-voice-status-text');
+    const voiceDot = $('#aegis-voice-dot');
+    const voiceTranscript = $('#aegis-voice-transcript');
+    const btnMute = $('#aegis-btn-mute');
+    const btnHangup = $('#aegis-btn-hangup');
+    const muteLabel = $('#aegis-mute-label');
+
+    /* Tabs */
+    const tabHome = $('#aegis-tab-home');
+    const tabChat = $('#aegis-tab-chat');
+
+    if (!fabBtn || !modal) return;
+
+    /* Widget State */
+    let currentView = 'form';
+    let leadData = null;
+    let isCallActive = false;
+    let isMuted = false;
+    let recognition = null;
+    let synth = window.speechSynthesis || null;
+
+    /* Load Lead Data from Session Storage */
+    try {
+      const saved = sessionStorage.getItem('aegis_lead');
+      if (saved) {
+        leadData = JSON.parse(saved);
+        if (leadData && leadData.name) {
+          updateUserLeadUI(leadData);
+        }
+      }
+    } catch (e) {
+      console.warn('Storage read error:', e);
     }
 
-    /* Re-show bubble on hover */
-    if (btn && bubble) {
-      btn.addEventListener('mouseenter', () => {
-        bubble.classList.add('visible');
-      });
-      btn.addEventListener('mouseleave', () => {
-        // Optional: hide after short delay on leave
-        // Keeping it visible until user interaction
+    /* Phone Mask */
+    if (inputPhone) {
+      inputPhone.addEventListener('input', () => {
+        let v = inputPhone.value.replace(/\D/g, '');
+        if (v.length > 11) v = v.substring(0, 11);
+        if (v.length > 7) {
+          v = `(${v.substring(0, 2)}) ${v.substring(2, 7)}-${v.substring(7)}`;
+        } else if (v.length > 2) {
+          v = `(${v.substring(0, 2)}) ${v.substring(2)}`;
+        } else if (v.length > 0) {
+          v = `(${v}`;
+        }
+        inputPhone.value = v;
       });
     }
+
+    /* View Switcher */
+    function switchView(targetView) {
+      currentView = targetView;
+      const views = [viewForm, viewOptions, viewChat, viewVoice];
+      views.forEach(v => v && v.classList.remove('active'));
+
+      if (targetView === 'form' && viewForm) viewForm.classList.add('active');
+      if (targetView === 'options' && viewOptions) viewOptions.classList.add('active');
+      if (targetView === 'chat' && viewChat) viewChat.classList.add('active');
+      if (targetView === 'voice' && viewVoice) viewVoice.classList.add('active');
+
+      /* Back button visibility */
+      if (backBtn) {
+        if (targetView === 'options' || (targetView === 'form' && !leadData)) {
+          backBtn.classList.remove('visible');
+        } else {
+          backBtn.classList.add('visible');
+        }
+      }
+
+      /* Tabs active state */
+      if (tabHome && tabChat) {
+        tabHome.classList.remove('active');
+        tabChat.classList.remove('active');
+        if (targetView === 'options' || targetView === 'form') tabHome.classList.add('active');
+        if (targetView === 'chat' || targetView === 'voice') tabChat.classList.add('active');
+      }
+
+      /* View-specific initialization */
+      if (targetView === 'chat' && chatStream && chatStream.children.length === 0) {
+        initChatStream();
+      }
+
+      if (targetView !== 'voice' && isCallActive) {
+        endVoiceCall();
+      }
+    }
+
+    function updateUserLeadUI(data) {
+      const firstName = data.name.trim().split(' ')[0];
+      if (userDisplayName) userDisplayName.textContent = firstName;
+
+      if (directWaLink) {
+        const msg = encodeURIComponent(`Olá! Meu nome é ${data.name} (${data.email}) e gostaria de saber mais sobre o Aegis CRM.`);
+        directWaLink.href = `https://wa.me/5561931991656?text=${msg}`;
+      }
+    }
+
+    /* Lead Form Submit */
+    if (leadForm) {
+      leadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameVal = inputName.value.trim();
+        const emailVal = inputEmail.value.trim();
+        const phoneVal = inputPhone.value.trim();
+
+        if (nameVal.length < 2 || !emailVal.includes('@') || phoneVal.length < 10) {
+          alert('Por favor, preencha todos os campos corretamente para iniciar o atendimento.');
+          return;
+        }
+
+        leadData = { name: nameVal, email: emailVal, phone: phoneVal };
+        try {
+          sessionStorage.setItem('aegis_lead', JSON.stringify(leadData));
+        } catch (e) { }
+
+        updateUserLeadUI(leadData);
+        switchView('options');
+      });
+    }
+
+    /* FAB Toggle Modal */
+    fabBtn.addEventListener('click', () => {
+      const isOpening = !modal.classList.contains('active');
+      if (isOpening) {
+        modal.classList.add('active');
+        fabBtn.classList.add('open');
+
+        if (leadData && leadData.name) {
+          switchView('options');
+        } else {
+          switchView('form');
+        }
+      } else {
+        closeModalWindow();
+      }
+    });
+
+    function closeModalWindow() {
+      modal.classList.remove('active');
+      fabBtn.classList.remove('open');
+      if (isCallActive) endVoiceCall();
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModalWindow);
+
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        if (currentView === 'chat' || currentView === 'voice') {
+          switchView('options');
+        } else if (currentView === 'options' && leadData) {
+          switchView('options');
+        } else {
+          switchView('form');
+        }
+      });
+    }
+
+    /* Tabs click */
+    if (tabHome) {
+      tabHome.addEventListener('click', () => {
+        if (leadData) switchView('options');
+        else switchView('form');
+      });
+    }
+
+    if (tabChat) {
+      tabChat.addEventListener('click', () => {
+        if (!leadData) {
+          switchView('form');
+        } else {
+          switchView('chat');
+        }
+      });
+    }
+
+    if (btnTextChat) {
+      btnTextChat.addEventListener('click', () => switchView('chat'));
+    }
+
+    if (btnVoiceCall) {
+      btnVoiceCall.addEventListener('click', async () => {
+        /* Request microphone permission before entering voice view */
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          /* Permission granted — stop the test stream immediately */
+          stream.getTracks().forEach(t => t.stop());
+          switchView('voice');
+          // Note: manager.startCall() is handled by voice-ui.js
+        } catch (err) {
+          alert('Precisamos de acesso ao seu microfone para a chamada de voz. Por favor, habilite a permissão e tente novamente.');
+          console.warn('Mic permission denied:', err);
+        }
+      });
+    }
+
+    /* ─── TEXT CHAT ENGINE (OpenAI LLM Consultative Sales) ─────────────── */
+    let textChatHistory = [];
+
+    function initChatStream() {
+      const userName = leadData ? leadData.name.split(' ')[0] : 'Visitante';
+      appendMessage('bot', `Olá, <strong>${userName}</strong>! Sou a IA de Atendimento do Aegis CRM.<br>Como posso impulsionar seu processo comercial hoje?`);
+    }
+
+    function appendMessage(sender, text) {
+      if (!chatStream) return null;
+      const bubble = document.createElement('div');
+      bubble.className = `aegis-msg-bubble ${sender}`;
+
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+      bubble.innerHTML = `${text}<span class="aegis-msg-time">${timeStr}</span>`;
+      chatStream.appendChild(bubble);
+      chatStream.scrollTop = chatStream.scrollHeight;
+      return bubble;
+    }
+
+    async function handleUserSend(text) {
+      const query = text.trim();
+      if (!query) return;
+
+      appendMessage('user', query);
+      textChatHistory.push({ role: 'user', content: query });
+      if (chatInput) chatInput.value = '';
+
+      // Show typing indicator
+      const typingBubble = appendMessage('bot', '<span style="font-style:italic; opacity:0.7;">IA digitando...</span>');
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: query,
+            history: textChatHistory
+          })
+        });
+
+        if (typingBubble && typingBubble.parentNode) {
+          typingBubble.parentNode.removeChild(typingBubble);
+        }
+
+        if (!res.ok) {
+          throw new Error(`Status ${res.status}`);
+        }
+
+        const data = await res.json();
+        const replyText = data.reply || 'Tive um problema ao processar. Pode tentar novamente?';
+
+        appendMessage('bot', replyText);
+        textChatHistory.push({ role: 'assistant', content: replyText });
+      } catch (err) {
+        if (typingBubble && typingBubble.parentNode) {
+          typingBubble.parentNode.removeChild(typingBubble);
+        }
+        console.error('Erro no chat de texto:', err);
+        appendMessage('bot', 'Desculpe, ocorreu uma oscilação na conexão com a IA. Por favor, tente enviar novamente!');
+      }
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (chatInput) handleUserSend(chatInput.value);
+      });
+    }
+
+    /* Quick Chips Click Handler */
+    document.addEventListener('click', (e) => {
+      const chip = e.target.closest('.aegis-chip');
+      if (chip) {
+        const text = chip.textContent.trim();
+        if (text) handleUserSend(text);
+      }
+    });
+
+    /* ─── VOICE CALL ENGINE ───
+       Handled exclusively by src/js/voice-engine.js and src/js/voice-ui.js
+    */
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
@@ -1074,7 +1361,7 @@
     function createBubble(msg) {
       const bubble = document.createElement('div');
       bubble.className = `wa-bubble ${msg.sender}`;
-      
+
       const textSpan = document.createElement('span');
       textSpan.innerHTML = msg.text;
       bubble.appendChild(textSpan);
@@ -1082,14 +1369,14 @@
       const timeSpan = document.createElement('span');
       timeSpan.className = 'wa-bubble-time';
       timeSpan.textContent = formatTime();
-      
+
       if (msg.sender === 'vendedor') {
         const check = document.createElement('span');
         check.className = 'wa-double-check';
         check.innerHTML = ' &#10004;&#10004;';
         timeSpan.appendChild(check);
       }
-      
+
       bubble.appendChild(timeSpan);
       return bubble;
     }
@@ -1098,7 +1385,7 @@
       const indicator = document.createElement('div');
       indicator.className = 'wa-typing';
       indicator.id = 'wa-typing-indicator';
-      
+
       for (let i = 0; i < 3; i++) {
         const dot = document.createElement('div');
         dot.className = 'wa-dot';
@@ -1131,9 +1418,9 @@
         setTimeout(() => {
           const indicator = document.getElementById('wa-typing-indicator');
           if (indicator) indicator.remove();
-          
+
           statusText.textContent = 'IA Ativa · Online';
-          
+
           messageIndex++; // move to actual message
           const textMsg = messages[messageIndex];
           const bubble = createBubble(textMsg);
@@ -1297,7 +1584,7 @@
 
     const section = document.querySelector('.ai-agents-section');
     const cards = gsap.utils.toArray('.agents-grid .agent-card, .agents-grid .agent-banner');
-    
+
     if (!section || cards.length === 0) return;
 
     // Reset reveal classes to avoid CSS transform conflicts
@@ -1345,14 +1632,14 @@
           duration: 0.8,
           ease: 'power1.inOut'
         }, stepLabel)
-        .to(nextCard, {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          pointerEvents: 'auto',
-          duration: 0.8,
-          ease: 'power1.inOut'
-        }, stepLabel);
+          .to(nextCard, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            pointerEvents: 'auto',
+            duration: 0.8,
+            ease: 'power1.inOut'
+          }, stepLabel);
       }
     });
 
@@ -1378,256 +1665,312 @@
       title: 'Plano Essencial — R$ 497/mês',
       annualTitle: 'Plano Essencial — R$ 4.970/ano (16% desc.)',
       sections: [
-        { heading: 'Equipe e Pipeline', items: [
-          'Até 3 usuários',
-          '2 funis de vendas configuráveis',
-          'Até 8 etapas por funil',
-          'Kanban visual drag-and-drop',
-          'Visualização em tabela de dados',
-          'Campos customizados e tags',
-          'Importação e exportação de dados (CSV)'
-        ]},
-        { heading: 'WhatsApp e Multiatendimento', items: [
-          '2 conexões WhatsApp (Cluster WAHA)',
-          'Multiatendimento incluso (toda a equipe no mesmo número)',
-          'Transcrição automática de áudio por IA (Whisper)',
-          'Envio de imagem, vídeo, documento e áudio',
-          'Chat ao vivo com WebSockets (mensagens em tempo real)'
-        ]},
-        { heading: 'Inteligência Artificial', items: [
-          '1 Agente autônomo de IA',
-          '1.000.000 de tokens de IA/mês',
-          'Copiloto de vendas em tempo real (sugestões inteligentes)',
-          'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
-          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
-          'Transbordo inteligente IA → humano (6 camadas de proteção)'
-        ]},
-        { heading: 'Automações e Workflows', items: [
-          '5 workflows ativos',
-          '10 tipos de ações automáticas',
-          'Construtor visual de fluxos em grafo (DAG)'
-        ]},
-        { heading: 'Comercial e Vendas', items: [
-          'Propostas comerciais em PDF (envio direto no WhatsApp)',
-          'Catálogo de produtos e serviços',
-          'Pedidos de venda',
-          'Formulário público de captura de leads',
-          'Widget incorporável para sites'
-        ]},
-        { heading: 'Relatórios e Gestão', items: [
-          'Dashboard com KPIs principais (Receita, Conversão, Ticket Médio)',
-          'Gráficos de vendas e conversão',
-          'Ranking de vendedores',
-          'Atribuição manual e por regra de vendedor'
-        ]},
-        { heading: 'Segurança e Infraestrutura', items: [
-          'Criptografia AES-256-GCM',
-          'Multi-tenancy com RLS PostgreSQL',
-          'Agenda integrada com lembretes'
-        ]},
-        { heading: 'Suporte', items: [
-          'Chat e e-mail (48h úteis)',
-          'Onboarding autoguiado (tutoriais in-app)'
-        ]},
-        { heading: 'Não incluído neste plano', unavailable: true, items: [
-          'Few-Shot Learning (IA aprende com conversas reais)',
-          'Personalização avançada do tom de voz (edição de prompt)',
-          'Contratos e faturas recorrentes',
-          'Ordens de compra e gestão de fornecedores',
-          'Equipes com metas e distribuição Round-Robin',
-          'Exportação de relatórios gerenciais em Excel/PDF',
-          'Captura de leads via Meta Ads e Google Ads',
-          'API REST',
-          'Webhooks de saída',
-          'White-Label e SMTP customizado',
-          'BYOK (Chave de IA própria)'
-        ]}
+        {
+          heading: 'Equipe e Pipeline', items: [
+            'Até 3 usuários',
+            '2 funis de vendas configuráveis',
+            'Até 8 etapas por funil',
+            'Kanban visual drag-and-drop',
+            'Visualização em tabela de dados',
+            'Campos customizados e tags',
+            'Importação e exportação de dados (CSV)'
+          ]
+        },
+        {
+          heading: 'WhatsApp e Multiatendimento', items: [
+            '2 conexões WhatsApp (Cluster WAHA)',
+            'Multiatendimento incluso (toda a equipe no mesmo número)',
+            'Transcrição automática de áudio por IA (Whisper)',
+            'Envio de imagem, vídeo, documento e áudio',
+            'Chat ao vivo com WebSockets (mensagens em tempo real)'
+          ]
+        },
+        {
+          heading: 'Inteligência Artificial', items: [
+            '1 Agente autônomo de IA',
+            '1.000.000 de tokens de IA/mês',
+            'Copiloto de vendas em tempo real (sugestões inteligentes)',
+            'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
+            '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+            'Transbordo inteligente IA → humano (6 camadas de proteção)'
+          ]
+        },
+        {
+          heading: 'Automações e Workflows', items: [
+            '5 workflows ativos',
+            '10 tipos de ações automáticas',
+            'Construtor visual de fluxos em grafo (DAG)'
+          ]
+        },
+        {
+          heading: 'Comercial e Vendas', items: [
+            'Propostas comerciais em PDF (envio direto no WhatsApp)',
+            'Catálogo de produtos e serviços',
+            'Pedidos de venda',
+            'Formulário público de captura de leads',
+            'Widget incorporável para sites'
+          ]
+        },
+        {
+          heading: 'Relatórios e Gestão', items: [
+            'Dashboard com KPIs principais (Receita, Conversão, Ticket Médio)',
+            'Gráficos de vendas e conversão',
+            'Ranking de vendedores',
+            'Atribuição manual e por regra de vendedor'
+          ]
+        },
+        {
+          heading: 'Segurança e Infraestrutura', items: [
+            'Criptografia AES-256-GCM',
+            'Multi-tenancy com RLS PostgreSQL',
+            'Agenda integrada com lembretes'
+          ]
+        },
+        {
+          heading: 'Suporte', items: [
+            'Chat e e-mail (48h úteis)',
+            'Onboarding autoguiado (tutoriais in-app)'
+          ]
+        },
+        {
+          heading: 'Não incluído neste plano', unavailable: true, items: [
+            'Few-Shot Learning (IA aprende com conversas reais)',
+            'Personalização avançada do tom de voz (edição de prompt)',
+            'Contratos e faturas recorrentes',
+            'Ordens de compra e gestão de fornecedores',
+            'Equipes com metas e distribuição Round-Robin',
+            'Exportação de relatórios gerenciais em Excel/PDF',
+            'Captura de leads via Meta Ads e Google Ads',
+            'API REST',
+            'Webhooks de saída',
+            'White-Label e SMTP customizado',
+            'BYOK (Chave de IA própria)'
+          ]
+        }
       ]
     },
     crescimento: {
       title: 'Plano Crescimento — R$ 997/mês',
       annualTitle: 'Plano Crescimento — R$ 9.970/ano (16% desc.)',
       sections: [
-        { heading: 'Equipe e Pipeline', items: [
-          'Até 10 usuários (3x mais que Essencial)',
-          '10 funis de vendas (5x mais que Essencial)',
-          'Até 15 etapas por funil',
-          'Kanban visual drag-and-drop',
-          'Visualização em tabela de dados',
-          'Campos customizados e tags ilimitados',
-          'Importação e exportação de dados (CSV)',
-          'Filtros avançados de busca e segmentação'
-        ]},
-        { heading: 'WhatsApp e Multiatendimento', items: [
-          '5 conexões WhatsApp',
-          'Multiatendimento incluso (toda a equipe no mesmo número)',
-          'Multiatendimento com filas e roteamento por setor/vendedor',
-          'Transcrição automática de áudio por IA (Whisper)',
-          'Envio de imagem, vídeo, documento e áudio',
-          'Chat ao vivo com WebSockets (mensagens em tempo real)',
-          'Proteção contra banimento (Warmup de chips)',
-          'Debouncing inteligente de 60s para respostas da IA'
-        ]},
-        { heading: 'Inteligência Artificial', items: [
-          '3 Agentes autônomos de IA',
-          '1.000.000 de tokens de IA/mês',
-          'Copiloto de vendas em tempo real (sugestões inteligentes)',
-          'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
-          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
-          'Transbordo inteligente IA → humano (6 camadas de proteção)',
-          'Personalização total do tom de voz (edição livre do prompt)',
-          'Análise de sentimento das conversas',
-          'Geração automática de orçamento em PDF pela IA',
-          'Envio automático de dados de pagamento PIX pela IA'
-        ]},
-        { heading: 'Automações e Workflows', items: [
-          '30 workflows ativos',
-          '15 tipos de ações automáticas (inclui webhooks de saída)',
-          'Construtor visual de fluxos em grafo (DAG)',
-          'Gatilhos por comportamento do lead',
-          'Transfers inteligentes entre setores e equipes'
-        ]},
-        { heading: 'Comercial e Vendas', items: [
-          'Propostas comerciais em PDF (envio direto no WhatsApp)',
-          'Catálogo de produtos e serviços',
-          'Pedidos de venda',
-          'Formulário público de captura + Widget incorporável',
-          'Contratos e faturas recorrentes (cobrança mensal automática)',
-          'Ordens de compra + Gestão de fornecedores',
-          'Captura automática de leads Meta Ads e Google Ads',
-          'Google Forms webhook automático'
-        ]},
-        { heading: 'Gestão de Equipe', items: [
-          'Atribuição manual e por regra de vendedor',
-          'Equipes de vendas com metas mensais e progresso',
-          'Distribuição Round-Robin automática de leads',
-          'Setores organizacionais (Vendas, Suporte, Financeiro)'
-        ]},
-        { heading: 'Relatórios e BI', items: [
-          'Dashboard completo em tempo real (cache Redis)',
-          'Gráficos de vendas e conversão',
-          'Ranking gamificado de vendedores',
-          'Drill-down analítico em todos os KPIs',
-          'Análise de motivos de perda de negócios',
-          'Exportação de relatórios gerenciais em CSV, Excel e PDF'
-        ]},
-        { heading: 'Integrações e Segurança', items: [
-          '10 webhooks de entrada + webhooks de saída',
-          'API REST (somente leitura)',
-          'Logs de auditoria completos',
-          'Criptografia AES-256-GCM',
-          'Multi-tenancy com RLS PostgreSQL',
-          'Agenda integrada com lembretes'
-        ]},
-        { heading: 'Suporte', items: [
-          'WhatsApp prioritário (12h úteis)',
-          'Onboarding assistido (1 sessão de 1h com especialista)'
-        ]},
-        { heading: 'Não incluído neste plano', unavailable: true, items: [
-          'Few-Shot Learning (IA treina com conversas reais)',
-          'BYOK (Chave de IA própria OpenAI/Gemini/Claude)',
-          'API REST de escrita',
-          'White-Label e SMTP customizado',
-          'Roles e permissões customizados',
-          'SSO (Single Sign-On)'
-        ]}
+        {
+          heading: 'Equipe e Pipeline', items: [
+            'Até 10 usuários (3x mais que Essencial)',
+            '10 funis de vendas (5x mais que Essencial)',
+            'Até 15 etapas por funil',
+            'Kanban visual drag-and-drop',
+            'Visualização em tabela de dados',
+            'Campos customizados e tags ilimitados',
+            'Importação e exportação de dados (CSV)',
+            'Filtros avançados de busca e segmentação'
+          ]
+        },
+        {
+          heading: 'WhatsApp e Multiatendimento', items: [
+            '5 conexões WhatsApp',
+            'Multiatendimento incluso (toda a equipe no mesmo número)',
+            'Multiatendimento com filas e roteamento por setor/vendedor',
+            'Transcrição automática de áudio por IA (Whisper)',
+            'Envio de imagem, vídeo, documento e áudio',
+            'Chat ao vivo com WebSockets (mensagens em tempo real)',
+            'Proteção contra banimento (Warmup de chips)',
+            'Debouncing inteligente de 60s para respostas da IA'
+          ]
+        },
+        {
+          heading: 'Inteligência Artificial', items: [
+            '3 Agentes autônomos de IA',
+            '1.000.000 de tokens de IA/mês',
+            'Copiloto de vendas em tempo real (sugestões inteligentes)',
+            'Base de conhecimento RAG (upload de PDFs, FAQs e documentos)',
+            '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+            'Transbordo inteligente IA → humano (6 camadas de proteção)',
+            'Personalização total do tom de voz (edição livre do prompt)',
+            'Análise de sentimento das conversas',
+            'Geração automática de orçamento em PDF pela IA',
+            'Envio automático de dados de pagamento PIX pela IA'
+          ]
+        },
+        {
+          heading: 'Automações e Workflows', items: [
+            '30 workflows ativos',
+            '15 tipos de ações automáticas (inclui webhooks de saída)',
+            'Construtor visual de fluxos em grafo (DAG)',
+            'Gatilhos por comportamento do lead',
+            'Transfers inteligentes entre setores e equipes'
+          ]
+        },
+        {
+          heading: 'Comercial e Vendas', items: [
+            'Propostas comerciais em PDF (envio direto no WhatsApp)',
+            'Catálogo de produtos e serviços',
+            'Pedidos de venda',
+            'Formulário público de captura + Widget incorporável',
+            'Contratos e faturas recorrentes (cobrança mensal automática)',
+            'Ordens de compra + Gestão de fornecedores',
+            'Captura automática de leads Meta Ads e Google Ads',
+            'Google Forms webhook automático'
+          ]
+        },
+        {
+          heading: 'Gestão de Equipe', items: [
+            'Atribuição manual e por regra de vendedor',
+            'Equipes de vendas com metas mensais e progresso',
+            'Distribuição Round-Robin automática de leads',
+            'Setores organizacionais (Vendas, Suporte, Financeiro)'
+          ]
+        },
+        {
+          heading: 'Relatórios e BI', items: [
+            'Dashboard completo em tempo real (cache Redis)',
+            'Gráficos de vendas e conversão',
+            'Ranking gamificado de vendedores',
+            'Drill-down analítico em todos os KPIs',
+            'Análise de motivos de perda de negócios',
+            'Exportação de relatórios gerenciais em CSV, Excel e PDF'
+          ]
+        },
+        {
+          heading: 'Integrações e Segurança', items: [
+            '10 webhooks de entrada + webhooks de saída',
+            'API REST (somente leitura)',
+            'Logs de auditoria completos',
+            'Criptografia AES-256-GCM',
+            'Multi-tenancy com RLS PostgreSQL',
+            'Agenda integrada com lembretes'
+          ]
+        },
+        {
+          heading: 'Suporte', items: [
+            'WhatsApp prioritário (12h úteis)',
+            'Onboarding assistido (1 sessão de 1h com especialista)'
+          ]
+        },
+        {
+          heading: 'Não incluído neste plano', unavailable: true, items: [
+            'Few-Shot Learning (IA treina com conversas reais)',
+            'BYOK (Chave de IA própria OpenAI/Gemini/Claude)',
+            'API REST de escrita',
+            'White-Label e SMTP customizado',
+            'Roles e permissões customizados',
+            'SSO (Single Sign-On)'
+          ]
+        }
       ]
     },
     enterprise: {
       title: 'Plano Enterprise — R$ 2.997/mês',
       sections: [
-        { heading: 'Equipe e Pipeline', items: [
-          'Usuários ilimitados',
-          'Funis de vendas ilimitados',
-          'Até 25 etapas por funil',
-          'Kanban visual drag-and-drop',
-          'Visualização em tabela de dados',
-          'Campos customizados e tags ilimitados',
-          'Importação e exportação de dados (CSV e JSON)',
-          'Filtros avançados de busca e segmentação',
-          'Roles e permissões customizados (granulares por usuário)',
-          'Perfis de acesso: Admin, Gestor, Financeiro, Funcionário, Vendedor + customizados'
-        ]},
-        { heading: 'WhatsApp e Multiatendimento', items: [
-          '20 conexões WhatsApp simultâneas',
-          'Multiatendimento incluso (toda a equipe no mesmo número)',
-          'Multiatendimento completo com filas e roteamento inteligente por setor/vendedor',
-          'Transcrição automática de áudio por IA (Whisper)',
-          'Envio de imagem, vídeo, documento e áudio',
-          'Chat ao vivo com WebSockets (mensagens em tempo real)',
-          'Proteção contra banimento (Warmup de chips)',
-          'Warmup avançado anti-banimento',
-          'Debouncing inteligente de 60s para respostas da IA',
-          'Cluster WAHA multi-nó com balanceamento de carga'
-        ]},
-        { heading: 'Inteligência Artificial', items: [
-          'Agentes de IA ilimitados',
-          'Uso de API de IA própria (integração via chave de API própria)',
-          'Copiloto de vendas em tempo real (sugestões inteligentes)',
-          'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
-          '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
-          'Transbordo inteligente IA → humano (6 camadas de proteção)',
-          'Personalização total do tom de voz (edição livre do prompt)',
-          'Análise de sentimento das conversas',
-          'Geração automática de orçamento em PDF pela IA',
-          'Envio automático de dados de pagamento PIX pela IA',
-          'Few-Shot Learning (IA aprende e treina com suas conversas de sucesso)',
-          'BYOK: Traga sua própria chave (OpenAI, Gemini ou Claude)',
-          'Orquestrador de 6 camadas configurável (limiares, governança)',
-          'Multi-provedor: GPT-4o, Gemini 2.5 Flash, Claude 3.5'
-        ]},
-        { heading: 'Automações e Workflows', items: [
-          'Workflows ilimitados',
-          'Todos os 17 tipos de ações automáticas',
-          'Construtor visual de fluxos em grafo (DAG)',
-          'Gatilhos por comportamento do lead',
-          'Transfers inteligentes entre setores e equipes',
-          'Nós de webhook externo, execução de ferramentas e espera programada'
-        ]},
-        { heading: 'Comercial e Vendas', items: [
-          'Propostas comerciais em PDF (envio direto no WhatsApp)',
-          'Catálogo de produtos e serviços',
-          'Pedidos de venda',
-          'Formulário público de captura + Widget incorporável',
-          'Contratos e faturas recorrentes (cobrança mensal automática)',
-          'Ordens de compra + Gestão de fornecedores',
-          'Captura automática de leads Meta Ads e Google Ads',
-          'Google Forms webhook automático',
-          'Relatório de ROI da IA (leads qualificados/convertidos pela IA)'
-        ]},
-        { heading: 'Gestão de Equipe', items: [
-          'Atribuição manual e por regra de vendedor',
-          'Equipes de vendas com metas mensais e progresso',
-          'Distribuição Round-Robin automática de leads',
-          'Setores organizacionais (Vendas, Suporte, Financeiro)',
-          'Permissões e papéis de acesso granulares por usuário'
-        ]},
-        { heading: 'Relatórios e BI', items: [
-          'Dashboard completo em tempo real (cache Redis)',
-          'Gráficos de vendas e conversão',
-          'Ranking gamificado de vendedores',
-          'Drill-down analítico em todos os KPIs',
-          'Análise de motivos de perda de negócios',
-          'Exportação completa em CSV, Excel, PDF e JSON',
-          'Relatórios customizáveis sob medida'
-        ]},
-        { heading: 'Integrações, White-Label e Segurança', items: [
-          'Webhooks de entrada e saída ilimitados',
-          'API REST completa (leitura + escrita)',
-          'White-Label completo (sua marca, logo, cores, favicon, domínio)',
-          'SMTP customizado (envio de e-mails com seu domínio)',
-          'SSO (Single Sign-On corporativo)',
-          'Logs de auditoria completos',
-          'Criptografia AES-256-GCM',
-          'Multi-tenancy com RLS PostgreSQL',
-          'Agenda integrada com lembretes'
-        ]},
-        { heading: 'Suporte VIP', items: [
-          'Atendimento VIP 24/7 (WhatsApp + Ligação)',
-          'Gestor de conta dedicado',
-          'SLA contratual de resposta (4h úteis)',
-          'Onboarding completo (3 sessões + configuração assistida)'
-        ]}
+        {
+          heading: 'Equipe e Pipeline', items: [
+            'Usuários ilimitados',
+            'Funis de vendas ilimitados',
+            'Até 25 etapas por funil',
+            'Kanban visual drag-and-drop',
+            'Visualização em tabela de dados',
+            'Campos customizados e tags ilimitados',
+            'Importação e exportação de dados (CSV e JSON)',
+            'Filtros avançados de busca e segmentação',
+            'Roles e permissões customizados (granulares por usuário)',
+            'Perfis de acesso: Admin, Gestor, Financeiro, Funcionário, Vendedor + customizados'
+          ]
+        },
+        {
+          heading: 'WhatsApp e Multiatendimento', items: [
+            '20 conexões WhatsApp simultâneas',
+            'Multiatendimento incluso (toda a equipe no mesmo número)',
+            'Multiatendimento completo com filas e roteamento inteligente por setor/vendedor',
+            'Transcrição automática de áudio por IA (Whisper)',
+            'Envio de imagem, vídeo, documento e áudio',
+            'Chat ao vivo com WebSockets (mensagens em tempo real)',
+            'Proteção contra banimento (Warmup de chips)',
+            'Warmup avançado anti-banimento',
+            'Debouncing inteligente de 60s para respostas da IA',
+            'Cluster WAHA multi-nó com balanceamento de carga'
+          ]
+        },
+        {
+          heading: 'Inteligência Artificial', items: [
+            'Agentes de IA ilimitados',
+            'Uso de API de IA própria (integração via chave de API própria)',
+            'Copiloto de vendas em tempo real (sugestões inteligentes)',
+            'Base de conhecimento RAG completa (upload de PDFs, FAQs e documentos)',
+            '8 templates de agente especializados (SDR, Qualificação, Pós-Venda...)',
+            'Transbordo inteligente IA → humano (6 camadas de proteção)',
+            'Personalização total do tom de voz (edição livre do prompt)',
+            'Análise de sentimento das conversas',
+            'Geração automática de orçamento em PDF pela IA',
+            'Envio automático de dados de pagamento PIX pela IA',
+            'Few-Shot Learning (IA aprende e treina com suas conversas de sucesso)',
+            'BYOK: Traga sua própria chave (OpenAI, Gemini ou Claude)',
+            'Orquestrador de 6 camadas configurável (limiares, governança)',
+            'Multi-provedor: GPT-4o, Gemini 2.5 Flash, Claude 3.5'
+          ]
+        },
+        {
+          heading: 'Automações e Workflows', items: [
+            'Workflows ilimitados',
+            'Todos os 17 tipos de ações automáticas',
+            'Construtor visual de fluxos em grafo (DAG)',
+            'Gatilhos por comportamento do lead',
+            'Transfers inteligentes entre setores e equipes',
+            'Nós de webhook externo, execução de ferramentas e espera programada'
+          ]
+        },
+        {
+          heading: 'Comercial e Vendas', items: [
+            'Propostas comerciais em PDF (envio direto no WhatsApp)',
+            'Catálogo de produtos e serviços',
+            'Pedidos de venda',
+            'Formulário público de captura + Widget incorporável',
+            'Contratos e faturas recorrentes (cobrança mensal automática)',
+            'Ordens de compra + Gestão de fornecedores',
+            'Captura automática de leads Meta Ads e Google Ads',
+            'Google Forms webhook automático',
+            'Relatório de ROI da IA (leads qualificados/convertidos pela IA)'
+          ]
+        },
+        {
+          heading: 'Gestão de Equipe', items: [
+            'Atribuição manual e por regra de vendedor',
+            'Equipes de vendas com metas mensais e progresso',
+            'Distribuição Round-Robin automática de leads',
+            'Setores organizacionais (Vendas, Suporte, Financeiro)',
+            'Permissões e papéis de acesso granulares por usuário'
+          ]
+        },
+        {
+          heading: 'Relatórios e BI', items: [
+            'Dashboard completo em tempo real (cache Redis)',
+            'Gráficos de vendas e conversão',
+            'Ranking gamificado de vendedores',
+            'Drill-down analítico em todos os KPIs',
+            'Análise de motivos de perda de negócios',
+            'Exportação completa em CSV, Excel, PDF e JSON',
+            'Relatórios customizáveis sob medida'
+          ]
+        },
+        {
+          heading: 'Integrações, White-Label e Segurança', items: [
+            'Webhooks de entrada e saída ilimitados',
+            'API REST completa (leitura + escrita)',
+            'White-Label completo (sua marca, logo, cores, favicon, domínio)',
+            'SMTP customizado (envio de e-mails com seu domínio)',
+            'SSO (Single Sign-On corporativo)',
+            'Logs de auditoria completos',
+            'Criptografia AES-256-GCM',
+            'Multi-tenancy com RLS PostgreSQL',
+            'Agenda integrada com lembretes'
+          ]
+        },
+        {
+          heading: 'Suporte VIP', items: [
+            'Atendimento VIP 24/7 (WhatsApp + Ligação)',
+            'Gestor de conta dedicado',
+            'SLA contratual de resposta (4h úteis)',
+            'Onboarding completo (3 sessões + configuração assistida)'
+          ]
+        }
       ]
     }
   };
@@ -1646,18 +1989,18 @@
 
     titleEl.textContent = titleText;
     var html = '';
-    
-    plan.sections.forEach(function(section) {
+
+    plan.sections.forEach(function (section) {
       var isUnavailable = section.unavailable || false;
       var sectionClass = isUnavailable ? 'plan-detail-section unavailable-section' : 'plan-detail-section';
-      var iconSvg = isUnavailable 
+      var iconSvg = isUnavailable
         ? '<svg class="item-icon-unavail" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="even-odd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="even-odd"/></svg>'
         : '<svg class="item-icon-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="even-odd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="even-odd"/></svg>';
 
       html += '<div class="' + sectionClass + '">';
       html += '<div class="section-badge-header"><span>' + section.heading + '</span></div>';
       html += '<ul class="modal-feature-list">';
-      section.items.forEach(function(item) {
+      section.items.forEach(function (item) {
         if (isUnavailable) {
           html += '<li class="unavailable">' + iconSvg + '<span>' + item + '</span></li>';
         } else {
@@ -1731,10 +2074,9 @@
   }
 
   // Delegacao global de clique na janela: GARANTIDO funcionar sempre
-  window.addEventListener('click', function(e) {
-    // 1. Abrir Modal de Detalhes dos Planos
-    var seeMoreBtn = e.target.closest('.pricing-see-more');
-    if (seeMoreBtn) {
+  window.addEventListener('click', function (e) {
+    var btn = e.target.closest('.pricing-see-more');
+    if (btn) {
       e.preventDefault();
       var planKey = seeMoreBtn.getAttribute('data-plan');
       openModal(planKey);
@@ -1778,7 +2120,7 @@
     }
   });
 
-  window.addEventListener('keydown', function(e) {
+  window.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeModal();
       closeContractModal();
@@ -1786,3 +2128,53 @@
   });
 })();
 
+// ─── SEGMENTED PRICING TOGGLE ───
+(function () {
+  const btnMonthly = document.getElementById('btn-monthly');
+  const btnAnnual = document.getElementById('btn-annual');
+  const segmentedControl = document.querySelector('.pricing-segmented-control');
+  const pricingAmounts = document.querySelectorAll('.pricing-amount');
+  const pricingPeriods = document.querySelectorAll('.pricing-period');
+  const annualNotes = document.querySelectorAll('.pricing-annual-note');
+
+  if (btnMonthly && btnAnnual && segmentedControl) {
+    function setBilling(mode) {
+      if (mode === 'annual') {
+        btnAnnual.classList.add('active');
+        btnAnnual.setAttribute('aria-selected', 'true');
+        btnMonthly.classList.remove('active');
+        btnMonthly.setAttribute('aria-selected', 'false');
+        segmentedControl.classList.add('is-annual');
+
+        pricingAmounts.forEach(el => {
+          if (el.dataset.annual) el.textContent = el.dataset.annual;
+        });
+        pricingPeriods.forEach(el => {
+          el.textContent = '/ano';
+        });
+        annualNotes.forEach(el => {
+          el.style.display = 'block';
+        });
+      } else {
+        btnMonthly.classList.add('active');
+        btnMonthly.setAttribute('aria-selected', 'true');
+        btnAnnual.classList.remove('active');
+        btnAnnual.setAttribute('aria-selected', 'false');
+        segmentedControl.classList.remove('is-annual');
+
+        pricingAmounts.forEach(el => {
+          if (el.dataset.monthly) el.textContent = el.dataset.monthly;
+        });
+        pricingPeriods.forEach(el => {
+          el.textContent = '/mês';
+        });
+        annualNotes.forEach(el => {
+          el.style.display = 'none';
+        });
+      }
+    }
+
+    btnMonthly.addEventListener('click', () => setBilling('monthly'));
+    btnAnnual.addEventListener('click', () => setBilling('annual'));
+  }
+})();

@@ -1,25 +1,13 @@
 {
-  "name": "aegiscrm-landingpage-main",
+  "name": "aegis-crm-landingpage",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vharagao/AegisCrm-LandingPage.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Vharagao/AegisCrm-LandingPage/issues"
-  },
-  "homepage": "https://github.com/Vharagao/AegisCrm-LandingPage#readme",
   "dependencies": {
-    "pdfkit": "^0.19.1"
+    "kokoro-js": "^1.2.1",
+    "uuid": "^14.0.1",
+    "ws": "^8.21.3"
   }
 }

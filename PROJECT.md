@@ -6,6 +6,12 @@
 - Single-page: index.html (~945 lines), style.css (~51KB), app.js (~42KB)
 - All copy in Brazilian Portuguese
 
+## Domain Architecture (VPS Deployment)
+- `aegiscrm.com.br` → Landing page / Apresentação do produto.
+- `app.aegiscrm.com.br` → Aplicação principal (login e acesso exclusivo do Superadmin).
+- `[cliente].aegiscrm.com.br` → Tenant dos clientes (login e acesso das empresas e seus respectivos usuários).
+- `crm.[cliente].com.br` → Domínio personalizado (White Label) para os clientes.
+
 ## Design Rules (.cursorrules)
 1. NO GENERIC SYMMETRY — use intentional asymmetry, bento grids
 2. NO DEFAULT STYLES — refined tailored palettes, no Tailwind defaults
@@ -32,12 +38,13 @@
 - Image filenames defined in HTML (e.g., screenshot-pipeline.png, avatar-*.jpg, og-image.png)
 
 ## Code Layout
-- `/index.html` — Main page structure and content
-- `/style.css` — All styles (dark mode, animations, responsive)
-- `/app.js` — Interactions (kanban, calculator, carousel, scroll effects)
-- `/server.js` — Static file server (DO NOT MODIFY)
+- `/index.html` — Main page structure and content (only HTML in root)
+- `/src/assets/` — Images, logos, icons, SVGs
+- `/src/css/` — Stylesheets (`style.css`, `style-light.css`)
+- `/src/js/` — JavaScript scripts (`app.js`, `company-portal.js`, `legal-portal.js`)
+- `/src/pages/` — Secondary HTML pages (`contato.html`, `privacidade.html`, `suporte.html`, `termos.html`)
+- `/server/server.js` — Static file server & API endpoints
 - `/.cursorrules` — Design rules (READ ONLY)
-- `/brainstorm.md` — Brainstorm document (M1 output)
 
 ## Acceptance Criteria
 ### R1 Brainstorm
