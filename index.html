@@ -1166,6 +1166,27 @@
   </div>
 
   <!-- ═══ MODAL: DETALHES COMPLETOS DOS PLANOS ═════════════════════ -->
+  <!-- ═══ MODAL: CONTRATOS EM PDF ═════════════════════════════════ -->
+  <div class="contract-overlay" id="contract-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="contract-box">
+      <div class="contract-top">
+        <h3 class="contract-title" id="contract-modal-title">Contrato — Plano Essencial</h3>
+        <button type="button" class="contract-close" id="contract-modal-close" aria-label="Fechar">&times;</button>
+      </div>
+      <p class="contract-subtitle">Selecione a vigência do contrato:</p>
+      <div class="contract-links">
+        <a href="src/assets/contratos/contrato-essencial-mensal.pdf" target="_blank" class="contract-link" id="contract-pdf-mensal-link">
+          <span class="contract-link-label">Mensal</span>
+          <span class="contract-link-detail">Sem fidelidade</span>
+        </a>
+        <a href="src/assets/contratos/contrato-essencial-anual.pdf" target="_blank" class="contract-link" id="contract-pdf-anual-link">
+          <span class="contract-link-label">Anual</span>
+          <span class="contract-link-detail">20% de desconto</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="plan-detail-overlay" id="plan-detail-overlay" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="plan-detail-modal">
       <div class="plan-detail-header-bar">
