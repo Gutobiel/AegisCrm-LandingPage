@@ -4,7 +4,8 @@
  * Manages sessions, state machine, and orchestrates STT → LLM → TTS pipeline.
  */
 
-const { v4: uuidv4 } = require('uuid');
+const crypto = require('crypto');
+const uuidv4 = () => crypto.randomUUID();
 const WebSocket = require('ws');
 const config = require('./voice-config');
 const voiceLog = require('./voice-logger');
