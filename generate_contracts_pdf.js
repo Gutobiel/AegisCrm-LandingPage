@@ -509,30 +509,6 @@ function buildPDF(cfg) {
     doc.x = ML;
     doc.moveDown(1.8);
 
-    // Linhas de assinatura
-    ensureSpace(55);
-    const sigY = doc.y;
-    const half = W / 2 - 10;
-
-    hRule(sigY, COLOR.ink, 0.5);
-    doc.lineWidth(0.5).strokeColor(COLOR.ink)
-      .moveTo(ML + half + 20, sigY).lineTo(ML + W, sigY).stroke();
-
-    doc.x = ML;
-    doc.fontSize(8).font('Helvetica-Bold').fillColor(COLOR.ink)
-      .text('LICENCIANTE', ML, sigY + 5, { width: half, align: 'center' });
-    doc.x = ML;
-    doc.fontSize(7.5).font('Helvetica').fillColor(COLOR.muted)
-      .text('AEGIS CRM TECNOLOGIA  ·  CNPJ 67.155.126/0001-06', ML, sigY + 15, { width: half, align: 'center' });
-
-    doc.fontSize(8).font('Helvetica-Bold').fillColor(COLOR.ink)
-      .text('CONTRATANTE', ML + half + 20, sigY + 5, { width: half, align: 'center' });
-    doc.fontSize(7.5).font('Helvetica').fillColor(COLOR.muted)
-      .text('Razão Social / CNPJ — conforme cadastro na Plataforma', ML + half + 20, sigY + 15, { width: half, align: 'center' });
-
-    doc.x = ML;
-    doc.y = sigY + 38;
-
     const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
     hRule(doc.y, COLOR.line, 0.4);
     doc.x = ML;
@@ -545,11 +521,19 @@ function buildPDF(cfg) {
     for (let i = 0; i < range.count; i++) {
       doc.switchToPage(i);
       const bot = PH - 24;
+      
+      // Temporariamente removemos a margem inferior para evitar que o PDFKit
+      // adicione páginas em branco automaticamente ao escrever o rodapé
+      const oldBottom = doc.page.margins.bottom;
+      doc.page.margins.bottom = 0;
+      
       doc.fontSize(7).font('Helvetica').fillColor(COLOR.footer)
         .text(
           `Aegis CRM Tecnologia · CNPJ 67.155.126/0001-06 · Plano ${cfg.plan} (${cfg.mode}) · Página ${i + 1} de ${range.count} · develop.ags@gmail.com`,
-          ML, bot, { width: W, align: 'center' }
+          ML, bot, { width: W, align: 'center', lineBreak: false }
         );
+        
+      doc.page.margins.bottom = oldBottom;
     }
 
     doc.end();
