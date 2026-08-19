@@ -2033,18 +2033,18 @@
   const contractData = {
     essencial: {
       title: 'Contrato — Plano Essencial',
-      mensalPdf: 'assets/contratos/contrato-essencial-mensal.pdf',
-      anualPdf: 'assets/contratos/contrato-essencial-anual.pdf'
+      mensalPdf: 'src/assets/contratos/contrato-essencial-mensal.pdf',
+      anualPdf: 'src/assets/contratos/contrato-essencial-anual.pdf'
     },
     crescimento: {
       title: 'Contrato — Plano Crescimento',
-      mensalPdf: 'assets/contratos/contrato-crescimento-mensal.pdf',
-      anualPdf: 'assets/contratos/contrato-crescimento-anual.pdf'
+      mensalPdf: 'src/assets/contratos/contrato-crescimento-mensal.pdf',
+      anualPdf: 'src/assets/contratos/contrato-crescimento-anual.pdf'
     },
     enterprise: {
       title: 'Contrato — Plano Enterprise',
-      mensalPdf: 'assets/contratos/contrato-enterprise-mensal.pdf',
-      anualPdf: 'assets/contratos/contrato-enterprise-anual.pdf'
+      mensalPdf: 'src/assets/contratos/contrato-enterprise-mensal.pdf',
+      anualPdf: 'src/assets/contratos/contrato-enterprise-anual.pdf'
     }
   };
 
@@ -2078,7 +2078,7 @@
     var btn = e.target.closest('.pricing-see-more');
     if (btn) {
       e.preventDefault();
-      var planKey = seeMoreBtn.getAttribute('data-plan');
+      var planKey = btn.getAttribute('data-plan');
       openModal(planKey);
       return;
     }
