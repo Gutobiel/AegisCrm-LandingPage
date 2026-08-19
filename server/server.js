@@ -27,16 +27,21 @@ try {
 const voiceGateway = require('./voice-gateway');
 
 const MIME = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'application/javascript',
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
   '.ico': 'image/x-icon',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.wav': 'audio/wav',
+  '.mp3': 'audio/mpeg',
+  '.pdf': 'application/pdf',
 };
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
@@ -498,21 +503,26 @@ Assim que a conexão for estabelecida, sua primeiríssima fala DEVE SER EXATAMEN
   }
 
   const filePath = path.join(__dirname, '..', urlPath);
-  const ext = path.extname(filePath);
-  const contentType = (MIME[ext] || 'text/plain') + '; charset=utf-8';
+  const ext = path.extname(filePath).toLowerCase();
+  const contentType = MIME[ext] || 'application/octet-stream';
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
-      res.end('404 - Página não encontrada');
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('404 - Arquivo ou página não encontrada');
       return;
     }
-    res.writeHead(200, {
+    const headers = {
       'Content-Type': contentType,
+      'Content-Length': Buffer.byteLength(data),
       'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
       'Pragma': 'no-cache',
       'Expires': '0'
-    });
+    };
+    if (ext === '.pdf') {
+      headers['Content-Disposition'] = 'inline; filename="' + path.basename(filePath) + '"';
+    }
+    res.writeHead(200, headers);
     res.end(data);
   });
 });
