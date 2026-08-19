@@ -195,10 +195,21 @@ function ensureKokoroServerRunning() {
       console.log('⚡ Kokoro TTS FastAPI Server já está rodando em http://127.0.0.1:8880');
     })
     .catch(() => {
-      console.log('🚀 Conectando servidor Kokoro TTS FastAPI via Python .venv...');
-      const pythonBin = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
+      console.log('🚀 Conectando servidor Kokoro TTS FastAPI via Python...');
+      const winPython = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
+      const linuxPython = path.join(__dirname, '..', '.venv', 'bin', 'python');
+      let pythonBin = null;
+
+      if (fs.existsSync(winPython)) {
+        pythonBin = winPython;
+      } else if (fs.existsSync(linuxPython)) {
+        pythonBin = linuxPython;
+      } else {
+        pythonBin = 'python3';
+      }
+
       const scriptPath = path.join(__dirname, 'kokoro_server.py');
-      if (fs.existsSync(pythonBin) && fs.existsSync(scriptPath)) {
+      if (fs.existsSync(scriptPath)) {
         const kokoroProc = spawn(pythonBin, [scriptPath], {
           cwd: path.join(__dirname, '..'),
           stdio: 'inherit',
@@ -208,7 +219,7 @@ function ensureKokoroServerRunning() {
           console.error('Erro ao iniciar Kokoro Python:', err.message);
         });
       } else {
-        console.warn('⚠️ Executável do Python .venv não encontrado.');
+        console.warn('⚠️ Script do Kokoro Python não encontrado em:', scriptPath);
       }
     });
 }
@@ -520,13 +531,16 @@ Assim que a conexão for estabelecida, sua primeiríssima fala DEVE SER EXATAMEN
 // Configura o WebSocket Server do Voice Gateway
 voiceGateway.setupWebSocket(server, OPENAI_API_KEY);
 
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
+
 function startServer(port) {
-  server.listen(port, '127.0.0.1', () => {
+  server.listen(port, HOST, () => {
     console.log('');
     console.log('  ╔════════════════════════════════════════╗');
     console.log('  ║   AEGIS CRM · Landing Page             ║');
     console.log('  ╠════════════════════════════════════════╣');
-    console.log(`  ║   ✅  http://localhost:${port}             ║`);
+    console.log(`  ║   ✅  http://${HOST}:${port}             ║`);
     console.log('  ║   Pressione Ctrl+C para encerrar       ║');
     console.log('  ╚════════════════════════════════════════╝');
     console.log('');
@@ -535,11 +549,11 @@ function startServer(port) {
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    console.log(`Porta 3000 ocupada, tentando porta 3001...`);
-    startServer(3001);
+    console.log(`Porta ${PORT} ocupada, tentando porta ${Number(PORT) + 1}...`);
+    startServer(Number(PORT) + 1);
   } else {
     console.error(err);
   }
 });
 
-startServer(3000);
+startServer(PORT);
