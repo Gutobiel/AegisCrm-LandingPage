@@ -230,10 +230,12 @@ function ensureKokoroServerRunning() {
         spawnKokoro(winPython, scriptPath);
       } else if (fs.existsSync(linuxPython)) {
         spawnKokoro(linuxPython, scriptPath);
-      } else {
+      } else if (process.env.ENABLE_KOKORO_PYTHON === 'true') {
         const fallbacks = process.platform === 'win32' ? ['python', 'py'] : ['python3', 'python'];
         const primary = fallbacks.shift();
         spawnKokoro(primary, scriptPath, fallbacks);
+      } else {
+        console.log('ℹ️ Kokoro TTS Python não inicializado (ambiente de nuvem sem .venv). Servidor Node ativo.');
       }
     });
 }
