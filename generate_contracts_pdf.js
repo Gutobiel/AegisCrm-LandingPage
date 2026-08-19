@@ -541,24 +541,22 @@ function buildPDF(cfg) {
       .text(`Contrato B2B emitido eletronicamente em ${today}  ·  Aegis CRM Tecnologia  ·  CNPJ 67.155.126/0001-06  ·  develop.ags@gmail.com`, ML, doc.y, { width: W, align: 'center' });
 
     // ─── Stampar rodapés em todas as páginas ──────────────────────────────────
-    const totalPages = doc.bufferedPageRange().count;
-    for (let i = 0; i < totalPages; i++) {
+    const range = doc.bufferedPageRange();
+    for (let i = 0; i < range.count; i++) {
       doc.switchToPage(i);
-      const bot = PH - 20;
-      doc.save()
-        .fontSize(7).font('Helvetica').fillColor(COLOR.footer)
+      const bot = PH - 24;
+      doc.fontSize(7).font('Helvetica').fillColor(COLOR.footer)
         .text(
-          `Aegis CRM Tecnologia  ·  CNPJ 67.155.126/0001-06  ·  Plano ${cfg.plan} (${cfg.mode})  ·  Página ${i + 1} de ${totalPages}  ·  develop.ags@gmail.com`,
-          ML, bot, { width: W, align: 'center', lineBreak: false }
-        )
-        .restore();
+          `Aegis CRM Tecnologia · CNPJ 67.155.126/0001-06 · Plano ${cfg.plan} (${cfg.mode}) · Página ${i + 1} de ${range.count} · develop.ags@gmail.com`,
+          ML, bot, { width: W, align: 'center' }
+        );
     }
 
     doc.end();
     stream.on('finish', () => {
       // Sincronizar cópia com o diretório legado
       try { fs.copyFileSync(filePath, path.join(OUT_DIR_LEGACY, cfg.file)); } catch(e) {}
-      console.log(`\u2705  Gerado: ${cfg.file} (${totalPages} páginas)`);
+      console.log(`\u2705  Gerado: ${cfg.file} (${range.count} páginas)`);
       resolve(filePath);
     });
     stream.on('error', reject);
