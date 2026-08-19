@@ -188,6 +188,29 @@ async function fetchKokoroFastAPIAudio(text, voice = 'active', retries = 4) {
 
 const { spawn } = require('child_process');
 
+function spawnKokoro(cmd, scriptPath, fallbackCmds = []) {
+  try {
+    const kokoroProc = spawn(cmd, [scriptPath], {
+      cwd: path.join(__dirname, '..'),
+      stdio: 'inherit',
+      detached: false
+    });
+    kokoroProc.on('error', (err) => {
+      if (err.code === 'ENOENT' && fallbackCmds.length > 0) {
+        const nextCmd = fallbackCmds.shift();
+        spawnKokoro(nextCmd, scriptPath, fallbackCmds);
+      } else {
+        console.warn(`ℹ️ Kokoro TTS Python não iniciado (${cmd}): ${err.message}. A aplicação continua funcionando normalmente.`);
+      }
+    });
+  } catch (e) {
+    if (fallbackCmds.length > 0) {
+      const nextCmd = fallbackCmds.shift();
+      spawnKokoro(nextCmd, scriptPath, fallbackCmds);
+    }
+  }
+}
+
 function ensureKokoroServerRunning() {
   fetch('http://127.0.0.1:8880/health')
     .then(res => res.json())
@@ -195,31 +218,22 @@ function ensureKokoroServerRunning() {
       console.log('⚡ Kokoro TTS FastAPI Server já está rodando em http://127.0.0.1:8880');
     })
     .catch(() => {
-      console.log('🚀 Conectando servidor Kokoro TTS FastAPI via Python...');
-      const winPython = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
-      const linuxPython = path.join(__dirname, '..', '.venv', 'bin', 'python');
-      let pythonBin = null;
-
-      if (fs.existsSync(winPython)) {
-        pythonBin = winPython;
-      } else if (fs.existsSync(linuxPython)) {
-        pythonBin = linuxPython;
-      } else {
-        pythonBin = 'python3';
+      const scriptPath = path.join(__dirname, 'kokoro_server.py');
+      if (!fs.existsSync(scriptPath)) {
+        return;
       }
 
-      const scriptPath = path.join(__dirname, 'kokoro_server.py');
-      if (fs.existsSync(scriptPath)) {
-        const kokoroProc = spawn(pythonBin, [scriptPath], {
-          cwd: path.join(__dirname, '..'),
-          stdio: 'inherit',
-          detached: false
-        });
-        kokoroProc.on('error', (err) => {
-          console.error('Erro ao iniciar Kokoro Python:', err.message);
-        });
+      const winPython = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
+      const linuxPython = path.join(__dirname, '..', '.venv', 'bin', 'python');
+
+      if (fs.existsSync(winPython)) {
+        spawnKokoro(winPython, scriptPath);
+      } else if (fs.existsSync(linuxPython)) {
+        spawnKokoro(linuxPython, scriptPath);
       } else {
-        console.warn('⚠️ Script do Kokoro Python não encontrado em:', scriptPath);
+        const fallbacks = process.platform === 'win32' ? ['python', 'py'] : ['python3', 'python'];
+        const primary = fallbacks.shift();
+        spawnKokoro(primary, scriptPath, fallbacks);
       }
     });
 }
