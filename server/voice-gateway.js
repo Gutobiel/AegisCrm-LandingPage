@@ -124,7 +124,7 @@ let ttsProvider = null;
 function initProviders(apiKey) {
   if (!sttProvider) sttProvider = new WhisperSTTProvider(apiKey);
   if (!llmProvider) llmProvider = new OpenAIProvider(apiKey);
-  if (!ttsProvider) ttsProvider = new KokoroTTSProvider();
+  if (!ttsProvider) ttsProvider = new KokoroTTSProvider(apiKey);
 }
 
 // ─── WAV Builder ─────────────────────────────────────────────
