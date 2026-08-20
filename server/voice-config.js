@@ -37,7 +37,7 @@ module.exports = {
   // ─── TTS (Text-to-Speech / Kokoro) ─────────────────────────
   tts: {
     provider: 'kokoro',
-    apiUrl: 'http://127.0.0.1:8880/v1/audio/speech',
+    apiUrl: process.env.KOKORO_TTS_URL || 'http://127.0.0.1:8880/v1/audio/speech',
     voice: 'active',              // uses the active voice profile from kokoro_server
     responseFormat: 'wav',
     sampleRate: 24000,
