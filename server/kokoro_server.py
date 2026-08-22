@@ -20,11 +20,24 @@ from kokoro import KPipeline
 
 app = FastAPI(title="Kokoro TTS FastAPI Server (Português-BR)")
 
+ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:8080",
+    "http://localhost:8880",
+    "http://127.0.0.1",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8080",
+    "http://127.0.0.1:8880",
+]
+if os.getenv("ALLOWED_ORIGINS"):
+    ALLOWED_ORIGINS.extend([o.strip() for o in os.getenv("ALLOWED_ORIGINS").split(",") if o.strip()])
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 

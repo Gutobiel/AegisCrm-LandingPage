@@ -163,10 +163,12 @@ function phonemizePT(text) {
   return s;
 }
 
+const KOKORO_API_URL = process.env.KOKORO_API_URL || 'http://127.0.0.1:8880';
+
 async function fetchKokoroFastAPIAudio(text, voice = 'active', retries = 4) {
   for (let i = 0; i < retries; i++) {
     try {
-      const res = await fetch('http://127.0.0.1:8880/v1/audio/speech', {
+      const res = await fetch(`${KOKORO_API_URL}/v1/audio/speech`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -194,10 +196,10 @@ async function fetchKokoroFastAPIAudio(text, voice = 'active', retries = 4) {
 const { spawn } = require('child_process');
 
 function ensureKokoroServerRunning() {
-  fetch('http://127.0.0.1:8880/health')
+  fetch(`${KOKORO_API_URL}/health`)
     .then(res => res.json())
     .then(() => {
-      console.log('⚡ Kokoro TTS FastAPI Server já está rodando em http://127.0.0.1:8880');
+      console.log(`⚡ Kokoro TTS FastAPI Server já está rodando em ${KOKORO_API_URL}`);
     })
     .catch(() => {
       console.log('🚀 Conectando servidor Kokoro TTS FastAPI via Python .venv...');
@@ -219,6 +221,7 @@ function ensureKokoroServerRunning() {
 }
 setTimeout(ensureKokoroServerRunning, 1000);
 
+// nosemgrep: problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server
 const server = http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -468,7 +471,6 @@ Assim que a conexão for estabelecida, sua primeiríssima fala DEVE SER EXATAMEN
       port: 443,
       path: '/v1/realtime/sessions',
       method: 'POST',
-      rejectUnauthorized: false,
       headers: {
         'Authorization': `Bearer ${OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
@@ -502,7 +504,15 @@ Assim que a conexão for estabelecida, sua primeiríssima fala DEVE SER EXATAMEN
     return;
   }
 
-  const filePath = path.join(__dirname, '..', urlPath);
+  const ROOT_DIR = path.resolve(__dirname, '..');
+  const safeRelativePath = path.normalize(decodeURIComponent(urlPath)).replace(/^(\.\.[\/\\])+/, '');
+  const filePath = path.resolve(ROOT_DIR, '.' + safeRelativePath);
+
+  if (!filePath.startsWith(ROOT_DIR)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('403 - Acesso Negado');
+    return;
+  }
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME[ext] || 'application/octet-stream';
 

@@ -212,11 +212,42 @@ const CONTRACTS = [
   },
 ];
 
+const CONTRACT_PATHS = {
+  'contrato-essencial-mensal.pdf': {
+    primary: path.join(OUT_DIR, 'contrato-essencial-mensal.pdf'),
+    legacy: path.join(OUT_DIR_LEGACY, 'contrato-essencial-mensal.pdf'),
+  },
+  'contrato-essencial-anual.pdf': {
+    primary: path.join(OUT_DIR, 'contrato-essencial-anual.pdf'),
+    legacy: path.join(OUT_DIR_LEGACY, 'contrato-essencial-anual.pdf'),
+  },
+  'contrato-crescimento-mensal.pdf': {
+    primary: path.join(OUT_DIR, 'contrato-crescimento-mensal.pdf'),
+    legacy: path.join(OUT_DIR_LEGACY, 'contrato-crescimento-mensal.pdf'),
+  },
+  'contrato-crescimento-anual.pdf': {
+    primary: path.join(OUT_DIR, 'contrato-crescimento-anual.pdf'),
+    legacy: path.join(OUT_DIR_LEGACY, 'contrato-crescimento-anual.pdf'),
+  },
+  'contrato-enterprise-mensal.pdf': {
+    primary: path.join(OUT_DIR, 'contrato-enterprise-mensal.pdf'),
+    legacy: path.join(OUT_DIR_LEGACY, 'contrato-enterprise-mensal.pdf'),
+  },
+  'contrato-enterprise-anual.pdf': {
+    primary: path.join(OUT_DIR, 'contrato-enterprise-anual.pdf'),
+    legacy: path.join(OUT_DIR_LEGACY, 'contrato-enterprise-anual.pdf'),
+  },
+};
+
 // ─── Renderizador de PDF ───────────────────────────────────────────────────────
 function buildPDF(cfg) {
   return new Promise((resolve, reject) => {
     const ML = 55, MR = 55, MT = 55, MB = 50;
-    const filePath = path.join(OUT_DIR, cfg.file);
+    const targetPaths = CONTRACT_PATHS[cfg.file] || {
+      primary: path.join(OUT_DIR, 'contrato.pdf'),
+      legacy: path.join(OUT_DIR_LEGACY, 'contrato.pdf'),
+    };
+    const filePath = targetPaths.primary;
     const doc = new PDFDocument({
       size: 'A4',
       margins: { top: MT, bottom: MB, left: ML, right: MR },
@@ -539,8 +570,12 @@ function buildPDF(cfg) {
     doc.end();
     stream.on('finish', () => {
       // Sincronizar cópia com o diretório legado
-      try { fs.copyFileSync(filePath, path.join(OUT_DIR_LEGACY, cfg.file)); } catch(e) {}
-      console.log(`\u2705  Gerado: ${cfg.file} (${range.count} páginas)`);
+      try {
+        if (targetPaths && targetPaths.legacy) {
+          fs.copyFileSync(filePath, targetPaths.legacy);
+        }
+      } catch(e) {}
+      console.log(`✅  Gerado: ${cfg.file} (${range.count} páginas)`);
       resolve(filePath);
     });
     stream.on('error', reject);
