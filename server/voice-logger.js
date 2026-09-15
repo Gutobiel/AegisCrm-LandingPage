@@ -44,7 +44,7 @@ function log(event, data = {}) {
 
   // Console output
   const emoji = getEmoji(event);
-  console.log(`${emoji} [Voice] ${event}`, data.sessionId ? `session=${data.sessionId.substring(0, 8)}` : '', data.latencyMs ? `${data.latencyMs}ms` : '');
+  console.log('[Voice]', emoji, event, data.sessionId ? `session=${data.sessionId.substring(0, 8)}` : '', data.latencyMs ? `${data.latencyMs}ms` : '');
 
   // File output (append to daily log)
   if (config.logs.structured) {
