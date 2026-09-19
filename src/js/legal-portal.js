@@ -155,29 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  // 6. MAGNETIC BUTTONS (MATCHING LANDING PAGE)
+  // 6. MAGNETIC BUTTONS (DESATIVADO)
   function initMagneticButtons() {
-    const buttons = document.querySelectorAll('.magnetic-btn');
-    buttons.forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * 0.35;
-        const dy = (e.clientY - cy) * 0.35;
-        btn.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transition = 'transform 0.35s ease';
-        btn.style.transform = 'translate(0, 0)';
-        const cleanup = () => {
-          btn.style.transition = '';
-          btn.removeEventListener('transitionend', cleanup);
-        };
-        btn.addEventListener('transitionend', cleanup);
-      });
-    });
+    // Efeito de seguir o mouse removido
   }
 
   initMagneticButtons();

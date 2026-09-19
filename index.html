@@ -77,11 +77,17 @@
         <a href="#comparativo" class="nav-link">Como funciona</a>
         <a href="#planos" class="nav-link">Planos</a>
         <a href="#resultados" class="nav-link">Resultados</a>
-        <a href="#demonstracao" class="btn btn-primary nav-mobile-cta">Iniciar Demonstração</a>
+        <a href="https://app.aegiscrm.com.br/login" class="nav-link nav-mobile-login" target="_blank" rel="noopener noreferrer">Login</a>
+        <a href="#demonstracao" class="btn btn-primary nav-mobile-cta">Conhecer</a>
       </nav>
-      <a href="#demonstracao" class="btn btn-primary magnetic-btn" id="header-cta">
-        Iniciar Demonstração
-      </a>
+      <div class="header-actions">
+        <a href="https://app.aegiscrm.com.br/login" class="header-login-link" id="header-login" target="_blank" rel="noopener noreferrer">
+          Login
+        </a>
+        <a href="#demonstracao" class="btn btn-primary" id="header-cta">
+          Conhecer
+        </a>
+      </div>
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu de navegação" aria-expanded="false">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -102,11 +108,11 @@
             vendedor, analisa a conversa do chat e indica o caminho certo pro fechamento.
           </p>
           <div class="hero-cta reveal">
-            <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn" id="hero-cta">
-              Quero ver a IA em ação
-            </a>
+            <button type="button" class="btn btn-primary btn-lg" id="hero-cta" data-open-diagnostic>
+              Conhecer a AEGIS →
+            </button>
             <button type="button" class="btn btn-outline btn-lg" id="video-trigger">
-              <span class="play-icon" aria-hidden="true">▶</span> Ver demo em 2 minutos
+              Iniciar demonstração
             </button>
           </div>
 
@@ -303,7 +309,7 @@
                 complexas e rotatividade de funcionários.
               </p>
             </div>
-            <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn">
+            <a href="#demonstracao" class="btn btn-primary btn-lg">
               Comece Agora
             </a>
           </div>
@@ -391,7 +397,7 @@
               <span class="calc-result-sub" id="calc-bar-text"><strong>65%</strong> da receita perdida recuperada
                 automaticamente pela IA</span>
             </div>
-            <a href="#demonstracao" class="btn btn-primary btn-lg magnetic-btn calc-cta" id="calc-cta-btn">
+            <a href="#demonstracao" class="btn btn-primary btn-lg calc-cta" id="calc-cta-btn">
               👉 Recuperar meus <strong>R$ 3.900</strong>/mês com o Aegis →
             </a>
           </div>
@@ -809,7 +815,7 @@
                 </div>
               </div>
 
-              <a href="#demonstracao" class="btn btn-primary btn-sm calc-cta-btn magnetic-btn" id="calc-select-btn">
+              <a href="#demonstracao" class="btn btn-primary btn-sm calc-cta-btn" id="calc-select-btn">
                 Selecionar Plano Crescimento →
               </a>
             </div>
@@ -870,7 +876,6 @@
             </ul>
             <button type="button" class="pricing-see-more" data-plan="essencial">e muito mais</button>
             <a href="#demonstracao" class="btn btn-outline pricing-btn">Iniciar com Essencial</a>
-            <button type="button" class="pricing-terms-btn" data-contract-plan="essencial">📄 Ver Contrato (PDF)</button>
           </div>
 
           <!-- 2. Crescimento -->
@@ -902,7 +907,6 @@
             </ul>
             <button type="button" class="pricing-see-more" data-plan="crescimento">e muito mais</button>
             <a href="#demonstracao" class="btn btn-outline pricing-btn">Come&#231;ar com Crescimento</a>
-            <button type="button" class="pricing-terms-btn" data-contract-plan="crescimento">📄 Ver Contrato (PDF)</button>
           </div>
 
           <!-- 3. Enterprise -->
@@ -934,7 +938,6 @@
             </ul>
             <button type="button" class="pricing-see-more" data-plan="enterprise">e muito mais</button>
             <a href="#demonstracao" class="btn btn-outline pricing-btn">Falar com Vendas</a>
-            <button type="button" class="pricing-terms-btn" data-contract-plan="enterprise">📄 Ver Contrato (PDF)</button>
           </div>
         </div>
 
@@ -970,9 +973,9 @@
             <input type="tel" id="input-whatsapp" name="whatsapp" placeholder="(61) 99999-0000" autocomplete="tel"
               required>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg magnetic-btn" id="form-submit"
+          <button type="submit" class="btn btn-primary btn-lg" id="form-submit"
             style="width:100%;justify-content:center">
-            Quero minha demonstração gratuita →
+            Entrar em contato →
           </button>
           <p class="form-note">Sem compromisso. Retorno em até 2 horas úteis via WhatsApp.</p>
         </form>
@@ -1152,24 +1155,266 @@
     </div>
   </footer>
 
-  <!-- ═══ VIDEO MODAL ═══════════════════════════════════════════ -->
-  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Demonstração do Aegis CRM">
-    <div class="video-modal-backdrop" id="video-modal-backdrop"></div>
-    <div class="video-modal-content">
-      <button class="video-modal-close" id="video-modal-close" aria-label="Fechar">&times;</button>
-      <div class="video-placeholder">
-        <div class="video-placeholder-icon" aria-hidden="true">
-          <svg viewBox="0 0 64 64" width="64" height="64">
-            <circle cx="32" cy="32" r="30" fill="none" stroke="var(--blue-light)" stroke-width="2" opacity="0.3" />
-            <polygon points="26,20 26,44 46,32" fill="var(--blue-light)" />
+  <!-- ═══ DIAGNOSTIC MODAL (MULTI-ETAPAS) ══════════════════════════ -->
+  <div class="diag-modal" id="diagnostic-modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Comercial e Demonstração Aegis CRM">
+    <div class="diag-modal-backdrop" id="diag-modal-backdrop"></div>
+    
+    <div class="diag-modal-card" id="diag-modal-card">
+      <!-- Barra de progresso linear superior -->
+      <div class="diag-progress-track">
+        <div class="diag-progress-bar" id="diag-progress-bar" style="width: 0%;"></div>
+      </div>
+
+      <!-- Topbar com voltar, logo e fechar -->
+      <div class="diag-header">
+        <button type="button" class="diag-back-btn" id="diag-btn-back" aria-label="Voltar etapa" style="visibility: hidden;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
+        </button>
+
+        <div class="diag-brand">
+          <img src="src/assets/favicon.png" alt="Aegis CRM" class="diag-brand-icon">
+          <span class="diag-brand-name">aegis<span class="diag-brand-dot">.crm</span></span>
         </div>
-        <h3>Demonstração Aegis CRM</h3>
-        <p>O vídeo completo estará disponível em breve.<br>Enquanto isso, agende uma demonstração ao vivo!</p>
-        <a href="#demonstracao" class="btn btn-primary btn-lg" id="video-cta"
-          onclick="document.getElementById('video-modal').classList.remove('active')">
-          Agendar demonstração ao vivo →
-        </a>
+
+        <div class="diag-header-actions">
+          <span class="diag-progress-label" id="diag-progress-label" style="display: none;">0%</span>
+          <button type="button" class="diag-close-btn" id="diag-btn-close" aria-label="Fechar diagnóstico">&times;</button>
+        </div>
+      </div>
+
+      <!-- Container rolável com as etapas -->
+      <div class="diag-body" id="diag-body">
+
+        <!-- ETAPA 0: INTRO -->
+        <div class="diag-step-pane active" data-step="0">
+          <div class="diag-badge">✦ Diagnóstico Comercial Inteligente</div>
+          <h2 class="diag-step-title">Descubra o potencial de aceleração da sua equipe com IA.</h2>
+          <p class="diag-step-desc">4 perguntas rápidas para mapearmos seu funil de vendas e liberarmos seu acesso exclusivo à demonstração completa.</p>
+          
+          <ul class="diag-feature-list">
+            <li class="diag-feature-item">
+              <span class="diag-feature-icon">🤖</span>
+              <span>Copiloto de IA nativo que acompanha os vendedores 24/7</span>
+            </li>
+            <li class="diag-feature-item">
+              <span class="diag-feature-icon">💬</span>
+              <span>WhatsApp multi-atendentes com distribuição e triagem ágil</span>
+            </li>
+            <li class="diag-feature-item">
+              <span class="diag-feature-icon">📊</span>
+              <span>Gestão de pipeline visual sem perder follow-up</span>
+            </li>
+            <li class="diag-feature-item">
+              <span class="diag-feature-icon">📈</span>
+              <span>Resumos diários automáticos e análise preditiva de perdas</span>
+            </li>
+          </ul>
+
+          <button type="button" class="btn btn-primary diag-submit-btn" id="diag-btn-start">
+            Começar diagnóstico
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          <p class="diag-step-subnote">4 perguntas · 40 segundos · Acesso liberado ao final</p>
+        </div>
+
+        <!-- ETAPA 1: EQUIPE -->
+        <div class="diag-step-pane" data-step="1">
+          <div class="diag-badge-step">Passo 1 de 4 · Equipe Comercial</div>
+          <h2 class="diag-step-title">Quantos colaboradores ou vendedores tem na sua empresa?</h2>
+          <div class="diag-options-grid">
+            <button type="button" class="diag-option-card" data-key="equipe" data-val="Apenas eu (gestor ou autônomo)">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Apenas eu (gestor ou autônomo)</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="equipe" data-val="2 a 5 colaboradores">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">2 a 5 colaboradores</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="equipe" data-val="6 a 15 colaboradores">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">6 a 15 colaboradores</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="equipe" data-val="16 a 50 colaboradores">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">16 a 50 colaboradores</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="equipe" data-val="Mais de 50 colaboradores">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Mais de 50 colaboradores</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ETAPA 2: FATURAMENTO -->
+        <div class="diag-step-pane" data-step="2">
+          <div class="diag-badge-step">Passo 2 de 4 · Faturamento</div>
+          <h2 class="diag-step-title">Qual é o faturamento médio mensal da sua empresa?</h2>
+          <div class="diag-options-grid">
+            <button type="button" class="diag-option-card" data-key="faturamento" data-val="Acima de R$ 500 mil /mês">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Acima de R$ 500 mil /mês</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="faturamento" data-val="Entre R$ 100 mil e R$ 500 mil /mês">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Entre R$ 100 mil e R$ 500 mil /mês</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="faturamento" data-val="Entre R$ 40 mil e R$ 100 mil /mês">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Entre R$ 40 mil e R$ 100 mil /mês</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="faturamento" data-val="Entre R$ 15 mil e R$ 40 mil /mês">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Entre R$ 15 mil e R$ 40 mil /mês</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="faturamento" data-val="Iniciando, até R$ 15 mil /mês">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Iniciando, até R$ 15 mil /mês</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ETAPA 3: DESAFIO COMERCIAL -->
+        <div class="diag-step-pane" data-step="3">
+          <div class="diag-badge-step">Passo 3 de 4 · Desafio Comercial</div>
+          <h2 class="diag-step-title">Qual é o maior gargalo das suas vendas hoje?</h2>
+          <div class="diag-options-grid">
+            <button type="button" class="diag-option-card" data-key="desafio" data-val="Leads demoram a ser atendidos no WhatsApp e esfriam">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Leads demoram a ser atendidos no WhatsApp e esfriam</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="desafio" data-val="Vendedores esquecem de fazer follow-up e organizar o funil">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Vendedores esquecem de fazer follow-up e organizar o funil</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="desafio" data-val="Falta de visibilidade e métricas da equipe em tempo real">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Falta de visibilidade e métricas da equipe em tempo real</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="desafio" data-val="Quero IA para qualificar e orientar o time a fechar mais">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Quero IA para qualificar e orientar o time a fechar mais</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ETAPA 4: URGÊNCIA -->
+        <div class="diag-step-pane" data-step="4">
+          <div class="diag-badge-step">Passo 4 de 4 · Urgência</div>
+          <h2 class="diag-step-title">Em quanto tempo você quer acelerar seus fechamentos?</h2>
+          <div class="diag-options-grid">
+            <button type="button" class="diag-option-card" data-key="urgencia" data-val="Imediatamente (esta semana)">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Imediatamente (esta semana)</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="urgencia" data-val="Nas próximas 2 a 3 semanas">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Nas próximas 2 a 3 semanas</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="urgencia" data-val="Neste trimestre">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Neste trimestre</span>
+            </button>
+            <button type="button" class="diag-option-card" data-key="urgencia" data-val="Estou apenas pesquisando ferramentas">
+              <span class="diag-radio-indicator"><span class="diag-radio-check">✓</span></span>
+              <span class="diag-option-label">Estou apenas pesquisando ferramentas</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ETAPA 5: IDENTIFICAÇÃO -->
+        <div class="diag-step-pane" data-step="5">
+          <div class="diag-badge-step">Passo 5 · Dados de Acesso</div>
+          <h2 class="diag-step-title">Quase lá! Para quem devemos liberar o acesso?</h2>
+          
+          <div class="diag-form-group">
+            <label for="diag-input-nome" class="diag-form-label">Seu nome completo</label>
+            <input type="text" id="diag-input-nome" class="diag-input" placeholder="Ex: Gabriel Silva" maxlength="80" autocomplete="name">
+          </div>
+
+          <div class="diag-form-group">
+            <label for="diag-input-empresa" class="diag-form-label">Nome da sua empresa</label>
+            <input type="text" id="diag-input-empresa" class="diag-input" placeholder="Ex: Aegis Negócios" maxlength="100" autocomplete="organization">
+          </div>
+
+          <div class="diag-form-group">
+            <label for="diag-input-email" class="diag-form-label">Seu e-mail corporativo</label>
+            <input type="email" id="diag-input-email" class="diag-input" placeholder="voce@empresa.com.br" maxlength="120" autocomplete="email">
+          </div>
+
+          <button type="button" class="btn btn-primary diag-submit-btn" id="diag-btn-step5" disabled>
+            Continuar
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- ETAPA 6: WHATSAPP -->
+        <div class="diag-step-pane" data-step="6">
+          <div class="diag-badge-step">Passo 6 · WhatsApp Corporativo</div>
+          <div class="diag-wpp-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#25D366" d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.4 2 7.7L.3 31.6l8.1-2.1c2.2 1.2 4.7 1.9 7.3 1.9h.3c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4Z"></path>
+              <path fill="#fff" d="M23.4 20.1c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.2-.7 0-1.9-1-3.2-1.7-4.5-3.9-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6 0-.2-.7-1.9-1-2.5-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9.9 4 .8.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.4-.3-.7-.4Z"></path>
+            </svg>
+          </div>
+          <h2 class="diag-step-title" id="diag-wpp-title">Informe seu WhatsApp para liberação imediata:</h2>
+          <p class="diag-step-desc">Seus dados estão protegidos. Criaremos suas credenciais na hora.</p>
+
+          <div class="diag-form-group">
+            <label for="diag-input-phone" class="diag-form-label">Número do WhatsApp (com DDD)</label>
+            <input type="tel" id="diag-input-phone" class="diag-input" placeholder="(11) 99999-9999" maxlength="16" autocomplete="tel">
+            <p class="diag-field-error" id="diag-phone-error"></p>
+          </div>
+
+          <button type="button" class="btn btn-primary diag-submit-btn" id="diag-btn-step6" disabled>
+            Liberar demonstração gratuita
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          <p class="diag-step-subnote">Acesso instantâneo · Sem cartão de crédito · 7 dias grátis</p>
+        </div>
+
+        <!-- ETAPA 7: ANÁLISE PRELIMINAR -->
+        <div class="diag-step-pane" data-step="7">
+          <div class="diag-analysis-wrap">
+            <div class="diag-badge-step">Análise Preliminar em Andamento</div>
+            <h2 class="diag-step-title" id="diag-analysis-title">Configurando sua demonstração personalizada...</h2>
+            
+            <div class="diag-loader-track">
+              <div class="diag-loader-bar" id="diag-loader-bar" style="width: 0%;"></div>
+            </div>
+
+            <p class="diag-analysis-status" id="diag-analysis-status">Validando dados comerciais...</p>
+          </div>
+        </div>
+
+        <!-- ETAPA 8 / OUTCOME: RECOMENDAÇÃO AGENTE DE IA -->
+        <div class="diag-step-pane" data-step="8" id="diag-pane-outcome">
+          <div class="diag-outcome-wrap">
+            <div class="diag-rocket-icon" aria-hidden="true">🚀</div>
+            <h2 class="diag-step-title" id="diag-outcome-title">Temos algo pra você começar hoje.</h2>
+            <p class="diag-outcome-desc">
+              O plano completo com o time é feito sob medida pra operações maiores. Mas você pode começar agora com o <strong>Agente de IA</strong>: um chatbot que responde, qualifica e agenda no WhatsApp automaticamente, com implementação rápida.
+            </p>
+            <a href="https://app.aegiscrm.com.br/register-company" class="btn btn-primary diag-submit-btn" id="diag-btn-agente-ia">
+              Conhecer o Agente de IA
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

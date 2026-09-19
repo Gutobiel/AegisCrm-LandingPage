@@ -68,32 +68,10 @@
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
-     3. MAGNETIC BUTTONS
-     Buttons subtly follow the cursor, then spring back on leave
+     3. MAGNETIC BUTTONS (DESATIVADO)
      ═══════════════════════════════════════════════════════════════════════ */
   (function initMagneticButtons() {
-    const buttons = $$('.magnetic-btn');
-
-    buttons.forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * 0.35;
-        const dy = (e.clientY - cy) * 0.35;
-        btn.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transition = 'transform 0.35s ease';
-        btn.style.transform = 'translate(0, 0)';
-        const cleanup = () => {
-          btn.style.transition = '';
-          btn.removeEventListener('transitionend', cleanup);
-        };
-        btn.addEventListener('transitionend', cleanup);
-      });
-    });
+    // Efeito de seguir o mouse removido
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
@@ -722,19 +700,64 @@
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
-     13. VIDEO MODAL
-     Open/close with body scroll lock
+     13. DIAGNOSTIC MULTI-STEP MODAL (Estilo MatteHub para Aegis CRM)
      ═══════════════════════════════════════════════════════════════════════ */
-  (function initVideoModal() {
+  (function initDiagnosticModal() {
     const trigger = $('#video-trigger');
-    const modal = $('#video-modal');
-    const closeBtn = $('#video-modal-close');
-    const backdrop = $('#video-modal-backdrop');
-    if (!trigger || !modal) return;
+    const heroCta = $('#hero-cta');
+    const modal = $('#diagnostic-modal') || $('#video-modal');
+    if (!modal) return;
+
+    const backdrop = $('#diag-modal-backdrop') || $('#video-modal-backdrop');
+    const closeBtn = $('#diag-btn-close') || $('#video-modal-close');
+    const backBtn = $('#diag-btn-back');
+    const progressBar = $('#diag-progress-bar');
+    const progressLabel = $('#diag-progress-label');
+    const bodyContainer = $('#diag-body');
+
+    // Steps
+    const stepPanes = $$('.diag-step-pane');
+    const btnStart = $('#diag-btn-start');
+    const btnStep5 = $('#diag-btn-step5');
+    const btnStep6 = $('#diag-btn-step6');
+
+    // Inputs Step 5
+    const inputNome = $('#diag-input-nome');
+    const inputEmpresa = $('#diag-input-empresa');
+    const inputEmail = $('#diag-input-email');
+
+    // Input Step 6
+    const inputPhone = $('#diag-input-phone');
+    const phoneError = $('#diag-phone-error');
+    const wppTitle = $('#diag-wpp-title');
+
+    // Step 7 & 8 elements
+    const loaderBar = $('#diag-loader-bar');
+    const analysisStatus = $('#diag-analysis-status');
+    const outcomeTitle = $('#diag-outcome-title');
+    const btnAgenteIa = $('#diag-btn-agente-ia');
+
+    let currentStep = 0;
+    const stepHistory = [0];
+    const stepPercentages = [0, 20, 40, 60, 80, 90, 95, 100, 100];
+
+    const answers = {
+      equipe: '',
+      faturamento: '',
+      desafio: '',
+      urgencia: '',
+      nome: '',
+      empresa: '',
+      email: '',
+      telefone: ''
+    };
 
     function openModal() {
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+      if (currentStep === 0 || currentStep === 8) {
+        goToStep(0, false);
+      }
     }
 
     function closeModal() {
@@ -742,15 +765,298 @@
       document.body.style.overflow = '';
     }
 
-    trigger.addEventListener('click', openModal);
+    function updateHeaderUI(step) {
+      const pct = stepPercentages[step] || 0;
+      if (progressBar) progressBar.style.width = pct + '%';
+      if (progressLabel) {
+        if (step === 0) {
+          progressLabel.style.display = 'none';
+        } else {
+          progressLabel.style.display = 'inline-block';
+          progressLabel.textContent = pct + '%';
+        }
+      }
+      if (backBtn) {
+        backBtn.style.visibility = (step > 0 && step < 7) ? 'visible' : 'hidden';
+      }
+    }
+
+    function goToStep(step, recordHistory = true) {
+      if (recordHistory && stepHistory[stepHistory.length - 1] !== step) {
+        stepHistory.push(step);
+      }
+      currentStep = step;
+
+      stepPanes.forEach(pane => {
+        const paneStep = parseInt(pane.getAttribute('data-step'), 10);
+        if (paneStep === step) {
+          pane.classList.add('active');
+        } else {
+          pane.classList.remove('active');
+        }
+      });
+
+      updateHeaderUI(step);
+
+      if (bodyContainer) {
+        bodyContainer.scrollTop = 0;
+      }
+
+      // Step-specific initializations
+      if (step === 5 && inputNome) {
+        setTimeout(() => inputNome.focus(), 150);
+        validateStep5();
+      } else if (step === 6) {
+        const firstName = (answers.nome || '').trim().split(' ')[0];
+        if (wppTitle) {
+          wppTitle.textContent = firstName
+            ? `${firstName}, informe seu WhatsApp para liberação imediata:`
+            : 'Informe seu WhatsApp para liberação imediata:';
+        }
+        if (inputPhone) {
+          setTimeout(() => inputPhone.focus(), 150);
+          validateStep6();
+        }
+      } else if (step === 7) {
+        runAnalysisAndRedirect();
+      } else if (step === 8) {
+        const firstName = (answers.nome || '').trim().split(' ')[0];
+        if (outcomeTitle) {
+          outcomeTitle.textContent = firstName
+            ? `${firstName}, temos algo pra você começar hoje.`
+            : 'Temos algo pra você começar hoje.';
+        }
+        if (btnAgenteIa) {
+          const params = new URLSearchParams({
+            nome: answers.nome || '',
+            empresa: answers.empresa || '',
+            email: answers.email || '',
+            telefone: answers.telefone || '',
+            equipe: answers.equipe || '',
+            faturamento: answers.faturamento || '',
+            desafio: answers.desafio || '',
+            urgencia: answers.urgencia || '',
+            origem: 'diagnostico_agente_ia'
+          });
+          btnAgenteIa.href = `https://app.aegiscrm.com.br/register-company?${params.toString()}`;
+        }
+      }
+    }
+
+    function goBack() {
+      if (stepHistory.length > 1) {
+        stepHistory.pop(); // remove current
+        const prevStep = stepHistory[stepHistory.length - 1];
+        goToStep(prevStep, false);
+      }
+    }
+
+    // Bind triggers
+    if (trigger) trigger.addEventListener('click', openModal);
+    if (heroCta) heroCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+    $$('[data-open-diagnostic]').forEach(el => el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    }));
+
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
+    if (backBtn) backBtn.addEventListener('click', goBack);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeModal();
       }
     });
+
+    // Step 0 Start
+    if (btnStart) {
+      btnStart.addEventListener('click', () => goToStep(1));
+    }
+
+    // Step 1 to 4: Option cards click
+    $$('.diag-option-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const parentPane = card.closest('.diag-step-pane');
+        const key = card.getAttribute('data-key');
+        const val = card.getAttribute('data-val');
+
+        if (parentPane) {
+          parentPane.querySelectorAll('.diag-option-card').forEach(c => c.classList.remove('selected'));
+        }
+        card.classList.add('selected');
+
+        if (key && val) {
+          answers[key] = val;
+        }
+
+        // Micro-delay for feedback before advancing
+        setTimeout(() => {
+          const nextStep = currentStep + 1;
+          if (nextStep <= 7) {
+            goToStep(nextStep);
+          }
+        }, 220);
+      });
+    });
+
+    // Step 5 Validation
+    function validateStep5() {
+      if (!inputNome || !inputEmpresa || !inputEmail || !btnStep5) return;
+      const nomeVal = inputNome.value.trim();
+      const empresaVal = inputEmpresa.value.trim();
+      const emailVal = inputEmail.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      const isValid = (nomeVal.length >= 2) && (empresaVal.length >= 2) && emailRegex.test(emailVal);
+      btnStep5.disabled = !isValid;
+
+      if (isValid) {
+        answers.nome = nomeVal;
+        answers.empresa = empresaVal;
+        answers.email = emailVal;
+      }
+    }
+
+    [inputNome, inputEmpresa, inputEmail].forEach(input => {
+      if (!input) return;
+      input.addEventListener('input', validateStep5);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          validateStep5();
+          if (btnStep5 && !btnStep5.disabled) {
+            goToStep(6);
+          }
+        }
+      });
+    });
+
+    if (btnStep5) {
+      btnStep5.addEventListener('click', () => {
+        validateStep5();
+        if (!btnStep5.disabled) {
+          goToStep(6);
+        }
+      });
+    }
+
+    // Step 6 Phone Mask and Validation
+    function formatPhone(val) {
+      const digits = val.replace(/\D/g, '').slice(0, 11);
+      if (digits.length === 0) return '';
+      if (digits.length <= 2) return `(${digits}`;
+      if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+    }
+
+    function validateStep6() {
+      if (!inputPhone || !btnStep6) return;
+      const raw = inputPhone.value.replace(/\D/g, '');
+      const ddd = parseInt(raw.slice(0, 2), 10);
+      const isValid = (raw.length >= 10 && raw.length <= 11 && ddd >= 11 && ddd <= 99);
+
+      btnStep6.disabled = !isValid;
+      if (phoneError) {
+        phoneError.style.display = 'none';
+        phoneError.textContent = '';
+      }
+
+      if (isValid) {
+        answers.telefone = raw;
+      }
+    }
+
+    if (inputPhone) {
+      inputPhone.addEventListener('input', (e) => {
+        const formatted = formatPhone(e.target.value);
+        e.target.value = formatted;
+        validateStep6();
+      });
+
+      inputPhone.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          validateStep6();
+          if (btnStep6 && !btnStep6.disabled) {
+            goToStep(7);
+          }
+        }
+      });
+    }
+
+    if (btnStep6) {
+      btnStep6.addEventListener('click', () => {
+        validateStep6();
+        if (!btnStep6.disabled) {
+          goToStep(7);
+        }
+      });
+    }
+
+    // Step 7: Analysis progress and transition to Step 8 (Outcome)
+    let isAnalyzing = false;
+    function runAnalysisAndRedirect() {
+      if (isAnalyzing) return;
+      isAnalyzing = true;
+
+      // Ensure data captured
+      if (inputNome && !answers.nome) answers.nome = inputNome.value.trim();
+      if (inputEmpresa && !answers.empresa) answers.empresa = inputEmpresa.value.trim();
+      if (inputEmail && !answers.email) answers.email = inputEmail.value.trim();
+      if (inputPhone && !answers.telefone) answers.telefone = inputPhone.value.replace(/\D/g, '');
+
+      // Persist lead locally
+      try {
+        const payload = {
+          ...answers,
+          criadoEm: new Date().toISOString(),
+          origem: 'diagnostico_landing_page'
+        };
+        localStorage.setItem('aegis_diagnostic_lead', JSON.stringify(payload));
+        fetch('/api/diagnostic-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      } catch (e) {}
+
+      let progress = 0;
+      if (loaderBar) loaderBar.style.width = '0%';
+
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 9) + 6;
+        if (progress > 100) progress = 100;
+
+        if (loaderBar) loaderBar.style.width = progress + '%';
+
+        if (analysisStatus) {
+          if (progress < 30) {
+            analysisStatus.textContent = 'Validando dados informados...';
+          } else if (progress < 60) {
+            analysisStatus.textContent = 'Mapeando gargalos e dimensionando equipe...';
+          } else if (progress < 85) {
+            analysisStatus.textContent = 'Configurando Copiloto de IA para seu funil...';
+          } else if (progress < 100) {
+            analysisStatus.textContent = 'Ambiente preparado! Liberando recomendação...';
+          } else {
+            analysisStatus.textContent = 'Análise concluída!';
+          }
+        }
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          isAnalyzing = false;
+
+          // Transition smoothly to Step 8 (Outcome Agente de IA)
+          setTimeout(() => {
+            goToStep(8, true);
+          }, 450);
+        }
+      }, 150);
+    }
   })();
 
   /* ═══════════════════════════════════════════════════════════════════════
@@ -1513,9 +1819,8 @@
         card.classList.remove('plan-recommended');
         const btn = card.querySelector('.pricing-btn');
         if (btn) {
-          btn.classList.remove('btn-primary', 'magnetic-btn');
+          btn.classList.remove('btn-primary');
           btn.classList.add('btn-outline');
-          btn.style.transform = 'translate(0, 0)';
         }
       });
 
@@ -1524,39 +1829,10 @@
         const targetBtn = targetCard.querySelector('.pricing-btn');
         if (targetBtn) {
           targetBtn.classList.remove('btn-outline');
-          targetBtn.classList.add('btn-primary', 'magnetic-btn');
+          targetBtn.classList.add('btn-primary');
         }
       }
     }
-
-    const allPricingBtns = [
-      cardEssencial?.querySelector('.pricing-btn'),
-      cardCrescimento?.querySelector('.pricing-btn'),
-      cardEnterprise?.querySelector('.pricing-btn')
-    ].filter(Boolean);
-
-    allPricingBtns.forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        if (!btn.classList.contains('magnetic-btn')) return;
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * 0.35;
-        const dy = (e.clientY - cy) * 0.35;
-        btn.style.transform = `translate(${dx}px, ${dy}px)`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        if (!btn.classList.contains('magnetic-btn')) return;
-        btn.style.transition = 'transform 0.35s ease';
-        btn.style.transform = 'translate(0, 0)';
-        const cleanup = () => {
-          btn.style.transition = '';
-          btn.removeEventListener('transitionend', cleanup);
-        };
-        btn.addEventListener('transitionend', cleanup);
-      });
-    });
 
     sellersRange.addEventListener('input', () => updateCalculations(true));
     chatsRange.addEventListener('input', () => updateCalculations(true));

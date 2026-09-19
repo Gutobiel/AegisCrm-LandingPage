@@ -464,6 +464,29 @@ ${productKnowledge}`;
     return;
   }
 
+  /* Endpoint para receber leads do diagnóstico comercial */
+  if (urlPath === '/api/diagnostic-lead' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const lead = JSON.parse(body || '{}');
+        const leadsDir = path.resolve(__dirname, '../logs/leads');
+        if (!fs.existsSync(leadsDir)) fs.mkdirSync(leadsDir, { recursive: true });
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const file = path.join(leadsDir, `lead_${timestamp}.json`);
+        fs.writeFileSync(file, JSON.stringify(lead, null, 2), 'utf8');
+        console.log('[Diagnostic Lead Captured]:', lead.nome, lead.email, lead.telefone);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: true, file: path.basename(file) }));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: false, error: err.message }));
+      }
+    });
+    return;
+  }
+
   /* Endpoint para obter token efêmero da OpenAI Realtime API */
   if (urlPath === '/api/realtime-session' && req.method === 'POST') {
     const postData = JSON.stringify({
