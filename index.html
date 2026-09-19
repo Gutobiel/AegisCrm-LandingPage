@@ -78,13 +78,13 @@
         <a href="#planos" class="nav-link">Planos</a>
         <a href="#resultados" class="nav-link">Resultados</a>
         <a href="https://app.aegiscrm.com.br/login" class="nav-link nav-mobile-login" target="_blank" rel="noopener noreferrer">Login</a>
-        <a href="#demonstracao" class="btn btn-primary nav-mobile-cta">Conhecer</a>
+        <a href="#demonstracao" class="btn btn-primary nav-mobile-cta" data-open-diagnostic>Conhecer</a>
       </nav>
       <div class="header-actions">
         <a href="https://app.aegiscrm.com.br/login" class="header-login-link" id="header-login" target="_blank" rel="noopener noreferrer">
           Login
         </a>
-        <a href="#demonstracao" class="btn btn-primary" id="header-cta">
+        <a href="#demonstracao" class="btn btn-primary" id="header-cta" data-open-diagnostic>
           Conhecer
         </a>
       </div>
@@ -309,7 +309,7 @@
                 complexas e rotatividade de funcionários.
               </p>
             </div>
-            <a href="#demonstracao" class="btn btn-primary btn-lg">
+            <a href="#demonstracao" class="btn btn-primary btn-lg" data-open-diagnostic>
               Comece Agora
             </a>
           </div>
@@ -397,7 +397,7 @@
               <span class="calc-result-sub" id="calc-bar-text"><strong>65%</strong> da receita perdida recuperada
                 automaticamente pela IA</span>
             </div>
-            <a href="#demonstracao" class="btn btn-primary btn-lg calc-cta" id="calc-cta-btn">
+            <a href="#demonstracao" class="btn btn-primary btn-lg calc-cta" id="calc-cta-btn" data-open-diagnostic data-plan="Crescimento">
               👉 Recuperar meus <strong>R$ 3.900</strong>/mês com o Aegis →
             </a>
           </div>
@@ -815,7 +815,7 @@
                 </div>
               </div>
 
-              <a href="#demonstracao" class="btn btn-primary btn-sm calc-cta-btn" id="calc-select-btn">
+              <a href="#demonstracao" class="btn btn-primary btn-sm calc-cta-btn" id="calc-select-btn" data-open-diagnostic data-plan="Crescimento">
                 Selecionar Plano Crescimento →
               </a>
             </div>
@@ -875,7 +875,7 @@
               <li>Propostas comerciais em PDF</li>
             </ul>
             <button type="button" class="pricing-see-more" data-plan="essencial">e muito mais</button>
-            <a href="#demonstracao" class="btn btn-outline pricing-btn">Iniciar com Essencial</a>
+            <button type="button" class="btn btn-outline pricing-btn" data-open-diagnostic data-plan="Essencial">Iniciar com Essencial</button>
           </div>
 
           <!-- 2. Crescimento -->
@@ -906,7 +906,7 @@
               <li>Relat&#243;rios completos + exporta&#231;&#227;o</li>
             </ul>
             <button type="button" class="pricing-see-more" data-plan="crescimento">e muito mais</button>
-            <a href="#demonstracao" class="btn btn-outline pricing-btn">Come&#231;ar com Crescimento</a>
+            <button type="button" class="btn btn-outline pricing-btn" data-open-diagnostic data-plan="Crescimento">Come&#231;ar com Crescimento</button>
           </div>
 
           <!-- 3. Enterprise -->
@@ -937,7 +937,7 @@
               <li>Suporte VIP 24/7</li>
             </ul>
             <button type="button" class="pricing-see-more" data-plan="enterprise">e muito mais</button>
-            <a href="#demonstracao" class="btn btn-outline pricing-btn">Falar com Vendas</a>
+            <button type="button" class="btn btn-outline pricing-btn" data-open-diagnostic data-plan="Enterprise">Falar com Vendas</button>
           </div>
         </div>
 
@@ -1402,7 +1402,7 @@
           <div class="diag-outcome-wrap">
             <div class="diag-rocket-icon" aria-hidden="true">🚀</div>
             <h2 class="diag-step-title" id="diag-outcome-title">Temos algo pra você começar hoje.</h2>
-            <p class="diag-outcome-desc">
+            <p class="diag-outcome-desc" id="diag-outcome-desc">
               O plano completo com o time é feito sob medida pra operações maiores. Mas você pode começar agora com o <strong>Agente de IA</strong>: um chatbot que responde, qualifica e agenda no WhatsApp automaticamente, com implementação rápida.
             </p>
             <a href="https://app.aegiscrm.com.br/register-company" class="btn btn-primary diag-submit-btn" id="diag-btn-agente-ia">

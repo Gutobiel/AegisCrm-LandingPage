@@ -735,6 +735,7 @@
     const loaderBar = $('#diag-loader-bar');
     const analysisStatus = $('#diag-analysis-status');
     const outcomeTitle = $('#diag-outcome-title');
+    const outcomeDesc = $('#diag-outcome-desc') || $('.diag-outcome-desc', modal);
     const btnAgenteIa = $('#diag-btn-agente-ia');
 
     let currentStep = 0;
@@ -749,10 +750,14 @@
       nome: '',
       empresa: '',
       email: '',
-      telefone: ''
+      telefone: '',
+      planoInteresse: ''
     };
 
-    function openModal() {
+    function openModal(plan = '') {
+      if (plan) {
+        answers.planoInteresse = plan;
+      }
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
       if (currentStep === 0 || currentStep === 8) {
@@ -821,13 +826,52 @@
         runAnalysisAndRedirect();
       } else if (step === 8) {
         const firstName = (answers.nome || '').trim().split(' ')[0];
-        if (outcomeTitle) {
-          outcomeTitle.textContent = firstName
-            ? `${firstName}, temos algo pra você começar hoje.`
-            : 'Temos algo pra você começar hoje.';
+        const selectedPlan = answers.planoInteresse;
+
+        if (selectedPlan && ['Essencial', 'Crescimento', 'Enterprise'].includes(selectedPlan)) {
+          if (outcomeTitle) {
+            outcomeTitle.textContent = firstName
+              ? `${firstName}, seu acesso ao Plano ${selectedPlan} está liberado!`
+              : `Seu acesso ao Plano ${selectedPlan} está liberado!`;
+          }
+          if (outcomeDesc) {
+            outcomeDesc.innerHTML = `Configuramos seu ambiente comercial para o <strong>Plano ${selectedPlan}</strong> com base no seu diagnóstico. Aproveite seus <strong>7 dias de teste grátis</strong> sem fidelidade para explorar todos os recursos na prática.`;
+          }
+          if (btnAgenteIa) {
+            btnAgenteIa.innerHTML = `
+              Acessar Plano ${selectedPlan} Grátis
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            `;
+          }
+        } else {
+          if (outcomeTitle) {
+            outcomeTitle.textContent = firstName
+              ? `${firstName}, temos algo pra você começar hoje.`
+              : 'Temos algo pra você começar hoje.';
+          }
+          if (outcomeDesc) {
+            outcomeDesc.innerHTML = `O plano completo com o time é feito sob medida pra operações maiores. Mas você pode começar agora com o <strong>Agente de IA</strong>: um chatbot que responde, qualifica e agenda no WhatsApp automaticamente, com implementação rápida.`;
+          }
+          if (btnAgenteIa) {
+            btnAgenteIa.innerHTML = `
+              Conhecer o Agente de IA
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            `;
+          }
         }
+
         if (btnAgenteIa) {
+          const planParam = (selectedPlan && ['essencial', 'crescimento', 'enterprise'].includes(selectedPlan.toLowerCase()))
+            ? selectedPlan.toLowerCase()
+            : 'essencial';
           const params = new URLSearchParams({
+            plan: planParam,
             nome: answers.nome || '',
             empresa: answers.empresa || '',
             email: answers.email || '',
@@ -836,7 +880,7 @@
             faturamento: answers.faturamento || '',
             desafio: answers.desafio || '',
             urgencia: answers.urgencia || '',
-            origem: 'diagnostico_agente_ia'
+            origem: 'diagnostico_landing_page'
           });
           btnAgenteIa.href = `https://app.aegiscrm.com.br/register-company?${params.toString()}`;
         }
@@ -852,14 +896,15 @@
     }
 
     // Bind triggers
-    if (trigger) trigger.addEventListener('click', openModal);
+    if (trigger) trigger.addEventListener('click', () => openModal());
     if (heroCta) heroCta.addEventListener('click', (e) => {
       e.preventDefault();
       openModal();
     });
     $$('[data-open-diagnostic]').forEach(el => el.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal();
+      const plan = el.getAttribute('data-plan') || '';
+      openModal(plan);
     }));
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -1008,7 +1053,37 @@
       if (inputEmail && !answers.email) answers.email = inputEmail.value.trim();
       if (inputPhone && !answers.telefone) answers.telefone = inputPhone.value.replace(/\D/g, '');
 
-      // Persist lead locally
+      // 1. Dispatch directly to SaaS Superadmin public lead ingestion endpoint
+      const saasPayload = {
+        nomeResponsavel: answers.nome || 'Lead Diagnóstico',
+        email: answers.email || undefined,
+        telefone: answers.telefone || undefined,
+        empresa: answers.empresa || undefined,
+        planoInteresse: answers.planoInteresse || 'Essencial',
+        observacoes: `Equipe: ${answers.equipe || 'Não informado'} | Faturamento: ${answers.faturamento || 'Não informado'} | Desafio: ${answers.desafio || 'Não informado'} | Urgência: ${answers.urgencia || 'Não informado'} (Empresa: ${answers.empresa || 'Prospecto SaaS'})`,
+        origem: 'landing_page_diagnostico'
+      };
+
+      try {
+        fetch('https://app.aegiscrm.com.br/api/leads/public/capture', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Tenant-Slug': 'superadmin'
+          },
+          body: JSON.stringify(saasPayload)
+        }).then(res => {
+          if (res.ok) {
+            console.log('[Aegis CRM] Lead cadastrado com sucesso no painel Superadmin!');
+          }
+        }).catch(err => {
+          console.warn('[Aegis CRM] Superadmin capture notice:', err);
+        });
+      } catch (err) {
+        console.warn('[Aegis CRM] Exceção no envio do lead ao Superadmin:', err);
+      }
+
+      // 2. Persist lead locally and fallback API
       try {
         const payload = {
           ...answers,
@@ -1159,6 +1234,24 @@
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Enviando...';
       submitBtn.disabled = true;
+
+      /* Dispatch lead to SaaS Superadmin */
+      try {
+        fetch('https://app.aegiscrm.com.br/api/leads/public/capture', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Tenant-Slug': 'superadmin'
+          },
+          body: JSON.stringify({
+            nomeResponsavel: inputName.value.trim(),
+            telefone: waDigits,
+            planoInteresse: 'Geral',
+            observacoes: 'Contato recebido via formulário no rodapé da landing page.',
+            origem: 'formulario_rodape'
+          })
+        }).catch(() => {});
+      } catch (err) {}
 
       setTimeout(() => {
         form.style.display = 'none';
@@ -1813,6 +1906,10 @@
 
       planName.textContent = recommended;
       selectBtn.textContent = `Selecionar ${recommended} →`;
+      const recommendedPlanName = recommended.includes('Essencial')
+        ? 'Essencial'
+        : (recommended.includes('Enterprise') ? 'Enterprise' : 'Crescimento');
+      selectBtn.setAttribute('data-plan', recommendedPlanName);
 
       [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
         if (!card) return;
