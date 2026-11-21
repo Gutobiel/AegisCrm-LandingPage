@@ -808,8 +808,11 @@
       }
 
       // Step-specific initializations
+      const isDesktopViewport = window.innerWidth > 768;
       if (step === 5 && inputNome) {
-        setTimeout(() => inputNome.focus(), 150);
+        if (isDesktopViewport) {
+          setTimeout(() => inputNome.focus(), 150);
+        }
         validateStep5();
       } else if (step === 6) {
         const firstName = (answers.nome || '').trim().split(' ')[0];
@@ -819,7 +822,9 @@
             : 'Informe seu WhatsApp para liberação imediata:';
         }
         if (inputPhone) {
-          setTimeout(() => inputPhone.focus(), 150);
+          if (isDesktopViewport) {
+            setTimeout(() => inputPhone.focus(), 150);
+          }
           validateStep6();
         }
       } else if (step === 7) {
@@ -895,17 +900,19 @@
       }
     }
 
-    // Bind triggers
+    // Bind triggers (direct + delegated for dynamic buttons like plan-detail-overlay)
     if (trigger) trigger.addEventListener('click', () => openModal());
     if (heroCta) heroCta.addEventListener('click', (e) => {
       e.preventDefault();
       openModal();
     });
-    $$('[data-open-diagnostic]').forEach(el => el.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
+      const diagBtn = e.target.closest('[data-open-diagnostic]');
+      if (!diagBtn) return;
       e.preventDefault();
-      const plan = el.getAttribute('data-plan') || '';
+      const plan = diagBtn.getAttribute('data-plan') || '';
       openModal(plan);
-    }));
+    });
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
@@ -2383,8 +2390,10 @@
       html += '</ul></div>';
     });
 
+    var planLabelMap = { essencial: 'Essencial', crescimento: 'Crescimento', enterprise: 'Enterprise' };
+    var diagPlanAttr = planLabelMap[planKey] ? ' data-plan="' + planLabelMap[planKey] + '"' : '';
     html += '<div class="modal-cta-footer">';
-    html += '<a href="#demonstracao" class="btn btn-primary modal-cta-btn" onclick="document.getElementById(\'plan-detail-overlay\').classList.remove(\'active\');document.body.style.overflow=\'\';">Quero iniciar com este plano →</a>';
+    html += '<button type="button" data-open-diagnostic' + diagPlanAttr + ' class="btn btn-primary modal-cta-btn" onclick="document.getElementById(\'plan-detail-overlay\').classList.remove(\'active\');document.body.style.overflow=\'\';">Quero iniciar com este plano →</button>';
     html += '</div>';
 
     bodyEl.innerHTML = html;
