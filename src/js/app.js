@@ -1913,10 +1913,13 @@
 
       planName.textContent = recommended;
       selectBtn.textContent = `Selecionar ${recommended} →`;
-      const recommendedPlanName = recommended.includes('Essencial')
-        ? 'Essencial'
-        : (recommended.includes('Enterprise') ? 'Enterprise' : 'Crescimento');
-      selectBtn.setAttribute('data-plan', recommendedPlanName);
+      const recommendedPlanKey = recommended.includes('Essencial')
+        ? 'essencial'
+        : (recommended.includes('Enterprise') ? 'enterprise' : 'crescimento');
+      selectBtn.setAttribute('data-cakto-plan', recommendedPlanKey);
+      if (typeof window.getAegisCaktoCheckoutUrl === 'function') {
+        selectBtn.setAttribute('href', window.getAegisCaktoCheckoutUrl(recommendedPlanKey));
+      }
 
       [cardEssencial, cardCrescimento, cardEnterprise].forEach(card => {
         if (!card) return;
@@ -2390,10 +2393,11 @@
       html += '</ul></div>';
     });
 
-    var planLabelMap = { essencial: 'Essencial', crescimento: 'Crescimento', enterprise: 'Enterprise' };
-    var diagPlanAttr = planLabelMap[planKey] ? ' data-plan="' + planLabelMap[planKey] + '"' : '';
+    var checkoutHref = typeof window.getAegisCaktoCheckoutUrl === 'function'
+      ? window.getAegisCaktoCheckoutUrl(planKey, isAnnual)
+      : 'https://pay.cakto.com.br/7uydp34';
     html += '<div class="modal-cta-footer">';
-    html += '<button type="button" data-open-diagnostic' + diagPlanAttr + ' class="btn btn-primary modal-cta-btn" onclick="document.getElementById(\'plan-detail-overlay\').classList.remove(\'active\');document.body.style.overflow=\'\';">Quero iniciar com este plano →</button>';
+    html += '<a href="' + checkoutHref + '" target="_blank" rel="noopener noreferrer" data-cakto-plan="' + planKey + '" class="btn btn-primary modal-cta-btn" onclick="document.getElementById(\'plan-detail-overlay\').classList.remove(\'active\');document.body.style.overflow=\'\';">Quero assinar este plano →</a>';
     html += '</div>';
 
     bodyEl.innerHTML = html;
@@ -2510,14 +2514,68 @@
   });
 })();
 
-// ─── SEGMENTED PRICING TOGGLE ───
+// ─── CAKTO DIRECT CHECKOUT LINKS & SEGMENTED PRICING TOGGLE ───
 (function () {
+  const caktoCheckoutUrls = {
+    essencial: {
+      monthly: 'https://pay.cakto.com.br/ayaro6c_941655',
+      annual: 'https://pay.cakto.com.br/c8xom75'
+    },
+    crescimento: {
+      monthly: 'https://pay.cakto.com.br/7uydp34',
+      annual: 'https://pay.cakto.com.br/83t86h9'
+    },
+    enterprise: {
+      monthly: 'https://pay.cakto.com.br/x45dzsf',
+      annual: 'https://pay.cakto.com.br/38yk27q'
+    }
+  };
+
   const btnMonthly = document.getElementById('btn-monthly');
   const btnAnnual = document.getElementById('btn-annual');
   const segmentedControl = document.querySelector('.pricing-segmented-control');
   const pricingAmounts = document.querySelectorAll('.pricing-amount');
   const pricingPeriods = document.querySelectorAll('.pricing-period');
   const annualNotes = document.querySelectorAll('.pricing-annual-note');
+
+  function isAnnualActive() {
+    return segmentedControl ? segmentedControl.classList.contains('is-annual') : false;
+  }
+
+  window.getAegisCaktoCheckoutUrl = function (planKey, forceAnnual) {
+    const normalized = String(planKey || 'crescimento').toLowerCase().trim();
+    const entry = caktoCheckoutUrls[normalized] || caktoCheckoutUrls.crescimento;
+    const useAnnual = typeof forceAnnual === 'boolean' ? forceAnnual : isAnnualActive();
+    return useAnnual ? (entry.annual || entry.monthly) : (entry.monthly || entry.annual);
+  };
+
+  window.refreshAegisCaktoLinks = function () {
+    const annual = isAnnualActive();
+    document.querySelectorAll('[data-cakto-plan]').forEach((el) => {
+      const planKey = el.getAttribute('data-cakto-plan');
+      if (!planKey) return;
+      const targetUrl = window.getAegisCaktoCheckoutUrl(planKey, annual);
+      if (el.tagName === 'A') {
+        el.setAttribute('href', targetUrl);
+      }
+    });
+  };
+
+  // Sync live checkout URLs configured in Superadmin (/api/plans)
+  fetch('https://app.aegiscrm.com.br/api/plans')
+    .then((res) => (res.ok ? res.json() : null))
+    .then((plans) => {
+      if (!Array.isArray(plans)) return;
+      plans.forEach((p) => {
+        const key = String(p.nome || '').toLowerCase().trim();
+        if (caktoCheckoutUrls[key]) {
+          if (p.checkoutUrlMonthly) caktoCheckoutUrls[key].monthly = p.checkoutUrlMonthly;
+          if (p.checkoutUrlAnnual) caktoCheckoutUrls[key].annual = p.checkoutUrlAnnual;
+        }
+      });
+      window.refreshAegisCaktoLinks();
+    })
+    .catch(() => {});
 
   if (btnMonthly && btnAnnual && segmentedControl) {
     function setBilling(mode) {
@@ -2554,9 +2612,12 @@
           el.style.display = 'none';
         });
       }
+      window.refreshAegisCaktoLinks();
     }
 
     btnMonthly.addEventListener('click', () => setBilling('monthly'));
     btnAnnual.addEventListener('click', () => setBilling('annual'));
   }
+
+  window.refreshAegisCaktoLinks();
 })();
